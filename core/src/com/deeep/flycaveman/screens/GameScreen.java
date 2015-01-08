@@ -3,7 +3,6 @@ package com.deeep.flycaveman.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.World;
@@ -26,9 +25,9 @@ import com.deeep.flycaveman.input.GameInputProcessor;
 public class GameScreen implements Screen {
     private Core game;
     //Screen
-    private OrthographicCamera camera;
     private SpriteBatch spriteBatch;
     private Stage stage;
+    private Stage worldStage;
     private float camPosX;
     private float camPosY;
     private GameInputProcessor gameInputProcessor;
@@ -51,8 +50,8 @@ public class GameScreen implements Screen {
         prepareScreen();
         setWidgets();
         configureWidgets();
-        setLayout();
         prepareWorld();
+        setLayout();
         setInputProcessor();
         prepareGameOverDialog();
 
@@ -61,10 +60,8 @@ public class GameScreen implements Screen {
     }
 
     private void prepareScreen() {
-        camera = game.getCamera();
-        camera.position.set(Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT / 2, 0);
         spriteBatch = game.getSpriteBatch();
-        stage = new Stage(new StretchViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_WIDTH), spriteBatch);
+        stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_WIDTH), spriteBatch);
     }
 
     private void setWidgets() {
@@ -104,7 +101,8 @@ public class GameScreen implements Screen {
     }
 
     private void prepareWorld() {
-        world = new World(game, true);
+        world = new World(worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT)), stage, true);
+        stage.addActor(world);
     }
 
     private void setInputProcessor() {
@@ -163,8 +161,6 @@ public class GameScreen implements Screen {
         stage.act();
 
         //checkInput(delta);
-
-        world.draw();
         stage.draw();
 //        if (world.isGameOver()) gameOverDialog.draw();
     }
@@ -175,8 +171,6 @@ public class GameScreen implements Screen {
         if (world.caveman.body.getPosition().y > Core.BOX2D_VIRTUAL_HEIGHT / 2)
             camPosY = world.caveman.body.getPosition().y;
         else camPosY = Core.BOX2D_VIRTUAL_HEIGHT / 2;
-
-        camera.position.set(camPosX, camPosY, 0);
     }
 
     private void updateStage() {
@@ -221,6 +215,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+        stage.getViewport().update(width, height);
+        worldStage.getViewport().update(width, height);
     }
 
     @Override

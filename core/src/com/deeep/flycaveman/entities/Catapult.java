@@ -1,12 +1,12 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJoint;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.deeep.flycaveman.classes.Assets;
-import net.dermetfan.utils.libgdx.graphics.Box2DSprite;
 
 /**
  * Created by scanevaro on 29/10/2014.
@@ -55,7 +55,7 @@ public class Catapult {
         baseFixtureDef.isSensor = true;
 
         baseBody = world.createBody(baseBodyDef);
-        baseBody.setUserData(new Box2DSprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture())));
+        baseBody.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture())));
 
         baseFixture = baseBody.createFixture(baseFixtureDef);
         baseFixture.setUserData(this);
@@ -78,7 +78,7 @@ public class Catapult {
         armFixtureDef.density = 0.3F;
 
         armBody = world.createBody(armBodyDef);
-        armBody.setUserData(new Box2DSprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture())));
+        armBody.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture())));
 
         armFixture = armBody.createFixture(armFixtureDef);
         armFixture.setUserData(this);

@@ -1,5 +1,6 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -7,7 +8,6 @@ import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Assets;
-import net.dermetfan.utils.libgdx.graphics.Box2DSprite;
 
 /**
  * Created by scanevaro on 11/10/2014.
@@ -20,6 +20,7 @@ public class CaveMan {
     private CircleShape shape;
     //    private PolygonShape shape;
     public WeldJoint bulletJoint;
+    private float size = .6f;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodyDef = new BodyDef();
@@ -29,7 +30,7 @@ public class CaveMan {
         bodyDef.bullet = true;
 
         shape = new CircleShape();
-        shape.setRadius(.6f);
+        shape.setRadius(size);
 
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
@@ -38,7 +39,9 @@ public class CaveMan {
         fixtureDef.restitution = .5f;
 
         body = world.box2dWorld.createBody(bodyDef);
-        body.setUserData(new Box2DSprite(new TextureRegion(Assets.getAssets().getCavemanTexture())));
+        Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCavemanTexture()));
+        sprite.setSize(size + .5f, size + .5f);
+        body.setUserData(sprite);
 
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);

@@ -1,9 +1,9 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.classes.Assets;
-import net.dermetfan.utils.libgdx.graphics.Box2DSprite;
 
 import java.util.Random;
 
@@ -56,11 +56,11 @@ public class Obstacle {
 
         body = world.createBody(bodyDef);
         if (type == Type.SMALL_EGG.ordinal())
-            body.setUserData(new Box2DSprite(new TextureRegion(Assets.getAssets().getSmallEggTexture())));
+            body.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getSmallEggTexture())));
         else if (type == Type.BRACHIOSAURUS.ordinal())
-            body.setUserData(new Box2DSprite(new TextureRegion(Assets.getAssets().getBrachioTexture())));
+            body.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getBrachioTexture())));
         else if (type == Type.QUETZALCOATLUS.ordinal())
-            body.setUserData(new Box2DSprite(new TextureRegion(Assets.getAssets().getQuetzaTexture())));
+            body.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getQuetzaTexture())));
 
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);

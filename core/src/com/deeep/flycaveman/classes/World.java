@@ -1,31 +1,34 @@
 package com.deeep.flycaveman.classes;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.Catapult;
 import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.entities.Ground;
 import com.deeep.flycaveman.entities.Obstacle;
 import com.deeep.flycaveman.input.GameContactListener;
-import net.dermetfan.utils.libgdx.graphics.Box2DSprite;
 
 import java.util.Random;
 
 /**
  * Created by scanevaro on 12/10/2014.
  */
-public class World {
+public class World extends Actor {
     private final float TIMESTEP = 1 / 60f;
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 
-    private OrthographicCamera camera;
-    private SpriteBatch batch;
+    private Stage worldStage;
+    private Stage stage;
     private ShapeRenderer shapeRenderer;
     private Vector2 sky;
     public com.badlogic.gdx.physics.box2d.World box2dWorld;
@@ -45,16 +48,19 @@ public class World {
     public boolean remove;
     private float shootStateTime;
 
+    private Array<Body> bodys;
+
     public boolean gameOver;
 
-    public World(Core game, boolean debug) {
-        this.camera = game.getCamera();
-        this.batch = game.getSpriteBatch();
+    public World(Stage worldStage, Stage stage, boolean debug) {
+        this.worldStage = worldStage;
+        this.stage = stage;
+
         shapeRenderer = new ShapeRenderer();
 
         Texture backgroundTexture = Assets.getAssets().getBackgroundTexture();
         backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-        backgroundSprite = new Sprite(backgroundTexture, 0, 0, 1920, 720);
+        backgroundSprite = new Sprite(backgroundTexture);
         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         scrollTimer = 0;
 
@@ -82,11 +88,21 @@ public class World {
         if (debug)
             debugRenderer = new Box2DDebugRenderer();
 
+        bodys = new Array<Body>();
+
         shootStateTime = 0;
     }
 
-    public void draw() {
-        shapeRenderer.setProjectionMatrix(camera.combined);
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        batch.setProjectionMatrix(worldStage.getCamera().combined);
+
+        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
+
+        batch.end();
+
+        shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
+        shapeRenderer.setTransformMatrix(batch.getTransformMatrix());
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(0, 0.5f, 0.8f, 1);
@@ -100,14 +116,26 @@ public class World {
         batch.end();
         batch.begin();
         //When this line is between spritebatch.begin and spritebatch.end. it makes the later calls to draw dont work
-        debugRenderer.render(box2dWorld, camera.combined);
+        debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
 
         batch.end();
         batch.begin();
 
-        Box2DSprite.draw(batch, box2dWorld);
+        {/**Draw Box2D Body Textures*/
+            box2dWorld.getBodies(bodys);
+            Sprite sprite;
+            for (Body body : bodys) {
+                if (body.getUserData() != null)
+                    sprite = (Sprite) body.getUserData();
+                else break;
+                Vector2 position = body.getPosition();
+                sprite.setPosition(position.x, position.y);
+                sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+                sprite.draw(batch);
+            }
+        }
 
-        batch.end();
+        batch.setProjectionMatrix(stage.getCamera().combined);
     }
 
     public void update(float delta) {
