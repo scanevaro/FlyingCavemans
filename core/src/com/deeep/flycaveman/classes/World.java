@@ -129,7 +129,7 @@ public class World extends Actor {
                     sprite = (Sprite) body.getUserData();
                 else break;
                 Vector2 position = body.getPosition();
-                sprite.setPosition(position.x, position.y);
+                sprite.setPosition(position.x - sprite.getWidth() / 2, position.y - sprite.getHeight() / 2);
                 sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
                 sprite.draw(batch);
             }

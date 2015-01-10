@@ -4,15 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Assets;
@@ -36,7 +30,7 @@ public class GameScreen implements Screen {
     private Label distanceTraveled;
     private Label heightLabel;
     private Label height;
-    private ImageButton restartButton;
+    //    private ImageButton restartButton;
     private Window gameOverDialog;
     //World
     private World world;
@@ -70,18 +64,18 @@ public class GameScreen implements Screen {
         heightLabel = new Label("Height", Assets.getAssets().getSkin());
         height = new Label("", Assets.getAssets().getSkin());
 
-        ImageButton.ImageButtonStyle topGun1Style = new ImageButton.ImageButtonStyle(Assets.getAssets().getSkin().get(Button.ButtonStyle.class));
-        topGun1Style.imageUp = new TextureRegionDrawable(new TextureRegion(Assets.getAssets().getRestartButton()));
-        restartButton = new ImageButton(topGun1Style);
+//        ImageButton.ImageButtonStyle topGun1Style = new ImageButton.ImageButtonStyle(Assets.getAssets().getSkin().get(Button.ButtonStyle.class));
+//        topGun1Style.imageUp = new TextureRegionDrawable(new TextureRegion(Assets.getAssets().getRestartButton()));
+//        restartButton = new ImageButton(topGun1Style);
     }
 
     private void configureWidgets() {
-        restartButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
-            }
-        });
+//        restartButton.addListener(new ClickListener() {
+//            @Override
+//            public void clicked(InputEvent event, float x, float y) {
+//                game.setScreen(new GameScreen(game));
+//            }
+//        });
     }
 
     private void setLayout() {
@@ -90,14 +84,14 @@ public class GameScreen implements Screen {
         heightLabel.setPosition(Core.VIRTUAL_WIDTH / 2 - 80, 1);
         height.setPosition(Core.VIRTUAL_WIDTH / 2, 10);
 
-        restartButton.setSize(96, 96);
-        restartButton.setPosition(0, 0);
+//        restartButton.setSize(96, 96);
+//        restartButton.setPosition(0, 0);
 
         stage.addActor(distanceLabel);
         stage.addActor(distanceTraveled);
         stage.addActor(heightLabel);
         stage.addActor(height);
-        stage.addActor(restartButton);
+//        stage.addActor(restartButton);
     }
 
     private void prepareWorld() {

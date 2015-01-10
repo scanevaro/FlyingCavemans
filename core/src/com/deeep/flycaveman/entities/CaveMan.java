@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Assets;
 
 /**
@@ -20,12 +19,12 @@ public class CaveMan {
     private CircleShape shape;
     //    private PolygonShape shape;
     public WeldJoint bulletJoint;
-    private float size = .6f;
+    public float size = .6f;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(11f, Core.BOX2D_VIRTUAL_HEIGHT / 3 + .3f);
+        bodyDef.position.set(11f, 7);
 //        bodyDef.fixedRotation = true;
         bodyDef.bullet = true;
 
@@ -40,7 +39,8 @@ public class CaveMan {
 
         body = world.box2dWorld.createBody(bodyDef);
         Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCavemanTexture()));
-        sprite.setSize(size + .5f, size + .5f);
+        sprite.setSize(size * 2, size * 2);
+        sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         body.setUserData(sprite);
 
         fixture = body.createFixture(fixtureDef);
@@ -53,7 +53,7 @@ public class CaveMan {
         body.setActive(true);
 
         WeldJointDef weldJointDef = new WeldJointDef();
-        weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, Core.BOX2D_VIRTUAL_HEIGHT / 3 + .3f));
+        weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, 7));
         weldJointDef.collideConnected = false;
 
         bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);

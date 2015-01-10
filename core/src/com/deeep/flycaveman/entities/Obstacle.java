@@ -21,6 +21,7 @@ public class Obstacle {
     private Fixture fixture;
     private PolygonShape shape;
     public int type;
+    public float smallEggSize = 0.8f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4, brachioSizeY = 3;
 
     public Obstacle(World world, float positionX, Random random) {
         bodyDef = new BodyDef();
@@ -41,13 +42,13 @@ public class Obstacle {
 
         if (type == Type.SMALL_EGG.ordinal()) {
             bodyDef.position.set(positionX, 1.8f);
-            shape.setAsBox(0.8f, 0.8f);
+            shape.setAsBox(smallEggSize, smallEggSize);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             bodyDef.position.set(positionX, 4f);
-            shape.setAsBox(4, 3);
+            shape.setAsBox(brachioSizeX, brachioSizeY);
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
             bodyDef.position.set(positionX, random.nextInt(40 + random.nextInt(15)));
-            shape.setAsBox(2, 2);
+            shape.setAsBox(quetzaSizeX, quetzaSizeY);
         }
 
         fixtureDef = new FixtureDef();
@@ -55,12 +56,22 @@ public class Obstacle {
         fixtureDef.isSensor = true;
 
         body = world.createBody(bodyDef);
-        if (type == Type.SMALL_EGG.ordinal())
-            body.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getSmallEggTexture())));
-        else if (type == Type.BRACHIOSAURUS.ordinal())
-            body.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getBrachioTexture())));
-        else if (type == Type.QUETZALCOATLUS.ordinal())
-            body.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getQuetzaTexture())));
+        Sprite sprite = null;
+        if (type == Type.SMALL_EGG.ordinal()) {
+            sprite = new Sprite(new TextureRegion(Assets.getAssets().getSmallEggTexture()));
+            sprite.setSize(smallEggSize * 2, smallEggSize * 2);
+            body.setUserData(sprite);
+        } else if (type == Type.BRACHIOSAURUS.ordinal()) {
+            sprite = new Sprite(new TextureRegion(Assets.getAssets().getBrachioTexture()));
+            sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
+            body.setUserData(sprite);
+        } else if (type == Type.QUETZALCOATLUS.ordinal()) {
+            sprite = new Sprite(new TextureRegion(Assets.getAssets().getQuetzaTexture()));
+            sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
+            body.setUserData(sprite);
+        }
+
+        sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
 
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);

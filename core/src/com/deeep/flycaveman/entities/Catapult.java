@@ -30,6 +30,8 @@ public class Catapult {
     private World world;
     private Ground ground;
 
+    private float sizeBaseX = 2.5f, sizeBaseY = 0.5f, sizeArmX = 0.8f, sizeArmY = 3f;
+
     public Catapult(World world, Ground ground) {
         this.world = world;
         this.ground = ground;
@@ -47,7 +49,7 @@ public class Catapult {
         baseBodyDef.position.set(10.5f, 1.5f);
 
         baseShape = new PolygonShape();
-        baseShape.setAsBox(2.5f, 0.5f);
+        baseShape.setAsBox(sizeBaseX, sizeBaseY);
 
         baseFixtureDef = new FixtureDef();
         baseFixtureDef.shape = baseShape;
@@ -55,7 +57,9 @@ public class Catapult {
         baseFixtureDef.isSensor = true;
 
         baseBody = world.createBody(baseBodyDef);
-        baseBody.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture())));
+        Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture()));
+        sprite.setSize(sizeBaseX, sizeBaseY);
+        baseBody.setUserData(sprite);
 
         baseFixture = baseBody.createFixture(baseFixtureDef);
         baseFixture.setUserData(this);
@@ -71,14 +75,16 @@ public class Catapult {
         armBodyDef.position.set(10, 4.2f);
 
         armShape = new PolygonShape();
-        armShape.setAsBox(0.8f, 3f);
+        armShape.setAsBox(sizeArmX, sizeArmY);
 
         armFixtureDef = new FixtureDef();
         armFixtureDef.shape = armShape;
         armFixtureDef.density = 0.3F;
 
         armBody = world.createBody(armBodyDef);
-        armBody.setUserData(new Sprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture())));
+        Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture()));
+        sprite.setSize(sizeArmX, sizeArmY);
+        armBody.setUserData(sprite);
 
         armFixture = armBody.createFixture(armFixtureDef);
         armFixture.setUserData(this);
