@@ -19,7 +19,7 @@ import com.deeep.flycaveman.input.GameInputProcessor;
 public class GameScreen implements Screen {
     private Core game;
     //Screen
-    private SpriteBatch spriteBatch;
+    private SpriteBatch batch;
     private Stage stage;
     private Stage worldStage;
     private float camPosX;
@@ -49,13 +49,13 @@ public class GameScreen implements Screen {
         setInputProcessor();
         prepareGameOverDialog();
 
-        if (!Assets.getAssets().getMusic().isPlaying())
-            Assets.getAssets().getMusic().play();
+//        if (!Assets.getAssets().getMusic().isPlaying())
+//            Assets.getAssets().getMusic().play();
     }
 
     private void prepareScreen() {
-        spriteBatch = game.getSpriteBatch();
-        stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_WIDTH), spriteBatch);
+        batch = game.getSpriteBatch();
+        stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_WIDTH), batch);
     }
 
     private void setWidgets() {
@@ -78,6 +78,12 @@ public class GameScreen implements Screen {
 //        });
     }
 
+    private void prepareWorld() {
+        worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
+        world = new World(worldStage, stage, true);
+        stage.addActor(world);
+    }
+
     private void setLayout() {
         distanceLabel.setPosition(Core.VIRTUAL_WIDTH - 130, 1);
         distanceTraveled.setPosition(Core.VIRTUAL_WIDTH - 50, 10);
@@ -92,11 +98,6 @@ public class GameScreen implements Screen {
         stage.addActor(heightLabel);
         stage.addActor(height);
 //        stage.addActor(restartButton);
-    }
-
-    private void prepareWorld() {
-        world = new World(worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT)), stage, true);
-        stage.addActor(world);
     }
 
     private void setInputProcessor() {
@@ -160,11 +161,11 @@ public class GameScreen implements Screen {
     }
 
     private void updateGameCamera() {
-        camPosX = world.caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3);
-
-        if (world.caveman.body.getPosition().y > Core.BOX2D_VIRTUAL_HEIGHT / 2)
-            camPosY = world.caveman.body.getPosition().y;
-        else camPosY = Core.BOX2D_VIRTUAL_HEIGHT / 2;
+//        camPosX = world.caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3);
+//
+//        if (world.caveman.body.getPosition().y > Core.BOX2D_VIRTUAL_HEIGHT / 2)
+//            camPosY = world.caveman.body.getPosition().y;
+//        else camPosY = Core.BOX2D_VIRTUAL_HEIGHT / 2;
     }
 
     private void updateStage() {

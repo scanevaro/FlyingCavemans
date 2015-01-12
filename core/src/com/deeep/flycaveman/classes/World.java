@@ -59,7 +59,7 @@ public class World extends Actor {
         shapeRenderer = new ShapeRenderer();
 
         Texture backgroundTexture = Assets.getAssets().getBackgroundTexture();
-        backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        /*backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);*/ //TODO Seems like setWrap doesnt exist on HTML
         backgroundSprite = new Sprite(backgroundTexture);
         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         scrollTimer = 0;
@@ -85,8 +85,7 @@ public class World extends Actor {
 
         sky = new Vector2(caveman.body.getPosition().x - 10, caveman.body.getPosition().y - 8);
 
-        if (debug)
-            debugRenderer = new Box2DDebugRenderer();
+        if (debug) debugRenderer = new Box2DDebugRenderer();
 
         bodys = new Array<Body>();
 
@@ -120,13 +119,15 @@ public class World extends Actor {
 
         batch.end();
         batch.begin();
-
+//
         {/**Draw Box2D Body Textures*/
             box2dWorld.getBodies(bodys);
             Sprite sprite;
             for (Body body : bodys) {
-                if (body.getUserData() != null)
-                    sprite = (Sprite) body.getUserData();
+                if (body.getUserData() != null){
+                    sprite = (Sprite) body.getUserData(); //TODO On HTML, we cannot have java.lang package because it just doesnt exist.
+                                                          //TODO body.getUserData() returns one of this, this is why the drawing is not working for entities
+                }
                 else break;
                 Vector2 position = body.getPosition();
                 sprite.setPosition(position.x - sprite.getWidth() / 2, position.y - sprite.getHeight() / 2);
@@ -135,7 +136,7 @@ public class World extends Actor {
             }
         }
 
-        batch.setProjectionMatrix(stage.getCamera().combined);
+//        batch.setProjectionMatrix(stage.getCamera().combined);
     }
 
     public void update(float delta) {
@@ -169,18 +170,18 @@ public class World extends Actor {
     }
 
     private void updateBackground() {
-        if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
-            scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
-
-//        scrollTimer += delta - delta / 2;
-
-        if (scrollTimer > 1.0f)
-            scrollTimer = 0.0f;
-
-        backgroundSprite.setU(scrollTimer);
-        backgroundSprite.setU2(scrollTimer + 1);
-
-        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
+//        if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
+//            scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
+//
+////        scrollTimer += delta - delta / 2;
+//
+//        if (scrollTimer > 1.0f)
+//            scrollTimer = 0.0f;
+//
+//        backgroundSprite.setU(scrollTimer);
+//        backgroundSprite.setU2(scrollTimer + 1);
+//
+//        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
     }
 
     private void updateGround() {
