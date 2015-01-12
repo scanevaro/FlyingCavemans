@@ -1,17 +1,20 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
+import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.classes.Assets;
 
 /**
  * Created by scanevaro on 11/10/2014.
  */
-public class CaveMan {
+public class CaveMan implements Entity {
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -20,8 +23,12 @@ public class CaveMan {
     //    private PolygonShape shape;
     public WeldJoint bulletJoint;
     public float size = .6f;
+    private Sprite sprite;
+    private Array<Body> bodys;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
+        bodys = new Array<Body>();
+
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(11f, 7);
@@ -38,7 +45,8 @@ public class CaveMan {
         fixtureDef.restitution = .5f;
 
         body = world.box2dWorld.createBody(bodyDef);
-        Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCavemanTexture()));
+        bodys.add(body);
+        sprite = new Sprite(new TextureRegion(Assets.getAssets().getCavemanTexture()));
         sprite.setSize(size * 2, size * 2);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         body.setUserData(sprite);
@@ -57,5 +65,13 @@ public class CaveMan {
         weldJointDef.collideConnected = false;
 
         bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
+    }
+
+    public void draw(Batch batch) {
+        for (Body body : bodys) {
+            sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
+            sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+            sprite.draw(batch);
+        }
     }
 }

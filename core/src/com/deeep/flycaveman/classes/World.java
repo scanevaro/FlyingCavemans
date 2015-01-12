@@ -4,18 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.entities.Catapult;
-import com.deeep.flycaveman.entities.CaveMan;
-import com.deeep.flycaveman.entities.Ground;
-import com.deeep.flycaveman.entities.Obstacle;
+import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;
 
 import java.util.Random;
@@ -48,13 +43,15 @@ public class World extends Actor {
     public boolean remove;
     private float shootStateTime;
 
-    private Array<Body> bodys;
+    private Array<Entity> entities;
 
     public boolean gameOver;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
         this.stage = stage;
+
+        entities = new Array<Entity>();
 
         shapeRenderer = new ShapeRenderer();
 
@@ -69,25 +66,23 @@ public class World extends Actor {
 
         ground = new Ground(box2dWorld);
 
-        catapult = new Catapult(box2dWorld, ground);
+        entities.add(catapult = new Catapult(box2dWorld, ground));
 
         obstacle = new Obstacle[5];
         obstaclesPosX = 0;
         random = new Random();
         for (int i = 0; i < obstacle.length; i++) {
             obstaclesPosX += 50 + random.nextInt(50);
-            obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random);
+            entities.add(obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random));
         }
 
         //TODO powerups (food, probably)
 
-        caveman = new CaveMan(this);
+        entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 10, caveman.body.getPosition().y - 8);
 
         if (debug) debugRenderer = new Box2DDebugRenderer();
-
-        bodys = new Array<Body>();
 
         shootStateTime = 0;
     }
@@ -121,19 +116,21 @@ public class World extends Actor {
         batch.begin();
 //
         {/**Draw Box2D Body Textures*/
-            box2dWorld.getBodies(bodys);
-            Sprite sprite;
-            for (Body body : bodys) {
-                if (body.getUserData() != null){
-                    sprite = (Sprite) body.getUserData(); //TODO On HTML, we cannot have java.lang package because it just doesnt exist.
-                                                          //TODO body.getUserData() returns one of this, this is why the drawing is not working for entities
-                }
-                else break;
-                Vector2 position = body.getPosition();
-                sprite.setPosition(position.x - sprite.getWidth() / 2, position.y - sprite.getHeight() / 2);
-                sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-                sprite.draw(batch);
-            }
+//            box2dWorld.getBodies(entities);
+//            Sprite sprite;
+//            for (Body body : entities) {
+//                if (body.getUserData() != null){
+//                    sprite = (Sprite) body.getUserData(); //TODO On HTML, we cannot have java.lang package because it just doesnt exist.
+//                                                          //TODO body.getUserData() returns one of this, this is why the drawing is not working for entities
+//                }
+//                else break;
+//                Vector2 position = body.getPosition();
+//                sprite.setPosition(position.x - sprite.getWidth() / 2, position.y - sprite.getHeight() / 2);
+//                sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+//                sprite.draw(batch);
+//            }
+            for (Entity entity : entities)
+                entity.draw(batch);
         }
 
 //        batch.setProjectionMatrix(stage.getCamera().combined);

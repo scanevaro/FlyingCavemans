@@ -11,7 +11,7 @@ import com.deeep.flycaveman.classes.Assets;
 /**
  * Created by scanevaro on 29/10/2014.
  */
-public class Catapult {
+public class Catapult extends Entity{
     private BodyDef armBodyDef;
     public Body armBody;
     private FixtureDef armFixtureDef;
