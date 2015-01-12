@@ -21,8 +21,6 @@ public class GameInputProcessor implements InputProcessor {
 
     private Core game;
     private World world;
-    //    private MouseJoint mouseJoint = null;
-    //    private Body hitBody = null;
     private boolean addForce;
     public static boolean flying;
     public static boolean touchingGround;
@@ -85,47 +83,8 @@ public class GameInputProcessor implements InputProcessor {
         }
     }
 
-//    Vector3 testPoint = new Vector3();
-//    QueryCallback callback = new QueryCallback() {
-//        @Override
-//        public boolean reportFixture(Fixture fixture) {
-//            // if the hit point is inside the fixture of the armBody
-//            // we report it
-//            if (fixture.testPoint(testPoint.x, testPoint.y)) {
-//                hitBody = fixture.getBody();
-//                return false;
-//            } else
-//                return true;
-//        }
-//    };
-
     @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
-//        camera.unproject(testPoint.set(x, y, 0));
-//        // ask the world which bodies are within the given
-//        // bounding box around the mouse pointer
-//        hitBody = null;
-//        world.box2dWorld.QueryAABB(callback, testPoint.x - 0.0001f, testPoint.y - 0.0001f, testPoint.x + 0.0001f, testPoint.y + 0.0001f);
-//
-//        if (hitBody == groundBody) hitBody = null;
-//
-//        // ignore kinematic bodies, they don't work with the mouse joint
-//        if (hitBody != null && hitBody.getType() == BodyDef.BodyType.KinematicBody) return false;
-//
-//        // if we hit something we create a new mouse joint
-//        // and attach it to the hit armBody.
-//        if (hitBody != null) {
-//            MouseJointDef def = new MouseJointDef();
-//            def.bodyA = groundBody;
-//            def.bodyB = hitBody;
-//            def.collideConnected = true;
-//            def.target.set(testPoint.x, testPoint.y);
-//            def.maxForce = 1000.0f * hitBody.getMass();
-//
-//            mouseJoint = (MouseJoint) world.box2dWorld.createJoint(def);
-//            hitBody.setAwake(true);
-//        }
-
         switch (gameState) {
             case IDLE:
                 gameState = CATAPULTSET;
@@ -140,17 +99,11 @@ public class GameInputProcessor implements InputProcessor {
                 //TODO
                 break;
         }
-
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-//        if (mouseJoint != null) {
-//            world.box2dWorld.destroyJoint(mouseJoint);
-//            mouseJoint = null;
-//        }
-
         switch (gameState) {
             case CATAPULTSET:
                 world.box2dWorld.destroyJoint(world.caveman.bulletJoint);
@@ -164,18 +117,11 @@ public class GameInputProcessor implements InputProcessor {
                 gameState = FLYING;
                 break;
         }
-
         return false;
     }
 
-//    Vector2 target = new Vector2();
-
     @Override
     public boolean touchDragged(int x, int y, int pointer) {
-//        if (mouseJoint != null) {
-//            camera.unproject(testPoint.set(x, y, 0));
-//            mouseJoint.setTarget(target.set(testPoint.x, testPoint.y));
-//        }
         return false;
     }
 

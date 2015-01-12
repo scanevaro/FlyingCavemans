@@ -1,5 +1,6 @@
 package com.deeep.flycaveman.classes;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,6 +24,7 @@ public class World extends Actor {
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 
     private Stage worldStage;
+    private Camera camera;
     private Stage stage;
     private ShapeRenderer shapeRenderer;
     private Vector2 sky;
@@ -39,6 +41,9 @@ public class World extends Actor {
     private float scrollTimer;
     private float obstaclesPosX;
 
+    private float camPosX;
+    private float camPosY;
+
     public boolean flying;
     public boolean remove;
     private float shootStateTime;
@@ -51,12 +56,14 @@ public class World extends Actor {
         this.worldStage = worldStage;
         this.stage = stage;
 
+        camera = worldStage.getCamera();
+
         entities = new Array<Entity>();
 
         shapeRenderer = new ShapeRenderer();
 
         Texture backgroundTexture = Assets.getAssets().getBackgroundTexture();
-        /*backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);*/ //TODO Seems like setWrap doesnt exist on HTML
+        /*backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);*/ //TODO Seems like setWrap doesnt exist on HTML, or doesnt work
         backgroundSprite = new Sprite(backgroundTexture);
         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         scrollTimer = 0;
@@ -109,31 +116,18 @@ public class World extends Actor {
 
         batch.end();
         batch.begin();
-        //When this line is between spritebatch.begin and spritebatch.end. it makes the later calls to draw dont work
+
         debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
 
         batch.end();
         batch.begin();
 //
         {/**Draw Box2D Body Textures*/
-//            box2dWorld.getBodies(entities);
-//            Sprite sprite;
-//            for (Body body : entities) {
-//                if (body.getUserData() != null){
-//                    sprite = (Sprite) body.getUserData(); //TODO On HTML, we cannot have java.lang package because it just doesnt exist.
-//                                                          //TODO body.getUserData() returns one of this, this is why the drawing is not working for entities
-//                }
-//                else break;
-//                Vector2 position = body.getPosition();
-//                sprite.setPosition(position.x - sprite.getWidth() / 2, position.y - sprite.getHeight() / 2);
-//                sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-//                sprite.draw(batch);
-//            }
             for (Entity entity : entities)
                 entity.draw(batch);
         }
 
-//        batch.setProjectionMatrix(stage.getCamera().combined);
+        batch.setProjectionMatrix(stage.getCamera().combined);
     }
 
     public void update(float delta) {
@@ -142,7 +136,7 @@ public class World extends Actor {
         updateBackground();
         updateGround();
         updateObstacles();
-//        updatePowerUps();
+        /** updatePowerUps(); */
         updateWorld();
 
         if (flying)
@@ -167,18 +161,18 @@ public class World extends Actor {
     }
 
     private void updateBackground() {
-//        if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
-//            scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
-//
-////        scrollTimer += delta - delta / 2;
-//
-//        if (scrollTimer > 1.0f)
-//            scrollTimer = 0.0f;
-//
-//        backgroundSprite.setU(scrollTimer);
-//        backgroundSprite.setU2(scrollTimer + 1);
-//
-//        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
+        if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
+            scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
+
+//        scrollTimer += delta - delta / 2;
+
+        if (scrollTimer > 1.0f)
+            scrollTimer = 0.0f;
+
+        backgroundSprite.setU(scrollTimer);
+        backgroundSprite.setU2(scrollTimer + 1);
+
+        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
     }
 
     private void updateGround() {

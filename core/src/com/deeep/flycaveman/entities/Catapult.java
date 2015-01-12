@@ -1,7 +1,9 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJoint;
@@ -11,7 +13,7 @@ import com.deeep.flycaveman.classes.Assets;
 /**
  * Created by scanevaro on 29/10/2014.
  */
-public class Catapult extends Entity{
+public class Catapult implements Entity {
     private BodyDef armBodyDef;
     public Body armBody;
     private FixtureDef armFixtureDef;
@@ -30,6 +32,9 @@ public class Catapult extends Entity{
     private World world;
     private Ground ground;
 
+    public Sprite baseSprite;
+    public Sprite armSprite;
+
     private float sizeBaseX = 2.5f, sizeBaseY = 0.5f, sizeArmX = 0.8f, sizeArmY = 3f;
 
     public Catapult(World world, Ground ground) {
@@ -39,6 +44,32 @@ public class Catapult extends Entity{
         createArm();
         createBase();
         createJoint();
+    }
+
+    private void createArm() {
+        armBodyDef = new BodyDef();
+        armBodyDef.type = BodyDef.BodyType.DynamicBody;
+        armBodyDef.linearDamping = 1;
+        armBodyDef.angularDamping = 1;
+        armBodyDef.position.set(10, 4.2f);
+
+        armShape = new PolygonShape();
+        armShape.setAsBox(sizeArmX, sizeArmY);
+
+        armFixtureDef = new FixtureDef();
+        armFixtureDef.shape = armShape;
+        armFixtureDef.density = 0.3F;
+
+        armBody = world.createBody(armBodyDef);
+        armSprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture()));
+        armSprite.setSize(sizeArmX * 2, sizeArmY * 2);
+        armSprite.setOrigin(armSprite.getWidth() / 2, armSprite.getHeight() / 2);
+        armBody.setUserData(armSprite);
+
+        armFixture = armBody.createFixture(armFixtureDef);
+        armFixture.setUserData(this);
+
+        armShape.dispose();
     }
 
     private void createBase() {
@@ -57,39 +88,15 @@ public class Catapult extends Entity{
         baseFixtureDef.isSensor = true;
 
         baseBody = world.createBody(baseBodyDef);
-        Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture()));
-        sprite.setSize(sizeBaseX, sizeBaseY);
-        baseBody.setUserData(sprite);
+        baseSprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture()));
+        baseSprite.setSize(sizeBaseX * 2, sizeBaseY * 2);
+        baseSprite.setOrigin(baseSprite.getWidth() / 2, baseSprite.getHeight() / 2);
+        baseBody.setUserData(baseSprite);
 
         baseFixture = baseBody.createFixture(baseFixtureDef);
         baseFixture.setUserData(this);
 
         baseShape.dispose();
-    }
-
-    private void createArm() {
-        armBodyDef = new BodyDef();
-        armBodyDef.type = BodyDef.BodyType.DynamicBody;
-        armBodyDef.linearDamping = 1;
-        armBodyDef.angularDamping = 1;
-        armBodyDef.position.set(10, 4.2f);
-
-        armShape = new PolygonShape();
-        armShape.setAsBox(sizeArmX, sizeArmY);
-
-        armFixtureDef = new FixtureDef();
-        armFixtureDef.shape = armShape;
-        armFixtureDef.density = 0.3F;
-
-        armBody = world.createBody(armBodyDef);
-        Sprite sprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture()));
-        sprite.setSize(sizeArmX, sizeArmY);
-        armBody.setUserData(sprite);
-
-        armFixture = armBody.createFixture(armFixtureDef);
-        armFixture.setUserData(this);
-
-        armShape.dispose();
     }
 
     private void createJoint() {
@@ -103,5 +110,16 @@ public class Catapult extends Entity{
         armJointDef.maxMotorTorque = 9999;
 
         armJoint = (RevoluteJoint) world.createJoint(armJointDef);
+    }
+
+    @Override
+    public void draw(Batch batch) {
+        armSprite.setPosition(armBody.getPosition().x - armSprite.getWidth() / 2, armBody.getPosition().y - armSprite.getHeight() / 2);
+        armSprite.setRotation(armBody.getAngle() * MathUtils.radiansToDegrees);
+        armSprite.draw(batch);
+
+        baseSprite.setPosition(baseBody.getPosition().x - baseSprite.getWidth() / 2, baseBody.getPosition().y - baseSprite.getHeight() / 2);
+        baseSprite.setRotation(baseBody.getAngle() * MathUtils.radiansToDegrees);
+        baseSprite.draw(batch);
     }
 }

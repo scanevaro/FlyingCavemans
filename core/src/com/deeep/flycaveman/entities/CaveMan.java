@@ -31,7 +31,7 @@ public class CaveMan implements Entity {
 
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(11f, 7);
+        bodyDef.position.set(11.1f, 6.5f);
 //        bodyDef.fixedRotation = true;
         bodyDef.bullet = true;
 
