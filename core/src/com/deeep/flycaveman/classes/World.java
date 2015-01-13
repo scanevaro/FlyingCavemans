@@ -1,6 +1,6 @@
 package com.deeep.flycaveman.classes;
 
-import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -24,7 +24,7 @@ public class World extends Actor {
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 
     private Stage worldStage;
-    private Camera camera;
+    private OrthographicCamera camera;
     private Stage stage;
     private ShapeRenderer shapeRenderer;
     private Vector2 sky;
@@ -56,7 +56,7 @@ public class World extends Actor {
         this.worldStage = worldStage;
         this.stage = stage;
 
-        camera = worldStage.getCamera();
+        camera = (OrthographicCamera) worldStage.getCamera();
 
         entities = new Array<Entity>();
 
@@ -132,6 +132,7 @@ public class World extends Actor {
 
     public void update(float delta) {
         gameContactListener.update();
+        updateCamera();
         updateSky();
         updateBackground();
         updateGround();
@@ -151,6 +152,10 @@ public class World extends Actor {
         }
 
         checkGameOver();
+    }
+
+    private void updateCamera() {
+        /**camera.position.set(relative to caveman X position, relative to caveman Y position, 0);*/
     }
 
     private void updateSky() {
