@@ -141,6 +141,10 @@ public class GameInputProcessor implements InputProcessor {
             game.setScreen(new GameScreen(game));
             return true;
         }
+        if (keycode == Input.Keys.BACK) {
+            game.dialogs.update(game.screen);
+            return true;
+        }
         return false;
     }
 

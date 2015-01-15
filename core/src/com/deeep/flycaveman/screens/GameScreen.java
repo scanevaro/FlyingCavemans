@@ -2,7 +2,6 @@ package com.deeep.flycaveman.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -22,11 +21,10 @@ import com.deeep.flycaveman.input.GameInputProcessor;
 /**
  * Created by scanevaro on 10/10/2014.
  */
-public class GameScreen implements Screen {
+public class GameScreen extends AbstracScreen {
     private Core game;
     //Screen
     private SpriteBatch batch;
-    private Stage stage;
     private Stage worldStage;
     private GameInputProcessor gameInputProcessor;
     //Widgets
@@ -153,11 +151,15 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
         /**Updates*/
-        gameInputProcessor.update(delta);
-        updateUI();
-        world.update(delta);
-        stage.act();
+        if (!Core.dialogOpen) {
+            gameInputProcessor.update(delta);
+            updateUI();
+            world.update(delta);
+            stage.act();
+        }
+
         /**Draws*/
         stage.draw();
 //        if (world.isGameOver()) gameOverDialog.draw();

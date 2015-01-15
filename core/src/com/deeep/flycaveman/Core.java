@@ -2,10 +2,11 @@ package com.deeep.flycaveman;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.classes.Dialogs;
+import com.deeep.flycaveman.screens.AbstracScreen;
 import com.deeep.flycaveman.screens.GameScreen;
 
 public class Core implements ApplicationListener {
@@ -14,12 +15,19 @@ public class Core implements ApplicationListener {
     public static final float BOX2D_VIRTUAL_WIDTH = VIRTUAL_WIDTH / 10;
     public static final float BOX2D_VIRTUAL_HEIGHT = VIRTUAL_HEIGHT / 10;
 
+    public static boolean dialogOpen;
+
     private SpriteBatch spriteBatch;
-    private Screen screen;
+    public AbstracScreen screen;
+    public Dialogs dialogs;
 
     @Override
     public void create() {
         Assets.getAssets().load();
+
+        /** Catch hardware back button*/
+        Gdx.input.setCatchBackKey(true);
+        dialogs = new Dialogs();
 
         spriteBatch = new SpriteBatch();
         setScreen(new GameScreen(this));
@@ -54,7 +62,7 @@ public class Core implements ApplicationListener {
         if (screen != null) screen.dispose();
     }
 
-    public void setScreen(Screen screen) {
+    public void setScreen(AbstracScreen screen) {
         if (this.screen != null) this.screen.hide();
         this.screen = screen;
         if (this.screen != null) {
