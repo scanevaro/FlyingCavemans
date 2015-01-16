@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.Dialogs;
-import com.deeep.flycaveman.screens.AbstracScreen;
+import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.GameScreen;
 
 public class Core implements ApplicationListener {
@@ -18,7 +18,7 @@ public class Core implements ApplicationListener {
     public static boolean dialogOpen;
 
     private SpriteBatch spriteBatch;
-    public AbstracScreen screen;
+    public AbstractScreen screen;
     public Dialogs dialogs;
 
     @Override
@@ -62,7 +62,7 @@ public class Core implements ApplicationListener {
         if (screen != null) screen.dispose();
     }
 
-    public void setScreen(AbstracScreen screen) {
+    public void setScreen(AbstractScreen screen) {
         if (this.screen != null) this.screen.hide();
         this.screen = screen;
         if (this.screen != null) {

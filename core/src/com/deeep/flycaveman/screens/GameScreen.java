@@ -21,7 +21,7 @@ import com.deeep.flycaveman.input.GameInputProcessor;
 /**
  * Created by scanevaro on 10/10/2014.
  */
-public class GameScreen extends AbstracScreen {
+public class GameScreen extends AbstractScreen {
     private Core game;
     //Screen
     private SpriteBatch batch;

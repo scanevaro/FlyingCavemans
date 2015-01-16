@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 /**
  * Created by scanevaro on 14/01/2015.
  */
-public class AbstracScreen implements Screen {
+public class AbstractScreen implements Screen {
     public Stage stage;
 
     @Override

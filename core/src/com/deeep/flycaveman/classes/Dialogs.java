@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.screens.AbstracScreen;
+import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.GameScreen;
 
 /**
@@ -15,7 +15,7 @@ import com.deeep.flycaveman.screens.GameScreen;
 public class Dialogs {
     public Window window;
 
-    public void update(AbstracScreen screen) {
+    public void update(AbstractScreen screen) {
         if (!Core.dialogOpen) {
             Core.dialogOpen = true;
             build(screen);
@@ -25,7 +25,7 @@ public class Dialogs {
         }
     }
 
-    private void build(AbstracScreen screen) {
+    private void build(AbstractScreen screen) {
         /**
          if(screen instanceof MainMenuScreen)
          return window = new Dialog("Quit Game?", Assets.getAssets().getSkin());
