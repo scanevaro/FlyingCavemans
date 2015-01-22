@@ -12,8 +12,8 @@ import com.deeep.flycaveman.screens.GameScreen;
 public class Core implements ApplicationListener {
     public static final float VIRTUAL_WIDTH = 960;
     public static final float VIRTUAL_HEIGHT = 540;
-    public static final float BOX2D_VIRTUAL_WIDTH = VIRTUAL_WIDTH / 10;
-    public static final float BOX2D_VIRTUAL_HEIGHT = VIRTUAL_HEIGHT / 10;
+    public static final float BOX2D_VIRTUAL_WIDTH = VIRTUAL_WIDTH / 30;
+    public static final float BOX2D_VIRTUAL_HEIGHT = VIRTUAL_HEIGHT / 30;
 
     public static boolean dialogOpen;
 
