@@ -2,6 +2,7 @@ package com.deeep.flycaveman.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -26,6 +27,7 @@ public class GameScreen extends AbstractScreen {
     //Screen
     private SpriteBatch batch;
     private Stage worldStage;
+    private OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
     //Widgets
     private Label distanceLabel;
@@ -47,6 +49,7 @@ public class GameScreen extends AbstractScreen {
         setWidgets();
         configureWidgets();
         prepareWorld();
+        getGameCamera();
         setLayout();
         setInputProcessor();
         prepareGameOverDialog();
@@ -84,6 +87,10 @@ public class GameScreen extends AbstractScreen {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
         world = new World(worldStage, stage, true);
         stage.addActor(world);
+    }
+
+    private void getGameCamera() {
+        gameCamera = (OrthographicCamera) worldStage.getCamera();
     }
 
     private void setLayout() {
@@ -156,6 +163,7 @@ public class GameScreen extends AbstractScreen {
         if (!Core.dialogOpen) {
             gameInputProcessor.update(delta);
             updateUI();
+            updateGameCam();
             world.update(delta);
             stage.act();
         }
@@ -168,6 +176,12 @@ public class GameScreen extends AbstractScreen {
     private void updateUI() {
         distanceTraveled.setText(String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3));
         height.setText(String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 3));
+    }
+
+    private void updateGameCam() {
+        gameCamera.position.set(world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, 0);
+
+        gameCamera.update();
     }
 
     @Override

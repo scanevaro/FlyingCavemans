@@ -1,6 +1,5 @@
 package com.deeep.flycaveman.classes;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -24,7 +23,6 @@ public class World extends Actor {
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 
     private Stage worldStage;
-    private OrthographicCamera camera;
     private Stage stage;
     private ShapeRenderer shapeRenderer;
     private Vector2 sky;
@@ -55,8 +53,6 @@ public class World extends Actor {
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
         this.stage = stage;
-
-        camera = (OrthographicCamera) worldStage.getCamera();
 
         entities = new Array<Entity>();
 
