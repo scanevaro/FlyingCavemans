@@ -8,10 +8,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.entities.Catapult;
-import com.deeep.flycaveman.entities.CaveMan;
-import com.deeep.flycaveman.entities.Ground;
-import com.deeep.flycaveman.entities.Obstacle;
+import com.deeep.flycaveman.entities.*;
+import com.deeep.flycaveman.entities.powerups.PowerUp;
 import com.deeep.flycaveman.input.GameContactListener;
 import net.dermetfan.utils.libgdx.graphics.Box2DSprite;
 
@@ -23,6 +21,7 @@ import java.util.Random;
 public class World {
     private final float TIMESTEP = 1 / 60f;
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
+    private final float GRAVITY_CONST = -9.81F;
 
     private OrthographicCamera camera;
     private SpriteBatch batch;
@@ -58,8 +57,9 @@ public class World {
         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         scrollTimer = 0;
 
-        box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, -9.81f), true);
+        box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, GRAVITY_CONST), true);
         box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
+        PowerUp p = new PowerUp(2, this);
 
         ground = new Ground(box2dWorld);
 

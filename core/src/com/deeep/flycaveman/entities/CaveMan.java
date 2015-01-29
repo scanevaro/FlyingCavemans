@@ -12,7 +12,7 @@ import net.dermetfan.utils.libgdx.graphics.Box2DSprite;
 /**
  * Created by scanevaro on 11/10/2014.
  */
-public class CaveMan {
+public class  CaveMan {
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
