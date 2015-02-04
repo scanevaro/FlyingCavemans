@@ -46,7 +46,7 @@ public class CaveMan implements Entity {
 
         body = world.box2dWorld.createBody(bodyDef);
         bodys.add(body);
-        sprite = new Sprite(new TextureRegion(Assets.getAssets().getCavemanTexture()));
+        sprite = new Sprite(new TextureRegion(Assets.cavemanTexture));
         sprite.setSize(size * 2, size * 2);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         body.setUserData(sprite);

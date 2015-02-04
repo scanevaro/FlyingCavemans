@@ -61,7 +61,7 @@ public class Catapult implements Entity {
         armFixtureDef.density = 0.3F;
 
         armBody = world.createBody(armBodyDef);
-        armSprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultArmTexture()));
+        armSprite = new Sprite(Assets.catapultArmTexture);
         armSprite.setSize(sizeArmX * 2, sizeArmY * 2);
         armSprite.setOrigin(armSprite.getWidth() / 2, armSprite.getHeight() / 2);
         armBody.setUserData(armSprite);
@@ -88,7 +88,7 @@ public class Catapult implements Entity {
         baseFixtureDef.isSensor = true;
 
         baseBody = world.createBody(baseBodyDef);
-        baseSprite = new Sprite(new TextureRegion(Assets.getAssets().getCatapultBaseTexture()));
+        baseSprite = new Sprite(new TextureRegion(Assets.catapultBaseTexture));
         baseSprite.setSize(sizeBaseX * 2, sizeBaseY * 2);
         baseSprite.setOrigin(baseSprite.getWidth() / 2, baseSprite.getHeight() / 2);
         baseBody.setUserData(baseSprite);

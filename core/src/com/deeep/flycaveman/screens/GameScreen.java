@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -67,13 +70,13 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void setWidgets() {
-        distanceLabel = new Label("Distance: ", Assets.getAssets().getSkin());
-        distanceTraveled = new Label("", Assets.getAssets().getSkin());
-        heightLabel = new Label("Height", Assets.getAssets().getSkin());
-        height = new Label("", Assets.getAssets().getSkin());
+        distanceLabel = new Label("Distance: ", Assets.skin);
+        distanceTraveled = new Label("", Assets.skin);
+        heightLabel = new Label("Height", Assets.skin);
+        height = new Label("", Assets.skin);
 
-        ImageButton.ImageButtonStyle topGun1Style = new ImageButton.ImageButtonStyle(Assets.getAssets().getSkin().get(Button.ButtonStyle.class));
-        topGun1Style.imageUp = new TextureRegionDrawable(new TextureRegion(Assets.getAssets().getRestartButton()));
+        ImageButton.ImageButtonStyle topGun1Style = new ImageButton.ImageButtonStyle();
+        topGun1Style.imageUp = new TextureRegionDrawable(new TextureRegion(Assets.restartButton));
         restartButton = new ImageButton(topGun1Style);
     }
 
@@ -120,7 +123,7 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void prepareGameOverDialog() {
-        gameOverDialog = new Window("UGHA UGH", Assets.getAssets().getSkin());
+        gameOverDialog = new Window("UGHA UGH", Assets.skin);
 
         //( ͡° ͜ʖ ͡°) < l'elmar face
 
@@ -128,11 +131,11 @@ public class GameScreen extends AbstractScreen {
 
         String distanceTraveled = String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3);
 
-        Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.getAssets().getSkin());
+        Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.skin);
         distance.setPosition(20, gameOverDialog.getHeight() / 2);
         gameOverDialog.addActor(distance);
 
-        TextButton retryButton = new TextButton("R e t r y", Assets.getAssets().getSkin());
+        TextButton retryButton = new TextButton("R e t r y", Assets.skin);
         retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -142,7 +145,7 @@ public class GameScreen extends AbstractScreen {
         retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth() - 2, 5);
         gameOverDialog.addActor(retryButton);
 
-        TextButton quitButton = new TextButton("Q U I T", Assets.getAssets().getSkin());
+        TextButton quitButton = new TextButton("Q U I T", Assets.skin);
         quitButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

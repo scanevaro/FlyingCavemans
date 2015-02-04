@@ -67,15 +67,15 @@ public class Obstacle implements Entity {
         bodys.add(body = world.createBody(bodyDef));
 
         if (type == Type.SMALL_EGG.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.getAssets().getSmallEggTexture()));
+            sprite = new Sprite(new TextureRegion(Assets.smallEggTexture));
             sprite.setSize(smallEggSize * 2, smallEggSize * 2);
             body.setUserData(sprite);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.getAssets().getBrachioTexture()));
+            sprite = new Sprite(new TextureRegion(Assets.brachioTexture));
             sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
             body.setUserData(sprite);
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.getAssets().getQuetzaTexture()));
+            sprite = new Sprite(new TextureRegion(Assets.quetzaTexture));
             sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
             body.setUserData(sprite);
         }

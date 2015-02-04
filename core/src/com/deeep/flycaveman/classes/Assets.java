@@ -1,11 +1,14 @@
 package com.deeep.flycaveman.classes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /**
@@ -16,161 +19,95 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
  * To change this template use File | Settings | File Templates.
  */
 public class Assets {
-    /**
-     * instance for singleton
-     */
-    private static Assets assets;
-    /**
-     * Just a check to be sure that the assets aren't loaded multiple times
-     */
-    private static boolean loaded = false;
-    /**
-     * The atlases containing all the images
-     */
-    private TextureAtlas textureAtlas;
 
-    /**
-     * Skin for menus and buttons
-     */
-    private Skin skin;
+    public static AssetManager assetManager;
 
-    /**
-     * Logo for SplashScreen
-     */
-    private Texture logo;
+    public static boolean loaded = false;
 
-    /**
-     * Game Title
-     */
-    private Texture title;
+    public static Skin skin;
 
+    public static BitmapFont font, fontBig;
 
-    /**
-     * Logger instance
-     */
-//    private Logger logger = Logger.getInstance();
+    public static TextureAtlas items;
+    public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
+            backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture;
+    public static Sound hitGround1Sound;
+    public static Music music;
 
+    public Assets() {
+        assetManager = new AssetManager();
+        loaded = false;
+    }
 
-    private TextureRegion cavemanTexture;
-    private TextureRegion brachioTexture;
-    private TextureRegion quetzaTexture;
-    private TextureRegion smallEggTexture;
-    private Texture backgroundTexture;
-    private Texture restartButton;
-    private Texture catapultArmTexture;
-    private Texture catapultBaseTexture;
-    private Sound hitGround1Sound;
-    private Music music;
+    public static void load() {
+        assetManager.load("data/loading.pack", TextureAtlas.class);
+        assetManager.finishLoading();
 
-    /**
-     * Simple singleton
-     *
-     * @return assets instance
-     */
-    public static Assets getAssets() {
-        if (assets == null) {
-            assets = new Assets();
+        loadAtlas();
+        loadSounds();
+    }
+
+    private static void loadAtlas() {
+        assetManager.load("data/items.pack", TextureAtlas.class);
+    }
+
+    private static void loadSounds() {
+        assetManager.load("data/sounds/hitGround1.mp3", Sound.class);
+        assetManager.load("data/sounds/music/presenta.mp3", Music.class);
+    }
+
+    public static void set() {
+        setSkin();
+        setAtlas();
+        setTextures();
+        setSounds();
+    }
+
+    private static void setSkin() {
+        skin = new Skin();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/comic.ttf"));
+        font = generator.generateFont(40);
+        fontBig = generator.generateFont(65);
+
+        skin.add("default-font", font, BitmapFont.class);
+        skin.add("big-font", fontBig, BitmapFont.class);
+
+        generator.dispose();
+
+        FileHandle fileHandle = Gdx.files.internal("data/items.json");
+        FileHandle atlasFile = fileHandle.sibling("items.pack");
+        if (atlasFile.exists()) {
+            skin.addRegions(new TextureAtlas(atlasFile));
         }
-        return assets;
+        skin.load(fileHandle);
     }
 
-    /**
-     * function to load everything. Nothing special. TODO add more resources here( sound music etc)
-     */
-    public void load() {
-        if (!loaded) {
-//            textureAtlas = new TextureAtlas(Gdx.files.internal("images/TextureAtlas.txt"));
-            skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-//            logo = new Texture(Gdx.files.internal("data/logo.png"));
-//            title = new Texture(Gdx.files.internal("data/title.png"));
-//            logger.system(Assets.class, "All assets have been loaded");
-            cavemanTexture = new TextureRegion(new Texture(Gdx.files.internal("data/caveman.png")));
-            brachioTexture = new TextureRegion(new Texture(Gdx.files.internal("data/BRACHIOSAURUS.png")));
-            quetzaTexture = new TextureRegion(new Texture(Gdx.files.internal("data/QUETZA.png")));
-            smallEggTexture = new TextureRegion(new Texture(Gdx.files.internal("data/smallEgg.png")));
-            backgroundTexture = new Texture(Gdx.files.internal("data/background.png"));
-            restartButton = new Texture(Gdx.files.internal("data/restart.png"));
-            hitGround1Sound = Gdx.audio.newSound(Gdx.files.internal("data/sounds/hitGround1.mp3"));
-
-            music = Gdx.audio.newMusic(Gdx.files.internal("data/sounds/music/presenta.mp3"));
-            music.setLooping(true);
-            music.setVolume(0.5f);
-
-            catapultArmTexture = new Texture(Gdx.files.internal("data/catapultArm.png"));
-            catapultBaseTexture = new Texture(Gdx.files.internal("data/catapultBase.png"));
-
-            loaded = true;
-        }
+    private static void setAtlas() {
+        items = assetManager.get("data/items.pack");
     }
 
-    /**
-     * Returns an texture region based on the name given. Get images using this function!
-     *
-     * @param name see TextureAtlas.txt
-     * @return the texture region connected to the name
-     */
-    public TextureRegion getRegion(String name) {
-        TextureRegion textureRegion = textureAtlas.findRegion(name);
-        if (textureRegion == null) {
-//            logger.error(Assets.class, "Unkown texture requested: " + name);
-        }
-        return textureAtlas.findRegion(name);
+    private static void setTextures() {
+        cavemanTexture = items.findRegion("caveman");
+        brachioTexture = items.findRegion("BRACHIOSAURUS");
+        quetzaTexture = items.findRegion("QUETZA");
+        smallEggTexture = items.findRegion("smallEgg");
+        backgroundTexture = items.findRegion("background");
+        restartButton = items.findRegion("restart");
+        catapultArmTexture = items.findRegion("catapultArm");
+        catapultBaseTexture = items.findRegion("catapultBase");
     }
 
-    public Skin getSkin() {
-        return skin;
+    private static void setSounds() {
+        music = assetManager.get("data/sounds/music/presenta.mp3");
+        music.setLooping(true);
+        music.setVolume(0.5f);
+
+        hitGround1Sound = assetManager.get("data/sounds/hitGround1.mp3");
     }
 
-    public Texture getLogo() {
-        return logo;
-    }
-
-    public Texture getTitle() {
-        return title;
-    }
-
-    public void dispose() {
-//        textureAtlas.dispose();
+    public static void dispose() {
         skin.dispose();
-    }
-
-    public TextureRegion getSmallEggTexture() {
-        return smallEggTexture;
-    }
-
-    public TextureRegion getQuetzaTexture() {
-        return quetzaTexture;
-    }
-
-    public TextureRegion getBrachioTexture() {
-        return brachioTexture;
-    }
-
-    public TextureRegion getCavemanTexture() {
-        return cavemanTexture;
-    }
-
-    public Texture getBackgroundTexture() {
-        return backgroundTexture;
-    }
-
-    public Texture getRestartButton() {
-        return restartButton;
-    }
-
-    public Sound getHitGround1Sound() {
-        return hitGround1Sound;
-    }
-
-    public Music getMusic() {
-        return music;
-    }
-
-    public Texture getCatapultArmTexture() {
-        return catapultArmTexture;
-    }
-
-    public Texture getCatapultBaseTexture() {
-        return catapultBaseTexture;
+        assetManager.dispose();
     }
 }

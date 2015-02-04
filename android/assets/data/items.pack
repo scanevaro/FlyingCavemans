@@ -1,0 +1,90 @@
+
+items.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+background
+  rotate: false
+  xy: 1, 1029
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+dialog
+  rotate: false
+  xy: 1, 771
+  size: 511, 256
+  split: 29, 70, 36, 62
+  orig: 511, 256
+  offset: 0, 0
+  index: -1
+restart
+  rotate: false
+  xy: 1, 462
+  size: 305, 307
+  orig: 305, 307
+  offset: 0, 0
+  index: -1
+BRACHIOSAURUS
+  rotate: false
+  xy: 514, 885
+  size: 397, 142
+  orig: 397, 142
+  offset: 0, 0
+  index: -1
+catapultArm
+  rotate: false
+  xy: 1, 96
+  size: 128, 364
+  orig: 128, 364
+  offset: 0, 0
+  index: -1
+bigEgg
+  rotate: false
+  xy: 308, 534
+  size: 172, 235
+  orig: 172, 235
+  offset: 0, 0
+  index: -1
+button
+  rotate: false
+  xy: 913, 899
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+catapultBase
+  rotate: false
+  xy: 514, 802
+  size: 247, 81
+  orig: 247, 81
+  offset: 0, 0
+  index: -1
+QUETZA
+  rotate: false
+  xy: 1, 1
+  size: 128, 93
+  orig: 128, 93
+  offset: 0, 0
+  index: -1
+caveman
+  rotate: false
+  xy: 1923, 1703
+  size: 109, 46
+  orig: 109, 46
+  offset: 0, 0
+  index: -1
+smallEgg
+  rotate: false
+  xy: 131, 373
+  size: 64, 87
+  orig: 64, 87
+  offset: 0, 0
+  index: -1
+white
+  rotate: false
+  xy: 308, 531
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1

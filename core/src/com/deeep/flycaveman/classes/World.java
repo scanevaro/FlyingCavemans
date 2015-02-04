@@ -1,6 +1,5 @@
 package com.deeep.flycaveman.classes;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -59,9 +58,8 @@ public class World extends Actor {
 
         shapeRenderer = new ShapeRenderer();
 
-        Texture backgroundTexture = Assets.getAssets().getBackgroundTexture();
-        /*backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);*/ //TODO Seems like setWrap doesnt exist on HTML, or doesnt work
-        backgroundSprite = new Sprite(backgroundTexture);
+        /**backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);*///TODO Seems like setWrap doesnt exist on HTML, or doesnt work
+        backgroundSprite = new Sprite(Assets.backgroundTexture);
         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         scrollTimer = 0;
 

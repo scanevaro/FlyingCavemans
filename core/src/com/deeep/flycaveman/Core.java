@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.Dialogs;
 import com.deeep.flycaveman.screens.AbstractScreen;
-import com.deeep.flycaveman.screens.GameScreen;
+import com.deeep.flycaveman.screens.SplashScreen;
 
 public class Core implements ApplicationListener {
     public static final float VIRTUAL_WIDTH = 960;
@@ -23,14 +23,14 @@ public class Core implements ApplicationListener {
 
     @Override
     public void create() {
-        Assets.getAssets().load();
+        new Assets().load();
 
         /** Catch hardware back button*/
         Gdx.input.setCatchBackKey(true);
         dialogs = new Dialogs();
 
         spriteBatch = new SpriteBatch();
-        setScreen(new GameScreen(this));
+        setScreen(new SplashScreen(this));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Core implements ApplicationListener {
 
     @Override
     public void dispose() {
-        Assets.getAssets().dispose();
+        Assets.dispose();
         if (screen != null) screen.dispose();
     }
 

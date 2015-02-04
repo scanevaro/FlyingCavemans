@@ -38,9 +38,9 @@ public class Dialogs {
                 return;
             }
 
-            window = new Window("Pause", Assets.getAssets().getSkin());
+            window = new Window("Pause", Assets.skin);
 
-            TextButton noButton = new TextButton("Resume", Assets.getAssets().getSkin());
+            TextButton noButton = new TextButton("Resume", Assets.skin);
             noButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -53,7 +53,7 @@ public class Dialogs {
             //add to dialog
             window.addActor(noButton);
 
-            TextButton backButton = new TextButton("Main Menu", Assets.getAssets().getSkin());
+            TextButton backButton = new TextButton("Main Menu", Assets.skin);
             backButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {

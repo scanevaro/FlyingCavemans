@@ -58,7 +58,7 @@ public class GameContactListener implements ContactListener {
 
         } else if ((fixtureA.getUserData() instanceof CaveMan && fixtureB.getUserData() instanceof Ground)
                 || (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
-            Assets.getAssets().getHitGround1Sound().play();
+            Assets.hitGround1Sound.play();
         }
     }
 
