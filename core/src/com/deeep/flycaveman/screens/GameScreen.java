@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -24,19 +21,25 @@ import com.deeep.flycaveman.input.GameInputProcessor;
  */
 public class GameScreen extends AbstractScreen {
     private Core game;
-    //Screen
+    /**
+     * Screen
+     */
     private SpriteBatch batch;
     private Stage worldStage;
     private OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
-    //Widgets
+    /**
+     * Widgets
+     */
     private Label distanceLabel;
     private Label distanceTraveled;
     private Label heightLabel;
     private Label height;
     private ImageButton restartButton;
     private Window gameOverDialog;
-    //World
+    /**
+     * World
+     */
     private World world;
 
     public GameScreen(Core game) {
@@ -117,43 +120,45 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void prepareGameOverDialog() {
-//        gameOverDialog = new Window("UGHA UGH", Assets.getAssets().getSkin());
-//
-//        //( ͡° ͜ʖ ͡°) < l'elmar face
-//
-//        gameOverDialog.setSize(512, 256);
-//
-//        String distanceTraveled = String.valueOf(world.caveman.body.getPosition().x - Game.BOX2D_VIRTUAL_WIDTH / 3);
-//
-//        Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.getAssets().getSkin());
-//        distance.setPosition(20, gameOverDialog.getHeight() / 2);
-//        gameOverDialog.addActor(distance);
-//
-//        TextButton retryButton = new TextButton("R e t r y", Assets.getAssets().getSkin());
-//        retryButton.addListener(new ClickListener() {
-//            @Override
-//            public void clicked(InputEvent event, float x, float y) {
-//                game.setScreen(new GameScreen());
-//            }
-//        });
-//        retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth() - 2, 5);
-//        gameOverDialog.addActor(retryButton);
-//
-//        TextButton quitButton = new TextButton("Q U I T", Assets.getAssets().getSkin());
-//        quitButton.addListener(new ClickListener() {
-//            @Override
-//            public void clicked(InputEvent event, float x, float y) {
-//                Gdx.app.exit();
-//            }
-//        });
-//        quitButton.setPosition(2, 5);
-//
-//        //add to dialog
-//        gameOverDialog.addActor(quitButton);
-//
-//        gameOverDialog.setPosition(Game.VIRTUAL_WIDTH / 2 - gameOverDialog.getWidth() / 2, Game.VIRTUAL_HEIGHT / 2 + gameOverDialog.getHeight());
-//
-//        stage.addActor(gameOverDialog);
+        gameOverDialog = new Window("UGHA UGH", Assets.getAssets().getSkin());
+
+        //( ͡° ͜ʖ ͡°) < l'elmar face
+
+        gameOverDialog.setSize(512, 256);
+
+        String distanceTraveled = String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3);
+
+        Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.getAssets().getSkin());
+        distance.setPosition(20, gameOverDialog.getHeight() / 2);
+        gameOverDialog.addActor(distance);
+
+        TextButton retryButton = new TextButton("R e t r y", Assets.getAssets().getSkin());
+        retryButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new GameScreen(game));
+            }
+        });
+        retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth() - 2, 5);
+        gameOverDialog.addActor(retryButton);
+
+        TextButton quitButton = new TextButton("Q U I T", Assets.getAssets().getSkin());
+        quitButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.app.exit();
+            }
+        });
+        quitButton.setPosition(2, 5);
+
+        //add to dialog
+        gameOverDialog.addActor(quitButton);
+
+        gameOverDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - gameOverDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2 + gameOverDialog.getHeight());
+
+        gameOverDialog.setVisible(false);
+
+        stage.addActor(gameOverDialog);
     }
 
     @Override
@@ -166,11 +171,13 @@ public class GameScreen extends AbstractScreen {
             updateGameCam();
             world.update(delta);
             stage.act();
+
+            if (world.isGameOver())
+                gameOverDialog.setVisible(true);
         }
 
         /**Draws*/
         stage.draw();
-//        if (world.isGameOver()) gameOverDialog.draw();
     }
 
     private void updateUI() {
@@ -180,12 +187,7 @@ public class GameScreen extends AbstractScreen {
 
     private void updateGameCam() {
         gameCamera.position.set(world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, 0);
-
         gameCamera.update();
-    }
-
-    @Override
-    public void resume() {
     }
 
     @Override
@@ -195,14 +197,7 @@ public class GameScreen extends AbstractScreen {
     }
 
     @Override
-    public void hide() {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
     public void dispose() {
+        stage.dispose();
     }
 }

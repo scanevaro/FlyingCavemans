@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;
+import com.deeep.flycaveman.input.GameInputProcessor;
 
 import java.util.Random;
 
@@ -194,7 +195,7 @@ public class World extends Actor {
     }
 
     private void checkGameOver() {
-        if (caveman.body.getLinearVelocity().x <= 0)
+        if (caveman.body.getLinearVelocity().x <= 0 && GameInputProcessor.touchingGround)
             gameOver = true;
     }
 
