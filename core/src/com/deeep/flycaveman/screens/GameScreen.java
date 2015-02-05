@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -75,9 +74,11 @@ public class GameScreen extends AbstractScreen {
         heightLabel = new Label("Height", Assets.skin);
         height = new Label("", Assets.skin);
 
-        ImageButton.ImageButtonStyle topGun1Style = new ImageButton.ImageButtonStyle();
-        topGun1Style.imageUp = new TextureRegionDrawable(new TextureRegion(Assets.restartButton));
-        restartButton = new ImageButton(topGun1Style);
+        ImageButton.ImageButtonStyle restartStyle = new ImageButton.ImageButtonStyle();
+        restartStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
+        restartStyle.imageUp.setMinWidth(96);
+        restartStyle.imageUp.setMinHeight(96);
+        restartButton = new ImageButton(restartStyle);
     }
 
     private void configureWidgets() {
@@ -127,22 +128,26 @@ public class GameScreen extends AbstractScreen {
 
         //( ͡° ͜ʖ ͡°) < l'elmar face
 
-        gameOverDialog.setSize(512, 256);
+        gameOverDialog.setSize(512, 400);
 
         String distanceTraveled = String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3);
 
         Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.skin);
-        distance.setPosition(20, gameOverDialog.getHeight() / 2);
+        distance.setPosition(0, gameOverDialog.getHeight() / 2);
         gameOverDialog.addActor(distance);
 
-        TextButton retryButton = new TextButton("R e t r y", Assets.skin);
+        ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
+        retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
+        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
+        ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
             }
         });
-        retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth() - 2, 5);
+        retryButton.setSize(64, 64);
+        retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
         gameOverDialog.addActor(retryButton);
 
         TextButton quitButton = new TextButton("Q U I T", Assets.skin);
@@ -152,9 +157,8 @@ public class GameScreen extends AbstractScreen {
                 Gdx.app.exit();
             }
         });
-        quitButton.setPosition(2, 5);
-
-        //add to dialog
+        quitButton.setSize(64, 64);
+        quitButton.setPosition(0, 0);
         gameOverDialog.addActor(quitButton);
 
         gameOverDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - gameOverDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2 + gameOverDialog.getHeight());

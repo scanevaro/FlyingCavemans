@@ -48,7 +48,7 @@ public class Assets {
     }
 
     private static void loadAtlas() {
-        assetManager.load("data/items.pack", TextureAtlas.class);
+        assetManager.load("data/items.atlas", TextureAtlas.class);
     }
 
     private static void loadSounds() {
@@ -76,7 +76,7 @@ public class Assets {
         generator.dispose();
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");
-        FileHandle atlasFile = fileHandle.sibling("items.pack");
+        FileHandle atlasFile = fileHandle.sibling("items.atlas");
         if (atlasFile.exists()) {
             skin.addRegions(new TextureAtlas(atlasFile));
         }
@@ -84,7 +84,7 @@ public class Assets {
     }
 
     private static void setAtlas() {
-        items = assetManager.get("data/items.pack");
+        items = assetManager.get("data/items.atlas");
     }
 
     private static void setTextures() {
