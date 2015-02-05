@@ -138,7 +138,11 @@ public class GameScreen extends AbstractScreen {
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
+        retryStyle.imageUp.setMinWidth(64);
+        retryStyle.imageUp.setMinHeight(64);
         retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
+        retryStyle.imageDown.setMinWidth(64);
+        retryStyle.imageDown.setMinHeight(64);
         ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
@@ -157,7 +161,7 @@ public class GameScreen extends AbstractScreen {
                 Gdx.app.exit();
             }
         });
-        quitButton.setSize(64, 64);
+        quitButton.setSize(128, 96);
         quitButton.setPosition(0, 0);
         gameOverDialog.addActor(quitButton);
 
@@ -193,7 +197,7 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void updateGameCam() {
-        gameCamera.position.set(world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, 0);
+        gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 2.5f, 0);
         gameCamera.update();
     }
 

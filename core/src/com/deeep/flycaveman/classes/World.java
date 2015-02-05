@@ -169,10 +169,10 @@ public class World extends Actor {
         if (scrollTimer > 1.0f)
             scrollTimer = 0.0f;
 
-        backgroundSprite.setU(scrollTimer);
-        backgroundSprite.setU2(scrollTimer + 1);
+//        backgroundSprite.setU(scrollTimer);
+//        backgroundSprite.setU2(scrollTimer + 1);
 
-        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
+//        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
     }
 
     private void updateGround() {
