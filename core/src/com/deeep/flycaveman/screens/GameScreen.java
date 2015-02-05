@@ -133,16 +133,16 @@ public class GameScreen extends AbstractScreen {
         String distanceTraveled = String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3);
 
         Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.skin);
-        distance.setPosition(0, gameOverDialog.getHeight() / 2);
+        distance.setPosition(25, gameOverDialog.getHeight() / 2);
         gameOverDialog.addActor(distance);
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageUp.setMinWidth(64);
-        retryStyle.imageUp.setMinHeight(64);
+        retryStyle.imageUp.setMinWidth(96);
+        retryStyle.imageUp.setMinHeight(96);
         retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageDown.setMinWidth(64);
-        retryStyle.imageDown.setMinHeight(64);
+        retryStyle.imageDown.setMinWidth(96);
+        retryStyle.imageDown.setMinHeight(96);
         ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
@@ -150,7 +150,7 @@ public class GameScreen extends AbstractScreen {
                 game.setScreen(new GameScreen(game));
             }
         });
-        retryButton.setSize(64, 64);
+        retryButton.setSize(96, 96);
         retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
         gameOverDialog.addActor(retryButton);
 
@@ -197,7 +197,11 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void updateGameCam() {
-        gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 2.5f, 0);
+        if (world.caveman.body.getPosition().x > 11.1f)
+            if (world.caveman.body.getPosition().y >= 6.5f)
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 2.5f, 0);
+            else
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5, 9, 0);
         gameCamera.update();
     }
 

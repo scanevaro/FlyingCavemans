@@ -82,7 +82,7 @@ public class World extends Actor {
 
         entities.add(caveman = new CaveMan(this));
 
-        sky = new Vector2(caveman.body.getPosition().x - 10, caveman.body.getPosition().y - 8);
+        sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 
         if (debug) debugRenderer = new Box2DDebugRenderer();
 
@@ -155,9 +155,9 @@ public class World extends Actor {
 
     private void updateSky() {
         if (caveman.body.getPosition().y < 8)
-            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 8);
+            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, 8);
         else
-            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, caveman.body.getPosition().y - Core.BOX2D_VIRTUAL_HEIGHT / 3);
+            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, caveman.body.getPosition().y - Core.BOX2D_VIRTUAL_HEIGHT / 3);
     }
 
     private void updateBackground() {
