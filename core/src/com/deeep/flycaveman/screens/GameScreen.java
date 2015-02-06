@@ -1,5 +1,8 @@
 package com.deeep.flycaveman.screens;
 
+import aurelienribon.tweenengine.Tween;
+import aurelienribon.tweenengine.TweenManager;
+import aurelienribon.tweenengine.equations.Cubic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -14,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.classes.ActorAccessor;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.World;
 import com.deeep.flycaveman.input.GameInputProcessor;
@@ -23,6 +27,7 @@ import com.deeep.flycaveman.input.GameInputProcessor;
  */
 public class GameScreen extends AbstractScreen {
     private Core game;
+    private TweenManager tweenManager;
     /**
      * Screen
      */
@@ -50,6 +55,8 @@ public class GameScreen extends AbstractScreen {
 
     @Override
     public void show() {
+        if (tweenManager == null) tweenManager = new TweenManager();
+
         prepareScreen();
         setWidgets();
         configureWidgets();
@@ -170,6 +177,13 @@ public class GameScreen extends AbstractScreen {
         gameOverDialog.setVisible(false);
 
         stage.addActor(gameOverDialog);
+
+        Tween.to(gameOverDialog, ActorAccessor.CPOS_XY, 0.7f)
+                .ease(Cubic.INOUT)
+                .target(100, 50)
+                .repeat(-10, 5.3f)
+                .delay(0.5f)
+                .start(tweenManager);
     }
 
     @Override

@@ -1,9 +1,12 @@
 package com.deeep.flycaveman;
 
+import aurelienribon.tweenengine.Tween;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.deeep.flycaveman.classes.ActorAccessor;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.Dialogs;
 import com.deeep.flycaveman.screens.AbstractScreen;
@@ -31,6 +34,8 @@ public class Core implements ApplicationListener {
 
         spriteBatch = new SpriteBatch();
         setScreen(new SplashScreen(this));
+
+        Tween.registerAccessor(Actor.class, new ActorAccessor());
     }
 
     @Override

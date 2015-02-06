@@ -8,7 +8,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /**
@@ -43,8 +42,13 @@ public class Assets {
         assetManager.load("data/loading.pack", TextureAtlas.class);
         assetManager.finishLoading();
 
+        loadFont();
         loadAtlas();
         loadSounds();
+    }
+
+    private static void loadFont() {
+        assetManager.load("data/font32.fnt", BitmapFont.class);
     }
 
     private static void loadAtlas() {
@@ -58,6 +62,7 @@ public class Assets {
 
     public static void set() {
         setSkin();
+        setFont();
         setAtlas();
         setTextures();
         setSounds();
@@ -66,14 +71,11 @@ public class Assets {
     private static void setSkin() {
         skin = new Skin();
 
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/comic.ttf"));
-        font = generator.generateFont(40);
-        fontBig = generator.generateFont(65);
+        font = assetManager.get("data/font32.fnt");
 
+//        font = new BitmapFont(Gdx.files.internal("data/font32.fnt"));
         skin.add("default-font", font, BitmapFont.class);
-        skin.add("big-font", fontBig, BitmapFont.class);
-
-        generator.dispose();
+//        skin.add("big-font", fontBig, BitmapFont.class);
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");
         FileHandle atlasFile = fileHandle.sibling("items.atlas");
@@ -81,6 +83,10 @@ public class Assets {
             skin.addRegions(new TextureAtlas(atlasFile));
         }
         skin.load(fileHandle);
+    }
+
+    private static void setFont() {
+//        font = skin.getFont("default-font");
     }
 
     private static void setAtlas() {
