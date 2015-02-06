@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -161,16 +160,41 @@ public class GameScreen extends AbstractScreen {
         retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
         gameOverDialog.addActor(retryButton);
 
-        TextButton quitButton = new TextButton("Q U I T", Assets.skin);
-        quitButton.addListener(new ClickListener() {
+        ImageButton.ImageButtonStyle homeStyle = new ImageButton.ImageButtonStyle();
+        homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
+        homeStyle.imageUp.setMinWidth(96);
+        homeStyle.imageUp.setMinHeight(96);
+        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButton);
+        homeStyle.imageDown.setMinWidth(96);
+        homeStyle.imageDown.setMinHeight(96);
+        ImageButton homeButton = new ImageButton(homeStyle);
+        homeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                Gdx.app.exit();
+                game.setScreen(new GameScreen(game));
             }
         });
-        quitButton.setSize(128, 96);
-        quitButton.setPosition(0, 0);
-        gameOverDialog.addActor(quitButton);
+        homeButton.setSize(96, 96);
+        homeButton.setPosition(0, 0);
+        gameOverDialog.addActor(homeButton);
+
+        ImageButton.ImageButtonStyle shopStyle = new ImageButton.ImageButtonStyle();
+        shopStyle.imageUp = new TextureRegionDrawable(Assets.shopButton);
+        shopStyle.imageUp.setMinWidth(96);
+        shopStyle.imageUp.setMinHeight(96);
+        shopStyle.imageDown = new TextureRegionDrawable(Assets.shopButton);
+        shopStyle.imageDown.setMinWidth(96);
+        shopStyle.imageDown.setMinHeight(96);
+        ImageButton shopButton = new ImageButton(shopStyle);
+        shopButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new GameScreen(game));
+            }
+        });
+        shopButton.setSize(96, 96);
+        shopButton.setPosition(gameOverDialog.getWidth() / 2 - shopButton.getWidth() / 2, 0);
+        gameOverDialog.addActor(shopButton);
 
         gameOverDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - gameOverDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2 + gameOverDialog.getHeight());
 

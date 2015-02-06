@@ -29,7 +29,7 @@ public class Assets {
 
     public static TextureAtlas items;
     public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
-            backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture;
+            backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton;
     public static Sound hitGround1Sound;
     public static Music music;
 
@@ -102,6 +102,8 @@ public class Assets {
         restartButton = items.findRegion("restart");
         catapultArmTexture = items.findRegion("catapultArm");
         catapultBaseTexture = items.findRegion("catapultBase");
+        homeButton = items.findRegion("home");
+        shopButton = items.findRegion("shop");
     }
 
     private static void setSounds() {

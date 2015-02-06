@@ -6,35 +6,35 @@ filter: Nearest,Nearest
 repeat: none
 BRACHIOSAURUS
   rotate: false
-  xy: 515, 886
+  xy: 515, 1174
   size: 397, 142
   orig: 397, 142
   offset: 0, 0
   index: -1
 QUETZA
   rotate: false
-  xy: 2, 2
+  xy: 914, 1223
   size: 128, 93
   orig: 128, 93
   offset: 0, 0
   index: -1
 background
   rotate: false
-  xy: 2, 1030
+  xy: 2, 1318
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
 bigEgg
   rotate: false
-  xy: 309, 535
+  xy: 309, 457
   size: 172, 235
   orig: 172, 235
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 914, 902
+  xy: 2, 5
   size: 254, 126
   split: 26, 28, 24, 29
   pad: 20, 24, 25, 24
@@ -43,51 +43,65 @@ button
   index: -1
 catapultArm
   rotate: false
-  xy: 2, 97
+  xy: 309, 694
   size: 128, 364
   orig: 128, 364
   offset: 0, 0
   index: -1
 catapultBase
   rotate: false
-  xy: 515, 803
+  xy: 515, 1091
   size: 247, 81
   orig: 247, 81
   offset: 0, 0
   index: -1
 caveman
   rotate: false
-  xy: 1924, 1704
+  xy: 1924, 1992
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
 dialog
   rotate: false
-  xy: 2, 772
+  xy: 2, 1060
   size: 511, 256
   split: 28, 69, 35, 61
   pad: 0, 0, 84, 0
   orig: 511, 256
   offset: 0, 0
   index: -1
+home
+  rotate: false
+  xy: 2, 751
+  size: 305, 307
+  orig: 305, 307
+  offset: 0, 0
+  index: -1
 restart
   rotate: false
-  xy: 2, 463
+  xy: 2, 442
+  size: 305, 307
+  orig: 305, 307
+  offset: 0, 0
+  index: -1
+shop
+  rotate: false
+  xy: 2, 133
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 smallEgg
   rotate: false
-  xy: 132, 374
+  xy: 309, 368
   size: 64, 87
   orig: 64, 87
   offset: 0, 0
   index: -1
 white
   rotate: false
-  xy: 309, 532
+  xy: 2, 2
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
