@@ -37,10 +37,7 @@ public class GameScreen extends AbstractScreen {
     /**
      * Widgets
      */
-    private Label distanceLabel;
-    private Label distanceTraveled;
-    private Label heightLabel;
-    private Label height;
+    private Label distanceLabel, distance, distanceTraveled, heightLabel, height;
     private ImageButton restartButton;
     private Window gameOverDialog;
     /**
@@ -136,9 +133,7 @@ public class GameScreen extends AbstractScreen {
 
         gameOverDialog.setSize(512, 400);
 
-        String distanceTraveled = String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3);
-
-        Label distance = new Label(distanceLabel.getText().toString() + " " + distanceTraveled, Assets.skin);
+        distance = new Label("", Assets.skin);
         distance.setPosition(25, gameOverDialog.getHeight() / 2);
         gameOverDialog.addActor(distance);
 
@@ -221,8 +216,11 @@ public class GameScreen extends AbstractScreen {
             world.update(delta);
             stage.act();
 
-            if (world.isGameOver())
+            if (world.isGameOver()) {
                 gameOverDialog.setVisible(true);
+
+                distance.setText(distanceLabel.getText().toString() + " " + distanceTraveled.getText().toString());
+            }
         }
 
         /**Draws*/
