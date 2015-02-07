@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.deeep.flycaveman.Core;
 
 /**
  * Created by scanevaro on 05/01/2015.
@@ -28,6 +29,6 @@ public class LoadingBar extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(reg, getX(), getY(), 512, 50);
+        batch.draw(reg, getX(), getY(), Core.VIRTUAL_WIDTH, 50);
     }
 }

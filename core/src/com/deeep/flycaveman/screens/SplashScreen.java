@@ -103,17 +103,16 @@ public class SplashScreen extends AbstractScreen {
                 }, 0.5f);
             }
 
-
             Assets.loaded = true;
         }
 
         percent = Interpolation.linear.apply(percent, Assets.assetManager.getProgress(), 0.1f);
 
         loadingBarHidden.setX(startX + endX * percent);
-        loadingBg.setSize(512, 50);
+        loadingBg.setSize(Core.VIRTUAL_WIDTH, 50);
         loadingBg.setX(loadingBarHidden.getX() + 30);
         loadingBg.setY(loadingBarHidden.getY() + 4);
-        loadingBg.setWidth(512 - 512 * percent);
+        loadingBg.setWidth(Core.VIRTUAL_WIDTH - Core.VIRTUAL_WIDTH * percent);
     }
 
     @Override
@@ -146,6 +145,7 @@ public class SplashScreen extends AbstractScreen {
         anim.setPlayMode(Animation.PlayMode.LOOP_REVERSED);
         loadingBar = new LoadingBar(anim);
         loadingBar.setPosition(0, 5);
+        loadingBar.setWidth(Core.VIRTUAL_WIDTH);
 
         stage.addActor(loadingBar);
         stage.addActor(loadingBg);
@@ -153,7 +153,7 @@ public class SplashScreen extends AbstractScreen {
         stage.addActor(loadingFrame);
 
         startX = 0;
-        endX = 512;
+        endX = Core.VIRTUAL_WIDTH;
     }
 
     @Override
