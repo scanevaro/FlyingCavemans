@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -28,6 +29,7 @@ public class Assets {
     public static BitmapFont font, fontBig;
 
     public static TextureAtlas items;
+    public static Texture darkSky;
     public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
             backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton;
     public static Sound hitGround1Sound;
@@ -39,6 +41,7 @@ public class Assets {
     }
 
     public static void load() {
+        darkSky = new Texture(Gdx.files.internal("darkness.png"));
         assetManager.load("data/loading.pack", TextureAtlas.class);
         assetManager.finishLoading();
 

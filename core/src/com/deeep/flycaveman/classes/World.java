@@ -31,6 +31,7 @@ public class World extends Actor {
     private Random random;
     public Ground ground;
     public Catapult catapult;
+    private Sprite darkness;
     private Obstacle[] obstacle;
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
@@ -78,6 +79,7 @@ public class World extends Actor {
             entities.add(obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random));
         }
 
+
         //TODO powerups (food, probably)
 
         entities.add(caveman = new CaveMan(this));
@@ -85,7 +87,7 @@ public class World extends Actor {
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 
         if (debug) debugRenderer = new Box2DDebugRenderer();
-
+        darkness = new Sprite(Assets.darkSky);
         shootStateTime = 0;
     }
 
@@ -121,7 +123,9 @@ public class World extends Actor {
             for (Entity entity : entities)
                 entity.draw(batch);
         }
-
+        darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
+        darkness.draw(batch);
+        //draw stars
         batch.setProjectionMatrix(stage.getCamera().combined);
     }
 
