@@ -1,5 +1,6 @@
 package com.deeep.flycaveman.classes;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -36,6 +37,9 @@ public class World extends Actor {
     private Obstacle[] obstacle;
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
+    private Color skyColor;
+    private Color sunColor;
+    private Color spaceColor;
 
     //private Sprite backgroundSprite;
     private float scrollTimer;
@@ -52,19 +56,21 @@ public class World extends Actor {
 
     public boolean gameOver;
 
-    public Area area ;
+    public Area area;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
         this.stage = stage;
         area = new Area();
         entities = new Array<Entity>();
-
+        skyColor = new Color(0, 0.5f, 0.8f, 1);
+        sunColor = new Color(254f / 255f, 76f / 255f, 64f / 255f, 0f);//rgb(254, 76, 64)
+        spaceColor = new Color(0, 0, 0, 1f);//
         shapeRenderer = new ShapeRenderer();
 
         /**backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-        backgroundSprite = new Sprite(Assets.backgroundTexture);
-        backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT); */
+         backgroundSprite = new Sprite(Assets.backgroundTexture);
+         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT); */
         scrollTimer = 0;
 
 
@@ -107,7 +113,16 @@ public class World extends Actor {
         shapeRenderer.setTransformMatrix(batch.getTransformMatrix());
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(0, 0.5f, 0.8f, 1);
+        shapeRenderer.setColor(skyColor);
+        //
+        float percentage;
+        if (caveman.body.getPosition().y > 20 && caveman.body.getPosition().y < 80) {
+            percentage = (caveman.body.getPosition().y - 20)/60;
+            shapeRenderer.setColor(toColor(percentage,skyColor,sunColor));
+        } else if (caveman.body.getPosition().y > 80) {
+            percentage = (caveman.body.getPosition().y - 80)/30;
+            shapeRenderer.setColor(toColor(percentage,sunColor,spaceColor));
+        }
         shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
         shapeRenderer.end();
 
@@ -128,8 +143,8 @@ public class World extends Actor {
             for (Entity entity : entities)
                 entity.draw(batch);
         }
-        darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
-        darkness.draw(batch);
+        //darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
+        //darkness.draw(batch);
         //draw stars
         batch.setProjectionMatrix(stage.getCamera().combined);
     }
@@ -156,6 +171,22 @@ public class World extends Actor {
         }
         area.update(caveman.body);
         checkGameOver();
+    }
+
+    private Color toColor(float percentage, Color cur, Color target) {
+        // 200 -> 150 @ 10%
+        // 50   * 0.1
+        // 5
+        // 200 - 5 -> 195
+        // 150 -> 200 @ 50%
+        // -50 * 0.5f
+        // -25
+        //
+        float tempR = percentage * (cur.r - target.r);
+        float tempG = percentage * (cur.g - target.g);
+        float tempB = percentage * (cur.b - target.b);
+        Color returnColor = new Color(cur.r - tempR, cur.g - tempG, cur.b - tempB, 1);
+        return returnColor;
     }
 
     private void updateCamera() {
