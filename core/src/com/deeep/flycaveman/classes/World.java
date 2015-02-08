@@ -2,6 +2,7 @@ package com.deeep.flycaveman.classes;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -36,7 +37,7 @@ public class World extends Actor {
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
 
-    private Sprite backgroundSprite;
+    //private Sprite backgroundSprite;
     private float scrollTimer;
     private float obstaclesPosX;
 
@@ -51,18 +52,21 @@ public class World extends Actor {
 
     public boolean gameOver;
 
+    public Area area ;
+
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
         this.stage = stage;
-
+        area = new Area();
         entities = new Array<Entity>();
 
         shapeRenderer = new ShapeRenderer();
 
-        /**backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);*///TODO Seems like setWrap doesnt exist on HTML, or doesnt work
+        /**backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         backgroundSprite = new Sprite(Assets.backgroundTexture);
-        backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
+        backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT); */
         scrollTimer = 0;
+
 
         box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, -9.81f), true);
         box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
@@ -109,7 +113,8 @@ public class World extends Actor {
 
         batch.begin();
 
-        backgroundSprite.draw(batch);
+        area.draw((SpriteBatch) batch);
+        //backgroundSprite.draw(batch);
 
         batch.end();
         batch.begin();
@@ -149,7 +154,7 @@ public class World extends Actor {
                 remove = false;
             }
         }
-
+        area.update(caveman.body);
         checkGameOver();
     }
 
@@ -165,8 +170,8 @@ public class World extends Actor {
     }
 
     private void updateBackground() {
-        if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
-            scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
+        //if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
+        //    scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
 
 //        scrollTimer += delta - delta / 2;
 
