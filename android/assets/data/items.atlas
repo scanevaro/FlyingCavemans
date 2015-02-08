@@ -6,35 +6,42 @@ filter: Nearest,Nearest
 repeat: none
 BRACHIOSAURUS
   rotate: false
-  xy: 515, 1174
+  xy: 1159, 449
   size: 397, 142
   orig: 397, 142
   offset: 0, 0
   index: -1
 QUETZA
   rotate: false
-  xy: 914, 1223
+  xy: 1726, 189
   size: 128, 93
   orig: 128, 93
   offset: 0, 0
   index: -1
 background
   rotate: false
-  xy: 2, 1318
+  xy: 2, 1315
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+background2
+  rotate: false
+  xy: 2, 593
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
 bigEgg
   rotate: false
-  xy: 309, 457
+  xy: 889, 57
   size: 172, 235
   orig: 172, 235
   offset: 0, 0
   index: -1
 button
   rotate: false
-  xy: 2, 5
+  xy: 914, 294
   size: 254, 126
   split: 26, 28, 24, 29
   pad: 20, 24, 25, 24
@@ -43,28 +50,49 @@ button
   index: -1
 catapultArm
   rotate: false
-  xy: 309, 694
+  xy: 1865, 227
   size: 128, 364
   orig: 128, 364
   offset: 0, 0
   index: -1
 catapultBase
   rotate: false
-  xy: 515, 1091
+  xy: 1477, 201
   size: 247, 81
   orig: 247, 81
   offset: 0, 0
   index: -1
 caveman
   rotate: false
-  xy: 1924, 1992
+  xy: 1924, 1989
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
+cloud1
+  rotate: false
+  xy: 2, 292
+  size: 578, 299
+  orig: 578, 299
+  offset: 0, 0
+  index: -1
+cloud2
+  rotate: false
+  xy: 582, 311
+  size: 330, 109
+  orig: 330, 109
+  offset: 0, 0
+  index: -1
+cloud3
+  rotate: false
+  xy: 582, 422
+  size: 575, 169
+  orig: 575, 169
+  offset: 0, 0
+  index: -1
 dialog
   rotate: false
-  xy: 2, 1060
+  xy: 2, 34
   size: 511, 256
   split: 28, 69, 35, 61
   pad: 0, 0, 84, 0
@@ -73,35 +101,35 @@ dialog
   index: -1
 home
   rotate: false
-  xy: 2, 751
+  xy: 1558, 284
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 restart
   rotate: false
-  xy: 2, 442
+  xy: 1170, 140
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 shop
   rotate: false
-  xy: 2, 133
+  xy: 582, 2
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 smallEgg
   rotate: false
-  xy: 309, 368
+  xy: 515, 203
   size: 64, 87
   orig: 64, 87
   offset: 0, 0
   index: -1
 white
   rotate: false
-  xy: 2, 2
+  xy: 1159, 446
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
