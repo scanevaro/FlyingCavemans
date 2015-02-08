@@ -87,7 +87,7 @@ public class SplashScreen extends AbstractScreen {
                     public void run() {
                         game.setScreen(new GameScreen(game));
                     }
-                }, DURATION - splashSprite.stateTime);
+                }, 0.5f/*DURATION*/ - splashSprite.stateTime);
             } else {
                 /**Fade out actors*/
 //            splashSprite.addAction(Actions.fadeOut(0.5f));
