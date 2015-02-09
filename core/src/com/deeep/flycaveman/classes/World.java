@@ -37,9 +37,13 @@ public class World extends Actor {
     private Obstacle[] obstacle;
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
+    private int skyColorHeight = 0;
     private Color skyColor;
+    private int sunColorHeight = 40;
     private Color sunColor;
+    private int spaceColorHeight = 80;
     private Color spaceColor;
+    private int finalSpaceColorHeight = 120;
 
     //private Sprite backgroundSprite;
     private float scrollTimer;
@@ -116,14 +120,23 @@ public class World extends Actor {
         shapeRenderer.setColor(skyColor);
         //
         float percentage;
-        if (caveman.body.getPosition().y > 20 && caveman.body.getPosition().y < 80) {
-            percentage = (caveman.body.getPosition().y - 20)/60;
-            shapeRenderer.setColor(toColor(percentage,skyColor,sunColor));
-        } else if (caveman.body.getPosition().y > 80) {
-            percentage = (caveman.body.getPosition().y - 80)/30;
-            shapeRenderer.setColor(toColor(percentage,sunColor,spaceColor));
+        Color bottomColor = shapeRenderer.getColor();
+        Color topColor = shapeRenderer.getColor();
+        if (caveman.body.getPosition().y > 60) {
+            percentage = (caveman.body.getPosition().y - 60) / (30);
+            bottomColor = toColor(percentage, sunColor, spaceColor);
+            topColor = toColor(Math.min(percentage + 0.4f, 1), sunColor, spaceColor);
+            //shapeRenderer.setColor(toColor(percentage, sunColor, spaceColor));
+        } else if (caveman.body.getPosition().y > 30) {
+            percentage = (caveman.body.getPosition().y - 30) / (30);
+            //shapeRenderer.setColor(toColor(percentage, skyColor, sunColor));
+            bottomColor = toColor(percentage, skyColor, sunColor);
+            topColor = toColor(Math.min(percentage + 0.4f, 1), skyColor, sunColor);
         }
-        shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
+
+        //TODO this
+        shapeRenderer.rect(sky.x,sky.y-16,0,0,Core.BOX2D_VIRTUAL_WIDTH+32,Core.BOX2D_VIRTUAL_HEIGHT+32,1,1,0,bottomColor, bottomColor, topColor, topColor);
+        //shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
         shapeRenderer.end();
 
         batch.begin();
