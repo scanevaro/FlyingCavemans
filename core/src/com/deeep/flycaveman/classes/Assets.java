@@ -31,7 +31,8 @@ public class Assets {
     public static TextureAtlas items;
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
-            backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton;
+            backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture,
+            homeButton, shopButton, staminaBackground, staminaFill, staminaBar, staminaHand;
     public static Sound hitGround1Sound;
     public static Music music;
 
@@ -107,6 +108,10 @@ public class Assets {
         catapultBaseTexture = items.findRegion("catapultBase");
         homeButton = items.findRegion("home");
         shopButton = items.findRegion("shop");
+        staminaBackground = items.findRegion("staminabarBackground");
+        staminaFill = items.findRegion("staminafill");
+        staminaBar = items.findRegion("staminabar");
+        staminaHand = items.findRegion("staminahand");
     }
 
     private static void setSounds() {

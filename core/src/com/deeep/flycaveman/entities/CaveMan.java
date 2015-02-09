@@ -26,6 +26,9 @@ public class CaveMan implements Entity {
     private Sprite sprite;
     private Array<Body> bodys;
 
+    public float stamina;
+    public float strength;
+
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodys = new Array<Body>();
 
@@ -65,6 +68,9 @@ public class CaveMan implements Entity {
         weldJointDef.collideConnected = false;
 
         bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
+
+        strength = 50;
+        stamina = 0.5f;
     }
 
     public void draw(Batch batch) {
@@ -72,6 +78,13 @@ public class CaveMan implements Entity {
             sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
             sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
             sprite.draw(batch);
+        }
+    }
+
+    public void updateFlapping(float delta) {
+        if (stamina > 0) {
+            stamina -= delta;
+            body.applyForce(strength, strength, body.getPosition().x, body.getPosition().y, true);
         }
     }
 }

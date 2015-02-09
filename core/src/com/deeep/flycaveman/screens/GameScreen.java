@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -19,6 +20,7 @@ import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.ActorAccessor;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.World;
+import com.deeep.flycaveman.entities.StaminaBar;
 import com.deeep.flycaveman.input.GameInputProcessor;
 
 /**
@@ -37,9 +39,11 @@ public class GameScreen extends AbstractScreen {
     /**
      * Widgets
      */
-    private Label distanceLabel, distance, distanceTraveled, heightLabel, height;
-    private ImageButton restartButton;
+    private TextButton distanceLabel, distanceTraveled, heightLabel, height;
+    private Label distance;
+    private ImageButton pauseButton;
     private Window gameOverDialog;
+    private StaminaBar staminaBar;
     /**
      * World
      */
@@ -57,6 +61,9 @@ public class GameScreen extends AbstractScreen {
         setWidgets();
         configureWidgets();
         prepareWorld();
+
+        staminaBar = new StaminaBar(world.caveman);
+
         getGameCamera();
         setLayout();
         setInputProcessor();
@@ -72,23 +79,23 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void setWidgets() {
-        distanceLabel = new Label("Distance: ", Assets.skin);
-        distanceTraveled = new Label("", Assets.skin);
-        heightLabel = new Label("Height", Assets.skin);
-        height = new Label("", Assets.skin);
+        distanceLabel = new TextButton("Distance: ", Assets.skin);
+        distanceTraveled = new TextButton("", Assets.skin);
+        heightLabel = new TextButton("Height", Assets.skin);
+        height = new TextButton("", Assets.skin);
 
         ImageButton.ImageButtonStyle restartStyle = new ImageButton.ImageButtonStyle();
         restartStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
-        restartStyle.imageUp.setMinWidth(96);
-        restartStyle.imageUp.setMinHeight(96);
-        restartButton = new ImageButton(restartStyle);
+        restartStyle.imageUp.setMinWidth(64);
+        restartStyle.imageUp.setMinHeight(64);
+        pauseButton = new ImageButton(restartStyle);
     }
 
     private void configureWidgets() {
-        restartButton.addListener(new ClickListener() {
+        pauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
+                game.dialogs.update(game.screen);
             }
         });
     }
@@ -109,14 +116,15 @@ public class GameScreen extends AbstractScreen {
         heightLabel.setPosition(Core.VIRTUAL_WIDTH / 2 - 80, 1);
         height.setPosition(Core.VIRTUAL_WIDTH / 2, 10);
 
-        restartButton.setSize(96, 96);
-        restartButton.setPosition(0, 0);
+        pauseButton.setSize(64, 64);
+        pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
 
         stage.addActor(distanceLabel);
         stage.addActor(distanceTraveled);
         stage.addActor(heightLabel);
         stage.addActor(height);
-        stage.addActor(restartButton);
+        stage.addActor(pauseButton);
+        stage.addActor(staminaBar);
     }
 
     private void setInputProcessor() {

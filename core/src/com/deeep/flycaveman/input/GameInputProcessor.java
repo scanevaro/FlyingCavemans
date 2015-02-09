@@ -63,19 +63,12 @@ public class GameInputProcessor implements InputProcessor {
                 else force -= 0.02f;
 
                 world.catapult.armJoint.setLimits(force, force);
-
-                System.out.println(force);
                 break;
             case FLYING:
                 world.caveman.body.setAngularVelocity(-3);
                 break;
             case FLAPPING:
-                if (flyTime > 0) {
-                    flyTime -= delta;
-                    world.caveman.body.applyForce(strength, strength, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
-
-                    System.out.print(flyTime);
-                }
+                world.caveman.updateFlapping(delta);
                 break;
             case DRAGGING:
                 world.caveman.body.setAngularVelocity(0);
