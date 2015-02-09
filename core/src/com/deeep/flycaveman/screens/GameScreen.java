@@ -1,8 +1,6 @@
 package com.deeep.flycaveman.screens;
 
-import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-import aurelienribon.tweenengine.equations.Cubic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -17,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.classes.ActorAccessor;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.World;
 import com.deeep.flycaveman.entities.StaminaBar;
@@ -42,7 +39,7 @@ public class GameScreen extends AbstractScreen {
     private TextButton distanceLabel, heightLabel;
     private Label distance;
     private ImageButton pauseButton;
-    private Window gameOverDialog;
+    private Window gameOverDialog, shopDialog;
     private StaminaBar staminaBar;
     /**
      * World
@@ -68,6 +65,7 @@ public class GameScreen extends AbstractScreen {
         setLayout();
         setInputProcessor();
         prepareGameOverDialog();
+        prepareShopDialog();
 
 //        if (!Assets.getAssets().getMusic().isPlaying())
 //            Assets.getAssets().getMusic().play();
@@ -190,7 +188,7 @@ public class GameScreen extends AbstractScreen {
         shopButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
+                shopDialog.setVisible(true);
             }
         });
         shopButton.setSize(96, 96);
@@ -202,13 +200,54 @@ public class GameScreen extends AbstractScreen {
         gameOverDialog.setVisible(false);
 
         stage.addActor(gameOverDialog);
+    }
 
-        Tween.to(gameOverDialog, ActorAccessor.CPOS_XY, 0.7f)
-                .ease(Cubic.INOUT)
-                .target(100, 50)
-                .repeat(-10, 5.3f)
-                .delay(0.5f)
-                .start(tweenManager);
+    private void prepareShopDialog() {
+        shopDialog = new Window("Shopuhg!", Assets.skin);
+
+        shopDialog.setSize(Core.VIRTUAL_WIDTH - 25, Core.VIRTUAL_HEIGHT - 25);
+
+        ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
+        retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
+        retryStyle.imageUp.setMinWidth(96);
+        retryStyle.imageUp.setMinHeight(96);
+        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
+        retryStyle.imageDown.setMinWidth(96);
+        retryStyle.imageDown.setMinHeight(96);
+        ImageButton retryButton = new ImageButton(retryStyle);
+        retryButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new GameScreen(game));
+            }
+        });
+        retryButton.setSize(96, 96);
+        retryButton.setPosition(shopDialog.getWidth() - retryButton.getWidth(), 0);
+        shopDialog.addActor(retryButton);
+
+        ImageButton.ImageButtonStyle homeStyle = new ImageButton.ImageButtonStyle();
+        homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
+        homeStyle.imageUp.setMinWidth(96);
+        homeStyle.imageUp.setMinHeight(96);
+        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButton);
+        homeStyle.imageDown.setMinWidth(96);
+        homeStyle.imageDown.setMinHeight(96);
+        ImageButton homeButton = new ImageButton(homeStyle);
+        homeButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setScreen(new GameScreen(game));
+            }
+        });
+        homeButton.setSize(96, 96);
+        homeButton.setPosition(0, 0);
+        shopDialog.addActor(homeButton);
+
+        shopDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2 - shopDialog.getHeight());
+
+        shopDialog.setVisible(false);
+
+        stage.addActor(shopDialog);
     }
 
     @Override
@@ -223,7 +262,8 @@ public class GameScreen extends AbstractScreen {
             stage.act();
 
             if (world.isGameOver()) {
-                gameOverDialog.setVisible(true);
+                if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
+                else gameOverDialog.setVisible(true);
 
                 distance.setText(distanceLabel.getText().toString());
             }
