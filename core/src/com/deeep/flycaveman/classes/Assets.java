@@ -66,7 +66,6 @@ public class Assets {
 
     public static void set() {
         setSkin();
-        setFont();
         setAtlas();
         setTextures();
         setSounds();
@@ -77,9 +76,7 @@ public class Assets {
 
         font = assetManager.get("data/font32.fnt");
 
-//        font = new BitmapFont(Gdx.files.internal("data/font32.fnt"));
         skin.add("default-font", font, BitmapFont.class);
-//        skin.add("big-font", fontBig, BitmapFont.class);
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");
         FileHandle atlasFile = fileHandle.sibling("items.atlas");
@@ -87,10 +84,6 @@ public class Assets {
             skin.addRegions(new TextureAtlas(atlasFile));
         }
         skin.load(fileHandle);
-    }
-
-    private static void setFont() {
-//        font = skin.getFont("default-font");
     }
 
     private static void setAtlas() {

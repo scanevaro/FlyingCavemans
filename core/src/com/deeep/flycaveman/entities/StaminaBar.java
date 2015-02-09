@@ -11,7 +11,7 @@ import com.deeep.flycaveman.classes.Assets;
  */
 public class StaminaBar extends Actor {
     private CaveMan caveman;
-    private Image background, fill, bar, hand;
+    public Image background, fill, bar, hand;
 
     public StaminaBar(CaveMan caveMan) {
         this.caveman = caveMan;
@@ -22,7 +22,7 @@ public class StaminaBar extends Actor {
         hand = new Image(Assets.staminaHand);
 
         background.setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2, 5);
-        fill.setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2 + 2, 10);
+        fill.setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2 + 3, 10);
         bar.setPosition(Core.VIRTUAL_WIDTH / 2 - bar.getWidth() / 2, 5);
         hand.setSize(48, 54);
         hand.setPosition(Core.VIRTUAL_WIDTH / 2 - hand.getWidth() / 2, 15);

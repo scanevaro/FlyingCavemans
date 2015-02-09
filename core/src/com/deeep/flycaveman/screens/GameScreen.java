@@ -39,7 +39,7 @@ public class GameScreen extends AbstractScreen {
     /**
      * Widgets
      */
-    private TextButton distanceLabel, distanceTraveled, heightLabel, height;
+    private TextButton distanceLabel, heightLabel;
     private Label distance;
     private ImageButton pauseButton;
     private Window gameOverDialog;
@@ -71,6 +71,8 @@ public class GameScreen extends AbstractScreen {
 
 //        if (!Assets.getAssets().getMusic().isPlaying())
 //            Assets.getAssets().getMusic().play();
+
+        Assets.font.setScale(0.5f);
     }
 
     private void prepareScreen() {
@@ -80,9 +82,7 @@ public class GameScreen extends AbstractScreen {
 
     private void setWidgets() {
         distanceLabel = new TextButton("Distance: ", Assets.skin);
-        distanceTraveled = new TextButton("", Assets.skin);
-        heightLabel = new TextButton("Height", Assets.skin);
-        height = new TextButton("", Assets.skin);
+        heightLabel = new TextButton("Height: ", Assets.skin);
 
         ImageButton.ImageButtonStyle restartStyle = new ImageButton.ImageButtonStyle();
         restartStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
@@ -111,18 +111,16 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void setLayout() {
-        distanceLabel.setPosition(Core.VIRTUAL_WIDTH - 130, 1);
-        distanceTraveled.setPosition(Core.VIRTUAL_WIDTH - 50, 10);
-        heightLabel.setPosition(Core.VIRTUAL_WIDTH / 2 - 80, 1);
-        height.setPosition(Core.VIRTUAL_WIDTH / 2, 10);
+        distanceLabel.setSize(224, 64);
+        distanceLabel.setPosition(Core.VIRTUAL_WIDTH - distanceLabel.getWidth(), 1);
+        heightLabel.setSize(160, 64);
+        heightLabel.setPosition(Core.VIRTUAL_WIDTH / 2 + staminaBar.background.getWidth() - heightLabel.getWidth() / 2, 1);
 
         pauseButton.setSize(64, 64);
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
 
         stage.addActor(distanceLabel);
-        stage.addActor(distanceTraveled);
         stage.addActor(heightLabel);
-        stage.addActor(height);
         stage.addActor(pauseButton);
         stage.addActor(staminaBar);
     }
@@ -227,7 +225,7 @@ public class GameScreen extends AbstractScreen {
             if (world.isGameOver()) {
                 gameOverDialog.setVisible(true);
 
-                distance.setText(distanceLabel.getText().toString() + " " + distanceTraveled.getText().toString());
+                distance.setText(distanceLabel.getText().toString());
             }
         }
 
@@ -236,8 +234,8 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void updateUI() {
-        distanceTraveled.setText(String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3));
-        height.setText(String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 3));
+        distanceLabel.setText("Distance: " + String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3));
+        heightLabel.setText("Height: " + String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 3));
     }
 
     private void updateGameCam() {
