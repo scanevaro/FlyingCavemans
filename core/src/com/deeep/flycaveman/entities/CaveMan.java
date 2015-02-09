@@ -27,6 +27,7 @@ public class CaveMan implements Entity {
     private Array<Body> bodys;
 
     public float stamina;
+    public static final float maxStamina = 0.5f;
     public float strength;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {

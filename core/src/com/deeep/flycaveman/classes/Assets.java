@@ -31,8 +31,9 @@ public class Assets {
     public static TextureAtlas items;
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
-            backgroundTexture, restartButton, catapultArmTexture, catapultBaseTexture,
-            homeButton, shopButton, staminaBackground, staminaFill, staminaBar, staminaHand;
+             staminaBackground, staminaFill, staminaBar, staminaHand,
+            backgroundTexture, backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton;
+    public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
     public static Music music;
 
@@ -96,11 +97,16 @@ public class Assets {
         quetzaTexture = items.findRegion("QUETZA");
         smallEggTexture = items.findRegion("smallEgg");
         backgroundTexture = items.findRegion("background");
+        backgroundTexture2 = items.findRegion("background2");
         restartButton = items.findRegion("restart");
         catapultArmTexture = items.findRegion("catapultArm");
         catapultBaseTexture = items.findRegion("catapultBase");
         homeButton = items.findRegion("home");
         shopButton = items.findRegion("shop");
+        vodka = items.findRegion("vodka");
+        spinach = items.findRegion("spinach");
+        meat = items.findRegion("meat");
+        soda = items.findRegion("sodacan");
         staminaBackground = items.findRegion("staminabarBackground");
         staminaFill = items.findRegion("staminafill");
         staminaBar = items.findRegion("staminabar");

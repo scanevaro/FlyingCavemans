@@ -5,6 +5,7 @@ import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.entities.Ground;
 import com.deeep.flycaveman.entities.Obstacle;
+import com.deeep.flycaveman.entities.PowerUp;
 
 /**
  * Created by scanevaro on 14/10/2014.
@@ -43,6 +44,19 @@ public class GameContactListener implements ContactListener {
             GameInputProcessor.touchingGround = true;
             GameInputProcessor.flying = false;
             force = -1;
+        } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
+            PowerUp powerUp = null;
+            if (fixtureA.getUserData() instanceof PowerUp) {
+                powerUp = (PowerUp) fixtureA.getUserData();
+            } else {
+                powerUp = (PowerUp) fixtureB.getUserData();
+            }
+            world.caveman.stamina = Math.max(0, Math.min(world.caveman.maxStamina, world.caveman.stamina + ((float) powerUp.type.getPercentage() / 100f) * world.caveman.maxStamina));
+            if(powerUp.type == PowerUp.Type.SPINACH){
+                //extreme
+            }
+            //world.box2dWorld.destroyBody(powerUp.body);
+            //powerUp.body.destroyFixture(powerUp.fixture);
         }
     }
 

@@ -92,7 +92,28 @@ public class World extends Actor {
             obstaclesPosX += 50 + random.nextInt(50);
             entities.add(obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random));
         }
-
+        PowerUp.Type tempType;
+        for(int x = 0; x<10; x++){
+            for(int y = 0; y<10; y++){
+                switch (random.nextInt(4)){
+                    case 0:
+                        tempType = PowerUp.Type.MEAT;
+                        break;
+                    case 1:
+                        tempType = PowerUp.Type.SODACAN;
+                        break;
+                    case 2:
+                        tempType = PowerUp.Type.SPINACH;
+                        break;
+                    case 3:
+                        tempType = PowerUp.Type.VODKA;
+                        break;
+                    default:
+                        tempType = PowerUp.Type.VODKA;
+                }
+                entities.add(new PowerUp(tempType,box2dWorld,x*10,y*10));
+            }
+        }
 
         //TODO powerups (food, probably)
 
@@ -240,6 +261,8 @@ public class World extends Actor {
                 obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX += 50 + obstaclesPosX / 8, random);
             }
     }
+
+
 
     private void updateWorld() {
         box2dWorld.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
