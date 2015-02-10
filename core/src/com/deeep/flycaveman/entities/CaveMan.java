@@ -15,6 +15,10 @@ import com.deeep.flycaveman.classes.Assets;
  * Created by scanevaro on 11/10/2014.
  */
 public class CaveMan implements Entity {
+    private float startPosX = 11.1f;
+    private float startPosY = 6.5f;
+    private float restitution = 0.5f;
+
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -35,7 +39,7 @@ public class CaveMan implements Entity {
 
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(11.1f, 6.5f);
+        bodyDef.position.set(startPosX, startPosY);
 //        bodyDef.fixedRotation = true;
         bodyDef.bullet = true;
 
@@ -46,7 +50,7 @@ public class CaveMan implements Entity {
         fixtureDef.shape = shape;
         fixtureDef.density = 2.5f;
         fixtureDef.friction = .25f;
-        fixtureDef.restitution = .5f;
+        fixtureDef.restitution = restitution;
 
         body = world.box2dWorld.createBody(bodyDef);
         bodys.add(body);
