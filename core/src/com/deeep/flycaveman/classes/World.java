@@ -62,6 +62,8 @@ public class World extends Actor {
 
     public Area area;
 
+    public PowerUpSpawner powerUpSpawner;
+
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
         this.stage = stage;
@@ -92,30 +94,7 @@ public class World extends Actor {
             obstaclesPosX += 50 + random.nextInt(50);
             entities.add(obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random));
         }
-        PowerUp.Type tempType;
-        for(int x = 0; x<10; x++){
-            for(int y = 0; y<10; y++){
-                switch (random.nextInt(4)){
-                    case 0:
-                        tempType = PowerUp.Type.MEAT;
-                        break;
-                    case 1:
-                        tempType = PowerUp.Type.SODACAN;
-                        break;
-                    case 2:
-                        tempType = PowerUp.Type.SPINACH;
-                        break;
-                    case 3:
-                        tempType = PowerUp.Type.VODKA;
-                        break;
-                    default:
-                        tempType = PowerUp.Type.VODKA;
-                }
-                entities.add(new PowerUp(tempType,box2dWorld,x*10,y*10));
-            }
-        }
-
-        //TODO powerups (food, probably)
+        powerUpSpawner = new PowerUpSpawner(this);
 
         entities.add(caveman = new CaveMan(this));
 
@@ -177,6 +156,7 @@ public class World extends Actor {
             for (Entity entity : entities)
                 entity.draw(batch);
         }
+        powerUpSpawner.draw((SpriteBatch) batch);
         //darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
         //darkness.draw(batch);
         //draw stars
@@ -190,6 +170,7 @@ public class World extends Actor {
         updateBackground();
         updateGround();
         updateObstacles();
+        powerUpSpawner.update(delta);
         /** updatePowerUps(); */
         updateWorld();
 

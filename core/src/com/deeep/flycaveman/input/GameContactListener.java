@@ -55,8 +55,7 @@ public class GameContactListener implements ContactListener {
             if(powerUp.type == PowerUp.Type.SPINACH){
                 //extreme
             }
-            //world.box2dWorld.destroyBody(powerUp.body);
-            //powerUp.body.destroyFixture(powerUp.fixture);
+            powerUp.die();
         }
     }
 

@@ -2,15 +2,29 @@ package com.deeep.flycaveman.entities;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.classes.World;
 
 /**
  * Created by Elmar on 9-2-2015.
  */
 public class PowerUp implements Entity {
+
+    private boolean dead = false;
+
+    public void die() {
+        dead = true;
+    }
+
+    public void update(float deltaT) {
+
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
 
     public static enum Type {
         MEAT(100), SPINACH(100), VODKA(-50), SODACAN(50);
@@ -33,7 +47,7 @@ public class PowerUp implements Entity {
     public Fixture fixture;
     private PolygonShape shape;
 
-    public PowerUp(Type type, World world, int x, int y) {
+    public PowerUp(Type type, World world, float x, float y) {
         this.type = type;
         switch (type) {
             case MEAT:
@@ -55,15 +69,15 @@ public class PowerUp implements Entity {
         bodyDef.type = BodyDef.BodyType.StaticBody;
 
         shape = new PolygonShape();
-        bodyDef.position.set(x+13, y+5);
-        shape.setAsBox(1, 1);
+        bodyDef.position.set(x,y);
+        shape.setAsBox(1, 1.5f);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
 
-        body = world.createBody(bodyDef);
+        body = world.box2dWorld.createBody(bodyDef);
 
-        sprite.setSize(2, 2);
+        sprite.setSize(2, 3);
         body.setUserData(sprite);
 
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
