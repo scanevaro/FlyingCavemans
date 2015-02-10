@@ -6,86 +6,70 @@ filter: Nearest,Nearest
 repeat: none
 BRACHIOSAURUS
   rotate: false
-  xy: 1159, 460
+  xy: 2, 10
   size: 397, 142
   orig: 397, 142
   offset: 0, 0
   index: -1
 QUETZA
   rotate: false
-  xy: 1863, 143
+  xy: 1827, 309
   size: 128, 93
   orig: 128, 93
   offset: 0, 0
   index: -1
 background
   rotate: false
-  xy: 2, 1326
+  xy: 2, 1324
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
 background2
   rotate: false
-  xy: 2, 604
+  xy: 2, 602
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
-button
+bigEgg
   rotate: false
-  xy: 914, 305
-  size: 254, 126
-  split: 26, 28, 24, 29
-  pad: 20, 24, 25, 24
-  orig: 254, 126
+  xy: 451, 2
+  size: 172, 235
+  orig: 172, 235
   offset: 0, 0
   index: -1
 catapultArm
   rotate: false
-  xy: 1865, 238
+  xy: 260, 236
   size: 128, 364
   orig: 128, 364
   offset: 0, 0
   index: -1
-catapultBase
-  rotate: false
-  xy: 1477, 212
-  size: 247, 81
-  orig: 247, 81
-  offset: 0, 0
-  index: -1
 caveman
   rotate: false
-  xy: 1405, 20
+  xy: 1924, 1998
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
-cloud1
-  rotate: false
-  xy: 2, 303
-  size: 578, 299
-  orig: 578, 299
-  offset: 0, 0
-  index: -1
 cloud2
   rotate: false
-  xy: 582, 322
+  xy: 1396, 11
   size: 330, 109
   orig: 330, 109
   offset: 0, 0
   index: -1
 cloud3
   rotate: false
-  xy: 582, 433
+  xy: 1396, 122
   size: 575, 169
   orig: 575, 169
   offset: 0, 0
   index: -1
 dialog
   rotate: false
-  xy: 2, 45
+  xy: 883, 35
   size: 511, 256
   split: 28, 69, 35, 61
   pad: 0, 0, 84, 0
@@ -94,98 +78,112 @@ dialog
   index: -1
 expresionsCircle
   rotate: false
-  xy: 1477, 384
+  xy: 1924, 1669
   size: 79, 74
   orig: 79, 74
   offset: 0, 0
   index: -1
 happyface
   rotate: false
-  xy: 515, 245
+  xy: 1924, 1464
   size: 61, 56
   orig: 61, 56
   offset: 0, 0
   index: -1
 home
   rotate: false
-  xy: 1558, 295
+  xy: 648, 293
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 koface
   rotate: false
-  xy: 1596, 81
+  xy: 1987, 1463
   size: 59, 57
   orig: 59, 57
   offset: 0, 0
   index: -1
-meat
-  rotate: false
-  xy: 1147, 12
-  size: 256, 137
-  orig: 256, 137
-  offset: 0, 0
-  index: -1
 painface
   rotate: false
-  xy: 1726, 169
+  xy: 1827, 404
   size: 135, 124
   orig: 135, 124
   offset: 0, 0
   index: -1
 passionface
   rotate: false
-  xy: 1668, 166
+  xy: 1997, 1623
   size: 48, 44
   orig: 48, 44
   offset: 0, 0
   index: -1
 restart
   rotate: false
-  xy: 1170, 151
+  xy: 955, 293
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
+shield
+  rotate: false
+  xy: 390, 239
+  size: 256, 361
+  orig: 256, 361
+  offset: 0, 0
+  index: -1
 shop
   rotate: false
-  xy: 582, 13
+  xy: 1262, 293
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 smallEgg
   rotate: false
-  xy: 1477, 295
+  xy: 1924, 1522
   size: 64, 87
   orig: 64, 87
   offset: 0, 0
   index: -1
+sodacan
+  rotate: false
+  xy: 2, 154
+  size: 256, 446
+  orig: 256, 446
+  offset: 0, 0
+  index: -1
 spinach
   rotate: false
-  xy: 889, 2
+  xy: 1569, 299
   size: 256, 301
   orig: 256, 301
   offset: 0, 0
   index: -1
+springshoes
+  rotate: false
+  xy: 625, 27
+  size: 256, 210
+  orig: 256, 210
+  offset: 0, 0
+  index: -1
 staminabar
   rotate: false
-  xy: 1477, 140
+  xy: 260, 164
   size: 189, 70
   orig: 189, 70
   offset: 0, 0
   index: -1
 staminabarBackground
   rotate: false
-  xy: 1405, 68
+  xy: 1827, 530
   size: 189, 70
   orig: 189, 70
   offset: 0, 0
   index: -1
 staminafill
   rotate: false
-  xy: 2014, 1987
+  xy: 2035, 1985
   size: 9, 59
   split: 4, 4, 23, 23
   orig: 9, 59
@@ -193,49 +191,86 @@ staminafill
   index: -1
 staminahand
   rotate: false
-  xy: 1924, 1737
+  xy: 1924, 1611
   size: 71, 56
   orig: 71, 56
   offset: 0, 0
   index: -1
 tiredface
   rotate: false
-  xy: 1924, 1687
+  xy: 1924, 1414
   size: 58, 48
   orig: 58, 48
   offset: 0, 0
   index: -1
 vodka
   rotate: false
-  xy: 1924, 1795
+  xy: 1924, 1745
   size: 88, 251
   orig: 88, 251
   offset: 0, 0
   index: -1
 white
   rotate: false
-  xy: 1159, 457
+  xy: 2014, 1995
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
+wings
+  rotate: false
+  xy: 1728, 11
+  size: 256, 109
+  orig: 256, 109
+  offset: 0, 0
+  index: -1
 
 items2.png
-size: 512,512
+size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-bigEgg
+button
   rotate: false
-  xy: 260, 213
-  size: 172, 235
-  orig: 172, 235
+  xy: 582, 181
+  size: 254, 126
+  split: 26, 28, 24, 29
+  pad: 20, 24, 25, 24
+  orig: 254, 126
   offset: 0, 0
   index: -1
-sodacan
+catapultBase
+  rotate: false
+  xy: 518, 98
+  size: 247, 81
+  orig: 247, 81
+  offset: 0, 0
+  index: -1
+cloud1
+  rotate: false
+  xy: 2, 181
+  size: 578, 299
+  orig: 578, 299
+  offset: 0, 0
+  index: -1
+meat
+  rotate: false
+  xy: 260, 42
+  size: 256, 137
+  orig: 256, 137
+  offset: 0, 0
+  index: -1
+staminaplus
+  rotate: false
+  xy: 582, 309
+  size: 256, 171
+  orig: 256, 171
+  offset: 0, 0
+  index: -1
+steroids
   rotate: false
   xy: 2, 2
-  size: 256, 446
-  orig: 256, 446
+  size: 256, 177
+  orig: 256, 177
   offset: 0, 0
   index: -1

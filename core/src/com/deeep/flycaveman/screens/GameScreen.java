@@ -37,14 +37,14 @@ public class GameScreen extends AbstractScreen {
      * Widgets
      */
     private TextButton distanceLabel, heightLabel;
-    private Label distance;
+    public static Label distance;
     private ImageButton pauseButton;
     private Window gameOverDialog, shopDialog;
     private StaminaBar staminaBar;
     /**
      * World
      */
-    private World world;
+    public World world;
 
     public GameScreen(Core game) {
         this.game = game;
@@ -131,123 +131,11 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void prepareGameOverDialog() {
-        gameOverDialog = new Window("UGHA UGH", Assets.skin);
-
-        //( ͡° ͜ʖ ͡°) < l'elmar face
-
-        gameOverDialog.setSize(512, 400);
-
-        distance = new Label("", Assets.skin);
-        distance.setPosition(25, gameOverDialog.getHeight() / 2);
-        gameOverDialog.addActor(distance);
-
-        ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
-        retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageUp.setMinWidth(96);
-        retryStyle.imageUp.setMinHeight(96);
-        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageDown.setMinWidth(96);
-        retryStyle.imageDown.setMinHeight(96);
-        ImageButton retryButton = new ImageButton(retryStyle);
-        retryButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
-            }
-        });
-        retryButton.setSize(96, 96);
-        retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
-        gameOverDialog.addActor(retryButton);
-
-        ImageButton.ImageButtonStyle homeStyle = new ImageButton.ImageButtonStyle();
-        homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
-        homeStyle.imageUp.setMinWidth(96);
-        homeStyle.imageUp.setMinHeight(96);
-        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButton);
-        homeStyle.imageDown.setMinWidth(96);
-        homeStyle.imageDown.setMinHeight(96);
-        ImageButton homeButton = new ImageButton(homeStyle);
-        homeButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
-            }
-        });
-        homeButton.setSize(96, 96);
-        homeButton.setPosition(0, 0);
-        gameOverDialog.addActor(homeButton);
-
-        ImageButton.ImageButtonStyle shopStyle = new ImageButton.ImageButtonStyle();
-        shopStyle.imageUp = new TextureRegionDrawable(Assets.shopButton);
-        shopStyle.imageUp.setMinWidth(96);
-        shopStyle.imageUp.setMinHeight(96);
-        shopStyle.imageDown = new TextureRegionDrawable(Assets.shopButton);
-        shopStyle.imageDown.setMinWidth(96);
-        shopStyle.imageDown.setMinHeight(96);
-        ImageButton shopButton = new ImageButton(shopStyle);
-        shopButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                shopDialog.setVisible(true);
-            }
-        });
-        shopButton.setSize(96, 96);
-        shopButton.setPosition(gameOverDialog.getWidth() / 2 - shopButton.getWidth() / 2, 0);
-        gameOverDialog.addActor(shopButton);
-
-        gameOverDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - gameOverDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2 + gameOverDialog.getHeight());
-
-        gameOverDialog.setVisible(false);
-
-        stage.addActor(gameOverDialog);
+        gameOverDialog = game.dialogs.buildGameOver(game);
     }
 
     private void prepareShopDialog() {
-        shopDialog = new Window("Shopuhg!", Assets.skin);
-
-        shopDialog.setSize(Core.VIRTUAL_WIDTH - 25, Core.VIRTUAL_HEIGHT - 25);
-
-        ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
-        retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageUp.setMinWidth(96);
-        retryStyle.imageUp.setMinHeight(96);
-        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageDown.setMinWidth(96);
-        retryStyle.imageDown.setMinHeight(96);
-        ImageButton retryButton = new ImageButton(retryStyle);
-        retryButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
-            }
-        });
-        retryButton.setSize(96, 96);
-        retryButton.setPosition(shopDialog.getWidth() - retryButton.getWidth(), 0);
-        shopDialog.addActor(retryButton);
-
-        ImageButton.ImageButtonStyle homeStyle = new ImageButton.ImageButtonStyle();
-        homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
-        homeStyle.imageUp.setMinWidth(96);
-        homeStyle.imageUp.setMinHeight(96);
-        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButton);
-        homeStyle.imageDown.setMinWidth(96);
-        homeStyle.imageDown.setMinHeight(96);
-        ImageButton homeButton = new ImageButton(homeStyle);
-        homeButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
-            }
-        });
-        homeButton.setSize(96, 96);
-        homeButton.setPosition(0, 0);
-        shopDialog.addActor(homeButton);
-
-        shopDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2 - shopDialog.getHeight());
-
-        shopDialog.setVisible(false);
-
-        stage.addActor(shopDialog);
+        shopDialog = game.dialogs.buildShop(game);
     }
 
     @Override

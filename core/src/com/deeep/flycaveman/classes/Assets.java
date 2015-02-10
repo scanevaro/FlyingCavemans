@@ -31,8 +31,9 @@ public class Assets {
     public static TextureAtlas items;
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
-             staminaBackground, staminaFill, staminaBar, staminaHand,
-            backgroundTexture, backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton;
+            staminaBackground, staminaFill, staminaBar, staminaHand, backgroundTexture,
+            backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture,
+            homeButton, shopButton, staminaplus, shield, steroids, wings, springs;
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
     public static Music music;
@@ -111,6 +112,11 @@ public class Assets {
         staminaFill = items.findRegion("staminafill");
         staminaBar = items.findRegion("staminabar");
         staminaHand = items.findRegion("staminahand");
+        staminaplus = items.findRegion("staminaplus");
+        shield = items.findRegion("shield");
+        steroids = items.findRegion("steroids");
+        wings = items.findRegion("wings");
+        springs = items.findRegion("springshoes");
     }
 
     private static void setSounds() {
