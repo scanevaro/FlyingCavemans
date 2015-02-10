@@ -232,7 +232,7 @@ filter: Nearest,Nearest
 repeat: none
 button
   rotate: false
-  xy: 582, 181
+  xy: 518, 56
   size: 254, 126
   split: 26, 28, 24, 29
   pad: 20, 24, 25, 24
@@ -241,35 +241,42 @@ button
   index: -1
 catapultBase
   rotate: false
-  xy: 518, 98
+  xy: 774, 101
   size: 247, 81
   orig: 247, 81
   offset: 0, 0
   index: -1
 cloud1
   rotate: false
-  xy: 2, 181
+  xy: 2, 201
   size: 578, 299
   orig: 578, 299
   offset: 0, 0
   index: -1
+coin
+  rotate: false
+  xy: 2, 2
+  size: 256, 197
+  orig: 256, 197
+  offset: 0, 0
+  index: -1
 meat
   rotate: false
-  xy: 260, 42
+  xy: 582, 184
   size: 256, 137
   orig: 256, 137
   offset: 0, 0
   index: -1
 staminaplus
   rotate: false
-  xy: 582, 309
+  xy: 260, 28
   size: 256, 171
   orig: 256, 171
   offset: 0, 0
   index: -1
 steroids
   rotate: false
-  xy: 2, 2
+  xy: 582, 323
   size: 256, 177
   orig: 256, 177
   offset: 0, 0
