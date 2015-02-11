@@ -52,7 +52,7 @@ public class GameContactListener implements ContactListener {
                 powerUp = (PowerUp) fixtureB.getUserData();
             }
             world.caveman.stamina = Math.max(0, Math.min(world.caveman.maxStamina, world.caveman.stamina + ((float) powerUp.type.getPercentage() / 100f) * world.caveman.maxStamina));
-            if(powerUp.type == PowerUp.Type.SPINACH){
+            if (powerUp.type == PowerUp.Type.SPINACH) {
                 //extreme
             }
             powerUp.die();
@@ -71,6 +71,13 @@ public class GameContactListener implements ContactListener {
 
         } else if ((fixtureA.getUserData() instanceof CaveMan && fixtureB.getUserData() instanceof Ground)
                 || (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
+
+            if (world.caveman.springs > 0) {
+                world.caveman.body.applyForce(500, 2500, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
+                world.caveman.springs--;
+                return;
+            }
+
             Assets.hitGround1Sound.play();
         }
     }
