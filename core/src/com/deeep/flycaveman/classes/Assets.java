@@ -39,6 +39,7 @@ public class Assets {
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
     public static Music music;
+    public static Texture coin1, coin2, coin3, coin4, coin5, coin6;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -119,6 +120,13 @@ public class Assets {
         steroids = items.findRegion("steroids");
         wings = items.findRegion("wings");
         springs = items.findRegion("springshoes");
+
+        coin1 = new Texture(Gdx.files.internal("data/Coin1.png"));
+        coin2 = new Texture(Gdx.files.internal("data/Coin2.png"));
+        coin3 = new Texture(Gdx.files.internal("data/Coin3.png"));
+        coin4 = new Texture(Gdx.files.internal("data/Coin4.png"));
+        coin5 = new Texture(Gdx.files.internal("data/Coin5.png"));
+        coin6 = new Texture(Gdx.files.internal("data/Coin6.png"));
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);

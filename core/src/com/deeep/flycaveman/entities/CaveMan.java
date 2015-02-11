@@ -7,15 +7,18 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
+import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.classes.Assets;
+
+import java.util.ArrayList;
 
 /**
  * Created by scanevaro on 11/10/2014.
  */
 public class CaveMan implements Entity {
-    private float startPosX = 11.1f;
-    private float startPosY = 6.5f;
-    private float restitution = 0.15f;
+    private final float startPosX = 11.1f;
+    private final float startPosY = 6.5f;
+    private final float restitution = 0.5f;
 
     private BodyDef bodyDef;
     public Body body;
@@ -25,7 +28,7 @@ public class CaveMan implements Entity {
     //    private PolygonShape shape;
     public WeldJoint bulletJoint;
     public float size = .6f;
-    private Sprite sprite;
+    public Sprite sprite;
 
     public float stamina;
     public static final float maxStamina = 0.5f;
@@ -41,7 +44,6 @@ public class CaveMan implements Entity {
     public int springs;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
-
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(startPosX, startPosY);
