@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
-import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.classes.Assets;
 
 /**
@@ -16,7 +15,7 @@ import com.deeep.flycaveman.classes.Assets;
 public class CaveMan implements Entity {
     private float startPosX = 11.1f;
     private float startPosY = 6.5f;
-    private float restitution = 0.5f;
+    private float restitution = 0.15f;
 
     private BodyDef bodyDef;
     public Body body;
@@ -27,7 +26,6 @@ public class CaveMan implements Entity {
     public WeldJoint bulletJoint;
     public float size = .6f;
     private Sprite sprite;
-    private Array<Body> bodys;
 
     public float stamina;
     public static final float maxStamina = 0.5f;
@@ -36,9 +34,13 @@ public class CaveMan implements Entity {
     public static boolean wingsPowerup;
     public float stateTime;
     public static boolean upgradeStamina;
+    public static boolean addSteroids;
+    public static boolean addShield;
+    private int shields;
+    public static boolean addSprings;
+    public int springs;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
-        bodys = new Array<Body>();
 
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
@@ -56,7 +58,6 @@ public class CaveMan implements Entity {
         fixtureDef.restitution = restitution;
 
         body = world.box2dWorld.createBody(bodyDef);
-        bodys.add(body);
 
         if (!wingsPowerup)
             sprite = new Sprite(Assets.cavemanTexture);
@@ -84,6 +85,9 @@ public class CaveMan implements Entity {
         strength = 50;
 
         if (wingsPowerup) strength += 25;
+        if (addSteroids) strength += 25;
+        if (addShield) shields++;
+        if (addSprings) springs++;
         stamina = 0.5f;
     }
 
@@ -93,11 +97,11 @@ public class CaveMan implements Entity {
     }
 
     public void draw(Batch batch) {
-        for (Body body : bodys) {
-            sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
-            sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-            sprite.draw(batch);
-        }
+        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
+        sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+        sprite.draw(batch);
+
+        if (shields > 0) batch.draw(Assets.shield, sprite.getX(), sprite.getY(), size * 2, size * 2);
     }
 
     public void updateFlapping(float delta) {
@@ -120,5 +124,27 @@ public class CaveMan implements Entity {
 
     public void upgradeStamina() {
         CaveMan.upgradeStamina = true;
+    }
+
+    public void addSteroids() {
+        CaveMan.addSteroids = true;
+
+        strength += 25;
+    }
+
+    public void addShield() {
+        CaveMan.addShield = true;
+
+        shields++;
+    }
+
+    public void addSprings() {
+        CaveMan.addSprings = true;
+
+        springs++;
+    }
+
+    public void hit() {
+        if (shields > 0) shields--;
     }
 }

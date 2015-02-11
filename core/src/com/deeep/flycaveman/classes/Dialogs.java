@@ -322,9 +322,7 @@ public class Dialogs {
             protected void result(Object object) {
                 if ((Boolean) object)
 //                    if (((GameScreen) screen).coins >= 1000) {
-//                        if ((Boolean) object)
                     ((GameScreen) screen).world.caveman.upgradeStamina();
-//
 //                        ((GameScreen) screen).coins -= 1000;
 //                    }
             }
@@ -339,9 +337,9 @@ public class Dialogs {
 
         steroidsDialog = new Dialog("Buy Steroids?", Assets.skin) {
             protected void result(Object object) {
-//                if ((Boolean) object)
+                if ((Boolean) object)
 //                    if (((GameScreen) screen).coins >= 1000) {
-//                    ((GameScreen) screen).world.caveman.addSteroids();
+                    ((GameScreen) screen).world.caveman.addSteroids();
 //
 //                        ((GameScreen) screen).coins -= 1000;
 //                    }
@@ -357,10 +355,9 @@ public class Dialogs {
 
         shieldDialog = new Dialog("Buy Shield?", Assets.skin) {
             protected void result(Object object) {
-//                if ((Boolean) object)
+                if ((Boolean) object)
 //                    if (((GameScreen) screen).coins >= 1000) {
-//                        if ((Boolean) object)
-//                            ((GameScreen) screen).world.caveman.addWings();
+                    ((GameScreen) screen).world.caveman.addShield();
 //
 //                        ((GameScreen) screen).coins -= 1000;
 //                    }
@@ -376,10 +373,9 @@ public class Dialogs {
 
         springsDialog = new Dialog("Buy Springs?", Assets.skin) {
             protected void result(Object object) {
-//                if ((Boolean) object)
+                if ((Boolean) object)
 //                    if (((GameScreen) screen).coins >= 1000) {
-//                        if ((Boolean) object)
-//                            ((GameScreen) screen).world.caveman.addWings();
+                    ((GameScreen) screen).world.caveman.addSprings();
 //
 //                        ((GameScreen) screen).coins -= 1000;
 //                    }
