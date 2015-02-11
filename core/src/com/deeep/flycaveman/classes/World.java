@@ -58,6 +58,8 @@ public class World extends Actor {
 
     private Array<Entity> entities;
 
+    private Space space;
+
     public boolean gameOver;
 
     public Area area;
@@ -73,7 +75,7 @@ public class World extends Actor {
         sunColor = new Color(254f / 255f, 76f / 255f, 64f / 255f, 0f);//rgb(254, 76, 64)
         spaceColor = new Color(0, 0, 0, 1f);//
         shapeRenderer = new ShapeRenderer();
-
+        space = new Space();
         /**backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
          backgroundSprite = new Sprite(Assets.backgroundTexture);
          backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT); */
@@ -108,7 +110,7 @@ public class World extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setProjectionMatrix(worldStage.getCamera().combined);
-
+        System.out.println(worldStage.getCamera().position.x);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         batch.end();
@@ -152,6 +154,7 @@ public class World extends Actor {
         batch.end();
         batch.begin();
 //
+        space.draw((SpriteBatch) batch);
         {/**Draw Box2D Body Textures*/
             for (Entity entity : entities)
                 entity.draw(batch);
@@ -167,6 +170,7 @@ public class World extends Actor {
         gameContactListener.update();
         updateCamera();
         updateSky();
+        space.update(delta, worldStage.getCamera().position);
         updateBackground();
         updateGround();
         updateObstacles();

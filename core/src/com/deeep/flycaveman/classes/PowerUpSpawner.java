@@ -73,7 +73,6 @@ public class PowerUpSpawner {
 
     public void spawn(float x, float y, PowerUp.Type type) {
         powerUps.add(new PowerUp(type, world, x, y));
-        System.out.println("spawn");
     }
 
     public void draw(SpriteBatch spriteBatch) {
