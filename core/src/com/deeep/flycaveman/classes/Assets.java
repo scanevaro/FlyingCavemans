@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -34,6 +35,7 @@ public class Assets {
             staminaBackground, staminaFill, staminaBar, staminaHand, backgroundTexture,
             backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture,
             homeButton, shopButton, staminaplus, shield, steroids, wings, springs;
+    public static Animation cavemanWings;
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
     public static Music music;
@@ -117,6 +119,9 @@ public class Assets {
         steroids = items.findRegion("steroids");
         wings = items.findRegion("wings");
         springs = items.findRegion("springshoes");
+
+        cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
+        cavemanWings.setPlayMode(Animation.PlayMode.LOOP);
     }
 
     private static void setSounds() {

@@ -53,6 +53,20 @@ caveman
   orig: 109, 46
   offset: 0, 0
   index: -1
+cavemanWings1
+  rotate: false
+  xy: 1924, 1682
+  size: 86, 61
+  orig: 86, 61
+  offset: 0, 0
+  index: -1
+cavemanWings2
+  rotate: false
+  xy: 1924, 1619
+  size: 86, 61
+  orig: 86, 61
+  offset: 0, 0
+  index: -1
 cloud2
   rotate: false
   xy: 1396, 11
@@ -78,14 +92,14 @@ dialog
   index: -1
 expresionsCircle
   rotate: false
-  xy: 1924, 1669
+  xy: 1924, 1543
   size: 79, 74
   orig: 79, 74
   offset: 0, 0
   index: -1
 happyface
   rotate: false
-  xy: 1924, 1464
+  xy: 1924, 1220
   size: 61, 56
   orig: 61, 56
   offset: 0, 0
@@ -99,7 +113,7 @@ home
   index: -1
 koface
   rotate: false
-  xy: 1987, 1463
+  xy: 1987, 1219
   size: 59, 57
   orig: 59, 57
   offset: 0, 0
@@ -113,7 +127,7 @@ painface
   index: -1
 passionface
   rotate: false
-  xy: 1997, 1623
+  xy: 1997, 1497
   size: 48, 44
   orig: 48, 44
   offset: 0, 0
@@ -141,7 +155,7 @@ shop
   index: -1
 smallEgg
   rotate: false
-  xy: 1924, 1522
+  xy: 1924, 1278
   size: 64, 87
   orig: 64, 87
   offset: 0, 0
@@ -158,6 +172,13 @@ spinach
   xy: 1569, 299
   size: 256, 301
   orig: 256, 301
+  offset: 0, 0
+  index: -1
+springJump
+  rotate: false
+  xy: 1924, 1367
+  size: 69, 116
+  orig: 69, 116
   offset: 0, 0
   index: -1
 springshoes
@@ -191,14 +212,14 @@ staminafill
   index: -1
 staminahand
   rotate: false
-  xy: 1924, 1611
+  xy: 1924, 1485
   size: 71, 56
   orig: 71, 56
   offset: 0, 0
   index: -1
 tiredface
   rotate: false
-  xy: 1924, 1414
+  xy: 1924, 1170
   size: 58, 48
   orig: 58, 48
   offset: 0, 0

@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.GameScreen;
 
@@ -302,12 +303,10 @@ public class Dialogs {
     private void buildShopDialogs(final AbstractScreen screen) {
         wingsDialog = new Dialog("Buy Wings?", Assets.skin) {
             protected void result(Object object) {
-//                if ((Boolean) object)
+                if ((Boolean) object && !CaveMan.wingsPowerup)
 //                    if (((GameScreen) screen).coins >= 1000) {
-//                        if ((Boolean) object)
-//                            ((GameScreen) screen).world.caveman.addWings();
-//
-//                        ((GameScreen) screen).coins -= 1000;
+                    ((GameScreen) screen).world.caveman.addWings();
+//                ((GameScreen) screen).coins -= 1000;
 //                    }
             }
         };
@@ -321,10 +320,10 @@ public class Dialogs {
 
         staminaplusDialog = new Dialog("Upgrade Stamina?", Assets.skin) {
             protected void result(Object object) {
-//                if ((Boolean) object)
+                if ((Boolean) object)
 //                    if (((GameScreen) screen).coins >= 1000) {
 //                        if ((Boolean) object)
-//                            ((GameScreen) screen).world.caveman.addWings();
+                    ((GameScreen) screen).world.caveman.upgradeStamina();
 //
 //                        ((GameScreen) screen).coins -= 1000;
 //                    }
@@ -342,8 +341,7 @@ public class Dialogs {
             protected void result(Object object) {
 //                if ((Boolean) object)
 //                    if (((GameScreen) screen).coins >= 1000) {
-//                        if ((Boolean) object)
-//                            ((GameScreen) screen).world.caveman.addWings();
+//                    ((GameScreen) screen).world.caveman.addSteroids();
 //
 //                        ((GameScreen) screen).coins -= 1000;
 //                    }

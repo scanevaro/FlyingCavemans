@@ -135,7 +135,7 @@ public class World extends Actor {
         }
 
         //TODO this
-        shapeRenderer.rect(sky.x,sky.y-16,0,0,Core.BOX2D_VIRTUAL_WIDTH+32,Core.BOX2D_VIRTUAL_HEIGHT+32,1,1,0,bottomColor, bottomColor, topColor, topColor);
+        shapeRenderer.rect(sky.x, sky.y - 16, 0, 0, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32, 1, 1, 0, bottomColor, bottomColor, topColor, topColor);
         //shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
         shapeRenderer.end();
 
@@ -170,6 +170,7 @@ public class World extends Actor {
         updateBackground();
         updateGround();
         updateObstacles();
+        caveman.update(delta);
         powerUpSpawner.update(delta);
         /** updatePowerUps(); */
         updateWorld();
@@ -242,7 +243,6 @@ public class World extends Actor {
                 obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX += 50 + obstaclesPosX / 8, random);
             }
     }
-
 
 
     private void updateWorld() {

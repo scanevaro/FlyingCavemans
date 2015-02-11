@@ -2,7 +2,6 @@ package com.deeep.flycaveman.entities;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -34,6 +33,10 @@ public class CaveMan implements Entity {
     public static final float maxStamina = 0.5f;
     public float strength;
 
+    public static boolean wingsPowerup;
+    public float stateTime;
+    public static boolean upgradeStamina;
+
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodys = new Array<Body>();
 
@@ -54,7 +57,11 @@ public class CaveMan implements Entity {
 
         body = world.box2dWorld.createBody(bodyDef);
         bodys.add(body);
-        sprite = new Sprite(new TextureRegion(Assets.cavemanTexture));
+
+        if (!wingsPowerup)
+            sprite = new Sprite(Assets.cavemanTexture);
+        else sprite = new Sprite(Assets.cavemanWings.getKeyFrame(0));
+
         sprite.setSize(size * 2, size * 2);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         body.setUserData(sprite);
@@ -75,7 +82,14 @@ public class CaveMan implements Entity {
         bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
 
         strength = 50;
+
+        if (wingsPowerup) strength += 25;
         stamina = 0.5f;
+    }
+
+    public void update(float delta) {
+        if (upgradeStamina && stamina < 0.5f)
+            stamina += delta / 25;
     }
 
     public void draw(Batch batch) {
@@ -90,6 +104,21 @@ public class CaveMan implements Entity {
         if (stamina > 0) {
             stamina -= delta;
             body.applyForce(strength, strength, body.getPosition().x, body.getPosition().y, true);
+
+            if (wingsPowerup) {
+                stateTime += delta;
+                sprite.setRegion(Assets.cavemanWings.getKeyFrame(stateTime));
+            }
         }
+    }
+
+    public void addWings() {
+        CaveMan.wingsPowerup = true;
+        strength += 25;
+        sprite.setRegion(Assets.cavemanWings.getKeyFrame(0));
+    }
+
+    public void upgradeStamina() {
+        CaveMan.upgradeStamina = true;
     }
 }
