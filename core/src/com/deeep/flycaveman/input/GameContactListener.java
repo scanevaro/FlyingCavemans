@@ -87,7 +87,7 @@ public class GameContactListener implements ContactListener {
 
     public void update() {
         if (GameInputProcessor.touchingGround && world.caveman.body.getLinearVelocity().x > 0) {
-            force -= 0.5f;
+            force -= 2.0f;
             world.caveman.body.applyForce(force, 0, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
         }
     }
