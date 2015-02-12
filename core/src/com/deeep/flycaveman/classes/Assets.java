@@ -35,7 +35,7 @@ public class Assets {
             staminaBackground, staminaFill, staminaBar, staminaHand, backgroundTexture,
             backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture,
             homeButton, shopButton, staminaplus, shield, steroids, wings, springs, coin1,
-            coin2, coin3, coin4, coin5, coin6, cavemanSprings;
+            coin2, coin3, coin4, coin5, coin6, cavemanSprings, flapUp, dropUp;
     public static Animation cavemanWings;
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
@@ -135,6 +135,8 @@ public class Assets {
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);
 
         cavemanSprings = items.findRegion("springJump");
+        flapUp = items.findRegion("flapUp");
+        dropUp = items.findRegion("dropUp");
     }
 
     private static void setSounds() {

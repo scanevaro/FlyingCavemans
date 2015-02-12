@@ -40,6 +40,7 @@ public class CaveMan implements Entity {
     public static boolean addSprings;
     public int springs;
     public float stateTimeSprings;
+    public boolean flapping;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodyDef = new BodyDef();
@@ -91,13 +92,6 @@ public class CaveMan implements Entity {
         stamina = 0.5f;
     }
 
-    public void update(float delta) {
-        if (upgradeStamina && stamina < 0.5f)
-            stamina += delta / 25;
-
-        stateTimeSprings -= delta;
-    }
-
     public void draw(Batch batch) {
         if (stateTimeSprings > 0)
             sprite.setRegion(Assets.cavemanSprings);
@@ -110,6 +104,16 @@ public class CaveMan implements Entity {
         sprite.draw(batch);
 
         if (shields > 0) batch.draw(Assets.shield, sprite.getX(), sprite.getY(), size * 2, size * 2);
+    }
+
+    public void update(float delta) {
+        if (flapping)
+            updateFlapping(delta);
+
+        if (upgradeStamina && stamina < 0.5f)
+            stamina += delta / 25;
+
+        stateTimeSprings -= delta;
     }
 
     public void updateFlapping(float delta) {
@@ -158,6 +162,10 @@ public class CaveMan implements Entity {
         springs--;
 
         stateTimeSprings = 1.5f;
+    }
+
+    public void drop() {
+        body.applyForceToCenter(0, -10000, true);
     }
 
     public void hit() {

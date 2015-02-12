@@ -17,6 +17,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.World;
+import com.deeep.flycaveman.entities.DropButton;
+import com.deeep.flycaveman.entities.FlapButton;
 import com.deeep.flycaveman.entities.StaminaBar;
 import com.deeep.flycaveman.input.GameInputProcessor;
 
@@ -41,6 +43,8 @@ public class GameScreen extends AbstractScreen {
     private ImageButton pauseButton;
     private Window gameOverDialog, shopDialog;
     private StaminaBar staminaBar;
+    private DropButton dropButton;
+    private FlapButton flapButton;
     /**
      * World
      */
@@ -87,6 +91,9 @@ public class GameScreen extends AbstractScreen {
         restartStyle.imageUp.setMinWidth(64);
         restartStyle.imageUp.setMinHeight(64);
         pauseButton = new ImageButton(restartStyle);
+
+        flapButton = new FlapButton();
+        dropButton = new DropButton();
     }
 
     private void configureWidgets() {
@@ -102,6 +109,9 @@ public class GameScreen extends AbstractScreen {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
         world = new World(worldStage, stage, true);
         stage.addActor(world);
+
+        flapButton.setCaveMan(world.caveman);
+        dropButton.setCaveMan(world.caveman);
     }
 
     private void getGameCamera() {
@@ -113,14 +123,19 @@ public class GameScreen extends AbstractScreen {
         distanceLabel.setPosition(Core.VIRTUAL_WIDTH - distanceLabel.getWidth(), 1);
         heightLabel.setSize(160, 64);
         heightLabel.setPosition(Core.VIRTUAL_WIDTH / 2 + staminaBar.background.getWidth() - heightLabel.getWidth() / 2, 1);
-
         pauseButton.setSize(64, 64);
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
+        flapButton.setSize(96, 96);
+        flapButton.setPosition(0, 0);
+        dropButton.setSize(96, 96);
+        dropButton.setPosition(Core.VIRTUAL_WIDTH - dropButton.getWidth(), 0);
 
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
         stage.addActor(pauseButton);
         stage.addActor(staminaBar);
+        stage.addActor(flapButton);
+        stage.addActor(dropButton);
     }
 
     private void setInputProcessor() {

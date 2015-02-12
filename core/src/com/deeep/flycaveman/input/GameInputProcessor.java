@@ -13,7 +13,7 @@ public class GameInputProcessor implements InputProcessor {
     private final int IDLE = 0;
     private final int CATAPULTSET = 1;
     private final int FLYING = 2;
-    private final int FLAPPING = 3;
+    //    private final int FLAPPING = 3;
     private final int DRAGGING = 4;
     private final int GAMEOVER = 5;
     private final int PAUSE = 6;
@@ -45,7 +45,7 @@ public class GameInputProcessor implements InputProcessor {
     public void update(float delta) {
         if (touchingGround)
             gameState = DRAGGING;
-        if (flying && gameState != FLAPPING)
+        if (flying)
             gameState = FLYING;
 
         switch (gameState) {
@@ -67,9 +67,6 @@ public class GameInputProcessor implements InputProcessor {
             case FLYING:
                 world.caveman.body.setAngularVelocity(0/*-3*/);
                 break;
-            case FLAPPING:
-                world.caveman.updateFlapping(delta);
-                break;
             case DRAGGING:
                 world.caveman.body.setAngularVelocity(0);
                 break;
@@ -81,9 +78,6 @@ public class GameInputProcessor implements InputProcessor {
         switch (gameState) {
             case IDLE:
                 gameState = CATAPULTSET;
-                break;
-            case FLYING:
-                gameState = FLAPPING;
                 break;
             case GAMEOVER:
                 //TODO
@@ -104,9 +98,6 @@ public class GameInputProcessor implements InputProcessor {
                 world.flying = true;
                 world.remove = true;
 
-                gameState = FLYING;
-                break;
-            case FLAPPING:
                 gameState = FLYING;
                 break;
         }
