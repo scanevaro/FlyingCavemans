@@ -247,13 +247,13 @@ wings
   index: -1
 
 items2.png
-size: 1024,512
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 button
   rotate: false
-  xy: 518, 56
+  xy: 260, 2
   size: 254, 126
   split: 26, 28, 24, 29
   pad: 20, 24, 25, 24
@@ -262,43 +262,70 @@ button
   index: -1
 catapultBase
   rotate: false
-  xy: 774, 101
+  xy: 582, 342
   size: 247, 81
   orig: 247, 81
   offset: 0, 0
   index: -1
 cloud1
   rotate: false
-  xy: 2, 201
+  xy: 2, 303
   size: 578, 299
   orig: 578, 299
   offset: 0, 0
   index: -1
 coin
   rotate: false
-  xy: 2, 2
+  xy: 2, 104
   size: 256, 197
   orig: 256, 197
   offset: 0, 0
   index: -1
+forest
+  rotate: false
+  xy: 2, 1326
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+ground
+  rotate: false
+  xy: 2, 604
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
 meat
   rotate: false
-  xy: 582, 184
+  xy: 840, 465
   size: 256, 137
   orig: 256, 137
   offset: 0, 0
   index: -1
 staminaplus
   rotate: false
-  xy: 260, 28
+  xy: 260, 130
   size: 256, 171
   orig: 256, 171
   offset: 0, 0
   index: -1
 steroids
   rotate: false
-  xy: 582, 323
+  xy: 582, 425
   size: 256, 177
   orig: 256, 177
+  offset: 0, 0
+  index: -1
+
+items3.png
+size: 2048,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+mountains
+  rotate: false
+  xy: 2, 2
+  size: 1920, 720
+  orig: 1920, 720
   offset: 0, 0
   index: -1
