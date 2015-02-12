@@ -34,12 +34,13 @@ public class Assets {
     public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
             staminaBackground, staminaFill, staminaBar, staminaHand, backgroundTexture,
             backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture,
-            homeButton, shopButton, staminaplus, shield, steroids, wings, springs;
+            homeButton, shopButton, staminaplus, shield, steroids, wings, springs, coin1,
+            coin2, coin3, coin4, coin5, coin6, cavemanSprings;
     public static Animation cavemanWings;
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
+    public static Sound boing;
     public static Music music;
-    public static Texture coin1, coin2, coin3, coin4, coin5, coin6;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -66,6 +67,8 @@ public class Assets {
 
     private static void loadSounds() {
         assetManager.load("data/sounds/hitGround1.mp3", Sound.class);
+        assetManager.load("data/sounds/boing.mp3", Sound.class);
+
         assetManager.load("data/sounds/music/presenta.mp3", Music.class);
     }
 
@@ -121,15 +124,17 @@ public class Assets {
         wings = items.findRegion("wings");
         springs = items.findRegion("springshoes");
 
-        coin1 = new Texture(Gdx.files.internal("data/Coin1.png"));
-        coin2 = new Texture(Gdx.files.internal("data/Coin2.png"));
-        coin3 = new Texture(Gdx.files.internal("data/Coin3.png"));
-        coin4 = new Texture(Gdx.files.internal("data/Coin4.png"));
-        coin5 = new Texture(Gdx.files.internal("data/Coin5.png"));
-        coin6 = new Texture(Gdx.files.internal("data/Coin6.png"));
+        coin1 = items.findRegion("coin");
+        coin2 = items.findRegion("coin");
+        coin3 = items.findRegion("coin");
+        coin4 = items.findRegion("coin");
+        coin5 = items.findRegion("coin");
+        coin6 = items.findRegion("coin");
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);
+
+        cavemanSprings = items.findRegion("springJump");
     }
 
     private static void setSounds() {
@@ -138,6 +143,7 @@ public class Assets {
         music.setVolume(0.5f);
 
         hitGround1Sound = assetManager.get("data/sounds/hitGround1.mp3");
+        boing = assetManager.get("data/sounds/boing.mp3");
     }
 
     public static void dispose() {

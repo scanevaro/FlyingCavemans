@@ -73,8 +73,7 @@ public class GameContactListener implements ContactListener {
                 || (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
 
             if (world.caveman.springs > 0) {
-                world.caveman.body.applyForce(500, 2500, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
-                world.caveman.springs--;
+                world.caveman.useSpring();
                 return;
             }
 

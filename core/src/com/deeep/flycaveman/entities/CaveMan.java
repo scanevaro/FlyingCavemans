@@ -7,10 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
-import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.classes.Assets;
-
-import java.util.ArrayList;
 
 /**
  * Created by scanevaro on 11/10/2014.
@@ -18,7 +15,7 @@ import java.util.ArrayList;
 public class CaveMan implements Entity {
     private final float startPosX = 11.1f;
     private final float startPosY = 6.5f;
-    private final float restitution = 0.5f;
+    private final float restitution = 0.15f;
 
     private BodyDef bodyDef;
     public Body body;
@@ -42,6 +39,7 @@ public class CaveMan implements Entity {
     private int shields;
     public static boolean addSprings;
     public int springs;
+    public float stateTimeSprings;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodyDef = new BodyDef();
@@ -96,9 +94,17 @@ public class CaveMan implements Entity {
     public void update(float delta) {
         if (upgradeStamina && stamina < 0.5f)
             stamina += delta / 25;
+
+        stateTimeSprings -= delta;
     }
 
     public void draw(Batch batch) {
+        if (stateTimeSprings > 0)
+            sprite.setRegion(Assets.cavemanSprings);
+        else if (wingsPowerup)
+            sprite.setRegion(Assets.cavemanWings.getKeyFrame(0));
+        else sprite.setRegion(Assets.cavemanTexture);
+
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
@@ -144,6 +150,14 @@ public class CaveMan implements Entity {
         CaveMan.addSprings = true;
 
         springs++;
+    }
+
+    public void useSpring() {
+        body.applyForce(500, 2500, body.getPosition().x, body.getPosition().y, true);
+        Assets.boing.play();
+        springs--;
+
+        stateTimeSprings = 1.5f;
     }
 
     public void hit() {
