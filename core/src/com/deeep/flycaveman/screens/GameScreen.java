@@ -87,9 +87,12 @@ public class GameScreen extends AbstractScreen {
         heightLabel = new TextButton("Height: ", Assets.skin);
 
         ImageButton.ImageButtonStyle restartStyle = new ImageButton.ImageButtonStyle();
-        restartStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
+        restartStyle.imageUp = new TextureRegionDrawable(Assets.pauseUp);
         restartStyle.imageUp.setMinWidth(64);
         restartStyle.imageUp.setMinHeight(64);
+        restartStyle.imageDown = new TextureRegionDrawable(Assets.pauseUp);
+        restartStyle.imageDown.setMinWidth(64);
+        restartStyle.imageDown.setMinHeight(64);
         pauseButton = new ImageButton(restartStyle);
 
         flapButton = new FlapButton();
