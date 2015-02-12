@@ -182,8 +182,8 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void updateGameCam() {
-        if (world.caveman.body.getPosition().x > 11.1f)
-            if (world.caveman.body.getPosition().y >= 6.5f)
+        if (world.caveman.body.getPosition().x > world.caveman.startPosX)
+            if (world.caveman.body.getPosition().y >= world.caveman.startPosY)
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 2.5f, 0);
             else
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5, 9, 0);

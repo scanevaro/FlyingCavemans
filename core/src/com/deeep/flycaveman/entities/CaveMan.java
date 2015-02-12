@@ -13,8 +13,8 @@ import com.deeep.flycaveman.classes.Assets;
  * Created by scanevaro on 11/10/2014.
  */
 public class CaveMan implements Entity {
-    private final float startPosX = 11.1f;
-    private final float startPosY = 6.5f;
+    public final float startPosX = 11.1f;
+    public final float startPosY = 6.5f;
     private final float restitution = 0.15f;
 
     private BodyDef bodyDef;
