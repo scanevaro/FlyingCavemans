@@ -15,7 +15,7 @@ import com.deeep.flycaveman.classes.Assets;
 public class CaveMan implements Entity {
     public final float startPosX = 11.1f;
     public final float startPosY = 6.5f;
-    private final float restitution = 0.15f;
+    private final float restitution = 0.5f;
 
     private BodyDef bodyDef;
     public Body body;

@@ -13,9 +13,19 @@ import com.deeep.flycaveman.entities.PowerUp;
 public class GameContactListener implements ContactListener {
     private com.deeep.flycaveman.classes.World world;
     private float force;
+    private final float smallEggForce = 10;
+    private final float brachioForce = 20;
+    private final float quetzaForce = 18;
 
     public GameContactListener(com.deeep.flycaveman.classes.World world) {
         this.world = world;
+    }
+
+    public void update() {
+        if (GameInputProcessor.touchingGround && world.caveman.body.getLinearVelocity().x > 0) {
+            force -= world.caveman.body.getLinearVelocity().x / 2;
+            world.caveman.body.applyForceToCenter(force, 0, true);
+        }
     }
 
     @Override
@@ -31,13 +41,13 @@ public class GameContactListener implements ContactListener {
 
             switch (obstacle.type) {
                 case 0: //SMALL_EGG
-                    world.caveman.body.applyForce(1500, 1500, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
+                    world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x, smallEggForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                     break;
                 case 1: //BRACHIOSAURUS
-                    world.caveman.body.applyForce(5000, 5000, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
+                    world.caveman.body.setLinearVelocity(brachioForce / 2 + world.caveman.body.getLinearVelocity().x, brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                     break;
                 case 2: //QUETZALCOATLUS
-                    world.caveman.body.applyForce(2500, 2500, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
+                    world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x, quetzaForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                     break;
             }
         } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {
@@ -89,12 +99,5 @@ public class GameContactListener implements ContactListener {
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
 
-    }
-
-    public void update() {
-        if (GameInputProcessor.touchingGround && world.caveman.body.getLinearVelocity().x > 0) {
-            force -= 2.0f;
-            world.caveman.body.applyForce(force, 0, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
-        }
     }
 }

@@ -111,7 +111,7 @@ public class World extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setProjectionMatrix(worldStage.getCamera().combined);
-        System.out.println(worldStage.getCamera().position.x);
+//        System.out.println(worldStage.getCamera().position.x);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         batch.end();

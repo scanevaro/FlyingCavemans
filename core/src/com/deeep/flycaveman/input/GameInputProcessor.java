@@ -26,15 +26,9 @@ public class GameInputProcessor implements InputProcessor {
     public static boolean touchingGround;
     private float force;
 
-    private float strength;
-    private float flyTime;
-
     public GameInputProcessor(Core game, World world) {
         this.game = game;
         this.world = world;
-
-        flyTime = 0.5f;
-        strength = 50;
 
         flying = false;
         touchingGround = false;
