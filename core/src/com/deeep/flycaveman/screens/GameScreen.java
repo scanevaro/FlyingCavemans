@@ -71,8 +71,8 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
         prepareShopDialog();
 
-        if (!Assets.music.isPlaying())
-            Assets.music.play();
+//        if (!Assets.music.isPlaying())
+//            Assets.music.play();
 
         Assets.font.setScale(0.5f);
     }
