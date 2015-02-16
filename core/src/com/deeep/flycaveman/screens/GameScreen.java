@@ -49,6 +49,7 @@ public class GameScreen extends AbstractScreen {
      * World
      */
     public World world;
+    private float height;
 
     public GameScreen(Core game) {
         this.game = game;
@@ -192,10 +193,11 @@ public class GameScreen extends AbstractScreen {
             else
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
 
-//        if (world.caveman.body.getLinearVelocity().x > 5) {
-//            gameCamera.zoom = 2;
-//        } else
-//            gameCamera.zoom = 1;
+        if (world.caveman.body.getPosition().y > Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
+            height = world.caveman.body.getPosition().y - 9;
+            gameCamera.zoom = 1 + (height * 2.5f) / 56;
+        } else
+            gameCamera.zoom = 1;
 
         gameCamera.update();
     }

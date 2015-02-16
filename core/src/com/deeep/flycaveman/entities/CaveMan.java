@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.input.GameInputProcessor;
 
 /**
  * Created by scanevaro on 11/10/2014.
@@ -117,6 +118,8 @@ public class CaveMan implements Entity {
     }
 
     public void updateFlapping(float delta) {
+        if (GameInputProcessor.touchingGround) return;
+
         if (stamina > 0) {
             stamina -= delta;
             body.applyForceToCenter(strength / 3, strength, true);
@@ -164,6 +167,8 @@ public class CaveMan implements Entity {
     }
 
     public void drop() {
+        if (GameInputProcessor.touchingGround) return;
+
         body.applyForceToCenter(0, -10000, true);
     }
 
