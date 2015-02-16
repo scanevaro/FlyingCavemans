@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import java.util.Random;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Elmar
@@ -20,6 +22,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
  * To change this template use File | Settings | File Templates.
  */
 public class Assets {
+
+    private static Random rand;
 
     public static AssetManager assetManager;
 
@@ -38,8 +42,7 @@ public class Assets {
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings;
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound;
-    public static Sound boing;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3;
     public static Music music;
 
     public Assets() {
@@ -48,6 +51,8 @@ public class Assets {
     }
 
     public static void load() {
+        rand = new Random();
+
         darkSky = new Texture(Gdx.files.internal("darkness.png"));
         assetManager.load("data/loading.pack", TextureAtlas.class);
         assetManager.finishLoading();
@@ -68,6 +73,9 @@ public class Assets {
     private static void loadSounds() {
         assetManager.load("data/sounds/hitGround1.mp3", Sound.class);
         assetManager.load("data/sounds/boing.mp3", Sound.class);
+        assetManager.load("data/sounds/hurt1.mp3", Sound.class);
+        assetManager.load("data/sounds/hurt2.mp3", Sound.class);
+        assetManager.load("data/sounds/hurt3.mp3", Sound.class);
 
         assetManager.load("data/sounds/music/presenta.wav", Music.class);
     }
@@ -147,10 +155,23 @@ public class Assets {
 
         hitGround1Sound = assetManager.get("data/sounds/hitGround1.mp3");
         boing = assetManager.get("data/sounds/boing.mp3");
+        hurt1 = assetManager.get("data/sounds/hurt1.mp3");
+        hurt2 = assetManager.get("data/sounds/hurt2.mp3");
+        hurt3 = assetManager.get("data/sounds/hurt3.mp3");
     }
 
     public static void dispose() {
         skin.dispose();
         assetManager.dispose();
+    }
+
+    public static void hitGround() {
+        float random = rand.nextFloat();
+        if (random >= 0.65f)
+            hurt1.play();
+        else if (random < 0.65f && random > 0.45f)
+            hurt2.play();
+        else
+            hurt3.play();
     }
 }

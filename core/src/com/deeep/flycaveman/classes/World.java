@@ -77,9 +77,6 @@ public class World extends Actor {
         spaceColor = new Color(0, 0, 0, 1f);//
         shapeRenderer = new ShapeRenderer();
         space = new Space();
-        /**backgroundTexture.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
-         backgroundSprite = new Sprite(Assets.backgroundTexture);
-         backgroundSprite.setSize(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT); */
         scrollTimer = 0;
 
 

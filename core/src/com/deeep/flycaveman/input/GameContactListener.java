@@ -88,6 +88,7 @@ public class GameContactListener implements ContactListener {
             }
 
             Assets.hitGround1Sound.play();
+            Assets.hitGround();
         }
     }
 
