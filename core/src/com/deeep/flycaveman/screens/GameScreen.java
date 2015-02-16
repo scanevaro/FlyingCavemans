@@ -71,8 +71,8 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
         prepareShopDialog();
 
-//        if (!Assets.music.isPlaying())
-//            Assets.music.play();
+        if (!Assets.music.isPlaying())
+            Assets.music.play();
 
         Assets.font.setScale(0.5f);
     }
@@ -187,10 +187,16 @@ public class GameScreen extends AbstractScreen {
 
     private void updateGameCam() {
         if (world.caveman.body.getPosition().x > world.caveman.startPosX)
-            if (world.caveman.body.getPosition().y >= world.caveman.startPosY - 2)
+            if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2)
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 0.5f, 0);
             else
-                gameCamera.position.set(world.caveman.body.getPosition().x + 5, 7, 0);
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
+
+//        if (world.caveman.body.getLinearVelocity().x > 5) {
+//            gameCamera.zoom = 2;
+//        } else
+//            gameCamera.zoom = 1;
+
         gameCamera.update();
     }
 

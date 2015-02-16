@@ -107,7 +107,7 @@ public class Catapult implements Entity {
         armJointDef.motorSpeed = -10/*-1260*/;
         armJointDef.lowerAngle = (float) Math.toRadians(9);
         armJointDef.upperAngle = (float) Math.toRadians(75);
-        armJointDef.maxMotorTorque = 2500;
+        armJointDef.maxMotorTorque = 5000;
 
         armJoint = (RevoluteJoint) world.createJoint(armJointDef);
     }

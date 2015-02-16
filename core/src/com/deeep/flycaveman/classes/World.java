@@ -83,7 +83,7 @@ public class World extends Actor {
         scrollTimer = 0;
 
 
-        box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, -9.81f), true);
+        box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, -18.81f), true);
         box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
 
         ground = new Ground(box2dWorld);

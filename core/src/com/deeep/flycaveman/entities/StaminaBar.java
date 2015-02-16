@@ -32,7 +32,7 @@ public class StaminaBar extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        fill.setScaleX((caveman.stamina * 100 / 0.5f) * 20 / 100);
+        fill.setScaleX((caveman.stamina * 100 / 1.0f) * 20 / 100);
     }
 
     @Override

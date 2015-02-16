@@ -31,11 +31,11 @@ public class Assets {
 
     public static TextureAtlas items;
     public static Texture darkSky;
-    public static TextureRegion cavemanTexture, brachioTexture, quetzaTexture, smallEggTexture,
-            staminaBackground, staminaFill, staminaBar, staminaHand, backgroundTexture,
-            backgroundTexture2, restartButton, catapultArmTexture, catapultBaseTexture,
-            homeButton, shopButton, staminaplus, shield, steroids, wings, springs, coin1,
-            coin2, coin3, coin4, coin5, coin6, cavemanSprings, flapUp, dropUp, pauseUp;
+    public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
+            smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
+            backgroundTexture, backgroundTexture2, restartButton, catapultArmTexture,
+            catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
+            wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings;
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound;
@@ -69,7 +69,7 @@ public class Assets {
         assetManager.load("data/sounds/hitGround1.mp3", Sound.class);
         assetManager.load("data/sounds/boing.mp3", Sound.class);
 
-        assetManager.load("data/sounds/music/presenta.mp3", Music.class);
+        assetManager.load("data/sounds/music/presenta.wav", Music.class);
     }
 
     public static void set() {
@@ -141,9 +141,9 @@ public class Assets {
     }
 
     private static void setSounds() {
-        music = assetManager.get("data/sounds/music/presenta.mp3");
+        music = assetManager.get("data/sounds/music/presenta.wav");
         music.setLooping(true);
-        music.setVolume(0.5f);
+//        music.setVolume(0.5f);
 
         hitGround1Sound = assetManager.get("data/sounds/hitGround1.mp3");
         boing = assetManager.get("data/sounds/boing.mp3");
