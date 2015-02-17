@@ -33,7 +33,7 @@ public class GameScreen extends AbstractScreen {
      */
     private SpriteBatch batch;
     private Stage worldStage;
-    private OrthographicCamera gameCamera;
+    public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
     /**
      * Widgets
@@ -111,6 +111,7 @@ public class GameScreen extends AbstractScreen {
 
     private void prepareWorld() {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
+        gameCamera = (OrthographicCamera) worldStage.getCamera();
         world = new World(worldStage, stage, true);
         stage.addActor(world);
 
@@ -198,7 +199,7 @@ public class GameScreen extends AbstractScreen {
             gameCamera.zoom = 1 + (height * 2.5f) / 56;
         } else
             gameCamera.zoom = 1;
-
+        gameCamera.zoom = Math.min(gameCamera.zoom, 2f);
         gameCamera.update();
     }
 

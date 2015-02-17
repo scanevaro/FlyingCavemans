@@ -14,6 +14,7 @@ import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;
 import com.deeep.flycaveman.input.GameInputProcessor;
+import com.deeep.flycaveman.screens.GameScreen;
 
 import java.util.Random;
 
@@ -45,6 +46,7 @@ public class World extends Actor {
     private int spaceColorHeight = 80;
     private Color spaceColor;
     private int finalSpaceColorHeight = 120;
+    public float zoom = 1;
 
     //private Sprite backgroundSprite;
     private float scrollTimer;
@@ -133,9 +135,24 @@ public class World extends Actor {
             bottomColor = toColor(percentage, skyColor, sunColor);
             topColor = toColor(Math.min(percentage + 0.4f, 1), skyColor, sunColor);
         }
-
+        System.out.println(worldStage.getViewport().getCamera().position.x + ", " + worldStage.getCamera().position.y);
         //TODO this
-        shapeRenderer.rect(sky.x, sky.y - 16, 0, 0, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32, 1, 1, 0, bottomColor, bottomColor, topColor, topColor);
+        shapeRenderer.rect(
+                GameScreen.gameCamera.position.x - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) / 2),
+                GameScreen.gameCamera.position.y - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight) / 2),
+                0, 0,
+                GameScreen.gameCamera.viewportWidth * GameScreen.gameCamera.zoom,
+                GameScreen.gameCamera.viewportHeight * GameScreen.gameCamera.zoom,
+                1, 1, 0,
+                bottomColor, bottomColor, topColor, topColor);/*
+        shapeRenderer.rect(
+                worldStage.getCamera().position.x - worldStage.getCamera().viewportWidth / 2,
+                worldStage.getCamera().position.y - worldStage.getCamera().viewportHeight / 2,
+                0, 0,
+                worldStage.getCamera().viewportWidth,
+                worldStage.getCamera().viewportHeight,
+                1, 1, 0,
+                bottomColor, bottomColor, topColor, topColor);*/
         //shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
 //        coinSpawner.render(batch);
         shapeRenderer.end();
