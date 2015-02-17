@@ -151,7 +151,7 @@ public class Assets {
     private static void setSounds() {
         music = assetManager.get("data/sounds/music/presenta.wav");
         music.setLooping(true);
-//        music.setVolume(0.5f);
+        music.setVolume(0.5f);
 
         hitGround1Sound = assetManager.get("data/sounds/hitGround1.mp3");
         boing = assetManager.get("data/sounds/boing.mp3");
