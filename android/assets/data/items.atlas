@@ -2,7 +2,7 @@
 items.png
 size: 2048,2048
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 BRACHIOSAURUS
   rotate: false
@@ -53,16 +53,30 @@ caveman
   orig: 109, 46
   offset: 0, 0
   index: -1
-cavemanWings1
+cavemanFlap1
   rotate: false
   xy: 1924, 1682
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
-cavemanWings2
+cavemanFlap2
   rotate: false
   xy: 1924, 1619
+  size: 86, 61
+  orig: 86, 61
+  offset: 0, 0
+  index: -1
+cavemanWings1
+  rotate: false
+  xy: 1924, 1556
+  size: 86, 61
+  orig: 86, 61
+  offset: 0, 0
+  index: -1
+cavemanWings2
+  rotate: false
+  xy: 1924, 1493
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
@@ -99,7 +113,7 @@ dropUp
   index: -1
 expresionsCircle
   rotate: false
-  xy: 1924, 1543
+  xy: 1924, 1417
   size: 79, 74
   orig: 79, 74
   offset: 0, 0
@@ -113,7 +127,7 @@ flapUp
   index: -1
 happyface
   rotate: false
-  xy: 1924, 1220
+  xy: 1924, 1094
   size: 61, 56
   orig: 61, 56
   offset: 0, 0
@@ -127,7 +141,7 @@ home
   index: -1
 koface
   rotate: false
-  xy: 1987, 1219
+  xy: 1987, 1093
   size: 59, 57
   orig: 59, 57
   offset: 0, 0
@@ -141,7 +155,7 @@ painface
   index: -1
 passionface
   rotate: false
-  xy: 1997, 1497
+  xy: 1997, 1371
   size: 48, 44
   orig: 48, 44
   offset: 0, 0
@@ -162,7 +176,7 @@ shield
   index: -1
 smallEgg
   rotate: false
-  xy: 1924, 1278
+  xy: 1924, 1152
   size: 64, 87
   orig: 64, 87
   offset: 0, 0
@@ -176,7 +190,7 @@ sodacan
   index: -1
 springJump
   rotate: false
-  xy: 1924, 1367
+  xy: 1924, 1241
   size: 69, 116
   orig: 69, 116
   offset: 0, 0
@@ -205,14 +219,14 @@ staminafill
   index: -1
 staminahand
   rotate: false
-  xy: 1924, 1485
+  xy: 1924, 1359
   size: 71, 56
   orig: 71, 56
   offset: 0, 0
   index: -1
 tiredface
   rotate: false
-  xy: 1924, 1170
+  xy: 1924, 1044
   size: 58, 48
   orig: 58, 48
   offset: 0, 0
@@ -242,11 +256,11 @@ wings
 items2.png
 size: 2048,2048
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 button
   rotate: false
-  xy: 260, 2
+  xy: 518, 148
   size: 254, 126
   split: 26, 28, 24, 29
   pad: 20, 24, 25, 24
@@ -255,93 +269,100 @@ button
   index: -1
 catapultBase
   rotate: false
-  xy: 2, 21
+  xy: 2, 2
   size: 247, 81
   orig: 247, 81
   offset: 0, 0
   index: -1
 cloud1
   rotate: false
-  xy: 2, 303
+  xy: 2, 284
   size: 578, 299
   orig: 578, 299
   offset: 0, 0
   index: -1
 coin
   rotate: false
-  xy: 2, 104
+  xy: 2, 85
   size: 256, 197
   orig: 256, 197
   offset: 0, 0
   index: -1
 forest
   rotate: false
-  xy: 2, 1326
+  xy: 2, 1307
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
 ground
   rotate: false
-  xy: 2, 604
+  xy: 2, 585
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
 meat
   rotate: false
-  xy: 1454, 286
+  xy: 1723, 273
   size: 256, 137
   orig: 256, 137
   offset: 0, 0
   index: -1
 restart
   rotate: false
-  xy: 582, 295
+  xy: 582, 276
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 shop
   rotate: false
-  xy: 889, 295
+  xy: 889, 276
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 spinach
   rotate: false
-  xy: 1196, 301
+  xy: 1465, 282
   size: 256, 301
   orig: 256, 301
   offset: 0, 0
   index: -1
 staminabarBackground
   rotate: false
-  xy: 1712, 532
+  xy: 774, 204
   size: 189, 70
   orig: 189, 70
   offset: 0, 0
   index: -1
 staminaplus
   rotate: false
-  xy: 260, 130
+  xy: 1723, 412
   size: 256, 171
   orig: 256, 171
   offset: 0, 0
   index: -1
 steroids
   rotate: false
-  xy: 1454, 425
+  xy: 260, 105
   size: 256, 177
   orig: 256, 177
+  offset: 0, 0
+  index: -1
+tree
+  rotate: false
+  xy: 1196, 283
+  size: 267, 300
+  orig: 267, 300
   offset: 0, 0
   index: -1
 
 items3.png
 size: 2048,1024
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 mountains
   rotate: false

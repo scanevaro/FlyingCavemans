@@ -90,7 +90,7 @@ public class CaveMan implements Entity {
         if (addSteroids) strength += 25;
         if (addShield) shields++;
         if (addSprings) springs++;
-        stamina = 1.0f;
+        stamina = 5.0f;
     }
 
     public void draw(Batch batch) {

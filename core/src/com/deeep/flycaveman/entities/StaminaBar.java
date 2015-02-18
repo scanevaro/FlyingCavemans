@@ -11,18 +11,30 @@ import com.deeep.flycaveman.classes.Assets;
  */
 public class StaminaBar extends Actor {
     private CaveMan caveman;
-    public Image background, fill, bar, hand;
+    public Image background, fill[], bar, hand;
 
     public StaminaBar(CaveMan caveMan) {
         this.caveman = caveMan;
 
         background = new Image(Assets.staminaBackground);
-        fill = new Image(Assets.staminaFill);
+//        fill = new Image(Assets.staminaFill);
+        fill = new Image[(int) caveMan.stamina];
+        for (int i = 0; i < (int) caveMan.stamina; i++) {
+            fill[i] = new Image(Assets.staminaFill);
+//            fill[i].setSize(32, 32);
+        }
+
         bar = new Image(Assets.staminaBar);
         hand = new Image(Assets.staminaHand);
 
         background.setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2, 5);
-        fill.setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2 + 3, 10);
+
+        float posX = 3;
+        for (int x = 0; x < caveMan.stamina; x++) {
+            fill[x].setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2 + posX, 10);
+            posX += fill[x].getWidth() + 3;
+        }
+
         bar.setPosition(Core.VIRTUAL_WIDTH / 2 - bar.getWidth() / 2, 5);
         hand.setSize(48, 54);
         hand.setPosition(Core.VIRTUAL_WIDTH / 2 - hand.getWidth() / 2, 15);
@@ -32,7 +44,9 @@ public class StaminaBar extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        fill.setScaleX((caveman.stamina * 100 / 1.0f) * 20 / 100);
+        for (int x = 0; x < caveman.stamina; x++)
+//            fill[x].setScaleX((caveman.stamina / 5 * 100 / 5.0f) * 20 / 100);
+            fill[x].setScaleX(caveman.stamina / 5 * 100 / 5.0f);
     }
 
     @Override
@@ -40,7 +54,10 @@ public class StaminaBar extends Actor {
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         background.draw(batch, parentAlpha);
-        fill.draw(batch, parentAlpha);
+
+        for (int x = 0; x < caveman.stamina; x++)
+            fill[x].draw(batch, parentAlpha);
+
         bar.draw(batch, parentAlpha);
         hand.draw(batch, parentAlpha);
     }

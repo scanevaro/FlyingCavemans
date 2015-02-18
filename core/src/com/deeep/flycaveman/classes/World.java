@@ -168,11 +168,11 @@ public class World extends Actor {
         //backgroundSprite.draw(batch);
 
         batch.end();
-//        batch.begin();
-//
-//        debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
-//
-//        batch.end();
+        batch.begin();
+
+        debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
+
+        batch.end();
         batch.begin();
 //
         space.draw((SpriteBatch) batch);
