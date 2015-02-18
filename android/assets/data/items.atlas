@@ -11,6 +11,48 @@ BRACHIOSAURUS
   orig: 397, 142
   offset: 0, 0
   index: -1
+Coin1
+  rotate: false
+  xy: 2014, 1953
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+Coin2
+  rotate: false
+  xy: 2014, 1921
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+Coin3
+  rotate: false
+  xy: 2014, 1889
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+Coin4
+  rotate: false
+  xy: 2014, 1857
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+Coin5
+  rotate: false
+  xy: 2014, 1825
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+Coin6
+  rotate: false
+  xy: 2014, 1793
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
 QUETZA
   rotate: false
   xy: 1876, 381
