@@ -48,18 +48,15 @@ public class CoinSpawner {
     }
 
     public void render(Batch b) {
-        b.begin();
         for (Coin c: coins){
             c.draw(b);
         }
-        b.end();
     }
 
     public void update(float delta, CaveMan caveman, World world) {
         for (Coin c: coins){
             c.update(delta);
         }
-        spawnCoins(1, caveman.body.getPosition().x, caveman.sprite.getWidth(), world);
         if(caveman.body.getPosition().x > 50) spawnCoins(r.nextInt(1), caveman.body.getPosition().x, caveman.sprite.getWidth(), world);
     }
 }

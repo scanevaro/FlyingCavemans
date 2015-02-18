@@ -132,12 +132,12 @@ public class Assets {
         wings = items.findRegion("wings");
         springs = items.findRegion("springshoes");
 
-        coin1 = items.findRegion("coin");
-        coin2 = items.findRegion("coin");
-        coin3 = items.findRegion("coin");
-        coin4 = items.findRegion("coin");
-        coin5 = items.findRegion("coin");
-        coin6 = items.findRegion("coin");
+        coin1 = items.findRegion("Coin1");
+        coin2 = items.findRegion("Coin2");
+        coin3 = items.findRegion("Coin3");
+        coin4 = items.findRegion("Coin4");
+        coin5 = items.findRegion("Coin5");
+        coin6 = items.findRegion("Coin6");
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);

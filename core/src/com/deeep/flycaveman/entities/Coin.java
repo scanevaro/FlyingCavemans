@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.World;
@@ -18,15 +19,15 @@ public class Coin {
     public Body body;
     public Fixture fixture;
 
-    private int tick;
+    private float tick;
     private Sprite[] sprites;
     private CircleShape shape;
     private FixtureDef fixtureDef;
 
-    private final float INTERVAL = 10F;
+    private final float INTERVAL = 2F;
 
     public Coin(float x, float y, World world) {
-        sprites = new Sprite[] {new Sprite(Assets.coin1), new Sprite(Assets.coin2), new Sprite(Assets.coin3), new Sprite(Assets.coin4), new Sprite(Assets.coin5), new Sprite(Assets.coin6)};
+        sprites = new Sprite[]{new Sprite(Assets.coin1), new Sprite(Assets.coin2), new Sprite(Assets.coin3), new Sprite(Assets.coin4), new Sprite(Assets.coin5), new Sprite(Assets.coin6)};
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
         bodyDef.position.set(x, y);
@@ -40,8 +41,10 @@ public class Coin {
         fixtureDef.restitution = 0.5F;
 
         body = world.box2dWorld.createBody(bodyDef);
-        for (Sprite s: sprites)
-            s.setSize(1, 1);
+        for (Sprite s : sprites) {
+            s.setSize(2, 2);
+            s.setOrigin(s.getWidth() / 2, s.getHeight() / 2);
+        }
         fixture = body.createFixture(fixtureDef);
 
         shape.dispose();
@@ -53,11 +56,13 @@ public class Coin {
     }
 
     public void draw(Batch b){
-        body.setUserData(getCurrentSprite());
-        b.draw(sprites[1], body.getPosition().x, body.getPosition().y);
+        getCurrentSprite().setPosition(body.getPosition().x - sprites[1].getWidth() / 2, body.getPosition().y - sprites[1].getHeight() / 2);
+        getCurrentSprite().setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+        getCurrentSprite().draw(b);
     }
 
     public Sprite getCurrentSprite() {
+        //System.out.println(tick);
         if(tick < INTERVAL * 1) return sprites[0];
         if(tick < INTERVAL * 2) return sprites[1];
         if(tick < INTERVAL * 3) return sprites[2];

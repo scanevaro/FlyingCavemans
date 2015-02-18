@@ -107,12 +107,13 @@ public class World extends Actor {
         if (debug) debugRenderer = new Box2DDebugRenderer();
         darkness = new Sprite(Assets.darkSky);
         shootStateTime = 0;
+        coinSpawner.spawnCoins(1, caveman.body.getPosition().x, caveman.sprite.getWidth(), this);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setProjectionMatrix(worldStage.getCamera().combined);
-//        System.out.println(worldStage.getCamera().position.x);
+        //System.out.println(worldStage.getCamera().position.x);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         batch.end();
@@ -137,7 +138,7 @@ public class World extends Actor {
             bottomColor = toColor(percentage, skyColor, sunColor);
             topColor = toColor(Math.min(percentage + 0.4f, 1), skyColor, sunColor);
         }
-        System.out.println(worldStage.getViewport().getCamera().position.x + ", " + worldStage.getCamera().position.y);
+        //System.out.println(worldStage.getViewport().getCamera().position.x + ", " + worldStage.getCamera().position.y);
         //TODO this
         shapeRenderer.rect(
                 GameScreen.gameCamera.position.x - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) / 2),
@@ -156,10 +157,7 @@ public class World extends Actor {
                 1, 1, 0,
                 bottomColor, bottomColor, topColor, topColor);*/
         //shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
-        coinSpawner.render(batch);
-        batch.begin();
-        coin.draw(batch);
-        batch.end();
+
         shapeRenderer.end();
 
         batch.begin();
@@ -174,12 +172,13 @@ public class World extends Actor {
 
         batch.end();
         batch.begin();
-//
+
         space.draw((SpriteBatch) batch);
         {/**Draw Box2D Body Textures*/
             for (Entity entity : entities)
                 entity.draw(batch);
         }
+        coinSpawner.render(batch);
         powerUpSpawner.draw((SpriteBatch) batch);
         //darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
         //darkness.draw(batch);
