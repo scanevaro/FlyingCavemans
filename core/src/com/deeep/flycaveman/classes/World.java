@@ -36,7 +36,8 @@ public class World extends Actor {
     public Catapult catapult;
     private Sprite darkness;
     private Obstacle[] obstacle;
-    //    private CoinSpawner coinSpawner;
+    private CoinSpawner coinSpawner;
+    private Coin coin;
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
     private int skyColorHeight = 0;
@@ -86,7 +87,8 @@ public class World extends Actor {
         box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
 
         ground = new Ground(box2dWorld);
-//        coinSpawner = new CoinSpawner();
+        coinSpawner = new CoinSpawner();
+        coin = new Coin(11, 6, this);
         entities.add(catapult = new Catapult(box2dWorld, ground));
 
         obstacle = new Obstacle[5];
@@ -154,7 +156,10 @@ public class World extends Actor {
                 1, 1, 0,
                 bottomColor, bottomColor, topColor, topColor);*/
         //shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
-//        coinSpawner.render(batch);
+        coinSpawner.render(batch);
+        batch.begin();
+        coin.draw(batch);
+        batch.end();
         shapeRenderer.end();
 
         batch.begin();
@@ -183,7 +188,7 @@ public class World extends Actor {
     }
 
     public void update(float delta) {
-//        coinSpawner.update(delta, caveman, this);
+        coinSpawner.update(delta, caveman, this);
         gameContactListener.update();
         updateCamera();
         updateSky();
