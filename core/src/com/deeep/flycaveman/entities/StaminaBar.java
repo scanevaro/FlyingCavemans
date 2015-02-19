@@ -17,12 +17,10 @@ public class StaminaBar extends Actor {
         this.caveman = caveMan;
 
         background = new Image(Assets.staminaBackground);
-//        fill = new Image(Assets.staminaFill);
+
         fill = new Image[(int) caveMan.stamina];
-        for (int i = 0; i < (int) caveMan.stamina; i++) {
+        for (int i = 0; i < (int) caveMan.stamina; i++)
             fill[i] = new Image(Assets.staminaFill);
-//            fill[i].setSize(32, 32);
-        }
 
         bar = new Image(Assets.staminaBar);
         hand = new Image(Assets.staminaHand);
@@ -44,9 +42,7 @@ public class StaminaBar extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-        for (int x = 0; x < caveman.stamina; x++)
-//            fill[x].setScaleX((caveman.stamina / 5 * 100 / 5.0f) * 20 / 100);
-            fill[x].setScaleX(caveman.stamina / 5 * 100 / 5.0f);
+//        fill[Math.round(caveman.stamina)].setScaleX(caveman.stamina / 5 * 100 / 5.0f);
     }
 
     @Override

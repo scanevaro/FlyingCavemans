@@ -112,7 +112,7 @@ public class GameScreen extends AbstractScreen {
     private void prepareWorld() {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
         gameCamera = (OrthographicCamera) worldStage.getCamera();
-        world = new World(worldStage, stage, true);
+        world = new World(worldStage, stage, false);
         stage.addActor(world);
 
         flapButton.setCaveMan(world.caveman);

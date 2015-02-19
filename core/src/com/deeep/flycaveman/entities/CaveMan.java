@@ -29,7 +29,7 @@ public class CaveMan implements Entity {
     public Sprite sprite;
 
     public float stamina;
-    public static final float maxStamina = 0.5f;
+    public static final float maxStamina = 5.0f;
     public float strength;
 
     public static boolean wingsPowerup;
@@ -42,6 +42,7 @@ public class CaveMan implements Entity {
     public int springs;
     public float stateTimeSprings;
     public boolean flapping;
+    public static float flapStatetime;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodyDef = new BodyDef();
@@ -61,8 +62,7 @@ public class CaveMan implements Entity {
 
         body = world.box2dWorld.createBody(bodyDef);
 
-        if (!wingsPowerup)
-            sprite = new Sprite(Assets.cavemanTexture);
+        if (!wingsPowerup) sprite = new Sprite(Assets.cavemanTexture);
         else sprite = new Sprite(Assets.cavemanWings.getKeyFrame(0));
 
         sprite.setSize(size * 2, size * 2);
@@ -120,14 +120,18 @@ public class CaveMan implements Entity {
     public void updateFlapping(float delta) {
         if (GameInputProcessor.touchingGround) return;
 
-        if (stamina > 0) {
-            stamina -= delta;
-            body.applyForceToCenter(strength / 3, strength, true);
+        if (flapStatetime == 0 && stamina > 0) {
+            flapStatetime -= delta;
+            stamina -= 1;
+            body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
 
             if (wingsPowerup) {
                 stateTime += delta;
                 sprite.setRegion(Assets.cavemanWings.getKeyFrame(stateTime));
             }
+
+            if (flapStatetime > 0.8f)
+                flapStatetime = 0;
         }
     }
 

@@ -15,7 +15,7 @@ public class PowerUpSpawner {
     private Array<PowerUp> powerUps;
     private Array<PowerUp> removals;
     private World world;
-    private int maxPowerUps = 5;
+    private int maxPowerUps = 80;
     private Random random = new Random();
 
     public PowerUpSpawner(World world) {
@@ -26,7 +26,7 @@ public class PowerUpSpawner {
 
     public void update(float deltaT) {
         if (powerUps.size < maxPowerUps) {
-            if (powerUps.size < 3) {
+            if (powerUps.size < 8) {
                 spawnRandomRandom(world.caveman);
             }
         }

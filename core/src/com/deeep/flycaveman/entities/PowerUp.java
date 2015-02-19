@@ -69,15 +69,17 @@ public class PowerUp implements Entity {
         bodyDef.type = BodyDef.BodyType.StaticBody;
 
         shape = new PolygonShape();
-        bodyDef.position.set(x,y);
-        shape.setAsBox(1, 1.5f);
+        bodyDef.position.set(x, y);
+//        shape.setAsBox(1, 1.5f);
+        shape.setAsBox(0.6f, 1.2f);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
 
         body = world.box2dWorld.createBody(bodyDef);
 
-        sprite.setSize(2, 3);
+//        sprite.setSize(2, 3);
+        sprite.setSize(1.2f, 2.4f);
         body.setUserData(sprite);
 
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);

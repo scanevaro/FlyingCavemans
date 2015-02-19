@@ -56,6 +56,7 @@ public class World extends Actor {
     private float camPosX;
     private float camPosY;
 
+    private boolean debug;
     public boolean flying;
     public boolean remove;
     private float shootStateTime;
@@ -82,7 +83,6 @@ public class World extends Actor {
         space = new Space();
         scrollTimer = 0;
 
-
         box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, -18.81f), true);
         box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
 
@@ -91,20 +91,23 @@ public class World extends Actor {
         coin = new Coin(11, 6, this);
         entities.add(catapult = new Catapult(box2dWorld, ground));
 
-        obstacle = new Obstacle[5];
+        obstacle = new Obstacle[80];
         obstaclesPosX = 0;
         random = new Random();
         for (int i = 0; i < obstacle.length; i++) {
             obstaclesPosX += 50 + random.nextInt(50);
             entities.add(obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random));
         }
+//        obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
         entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 
+        this.debug = debug;
         if (debug) debugRenderer = new Box2DDebugRenderer();
+
         darkness = new Sprite(Assets.darkSky);
         shootStateTime = 0;
         coinSpawner.spawnCoins(1, caveman.body.getPosition().x, caveman.sprite.getWidth(), this);
@@ -168,7 +171,8 @@ public class World extends Actor {
         batch.end();
         batch.begin();
 
-        debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
+        if (debug)
+            debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
 
         batch.end();
         batch.begin();
