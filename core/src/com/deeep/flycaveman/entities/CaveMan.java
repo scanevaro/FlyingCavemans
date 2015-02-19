@@ -123,7 +123,10 @@ public class CaveMan implements Entity {
         if (flapStatetime == 0 && stamina > 0) {
             flapStatetime -= delta;
             stamina -= 1;
-            body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
+
+            if (body.getLinearVelocity().y < 0)
+                body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
+            else body.setLinearVelocity(body.getLinearVelocity().x, 5 + body.getLinearVelocity().y);
 
             if (wingsPowerup) {
                 stateTime += delta;
