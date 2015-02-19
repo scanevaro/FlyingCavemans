@@ -19,6 +19,8 @@ public class Obstacle implements Entity {
         SMALL_EGG, BRACHIOSAURUS, QUETZALCOATLUS
     }
 
+    private boolean dead = false;
+
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -97,5 +99,13 @@ public class Obstacle implements Entity {
             sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
             sprite.draw(batch);
         }
+    }
+
+    public void die() {
+        dead = true;
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 }

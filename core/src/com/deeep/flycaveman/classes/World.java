@@ -35,7 +35,6 @@ public class World extends Actor {
     public Ground ground;
     public Catapult catapult;
     private Sprite darkness;
-    private Obstacle[] obstacle;
     private CoinSpawner coinSpawner;
     private Coin coin;
     public CaveMan caveman;
@@ -62,13 +61,10 @@ public class World extends Actor {
     private float shootStateTime;
 
     private Array<Entity> entities;
-
     private Space space;
-
     public boolean gameOver;
-
     public Area area;
-
+    private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
@@ -91,14 +87,7 @@ public class World extends Actor {
         coin = new Coin(11, 6, this);
         entities.add(catapult = new Catapult(box2dWorld, ground));
 
-        obstacle = new Obstacle[80];
-        obstaclesPosX = 0;
-        random = new Random();
-        for (int i = 0; i < obstacle.length; i++) {
-            obstaclesPosX += 50 + random.nextInt(50);
-            entities.add(obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX, random));
-        }
-//        obstacleSpawner = new ObstacleSpawner(this);
+        obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
         entities.add(caveman = new CaveMan(this));
@@ -182,6 +171,7 @@ public class World extends Actor {
             for (Entity entity : entities)
                 entity.draw(batch);
         }
+        obstacleSpawner.draw(batch);
         coinSpawner.render(batch);
         powerUpSpawner.draw((SpriteBatch) batch);
         //darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
@@ -266,11 +256,7 @@ public class World extends Actor {
     }
 
     private void updateObstacles() {
-        for (int i = 0; i < obstacle.length; i++)
-            if (obstacle[i].body.getPosition().x < caveman.body.getPosition().x - 32) {
-                box2dWorld.destroyBody(obstacle[i].body);
-                obstacle[i] = new Obstacle(box2dWorld, obstaclesPosX += 50 + obstaclesPosX / 8, random);
-            }
+        obstacleSpawner.update();
     }
 
 
