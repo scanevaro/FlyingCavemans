@@ -14,7 +14,7 @@ public class ObstacleSpawner {
     private Array<Obstacle> entities;
     private Array<Obstacle> removals;
     private World world;
-    private int maxPowerUps = 80;
+    private int maxPowerUps = 40;
     private Random random = new Random();
 
     public ObstacleSpawner(World world) {
