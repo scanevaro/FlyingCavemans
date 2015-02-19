@@ -91,6 +91,7 @@ public class CaveMan implements Entity {
         if (addShield) shields++;
         if (addSprings) springs++;
         stamina = 5.0f;
+        flapStateTime = 0.5f;
     }
 
     public void draw(Batch batch) {
@@ -98,7 +99,6 @@ public class CaveMan implements Entity {
             sprite.setRegion(Assets.cavemanSprings);
         else if (wingsPowerup)
             sprite.setRegion(Assets.cavemanWings.getKeyFrame(stateTime));
-        else sprite.setRegion(Assets.cavemanTexture);
 
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
@@ -108,14 +108,9 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
-        if (false)
-            updateFlapping(delta);
-        if (flapStateTime > 0) {
-            flapStateTime -= delta;
-            // 400*sqrt(0.25-x^2);
-            double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
-            body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
-        }
+        sprite.setRegion(Assets.cavemanTexture);
+
+        updateFlapping(delta);
 
         if (upgradeStamina && stamina < 0.5f)
             stamina += delta / 25;
@@ -126,22 +121,12 @@ public class CaveMan implements Entity {
     public void updateFlapping(float delta) {
         if (GameInputProcessor.touchingGround) return;
 
-        if (/*flapStatetime == 0 && */stamina > 0) {
-            /*flapStatetime -= delta;*/
-            stamina -= /*1*/delta;
+        if (flapStateTime < 0.5f) {
+            flapStateTime += delta;
+            double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+            body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
 
-//            if (body.getLinearVelocity().y < 0)
-//                body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
-//            else body.setLinearVelocity(body.getLinearVelocity().x, 5 + body.getLinearVelocity().y);
-            body.applyForceToCenter(5, 800, true);
-
-            if (wingsPowerup) {
-                stateTime += delta;
-                sprite.setRegion(Assets.cavemanWings.getKeyFrame(stateTime));
-            }
-
-//            if (flapStatetime > 0.8f)
-//                flapStatetime = 0;
+            sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
         }
     }
 
@@ -191,9 +176,10 @@ public class CaveMan implements Entity {
     }
 
     public void flap() {
-        flapStateTime = 0.5f;
-        stamina -= 1;
-        body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
-
+        if (stamina > 0) {
+            flapStateTime = 0;
+            stamina -= 1;
+            body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
+        }
     }
 }

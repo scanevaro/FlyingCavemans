@@ -45,12 +45,12 @@ public class ObstacleSpawner {
     }
 
     public void spawnRandomRandom(CaveMan caveMan) {
-        float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH;
+        float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + random.nextFloat() * 5;
         spawn(x);
     }
 
     public void spawn(float x) {
-        entities.add(new Obstacle(world.box2dWorld, x, random));
+        entities.add(new Obstacle(world, x, random));
     }
 
     public void draw(Batch batch) {

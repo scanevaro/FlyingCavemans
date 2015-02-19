@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.classes.World;
 
 import java.util.Random;
 
@@ -58,7 +59,7 @@ public class Obstacle implements Entity {
             bodyDef.position.set(positionX, 4f);
             shape.setAsBox(brachioSizeX, brachioSizeY);
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
-            bodyDef.position.set(positionX, random.nextInt(40 + random.nextInt(15)));
+            bodyDef.position.set(positionX, Math.max(5, world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
             shape.setAsBox(quetzaSizeX, quetzaSizeY);
         }
 
@@ -66,7 +67,7 @@ public class Obstacle implements Entity {
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
 
-        bodys.add(body = world.createBody(bodyDef));
+        bodys.add(body = world.box2dWorld.createBody(bodyDef));
 
         if (type == Type.SMALL_EGG.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.smallEggTexture));
