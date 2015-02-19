@@ -127,7 +127,7 @@ public class CaveMan implements Entity {
 //            if (body.getLinearVelocity().y < 0)
 //                body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
 //            else body.setLinearVelocity(body.getLinearVelocity().x, 5 + body.getLinearVelocity().y);
-            body.applyForceToCenter(20, 150, true);
+            body.applyForceToCenter(20, 200, true);
 
             if (wingsPowerup) {
                 stateTime += delta;
