@@ -120,21 +120,22 @@ public class CaveMan implements Entity {
     public void updateFlapping(float delta) {
         if (GameInputProcessor.touchingGround) return;
 
-        if (flapStatetime == 0 && stamina > 0) {
-            flapStatetime -= delta;
-            stamina -= 1;
+        if (/*flapStatetime == 0 && */stamina > 0) {
+            /*flapStatetime -= delta;*/
+            stamina -= /*1*/delta;
 
-            if (body.getLinearVelocity().y < 0)
-                body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
-            else body.setLinearVelocity(body.getLinearVelocity().x, 5 + body.getLinearVelocity().y);
+//            if (body.getLinearVelocity().y < 0)
+//                body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
+//            else body.setLinearVelocity(body.getLinearVelocity().x, 5 + body.getLinearVelocity().y);
+            body.applyForceToCenter(20, 100, true);
 
             if (wingsPowerup) {
                 stateTime += delta;
                 sprite.setRegion(Assets.cavemanWings.getKeyFrame(stateTime));
             }
 
-            if (flapStatetime > 0.8f)
-                flapStatetime = 0;
+//            if (flapStatetime > 0.8f)
+//                flapStatetime = 0;
         }
     }
 
