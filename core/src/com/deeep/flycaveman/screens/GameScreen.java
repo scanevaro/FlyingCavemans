@@ -190,9 +190,9 @@ public class GameScreen extends AbstractScreen {
     private void updateGameCam() {
         if (world.caveman.body.getPosition().x > world.caveman.startPosX)
             if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2)
-                gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 0.5f, 0);
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, world.caveman.body.getPosition().y + 0.5f, 0);
             else
-                gameCamera.position.set(world.caveman.body.getPosition().x + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
 
         if (world.caveman.body.getPosition().y > Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
             height = world.caveman.body.getPosition().y - 9;
