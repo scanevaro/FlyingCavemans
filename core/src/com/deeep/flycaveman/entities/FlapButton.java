@@ -29,18 +29,13 @@ public class FlapButton extends Actor {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
-
-                caveMan.flapStatetime = 0;
-                caveMan.flapping = true;
-
+                caveMan.flap();
                 return true;
             }
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchUp(event, x, y, pointer, button);
-
-                caveMan.flapping = false;
             }
         });
     }

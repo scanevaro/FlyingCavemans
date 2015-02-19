@@ -23,7 +23,9 @@ public class Space {
     public Space() {
         stars = new Array<Star>();
         for (int i = 0; i < maxStars; i++) {
-            stars.add(new Star((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) * random.nextFloat() + GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth, random.nextFloat() * GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 4 - (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 2)));
+            stars.add(new Star(
+                    (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) * random.nextFloat() + GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth,
+                    random.nextFloat() * GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 4 - (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 2)));
         }
         pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.WHITE);

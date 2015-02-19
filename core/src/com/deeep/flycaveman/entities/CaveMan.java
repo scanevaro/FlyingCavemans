@@ -42,7 +42,7 @@ public class CaveMan implements Entity {
     public int springs;
     public float stateTimeSprings;
     public boolean flapping;
-    public static float flapStatetime;
+    private float flapStateTime = 0;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
         bodyDef = new BodyDef();
@@ -108,8 +108,15 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
-        if (flapping)
+        if (false)
             updateFlapping(delta);
+        if (flapStateTime > 0) {
+            flapStateTime -= delta;
+            // 400*sqrt(0.25-x^2);
+            double force = 400 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+            System.out.println("f" + force + " st" + (0.5f - flapStateTime) + " sq" + Math.sqrt(0.25 - Math.pow(0.5f - flapStateTime, 2)) + " pow" + Math.pow(0.5f - flapStateTime, 2) + " ins" + (0.25 - Math.pow(0.5f - flapStateTime, 2)));
+            body.applyForceToCenter(5, (float) force, true);
+        }
 
         if (upgradeStamina && stamina < 0.5f)
             stamina += delta / 25;
@@ -127,7 +134,7 @@ public class CaveMan implements Entity {
 //            if (body.getLinearVelocity().y < 0)
 //                body.setLinearVelocity(body.getLinearVelocity().x, 5 + Math.abs(body.getLinearVelocity().y / 2));
 //            else body.setLinearVelocity(body.getLinearVelocity().x, 5 + body.getLinearVelocity().y);
-            body.applyForceToCenter(5, 200, true);
+            body.applyForceToCenter(5, 800, true);
 
             if (wingsPowerup) {
                 stateTime += delta;
@@ -182,5 +189,12 @@ public class CaveMan implements Entity {
 
     public void hit() {
         if (shields > 0) shields--;
+    }
+
+    public void flap() {
+        flapStateTime = 0.5f;
+        stamina -= 1;
+        body.setLinearVelocity(body.getLinearVelocity().x, 0);
+
     }
 }
