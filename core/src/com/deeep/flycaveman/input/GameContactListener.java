@@ -50,6 +50,9 @@ public class GameContactListener implements ContactListener {
                     world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x, quetzaForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                     break;
             }
+
+            Assets.hitEntity1.play();
+
         } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {
             GameInputProcessor.touchingGround = true;
             GameInputProcessor.flying = false;
@@ -65,6 +68,17 @@ public class GameContactListener implements ContactListener {
             if (powerUp.type == PowerUp.Type.SPINACH) {
                 //extreme
             }
+
+            if (powerUp.type == PowerUp.Type.MEAT) {
+                Assets.eat1.play();
+            } else if (powerUp.type == PowerUp.Type.SODACAN) {
+                Assets.canOpen1.play();
+            } else if (powerUp.type == PowerUp.Type.SPINACH) {
+                Assets.burp3.play();
+            } else if (powerUp.type == PowerUp.Type.VODKA) {
+                Assets.slurp.play();
+            }
+
             powerUp.die();
         }
     }

@@ -42,7 +42,8 @@ public class Assets {
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings, cavemanFlap;
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3,
+            hitEntity1;
     public static Music music;
 
     public Assets() {
@@ -76,6 +77,11 @@ public class Assets {
         assetManager.load("data/sounds/hurt1.mp3", Sound.class);
         assetManager.load("data/sounds/hurt2.mp3", Sound.class);
         assetManager.load("data/sounds/hurt3.mp3", Sound.class);
+        assetManager.load("data/sounds/slurp.mp3", Sound.class);
+        assetManager.load("data/sounds/eat1.mp3", Sound.class);
+        assetManager.load("data/sounds/canOpen1.mp3", Sound.class);
+        assetManager.load("data/sounds/burp3.mp3", Sound.class);
+        assetManager.load("data/sounds/hitEntity1.mp3", Sound.class);
 
         assetManager.load("data/sounds/music/presenta.wav", Music.class);
     }
@@ -161,6 +167,11 @@ public class Assets {
         hurt1 = assetManager.get("data/sounds/hurt1.mp3");
         hurt2 = assetManager.get("data/sounds/hurt2.mp3");
         hurt3 = assetManager.get("data/sounds/hurt3.mp3");
+        slurp = assetManager.get("data/sounds/slurp.mp3");
+        eat1 = assetManager.get("data/sounds/eat1.mp3");
+        canOpen1 = assetManager.get("data/sounds/canOpen1.mp3");
+        burp3 = assetManager.get("data/sounds/burp3.mp3");
+        hitEntity1 = assetManager.get("data/sounds/hitEntity1.mp3");
     }
 
     public static void dispose() {

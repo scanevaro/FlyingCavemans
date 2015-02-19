@@ -27,7 +27,10 @@ public class PowerUp implements Entity {
     }
 
     public static enum Type {
-        MEAT(100), SPINACH(100), VODKA(-50), SODACAN(50);
+        MEAT(100),
+        SPINACH(100),
+        VODKA(-50),
+        SODACAN(50);
         int percentage;
 
         Type(int percentage) {
