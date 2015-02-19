@@ -113,9 +113,8 @@ public class CaveMan implements Entity {
         if (flapStateTime > 0) {
             flapStateTime -= delta;
             // 400*sqrt(0.25-x^2);
-            double force = 400 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
-            System.out.println("f" + force + " st" + (0.5f - flapStateTime) + " sq" + Math.sqrt(0.25 - Math.pow(0.5f - flapStateTime, 2)) + " pow" + Math.pow(0.5f - flapStateTime, 2) + " ins" + (0.25 - Math.pow(0.5f - flapStateTime, 2)));
-            body.applyForceToCenter(5, (float) force, true);
+            double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+            body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
         }
 
         if (upgradeStamina && stamina < 0.5f)
@@ -194,7 +193,7 @@ public class CaveMan implements Entity {
     public void flap() {
         flapStateTime = 0.5f;
         stamina -= 1;
-        body.setLinearVelocity(body.getLinearVelocity().x, 0);
+        body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
 
     }
 }
