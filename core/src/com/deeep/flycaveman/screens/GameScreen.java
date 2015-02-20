@@ -212,5 +212,6 @@ public class GameScreen extends AbstractScreen {
     @Override
     public void dispose() {
         stage.dispose();
+        world.dispose();
     }
 }

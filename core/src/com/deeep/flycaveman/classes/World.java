@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Disposable;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;
@@ -21,7 +22,7 @@ import java.util.Random;
 /**
  * Created by scanevaro on 12/10/2014.
  */
-public class World extends Actor {
+public class World extends Actor implements Disposable {
     private final float TIMESTEP = 1 / 60f;
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 
@@ -271,5 +272,13 @@ public class World extends Actor {
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    @Override
+    public void dispose() {
+        box2dWorld.dispose();
+        shapeRenderer.dispose();
+        worldStage.dispose();
+        stage.dispose();
     }
 }
