@@ -36,8 +36,6 @@ public class World extends Actor implements Disposable {
     public Ground ground;
     public Catapult catapult;
     private Sprite darkness;
-    private CoinSpawner coinSpawner;
-    private Coin coin;
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
     private int skyColorHeight = 0;
@@ -67,6 +65,8 @@ public class World extends Actor implements Disposable {
     public Area area;
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
+//    private CoinSpawner coinSpawner;
+//    private Coin coin;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
@@ -84,8 +84,8 @@ public class World extends Actor implements Disposable {
         box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
 
         ground = new Ground(box2dWorld);
-        coinSpawner = new CoinSpawner();
-        coin = new Coin(11, 6, this);
+//        coinSpawner = new CoinSpawner();
+//        coin = new Coin(11, 6, this);
         entities.add(catapult = new Catapult(box2dWorld, ground));
 
         obstacleSpawner = new ObstacleSpawner(this);
@@ -100,7 +100,7 @@ public class World extends Actor implements Disposable {
 
         darkness = new Sprite(Assets.darkSky);
         shootStateTime = 0;
-        coinSpawner.spawnCoins(1, caveman.body.getPosition().x, caveman.sprite.getWidth(), this);
+//        coinSpawner.spawnCoins(1, caveman.body.getPosition().x, caveman.sprite.getWidth(), this);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class World extends Actor implements Disposable {
                 entity.draw(batch);
         }
         obstacleSpawner.draw(batch);
-        coinSpawner.render(batch);
+//        coinSpawner.render(batch);
         powerUpSpawner.draw((SpriteBatch) batch);
         //darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
         //darkness.draw(batch);
@@ -182,7 +182,7 @@ public class World extends Actor implements Disposable {
     }
 
     public void update(float delta) {
-        coinSpawner.update(delta, caveman, this);
+//        coinSpawner.update(delta, caveman, this);
         gameContactListener.update();
         updateCamera();
         updateSky();

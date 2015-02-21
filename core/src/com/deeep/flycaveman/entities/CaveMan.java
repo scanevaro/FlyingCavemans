@@ -33,7 +33,6 @@ public class CaveMan implements Entity {
     public float strength;
 
     public static boolean wingsPowerup;
-    private float stateTime;
     public static boolean upgradeStamina;
     public static boolean addSteroids;
     public static boolean addShield;
@@ -41,7 +40,6 @@ public class CaveMan implements Entity {
     public static boolean addSprings;
     public int springs;
     public float stateTimeSprings;
-    public boolean flapping;
     private float flapStateTime = 0;
 
     public CaveMan(com.deeep.flycaveman.classes.World world) {
@@ -84,9 +82,9 @@ public class CaveMan implements Entity {
 
         bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
 
-        strength = 75;
+        strength = 225;
 
-        if (wingsPowerup) strength += 25;
+        if (wingsPowerup) strength += 75;
         if (addSteroids) strength += 25;
         if (addShield) shields++;
         if (addSprings) springs++;
@@ -98,7 +96,7 @@ public class CaveMan implements Entity {
         if (stateTimeSprings > 0)
             sprite.setRegion(Assets.cavemanSprings);
         else if (wingsPowerup)
-            sprite.setRegion(Assets.cavemanWings.getKeyFrame(stateTime));
+            sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
 
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
@@ -123,11 +121,16 @@ public class CaveMan implements Entity {
 
         if (flapStateTime < 0.5f) {
             flapStateTime += delta;
-            double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+
+            if (strength > 0)
+                strength -= delta * 20;
+
+            double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
             body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
 
             sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
-        }
+        } else if (strength < 300)
+            strength += delta;
     }
 
     public void addWings() {

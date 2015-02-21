@@ -26,7 +26,7 @@ public class PowerUpSpawner {
 
     public void update(float deltaT) {
         if (powerUps.size < maxPowerUps) {
-            if (powerUps.size < 3) {
+            if (powerUps.size < 2) {
                 spawnRandomRandom(world.caveman);
             }
         }
@@ -48,7 +48,7 @@ public class PowerUpSpawner {
 
     public void spawnRandomRandom(CaveMan caveMan) {
         PowerUp.Type tempType;
-        float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + 5 + random.nextFloat() * 5;
+        float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + 5 + random.nextFloat() * 60;
 
         float y = Math.max(5, caveMan.body.getPosition().y - 20 + random.nextFloat() * 60);
         switch (random.nextInt(4)) {
