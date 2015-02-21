@@ -68,7 +68,10 @@ public class Core implements ApplicationListener {
     }
 
     public void setScreen(AbstractScreen screen) {
-        if (this.screen != null) this.screen.hide();
+        if (this.screen != null) {
+            this.screen.hide();
+            this.screen.dispose();
+        }
         this.screen = screen;
         if (this.screen != null) {
             this.screen.show();
