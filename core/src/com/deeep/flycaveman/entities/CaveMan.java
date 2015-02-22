@@ -180,9 +180,14 @@ public class CaveMan implements Entity {
 
     public void flap() {
         if (stamina > 0) {
-            flapStateTime = 0;
+            if(body.getLinearVelocity().y<0){
+                body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
+            }else{
+                body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
+            }
             stamina -= 1;
-            body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
+            flapStateTime = 0;
+            //todo add a way to increase the max flapstatetime
         }
     }
 }
