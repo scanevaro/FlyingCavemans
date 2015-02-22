@@ -433,7 +433,7 @@ jungle
   orig: 1920, 720
   offset: 0, 0
   index: -1
-jungleToDesert
+jungleBackground
   rotate: false
   xy: 2, 2
   size: 1920, 720
@@ -442,10 +442,17 @@ jungleToDesert
   index: -1
 
 items5.png
-size: 2048,1024
+size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+jungleToDesert
+  rotate: false
+  xy: 2, 724
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
 mountains
   rotate: false
   xy: 2, 2
