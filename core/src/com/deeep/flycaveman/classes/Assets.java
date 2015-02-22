@@ -37,10 +37,13 @@ public class Assets {
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
             smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
-            backgroundTexture, backgroundTexture2, restartButton, catapultArmTexture,
+            restartButton, catapultArmTexture,
             catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings, cavemanFlap;
+
+    public static TextureRegion preHistoric_layer_1, preHistoric_layer_2, preHistoric_layer_3;  //todo put this in an enum or so
+
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3,
             hitEntity1;
@@ -117,8 +120,6 @@ public class Assets {
         brachioTexture = items.findRegion("BRACHIOSAURUS");
         quetzaTexture = items.findRegion("QUETZA");
         smallEggTexture = items.findRegion("smallEgg");
-        backgroundTexture = items.findRegion("background");
-        backgroundTexture2 = items.findRegion("background2");
         restartButton = items.findRegion("restart");
         catapultArmTexture = items.findRegion("catapultArm");
         catapultBaseTexture = items.findRegion("catapultBase");
@@ -155,6 +156,10 @@ public class Assets {
         flapUp = items.findRegion("flapUp");
         dropUp = items.findRegion("dropUp");
         pauseUp = items.findRegion("pause");
+
+        preHistoric_layer_1 = items.findRegion("ground");
+        preHistoric_layer_2 = items.findRegion("forest");
+        preHistoric_layer_3 = items.findRegion("mountains");
     }
 
     private static void setSounds() {

@@ -13,12 +13,10 @@ public class Area {
     private int area = 0;
     public static final int DESSERT = 0;
     public static final int MOUNTAINS = 1;
-    public TextureRegion[] areas;
     private float x;
 
     public Area() {
-        areas = new TextureRegion[2];
-        areas[DESSERT] = Assets.backgroundTexture;
+        Theme.initThemes();
     }
 
     public void update(Body caveman){
@@ -26,10 +24,11 @@ public class Area {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        float xPosition = x %(Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2);
-        spriteBatch.draw(areas[area], x - xPosition,0,Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
-        spriteBatch.draw(areas[area], x - xPosition + Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2,0,Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
-        spriteBatch.draw(areas[area], x - xPosition - (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2),0,Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
-
-    }
+        float xPosition = x % (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2);
+        Theme.PreHistoric.background.update(x);
+        Theme.PreHistoric.background.draw(spriteBatch);
+        //spriteBatch.draw(areas[area], x - xPosition, 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
+        //spriteBatch.draw(areas[area], x - xPosition + Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
+        //spriteBatch.draw(areas[area], x - xPosition - (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2), 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
+        }
 }
