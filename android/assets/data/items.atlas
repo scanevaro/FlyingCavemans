@@ -402,6 +402,46 @@ tree
   index: -1
 
 items3.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+groundJungle
+  rotate: false
+  xy: 2, 724
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+groundToJungle
+  rotate: false
+  xy: 2, 2
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+
+items4.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jungle
+  rotate: false
+  xy: 2, 724
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+jungleToDesert
+  rotate: false
+  xy: 2, 2
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+
+items5.png
 size: 2048,1024
 format: RGBA8888
 filter: Linear,Linear
