@@ -426,14 +426,14 @@ size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-jungle
+groundToOcean
   rotate: false
   xy: 2, 724
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
-jungleBackground
+jungle
   rotate: false
   xy: 2, 2
   size: 1920, 720
@@ -446,13 +446,26 @@ size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-jungleToDesert
+jungleBackground
   rotate: false
   xy: 2, 724
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
+jungleToDesert
+  rotate: false
+  xy: 2, 2
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+
+items6.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
 mountains
   rotate: false
   xy: 2, 2
