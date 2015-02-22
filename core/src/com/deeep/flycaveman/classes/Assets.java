@@ -83,7 +83,7 @@ public class Assets {
         assetManager.load("data/sounds/burp3.mp3", Sound.class);
         assetManager.load("data/sounds/hitEntity1.mp3", Sound.class);
 
-        assetManager.load("data/sounds/music/presenta.wav", Music.class);
+        assetManager.load("data/sounds/music/presenta.ogg", Music.class);
     }
 
     public static void set() {
@@ -158,7 +158,7 @@ public class Assets {
     }
 
     private static void setSounds() {
-        music = assetManager.get("data/sounds/music/presenta.wav");
+        music = assetManager.get("data/sounds/music/presenta.ogg");
         music.setLooping(true);
         music.setVolume(0.5f);
 
