@@ -12,6 +12,7 @@ import com.deeep.flycaveman.classes.Assets;
 public class StaminaBar extends Actor {
     private CaveMan caveman;
     public Image background, fill[], bar, hand;
+    private float maxStamina;
 
     public StaminaBar(CaveMan caveMan) {
         this.caveman = caveMan;
@@ -30,20 +31,25 @@ public class StaminaBar extends Actor {
         float posX = 3;
         for (int x = 0; x < caveMan.stamina; x++) {
             fill[x].setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2 + posX, 10);
-            posX += fill[x].getWidth() + 3;
+            fill[x].setScaleX(3.6f);
+            posX += fill[x].getWidth() + 26;
         }
 
         bar.setPosition(Core.VIRTUAL_WIDTH / 2 - bar.getWidth() / 2, 5);
         hand.setSize(48, 54);
         hand.setPosition(Core.VIRTUAL_WIDTH / 2 - hand.getWidth() / 2, 15);
+
+        maxStamina = caveman.stamina;
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
 
+//        System.out.println(5 % 3.5);
+
         for (int x = 0; x < caveman.stamina; x++)
-            fill[x].setScaleX(caveman.stamina / 5 * 100 / 5.0f);
+            fill[x].setScaleX(3.6f/*caveman.stamina / 5 * 100 / 5.0f*/);
     }
 
     @Override
