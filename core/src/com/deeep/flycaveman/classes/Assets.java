@@ -160,13 +160,13 @@ public class Assets {
         dropUp = items.findRegion("dropUp");
         pauseUp = items.findRegion("pause");
 
-        preHistoric_layer_1 = items.findRegion("ground");
-        preHistoric_layer_2 = items.findRegion("forest");
-        preHistoric_layer_3 = items.findRegion("mountains");
+        preHistoric_layer_1 = items.findRegion("desert_layer", 1);
+        preHistoric_layer_2 = items.findRegion("desert_layer", 2);
+        preHistoric_layer_3 = items.findRegion("desert_layer", 3);
 
-        jungle_layer_1 = items.findRegion("groundJungle");
-        jungle_layer_2 = items.findRegion("forest");
-        jungle_layer_3 = items.findRegion("jungleBackground");
+        jungle_layer_1 = items.findRegion("jungle_layer", 1);
+        jungle_layer_2 = items.findRegion("jungle_layer", 2);
+        jungle_layer_3 = items.findRegion("jungle_layer", 3);
 
         jungle_historic_layer_1 = items.findRegion("groundJungle");
         jungle_historic_layer_2 = items.findRegion("jungleToDesert");
@@ -175,6 +175,7 @@ public class Assets {
         historic_jungle_layer_1 = items.findRegion("groundJungle");
         historic_jungle_layer_2 = items.findRegion("groundToJungle");
         historic_jungle_layer_3 = items.findRegion("jungleBackground");
+
     }
 
     private static void setSounds() {
