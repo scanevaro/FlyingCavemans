@@ -29,7 +29,7 @@ public class Theme {
         Theme.PreHistoric = new Theme();
         Background temp = Theme.PreHistoric.background;
         temp.setLayer(3, Assets.preHistoric_layer_1, 0);
-        temp.setLayer(2, Assets.preHistoric_layer_2, 0.2f);
-        temp.setLayer(1, Assets.preHistoric_layer_3, 0.4f);
+        temp.setLayer(2, Assets.preHistoric_layer_2, 0.4f);
+        temp.setLayer(1, Assets.preHistoric_layer_3, 0.8f);
     }
 }

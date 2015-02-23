@@ -59,18 +59,19 @@ public class Background {
         public TextureRegion layerRegion;
         public float ratio;
         public float xPos;
-        private float offset = 0;
+        private float originalX = 0;
         public int index = 0;
 
         public Layer(TextureRegion layerRegion, float ratio, int index) {
             this.ratio = ratio;
             this.layerRegion = layerRegion;
-            this.xPos = index * (backgroundWidth);
+            this.originalX = index * (backgroundWidth);
         }
 
         public void update(float x) {
+            xPos = originalX + x * ratio;
             if (this.xPos + backgroundWidth <= x - backgroundWidth) {
-                this.xPos += ((3) * backgroundWidth);
+                this.originalX += ((3) * backgroundWidth);
             }
         }
 
