@@ -32,8 +32,7 @@ public class Background {
         }
         Layer tempLayer;
         for (int i = 0; i < 3; i++) {
-            tempLayer = new Layer(textureRegion, ratio, i);
-            // tempLayer.x = -Core.BOX2D_VIRTUAL_WIDTH + i * Core.BOX2D_VIRTUAL_WIDTH;
+            tempLayer = new Layer(textureRegion, ratio, i - 1);
             temp.add(tempLayer);
         }
     }

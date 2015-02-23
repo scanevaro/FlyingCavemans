@@ -14,9 +14,10 @@ public class Area {
     public static final int DESSERT = 0;
     public static final int MOUNTAINS = 1;
     private float x;
-
+    private Theme theme;
     public Area() {
         Theme.initThemes();
+        theme = Theme.Jungle;
     }
 
     public void update(Body caveman){
@@ -25,8 +26,8 @@ public class Area {
 
     public void draw(SpriteBatch spriteBatch) {
         float xPosition = x % (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2);
-        Theme.PreHistoric.background.update(x);
-        Theme.PreHistoric.background.draw(spriteBatch);
+        theme.background.update(x);
+        theme.background.draw(spriteBatch);
         //spriteBatch.draw(areas[area], x - xPosition, 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         //spriteBatch.draw(areas[area], x - xPosition + Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
         //spriteBatch.draw(areas[area], x - xPosition - (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2), 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
