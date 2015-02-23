@@ -60,20 +60,6 @@ QUETZA
   orig: 128, 93
   offset: 0, 0
   index: -1
-background
-  rotate: false
-  xy: 2, 1324
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: -1
-background2
-  rotate: false
-  xy: 2, 602
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: -1
 bigEgg
   rotate: false
   xy: 451, 2
@@ -135,6 +121,20 @@ cloud3
   xy: 1396, 122
   size: 575, 169
   orig: 575, 169
+  offset: 0, 0
+  index: -1
+desert_layer
+  rotate: false
+  xy: 2, 602
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 1
+desert_layer2
+  rotate: false
+  xy: 2, 1324
+  size: 1920, 720
+  orig: 1920, 720
   offset: 0, 0
   index: -1
 dialog
@@ -330,14 +330,14 @@ coin
   orig: 256, 197
   offset: 0, 0
   index: -1
-forest
+desert_layer
   rotate: false
   xy: 2, 1307
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: -1
-ground
+  index: 3
+desert_layer_1_jungle
   rotate: false
   xy: 2, 585
   size: 1920, 720
@@ -406,67 +406,47 @@ size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-groundJungle
+ground_layer_1_ocean
   rotate: false
   xy: 2, 724
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
-groundToJungle
+jungle_layer
   rotate: false
   xy: 2, 2
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: -1
+  index: 1
 
 items4.png
 size: 2048,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-groundToOcean
+jungle_layer
   rotate: false
   xy: 2, 724
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: -1
-jungle
+  index: 2
+jungle_layer
   rotate: false
   xy: 2, 2
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: -1
+  index: 3
 
 items5.png
-size: 2048,2048
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-jungleBackground
-  rotate: false
-  xy: 2, 724
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: -1
-jungleToDesert
-  rotate: false
-  xy: 2, 2
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: -1
-
-items6.png
 size: 2048,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-mountains
+jungle_layer_1_desert
   rotate: false
   xy: 2, 2
   size: 1920, 720
