@@ -37,7 +37,7 @@ public class Assets {
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
             smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
-            restartButton, catapultArmTexture,
+            restartButton, catapultArmTexture, cloud1, cloud2, cloud3,
             catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings, cavemanFlap;
@@ -176,6 +176,9 @@ public class Assets {
         historic_jungle_layer_2 = items.findRegion("groundToJungle");
         historic_jungle_layer_3 = items.findRegion("jungleBackground");
 
+        cloud1 = items.findRegion("cloud1");
+        cloud2 = items.findRegion("cloud2");
+        cloud3 = items.findRegion("cloud3");
     }
 
     private static void setSounds() {
