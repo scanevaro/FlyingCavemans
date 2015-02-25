@@ -48,9 +48,7 @@ public class Assets {
     public static TextureRegion historic_jungle_layer_1, historic_jungle_layer_2, historic_jungle_layer_3;  //todo put this in an enum or so
 
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3,
-            hitEntity1;
-    public static Music music;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -89,7 +87,9 @@ public class Assets {
         assetManager.load("data/sounds/burp3.mp3", Sound.class);
         assetManager.load("data/sounds/hitEntity1.mp3", Sound.class);
 
-        assetManager.load("data/sounds/music/presenta.ogg", Music.class);
+        assetManager.load("data/sounds/music/JungleTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
     }
 
     public static void set() {
@@ -179,10 +179,6 @@ public class Assets {
     }
 
     private static void setSounds() {
-        music = assetManager.get("data/sounds/music/presenta.ogg");
-        music.setLooping(true);
-        music.setVolume(0.5f);
-
         hitGround1Sound = assetManager.get("data/sounds/hitGround1.mp3");
         boing = assetManager.get("data/sounds/boing.mp3");
         hurt1 = assetManager.get("data/sounds/hurt1.mp3");
@@ -208,5 +204,9 @@ public class Assets {
             hurt2.play();
         else
             hurt3.play();
+    }
+
+    public static Music loadMusicFile(String path) {
+        return assetManager.get("data/sounds/music/"+path+".ogg");
     }
 }

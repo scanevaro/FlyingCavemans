@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.classes.SoundManager;
 import com.deeep.flycaveman.classes.World;
 import com.deeep.flycaveman.entities.FlapButton;
 import com.deeep.flycaveman.entities.StaminaBar;
@@ -34,6 +35,7 @@ public class GameScreen extends AbstractScreen {
     private Stage worldStage;
     public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
+    private SoundManager soundManager;
     /**
      * Widgets
      */
@@ -63,6 +65,7 @@ public class GameScreen extends AbstractScreen {
         configureWidgets();
         prepareWorld();
 
+        soundManager = new SoundManager();
         staminaBar = new StaminaBar(world.caveman);
 
         getGameCamera();
@@ -71,8 +74,7 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
         prepareShopDialog();
 
-        if (!Assets.music.isPlaying())
-            Assets.music.play();
+        soundManager.playMusic(soundManager.getMusic("JungleTheme"), true);
 
         Assets.font.setScale(0.5f);
     }

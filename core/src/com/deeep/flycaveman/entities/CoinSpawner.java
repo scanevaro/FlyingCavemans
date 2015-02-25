@@ -36,7 +36,7 @@ public class CoinSpawner {
         switch(id) {
             case 0:
                 coins.add(new Coin(sX / 5F, 7F, world));
-                coins.add(new Coin((sX + 5F) / 5F, 7F, world));
+                 coins.add(new Coin((sX + 5F) / 5F, 7F, world));
                 coins.add(new Coin((sX + 10F) / 5F, 7F, world));
                 break;
             case 1:
