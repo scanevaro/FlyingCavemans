@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import javax.xml.soap.Text;
 import java.util.Random;
 
 /**
@@ -37,7 +38,7 @@ public class Assets {
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
             smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
-            restartButton, catapultArmTexture, cloud1, cloud2, cloud3,
+            restartButton, catapultArmTexture,
             catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings, cavemanFlap;
@@ -46,6 +47,8 @@ public class Assets {
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3;  //todo put this in an enum or so
     public static TextureRegion jungle_historic_layer_1, jungle_historic_layer_2, jungle_historic_layer_3;  //todo put this in an enum or so
     public static TextureRegion historic_jungle_layer_1, historic_jungle_layer_2, historic_jungle_layer_3;  //todo put this in an enum or so
+
+    public static TextureRegion cloud1, cloud2, cloud3;
 
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1;
@@ -210,6 +213,19 @@ public class Assets {
     }
 
     public static Music loadMusicFile(String path) {
-        return assetManager.get("data/sounds/music/"+path+".ogg");
+        return assetManager.get("data/sounds/music/" + path + ".ogg");
+    }
+
+    public static TextureRegion getCloud(int cloudId) {
+        switch (cloudId) {
+            case 0:
+                return cloud1;
+            case 1:
+                return cloud2;
+            case 2:
+                return cloud3;
+            default:
+                return cloud1;
+        }
     }
 }
