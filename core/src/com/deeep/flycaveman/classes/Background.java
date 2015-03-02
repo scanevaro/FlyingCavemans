@@ -31,6 +31,7 @@ public class Background {
             temp = layer_3;
         }
         Layer tempLayer;
+        temp.clear();
         for (int i = 0; i < 3; i++) {
             tempLayer = new Layer(textureRegion, ratio, i - 1);
             temp.add(tempLayer);

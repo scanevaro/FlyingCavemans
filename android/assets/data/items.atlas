@@ -130,13 +130,13 @@ desert_jungle
   orig: 1920, 720
   offset: 0, 0
   index: 1
-desert_layer2
+desert_layer
   rotate: false
   xy: 2, 602
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: -1
+  index: 2
 dialog
   rotate: false
   xy: 883, 35
