@@ -35,9 +35,10 @@ public class Assets {
 
     public static TextureAtlas items;
     public static Texture darkSky;
+    public static TextureRegion cloud1, cloud2, cloud3;
     public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
             smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
-            restartButton, catapultArmTexture, cloud1, cloud2, cloud3,
+            restartButton, catapultArmTexture,
             catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings, cavemanFlap;
