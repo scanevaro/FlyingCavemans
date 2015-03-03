@@ -3,6 +3,8 @@ package com.deeep.flycaveman.classes;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
+import java.util.ArrayList;
+
 /**
  * Created by Andreas on 2/25/2015.
  */
@@ -45,7 +47,7 @@ public class SoundManager {
      * @param music identifier string
      * @return music object file
      */
-    public Music getMusic(String music){
+    public FadeableMusic getMusic(String music){
         return SoundLibrary.getInstance().getMusicFromString(music);
     }
 
@@ -64,30 +66,10 @@ public class SoundManager {
     public void stopMusic(Music music){
         music.stop();
     }
-}
 
-/**
- * Library class for handling the retrieval of sound files from the assets manager using strings as identifiers
- */
-class SoundLibrary {
-    public static SoundLibrary getInstance(){
-        return new SoundLibrary();
-    }
-
-    public static Music shopMusic;
-    public static Music jungleMusic;
-    public static Music spaceMusic;
-
-    public SoundLibrary(){
-        this.shopMusic = Assets.loadMusicFile("ShopTheme");
-        this.jungleMusic = Assets.loadMusicFile("JungleTheme");
-        this.spaceMusic = Assets.loadMusicFile("SpaceTheme");
-    }
-
-    public static Music getMusicFromString(String s){
-        if(s == "ShopTheme") return shopMusic;
-        if(s == "JungleTheme") return jungleMusic;
-        if(s == "SpaceTheme") return spaceMusic;
-        return null;
+    public void update(float delta){
+        for(int i = 0; i < SoundLibrary.musicList.size(); i++){
+            SoundLibrary.musicList.get(i);
+        }
     }
 }

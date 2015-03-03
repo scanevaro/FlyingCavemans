@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.deeep.flycaveman.classes.ActorAccessor;
 import com.deeep.flycaveman.classes.Assets;
 import com.deeep.flycaveman.classes.Dialogs;
+import com.deeep.flycaveman.classes.SoundManager;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
 
@@ -20,6 +21,7 @@ public class Core implements ApplicationListener {
 
     public static boolean dialogOpen;
 
+    public SoundManager soundManager;
     private SpriteBatch spriteBatch;
     public AbstractScreen screen;
     public Dialogs dialogs;
@@ -33,6 +35,7 @@ public class Core implements ApplicationListener {
         dialogs = new Dialogs();
 
         spriteBatch = new SpriteBatch();
+        soundManager = new SoundManager();
         setScreen(new SplashScreen(this));
 
         Tween.registerAccessor(Actor.class, new ActorAccessor());

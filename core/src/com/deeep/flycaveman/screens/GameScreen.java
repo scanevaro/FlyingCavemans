@@ -65,7 +65,7 @@ public class GameScreen extends AbstractScreen {
         configureWidgets();
         prepareWorld();
 
-        soundManager = new SoundManager();
+        soundManager = game.soundManager;
         staminaBar = new StaminaBar(world.caveman);
 
         getGameCamera();
@@ -74,7 +74,7 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
         prepareShopDialog();
 
-        soundManager.playMusic(soundManager.getMusic("JungleTheme"), true);
+        soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
 
         Assets.font.setScale(0.5f);
     }

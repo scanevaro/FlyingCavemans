@@ -123,6 +123,13 @@ public class GameInputProcessor implements InputProcessor {
             game.dialogs.update(game.screen);
             return true;
         }
+        /*
+        if (keycode == Input.Keys.DOWN) {
+            System.out.println("Kappa");
+            game.soundManager.playMusic(game.soundManager.getMusic("ShopTheme").getMusicObject(), true);
+            return true;
+        }
+        */
         return false;
     }
 
