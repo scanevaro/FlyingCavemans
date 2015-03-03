@@ -75,7 +75,14 @@ public class SoundManager {
 
     public void silence(){
         for(int i = 0; i < SoundLibrary.musicList.size(); i++){
+            SoundLibrary.musicList.get(i).getMusicObject().setVolume(0);
+        }
+    }
+
+    public void stopAll(){
+        for(int i = 0; i < SoundLibrary.musicList.size(); i++){
             SoundLibrary.musicList.get(i).getMusicObject().stop();
         }
     }
+
 }
