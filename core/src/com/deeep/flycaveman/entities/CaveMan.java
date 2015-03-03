@@ -35,8 +35,6 @@ public class CaveMan implements Entity {
     public static boolean wingsPowerup;
     public static boolean upgradeStamina;
     public static boolean addSteroids;
-    public static boolean addShield;
-    private int shields;
     public static boolean addSprings;
     public int springs;
     public float stateTimeSprings;
@@ -86,7 +84,6 @@ public class CaveMan implements Entity {
 
         if (wingsPowerup) strength += 75;
         if (addSteroids) strength += 25;
-        if (addShield) shields++;
         if (addSprings) springs++;
         stamina = 5.0f;
         flapStateTime = 0.5f;
@@ -101,8 +98,6 @@ public class CaveMan implements Entity {
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
-
-        if (shields > 0) batch.draw(Assets.shield, sprite.getX(), sprite.getY(), size * 2, size * 2);
     }
 
     public void update(float delta) {
@@ -148,12 +143,6 @@ public class CaveMan implements Entity {
         strength += 25;
     }
 
-    public void addShield() {
-        CaveMan.addShield = true;
-
-        shields++;
-    }
-
     public void addSprings() {
         CaveMan.addSprings = true;
 
@@ -174,15 +163,11 @@ public class CaveMan implements Entity {
         body.applyForceToCenter(0, -10000, true);
     }
 
-    public void hit() {
-        if (shields > 0) shields--;
-    }
-
     public void flap() {
         if (stamina > 0) {
-            if(body.getLinearVelocity().y<0){
+            if (body.getLinearVelocity().y < 0) {
                 body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
-            }else{
+            } else {
                 body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
             }
             stamina -= 1;

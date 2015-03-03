@@ -39,7 +39,7 @@ public class Assets {
     public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
             smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
             restartButton, catapultArmTexture,
-            catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
+            catapultBaseTexture, homeButton, shopButton, staminaplus, steroids,
             wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
     public static Animation cavemanWings, cavemanFlap;
 
@@ -138,7 +138,6 @@ public class Assets {
         staminaBar = items.findRegion("staminabar");
         staminaHand = items.findRegion("staminahand");
         staminaplus = items.findRegion("staminaplus");
-        shield = items.findRegion("shield");
         steroids = items.findRegion("steroids");
         wings = items.findRegion("wings");
         springs = items.findRegion("springshoes");
