@@ -69,7 +69,13 @@ public class SoundManager {
 
     public void update(float delta){
         for(int i = 0; i < SoundLibrary.musicList.size(); i++){
-            SoundLibrary.musicList.get(i);
+            SoundLibrary.musicList.get(i).update(delta);
+        }
+    }
+
+    public void silence(){
+        for(int i = 0; i < SoundLibrary.musicList.size(); i++){
+            SoundLibrary.musicList.get(i).getMusicObject().stop();
         }
     }
 }
