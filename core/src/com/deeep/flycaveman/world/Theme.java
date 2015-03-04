@@ -1,6 +1,7 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.world;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.deeep.flycaveman.Assets;
 
 /**
  * Created by Elmar on 2/18/2015.

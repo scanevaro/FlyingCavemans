@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.widgets;
 
 import aurelienribon.tweenengine.TweenAccessor;
 import com.badlogic.gdx.graphics.Color;

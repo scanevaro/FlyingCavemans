@@ -1,9 +1,7 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-
-import java.util.ArrayList;
 
 /**
  * Created by Andreas on 2/25/2015.

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.Assets;
 
 /**
  * Created by scanevaro on 09/02/2015.

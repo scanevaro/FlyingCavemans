@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.world;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;

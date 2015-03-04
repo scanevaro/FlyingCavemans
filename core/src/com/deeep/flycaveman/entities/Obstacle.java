@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
-import com.deeep.flycaveman.classes.Assets;
-import com.deeep.flycaveman.classes.World;
+import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.world.World;
 
 import java.util.Random;
 

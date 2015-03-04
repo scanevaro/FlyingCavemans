@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.world;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;

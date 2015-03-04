@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.input.GameInputProcessor;
 
 /**
@@ -40,7 +40,7 @@ public class CaveMan implements Entity {
     public float stateTimeSprings;
     private float flapStateTime = 0;
 
-    public CaveMan(com.deeep.flycaveman.classes.World world) {
+    public CaveMan(com.deeep.flycaveman.world.World world) {
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(startPosX, startPosY);

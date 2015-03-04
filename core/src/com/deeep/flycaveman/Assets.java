@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;

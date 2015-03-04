@@ -1,10 +1,11 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.screens.AbstractScreen;

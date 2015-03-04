@@ -1,8 +1,10 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.widgets;
 
 /**
  * Created by Andreas on 3/3/2015.
  */
+
+import com.deeep.flycaveman.Assets;
 
 import java.util.ArrayList;
 

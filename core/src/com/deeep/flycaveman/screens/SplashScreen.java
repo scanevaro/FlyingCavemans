@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.entities.LoadingBar;
 import com.deeep.flycaveman.entities.SplashActor;
 

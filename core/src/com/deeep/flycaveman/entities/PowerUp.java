@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
-import com.deeep.flycaveman.classes.Assets;
-import com.deeep.flycaveman.classes.World;
+import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.world.World;
 
 /**
  * Created by Elmar on 9-2-2015.

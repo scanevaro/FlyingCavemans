@@ -1,23 +1,24 @@
 package com.deeep.flycaveman.input;
 
 import com.badlogic.gdx.physics.box2d.*;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.entities.Ground;
 import com.deeep.flycaveman.entities.Obstacle;
 import com.deeep.flycaveman.entities.PowerUp;
+import com.deeep.flycaveman.world.World;
 
 /**
  * Created by scanevaro on 14/10/2014.
  */
 public class GameContactListener implements ContactListener {
-    private com.deeep.flycaveman.classes.World world;
+    private com.deeep.flycaveman.world.World world;
     private float force;
     private final float smallEggForce = 10;
     private final float brachioForce = 20;
     private final float quetzaForce = 18;
 
-    public GameContactListener(com.deeep.flycaveman.classes.World world) {
+    public GameContactListener(World world) {
         this.world = world;
     }
 

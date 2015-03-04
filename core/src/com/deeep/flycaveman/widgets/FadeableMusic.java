@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.audio.Music;
 
