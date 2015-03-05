@@ -60,8 +60,6 @@ public class GameContactListener implements ContactListener {
             GameInputProcessor.touchingGround = true;
             GameInputProcessor.flying = false;
             force = -1;
-
-            world.caveman.setState(CaveMan.STATE_PAIN);
         } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
             PowerUp powerUp = null;
             if (fixtureA.getUserData() instanceof PowerUp) {
@@ -117,11 +115,9 @@ public class GameContactListener implements ContactListener {
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
-
     }
 
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
-
     }
 }

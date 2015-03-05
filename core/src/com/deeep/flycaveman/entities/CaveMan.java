@@ -47,8 +47,11 @@ public class CaveMan implements Entity {
     private float flapStateTime = 0;
 
     private int state;
+    private com.deeep.flycaveman.world.World world;
 
     public CaveMan(com.deeep.flycaveman.world.World world) {
+        this.world = world;
+
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(startPosX, startPosY);
@@ -117,6 +120,11 @@ public class CaveMan implements Entity {
             stamina += delta / 25;
 
         stateTimeSprings -= delta;
+
+        if (stamina > 1) state = STATE_HAPPY;
+        if (stamina <= 1) state = STATE_TIRED;
+        if (GameInputProcessor.touchingGround) state = STATE_PAIN;
+        if (world.isGameOver()) state = STATE_KO;
     }
 
     public void updateFlapping(float delta) {
