@@ -14,13 +14,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.Assets;
-import com.deeep.flycaveman.widgets.SoundManager;
-import com.deeep.flycaveman.world.World;
+import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.FlapButton;
 import com.deeep.flycaveman.entities.StaminaBar;
 import com.deeep.flycaveman.input.GameInputProcessor;
+import com.deeep.flycaveman.widgets.ExpressionsWidget;
+import com.deeep.flycaveman.widgets.SoundManager;
+import com.deeep.flycaveman.world.World;
 
 /**
  * Created by scanevaro on 10/10/2014.
@@ -46,6 +47,7 @@ public class GameScreen extends AbstractScreen {
     private StaminaBar staminaBar;
     //    private DropButton dropButton;
     private FlapButton flapButton;
+    private ExpressionsWidget expressions;
     /**
      * World
      */
@@ -88,17 +90,18 @@ public class GameScreen extends AbstractScreen {
         distanceLabel = new TextButton("Distance: ", Assets.skin);
         heightLabel = new TextButton("Height: ", Assets.skin);
 
-        ImageButton.ImageButtonStyle restartStyle = new ImageButton.ImageButtonStyle();
-        restartStyle.imageUp = new TextureRegionDrawable(Assets.pauseUp);
-        restartStyle.imageUp.setMinWidth(64);
-        restartStyle.imageUp.setMinHeight(64);
-        restartStyle.imageDown = new TextureRegionDrawable(Assets.pauseUp);
-        restartStyle.imageDown.setMinWidth(64);
-        restartStyle.imageDown.setMinHeight(64);
-        pauseButton = new ImageButton(restartStyle);
+        ImageButton.ImageButtonStyle pauseStyle = new ImageButton.ImageButtonStyle();
+        pauseStyle.imageUp = new TextureRegionDrawable(Assets.pauseUp);
+        pauseStyle.imageUp.setMinWidth(64);
+        pauseStyle.imageUp.setMinHeight(64);
+        pauseStyle.imageDown = new TextureRegionDrawable(Assets.pauseUp);
+        pauseStyle.imageDown.setMinWidth(64);
+        pauseStyle.imageDown.setMinHeight(64);
+        pauseButton = new ImageButton(pauseStyle);
 
         flapButton = new FlapButton();
 //        dropButton = new DropButton();
+        expressions = new ExpressionsWidget();
     }
 
     private void configureWidgets() {
@@ -143,6 +146,7 @@ public class GameScreen extends AbstractScreen {
         stage.addActor(staminaBar);
         stage.addActor(flapButton);
 //        stage.addActor(dropButton);
+        stage.addActor(expressions);
     }
 
     private void setInputProcessor() {

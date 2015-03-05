@@ -52,6 +52,8 @@ public class GameContactListener implements ContactListener {
                     break;
             }
 
+            obstacle.hit();
+
             Assets.hitEntity1.play();
 
         } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {

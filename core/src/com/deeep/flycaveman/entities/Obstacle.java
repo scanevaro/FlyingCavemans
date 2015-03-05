@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.world.World;
 
@@ -31,10 +30,8 @@ public class Obstacle implements Entity {
     public float smallEggSize = 0.8f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4, brachioSizeY = 3;
 
     private Sprite sprite;
-    private Array<Body> bodys;
 
     public Obstacle(World world, float positionX, Random random) {
-        bodys = new Array<Body>();
 
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
@@ -67,7 +64,7 @@ public class Obstacle implements Entity {
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
 
-        bodys.add(body = world.box2dWorld.createBody(bodyDef));
+        body = world.box2dWorld.createBody(bodyDef);
 
         if (type == Type.SMALL_EGG.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.smallEggTexture));
@@ -95,11 +92,9 @@ public class Obstacle implements Entity {
 
     @Override
     public void draw(Batch batch) {
-        for (Body body : bodys) {
-            sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
-            sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-            sprite.draw(batch);
-        }
+        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
+        sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+        sprite.draw(batch);
     }
 
     public void die() {
@@ -108,5 +103,15 @@ public class Obstacle implements Entity {
 
     public boolean isDead() {
         return dead;
+    }
+
+    public void hit() {
+        if (type == Type.SMALL_EGG.ordinal()) {
+            sprite.setRegion(Assets.smallEggBroken);
+        } else if (type == Type.BRACHIOSAURUS.ordinal()) {
+            sprite.setRegion(Assets.brachioMidPull);
+        } else if (type == Type.QUETZALCOATLUS.ordinal()) {
+            sprite.setRegion(Assets.quetzaHit);
+        }
     }
 }
