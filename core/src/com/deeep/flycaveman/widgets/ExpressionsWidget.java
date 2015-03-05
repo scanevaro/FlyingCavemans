@@ -13,6 +13,7 @@ import com.deeep.flycaveman.entities.CaveMan;
  */
 public class ExpressionsWidget extends Actor {
 
+    private CaveMan caveman;
 
     private Image background, face;
 
@@ -28,7 +29,10 @@ public class ExpressionsWidget extends Actor {
         face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
     }
 
-    public void update(CaveMan caveman) {
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+
         if (caveman.getState() == CaveMan.STATE_HAPPY)
             face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
         else if (caveman.getState() == CaveMan.STATE_TIRED)
@@ -47,5 +51,9 @@ public class ExpressionsWidget extends Actor {
 
         background.draw(batch, parentAlpha);
         face.draw(batch, parentAlpha);
+    }
+
+    public void setCaveman(CaveMan caveman) {
+        this.caveman = caveman;
     }
 }

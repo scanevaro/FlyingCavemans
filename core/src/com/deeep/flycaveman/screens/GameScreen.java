@@ -79,6 +79,8 @@ public class GameScreen extends AbstractScreen {
         soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
 
         Assets.font.setScale(0.5f);
+
+        expressions.setCaveman(world.caveman);
     }
 
     private void prepareScreen() {
