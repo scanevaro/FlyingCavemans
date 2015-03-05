@@ -6,21 +6,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.entities.CaveMan;
 
 /**
  * Created by scanevaro on 05/03/2015.
  */
 public class ExpressionsWidget extends Actor {
 
-    private final int STATE_HAPPY = 0;
-    private final int STATE_TIRED = 1;
-    private final int STATE_PAIN = 2;
-    private final int STATE_KO = 3;
-    private final int STATE_PASSION = 4;
 
     private Image background, face;
-
-    private int state;
 
     public ExpressionsWidget() {
         background = new Image(Assets.faceBackground);
@@ -31,21 +25,19 @@ public class ExpressionsWidget extends Actor {
         face.setSize(90, 90);
         face.setPosition(Core.VIRTUAL_WIDTH / 3 - face.getWidth() / 2, 0);
 
-        state = STATE_HAPPY;
-
-        update();
+        face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
     }
 
-    public void update() {
-        if (state == STATE_HAPPY)
+    public void update(CaveMan caveman) {
+        if (caveman.getState() == CaveMan.STATE_HAPPY)
             face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
-        else if (state == STATE_TIRED)
+        else if (caveman.getState() == CaveMan.STATE_TIRED)
             face.setDrawable(new TextureRegionDrawable(Assets.faceTired));
-        else if (state == STATE_KO)
+        else if (caveman.getState() == CaveMan.STATE_KO)
             face.setDrawable(new TextureRegionDrawable(Assets.faceKO));
-        else if (state == STATE_PAIN)
+        else if (caveman.getState() == CaveMan.STATE_PAIN)
             face.setDrawable(new TextureRegionDrawable(Assets.facePain));
-        else if (state == STATE_PASSION)
+        else if (caveman.getState() == CaveMan.STATE_PASSION)
             face.setDrawable(new TextureRegionDrawable(Assets.facePassion));
     }
 

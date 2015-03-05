@@ -60,6 +60,8 @@ public class GameContactListener implements ContactListener {
             GameInputProcessor.touchingGround = true;
             GameInputProcessor.flying = false;
             force = -1;
+
+            world.caveman.setState(CaveMan.STATE_PAIN);
         } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
             PowerUp powerUp = null;
             if (fixtureA.getUserData() instanceof PowerUp) {
@@ -78,8 +80,12 @@ public class GameContactListener implements ContactListener {
                 Assets.canOpen1.play();
             } else if (powerUp.type == PowerUp.Type.SPINACH) {
                 Assets.burp3.play();
+
+                world.caveman.setState(CaveMan.STATE_PASSION);
             } else if (powerUp.type == PowerUp.Type.VODKA) {
                 Assets.slurp.play();
+
+                world.caveman.setState(CaveMan.STATE_PAIN);
             }
 
             powerUp.die();

@@ -18,6 +18,12 @@ public class CaveMan implements Entity {
     public final float startPosY = 6.5f;
     private final float restitution = 0.1f;
 
+    public static final int STATE_HAPPY = 0;
+    public static final int STATE_TIRED = 1;
+    public static final int STATE_PAIN = 2;
+    public static final int STATE_KO = 3;
+    public static final int STATE_PASSION = 4;
+
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -39,6 +45,8 @@ public class CaveMan implements Entity {
     public int springs;
     public float stateTimeSprings;
     private float flapStateTime = 0;
+
+    private int state;
 
     public CaveMan(com.deeep.flycaveman.world.World world) {
         bodyDef = new BodyDef();
@@ -174,5 +182,13 @@ public class CaveMan implements Entity {
             flapStateTime = 0;
             //todo add a way to increase the max flapstatetime
         }
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }
