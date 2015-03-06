@@ -94,7 +94,7 @@ public class World extends Actor implements Disposable {
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
-        entities.add(title = new Title(this));
+        entities.add(title = new Title());
         entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
