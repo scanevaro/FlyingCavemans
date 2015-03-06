@@ -41,7 +41,7 @@ public class Assets {
             staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
             steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
-            facePassion, faceKO;
+            facePassion, faceKO, title;
     public static Animation cavemanWings, cavemanFlap;
 
     public static TextureRegion preHistoric_layer_1, preHistoric_layer_2, preHistoric_layer_3;  //todo put this in an enum or so
@@ -157,6 +157,7 @@ public class Assets {
         faceTired = items.findRegion("tiredface");
         facePassion = items.findRegion("passionface");
         faceKO = items.findRegion("koface");
+        title = items.findRegion("title");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");

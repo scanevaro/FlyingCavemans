@@ -70,6 +70,7 @@ public class World extends Actor implements Disposable {
     public PowerUpSpawner powerUpSpawner;
     private CoinSpawner coinSpawner;
     private Coin coin;
+    private Title title;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
@@ -93,6 +94,7 @@ public class World extends Actor implements Disposable {
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
+        entities.add(title = new Title(this));
         entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
