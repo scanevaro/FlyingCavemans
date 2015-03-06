@@ -204,10 +204,8 @@ public class GameScreen extends AbstractScreen {
         if (world.caveman.body.getPosition().y > (Core.BOX2D_VIRTUAL_HEIGHT / 2f)) {
             height = world.caveman.body.getPosition().y - 9;
             gameCamera.zoom = 0.9f + (height * 2.5f) / 56;
-            System.out.println(world.caveman.body.getPosition().y + "   " + ((Core.BOX2D_VIRTUAL_HEIGHT / 2f)));
         } else {
             gameCamera.zoom = 0.9f;
-            System.out.println("NOT " + world.caveman.body.getPosition().y + "   " + ((Core.BOX2D_VIRTUAL_HEIGHT / 2f)));
         }
         gameCamera.zoom = Math.min(gameCamera.zoom, 2f);
         gameCamera.update();

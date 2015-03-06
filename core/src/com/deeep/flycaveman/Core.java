@@ -84,4 +84,9 @@ public class Core implements ApplicationListener {
     public SpriteBatch getSpriteBatch() {
         return spriteBatch;
     }
+
+    public static float pixelsToBoxUnit(float pixels){
+        return pixels / 35;
+    }
+
 }
