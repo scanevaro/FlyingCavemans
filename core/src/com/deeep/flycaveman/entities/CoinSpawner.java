@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class CoinSpawner {
 
-    public static final float COIN_SPAWN_INTERVAL = 0.05F;
+    public static final float COIN_SPAWN_INTERVAL = 10F;
 
     private ArrayList<Coin> coins;
     private float coinSpawnTimer;
@@ -33,7 +33,9 @@ public class CoinSpawner {
         r = new Random();
         switch(id) {
             case 0:
-                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(20), caveman.body.getPosition().y, world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(2100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(-50), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(2300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(0), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(2500), caveman.body.getPosition().y +Core.pixelsToBoxUnit(50) , world));
                 break;
         }
     }
