@@ -22,7 +22,7 @@ public class Coin {
     private CircleShape shape;
     private FixtureDef fixtureDef;
 
-    private final float INTERVAL = 2F;
+    private final float INTERVAL = 0.07F;
 
     public Coin(float x, float y, World world) {
         sprites = new Sprite[]{new Sprite(Assets.coin1), new Sprite(Assets.coin2), new Sprite(Assets.coin3), new Sprite(Assets.coin4), new Sprite(Assets.coin5), new Sprite(Assets.coin6)};
