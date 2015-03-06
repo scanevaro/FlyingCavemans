@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class CoinSpawner {
 
-    public static final float COIN_SPAWN_INTERVAL = 10F;
+    public static final float COIN_SPAWN_INTERVAL = 5F;
 
     private ArrayList<Coin> coins;
     private float coinSpawnTimer;
@@ -29,20 +29,19 @@ public class CoinSpawner {
      * @param caveman caveman to grab positional data from
      */
     public void spawnCoins(int id, CaveMan caveman, World world){
-        System.out.println("rofxddwfwel");
         r = new Random();
         switch(id) {
             case 0:
-                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(2100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(-50), world));
-                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(2300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(0), world));
-                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(2500), caveman.body.getPosition().y +Core.pixelsToBoxUnit(50) , world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(50), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1500), caveman.body.getPosition().y +Core.pixelsToBoxUnit(150) , world));
                 break;
         }
     }
 
+    //TODO: coins shouldn't draw outside screen
     public void render(Batch b) {
         for (Coin c: coins){
-            System.out.println("rofl");
             c.draw(b);
         }
     }
@@ -56,6 +55,5 @@ public class CoinSpawner {
             spawnCoins(0, caveman, world);
             coinSpawnTimer = 0;
         }
-        System.out.println("rofl " + coinSpawnTimer);
     }
 }
