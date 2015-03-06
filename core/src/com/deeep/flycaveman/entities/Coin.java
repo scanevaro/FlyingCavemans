@@ -40,7 +40,7 @@ public class Coin {
 
         body = world.box2dWorld.createBody(bodyDef);
         for (Sprite s : sprites) {
-            s.setSize(2, 2);
+            s.setSize(1.5F, 1.5F);
             s.setOrigin(s.getWidth() / 2, s.getHeight() / 2);
         }
         fixture = body.createFixture(fixtureDef);

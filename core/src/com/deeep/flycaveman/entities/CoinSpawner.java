@@ -13,6 +13,7 @@ import java.util.Random;
 public class CoinSpawner {
 
     public static final float COIN_SPAWN_INTERVAL = 5F;
+    public static final int COIN_PATTERN_COUNT = 2;
 
     private ArrayList<Coin> coins;
     private float coinSpawnTimer;
@@ -29,12 +30,17 @@ public class CoinSpawner {
      * @param caveman caveman to grab positional data from
      */
     public void spawnCoins(int id, CaveMan caveman, World world){
-        r = new Random();
         switch(id) {
             case 0:
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(50), world));
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1500), caveman.body.getPosition().y +Core.pixelsToBoxUnit(150) , world));
+                break;
+            case 1:
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(50), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1100), caveman.body.getPosition().y +Core.pixelsToBoxUnit(150) , world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1500), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
                 break;
         }
     }
@@ -52,8 +58,14 @@ public class CoinSpawner {
             c.update(delta);
         }
         if(coinSpawnTimer > COIN_SPAWN_INTERVAL){
-            spawnCoins(0, caveman, world);
+            spawnRandomCoins(0, caveman, world);
             coinSpawnTimer = 0;
         }
+    }
+
+    public void spawnRandomCoins(int id, CaveMan caveman, World world){
+        r = new Random();
+        int ran = r.nextInt(COIN_PATTERN_COUNT);
+        spawnCoins(ran, caveman, world);
     }
 }
