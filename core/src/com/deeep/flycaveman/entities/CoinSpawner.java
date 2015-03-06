@@ -13,7 +13,7 @@ import java.util.Random;
 public class CoinSpawner {
 
     public static final float COIN_SPAWN_INTERVAL = 5F;
-    public static final int COIN_PATTERN_COUNT = 3;
+    public static final int COIN_PATTERN_COUNT = 4;
 
     private ArrayList<Coin> coins;
     private float coinSpawnTimer;
@@ -46,6 +46,11 @@ public class CoinSpawner {
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1300), caveman.body.getPosition().y +Core.pixelsToBoxUnit(50) , world));
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(150), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1500), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
+                break;
+            case 3:
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1100), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
+                coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1300), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
                 coins.add(new Coin(caveman.body.getPosition().x + Core.pixelsToBoxUnit(1500), caveman.body.getPosition().y + Core.pixelsToBoxUnit(100), world));
                 break;
         }
