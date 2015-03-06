@@ -4,34 +4,26 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
 import com.deeep.flycaveman.Assets;
 
 /**
  * Created by scanevaro on 06/03/2015.
  */
 public class Title implements Entity {
-    private float sizeX = 6, sizeY = 3.0f;
+    private float sizeX = 8, sizeY = 4.0f;
 
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
     public Fixture fixture;
     private PolygonShape shape;
-    public WeldJoint bulletJoint;
     public Sprite sprite;
 
-    private int state;
-    private com.deeep.flycaveman.world.World world;
-
     public Title(com.deeep.flycaveman.world.World world) {
-        this.world = world;
 
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(20, 8);
-//        bodyDef.fixedRotation = true;
-//        bodyDef.bullet = true;
+        bodyDef.position.set(20, 9);
 
         shape = new PolygonShape();
         shape.setAsBox(sizeX, sizeY);
