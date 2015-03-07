@@ -1,8 +1,8 @@
 package com.deeep.flycaveman.world;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.classes.Biomes;
 import com.deeep.flycaveman.widgets.SoundManager;
 
@@ -24,25 +24,28 @@ public class Area {
 
         soundManager.silence();
 
-        soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
+        soundManager.getMusic("DessertTheme").fadeIn(5, 1f);
     }
 
     public void update(Body caveman) {
         //todo make this the camera, no1 gives a shit about the caveman5
         x = caveman.getPosition().x;
+        soundManager.update(Gdx.graphics.getDeltaTime());
         if (x - someCounter >= 500) {
             if (!biomes.isTransitioning()) {
                 someCounter += 500;
                 if (biomes.getCurrentBiome(true) == Biomes.DESSERT) {
                     biomes.setNextTheme(Biomes.DESSERT_JUNGLE);
                     System.out.println("To jungle! and beyond?");
-                    soundManager.silence();
-                    soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
+                    soundManager.getMusic("DessertTheme").fadeOut(5f, 0);
+                    soundManager.getMusic("JungleTheme").fadeIn(5f, 1);
+                    System.out.println("dessert theme should be fading out: " + soundManager.getMusic("DessertTheme").isFadingOut());
+
                 } else {
                     biomes.setNextTheme(Biomes.JUNGLE_DESSERT);
                     System.out.println("To dessert! and beyond!");
-                    soundManager.silence();
-                    soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
+                    soundManager.getMusic("DessertTheme").fadeIn(5f, 1);
+                    soundManager.getMusic("JungleTheme").fadeOut(5f, 0);
                 }
             } else {
                 System.out.println("not so quickly aye?");

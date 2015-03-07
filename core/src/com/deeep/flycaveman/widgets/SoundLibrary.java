@@ -29,9 +29,9 @@ public class SoundLibrary {
         this.spaceMusic = new FadeableMusic(Assets.loadMusicFile("SpaceTheme"), "SpaceTheme");
         this.dessertMusic = new FadeableMusic(Assets.loadMusicFile("DessertTheme"), "DessertTheme");
         musicList = new ArrayList<FadeableMusic>();
-        musicList.add(shopMusic);
+       // musicList.add(shopMusic);
         musicList.add(jungleMusic);
-        musicList.add(spaceMusic);
+       // musicList.add(spaceMusic);
         musicList.add(dessertMusic);
     }
 
