@@ -81,7 +81,7 @@ public class PowerUp implements Entity {
 
         body = world.box2dWorld.createBody(bodyDef);
 
-//        sprite.setSize(2, 3);
+//        title.setSize(2, 3);
         sprite.setSize(1.2f, 2.4f);
         body.setUserData(sprite);
 

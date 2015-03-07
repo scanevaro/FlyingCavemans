@@ -10,17 +10,24 @@ import com.deeep.flycaveman.Assets;
 public class Title implements Entity {
     private float sizeX = 8, sizeY = 4.0f, positionX = 18, positionY = 9;
 
-    public Sprite sprite;
+    public Sprite title, touchNHold;
 
     public Title() {
-        sprite = new Sprite(Assets.title);
-        sprite.setSize(sizeX * 2, sizeY * 2);
-        sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+        title = new Sprite(Assets.title);
+        title.setSize(sizeX * 2, sizeY * 2);
+        title.setOrigin(title.getWidth() / 2, title.getHeight() / 2);
+        title.setPosition(positionX - title.getWidth() / 2, positionY - title.getHeight() / 2);
+
+        touchNHold = new Sprite(Assets.touchNH);
+        touchNHold.setSize(16, 3.5f);
+        touchNHold.setOrigin(touchNHold.getWidth() / 2, touchNHold.getHeight() / 2);
+        touchNHold.setPosition(10.0f, 0.5f);
     }
 
     @Override
     public void draw(Batch batch) {
-        sprite.setPosition(positionX - sprite.getWidth() / 2, positionY - sprite.getHeight() / 2);
-        sprite.draw(batch);
+        title.draw(batch);
+
+        touchNHold.draw(batch);
     }
 }
