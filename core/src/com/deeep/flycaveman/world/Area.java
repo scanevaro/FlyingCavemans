@@ -4,16 +4,20 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.deeep.flycaveman.classes.Biomes;
+import com.deeep.flycaveman.widgets.FadeableMusic;
 import com.deeep.flycaveman.widgets.SoundManager;
 
 /**
  * Created by Elmar on 8-2-2015.
  */
 public class Area {
-    private float x;
+
     private Biomes biomes;
     private int someCounter = 0;
     private SoundManager soundManager;
+
+    private FadeableMusic currentMusic;
+    private FadeableMusic nextMusic;
 
     public Area() {
         biomes = new Biomes();
@@ -29,7 +33,7 @@ public class Area {
 
     public void update(Body caveman) {
         //todo make this the camera, no1 gives a shit about the caveman5
-        x = caveman.getPosition().x;
+        float x = caveman.getPosition().x;
         soundManager.update(Gdx.graphics.getDeltaTime());
         if (x - someCounter >= 500) {
             if (!biomes.isTransitioning()) {
