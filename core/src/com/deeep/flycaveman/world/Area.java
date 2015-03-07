@@ -25,6 +25,9 @@ public class Area {
 
         soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
         soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
+        soundManager.playMusic(soundManager.getMusic("ShopTheme").getMusicObject(), true);
+        soundManager.playMusic(soundManager.getMusic("SpaceTheme").getMusicObject(), true);
+        soundManager.playMusic(soundManager.getMusic("WindTheme").getMusicObject(), true);
 
         soundManager.silence();
 

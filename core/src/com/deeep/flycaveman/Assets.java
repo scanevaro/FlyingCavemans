@@ -94,6 +94,7 @@ public class Assets {
         assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
     }
 
     public static void set() {
