@@ -38,40 +38,21 @@ public class FadeableMusic {
     }
 
     public void fadeOut(float duration, float newVol) {
-        if (isFadingIn) {
-            System.out.println("Make up your mind! isFadingOut == 1");
-            return;
-        }
-        float currentVol = volume;
-        if (newVol > currentVol) {
-            System.out.println("oi? fade out cant! newVol>oldVol");
-            return;
-        }
-        isFadingOut = true;
-        speed = Math.abs((newVol - currentVol) / duration);
+        this.isFadingOut = true;
+        speed = Math.abs((newVol - volume) / duration);
         targetVolMin = newVol;
-        System.out.println(music);
-        System.out.println("fadeout at: " + speed + " target: " + targetVolMax + " isFadingIn: " + isFadingIn + " current vol: " + currentVol);
+        System.out.println(name + " fadeout at: " + speed + " target: " + targetVolMax + "[" + isFadingIn + "|" + isFadingOut + "]" + " current vol: " + volume);
     }
 
     public void fadeIn(float duration, float newVol) {
-        if (isFadingOut) {
-            System.out.println("Make up your mind! isFadingOut == 1");
-            return;
-        }
-        float currentVol = volume;
-        if (newVol < currentVol) {
-            System.out.println("oi? fade in cant! newVol<oldVol");
-            return;
-        }
-        isFadingIn = true;
-        speed = (newVol - currentVol) / duration;
+        this.isFadingIn = true;
+        speed = (newVol - volume) / duration;
         targetVolMax = newVol;
-        System.out.println(music);
-        System.out.println("fadein at: " + speed + " target: " + targetVolMax + " isFadingOut: " + isFadingOut + " current vol: " + currentVol);
+        System.out.println(name + " fadein at: " + speed + " target: " + targetVolMax + "[" + isFadingIn + "|" + isFadingOut + "]" + " current vol: " + volume);
     }
 
     public void update(float delta) {
+        System.out.println(name + "[" + isFadingIn + "|" + isFadingOut + "]" + volume);
         if (isFadingOut) {
             System.out.println("fading out");
             volume -= speed * delta;
