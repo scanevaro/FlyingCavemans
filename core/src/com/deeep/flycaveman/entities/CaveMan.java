@@ -1,5 +1,6 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
@@ -112,7 +113,7 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
-        sprite.setRegion(Assets.cavemanTexture);
+        body.getPosition().set(Gdx.input.getX(),Gdx.input.getY());        sprite.setRegion(Assets.cavemanTexture);
 
         updateFlapping(delta);
 
@@ -133,8 +134,8 @@ public class CaveMan implements Entity {
         if (flapStateTime < 0.5f) {
             flapStateTime += delta;
 
-            if (strength > 0)
-                strength -= delta * 20;
+            if (strength > 0);
+               // strength -= delta * 20;
 
             double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
             body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
@@ -180,7 +181,7 @@ public class CaveMan implements Entity {
     }
 
     public void flap() {
-        if (stamina > 0) {
+        //if (stamina > 0) {
             if (body.getLinearVelocity().y < 0) {
                 body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
             } else {
@@ -189,7 +190,7 @@ public class CaveMan implements Entity {
             stamina -= 1;
             flapStateTime = 0;
             //todo add a way to increase the max flapstatetime
-        }
+       // }
     }
 
     public int getState() {

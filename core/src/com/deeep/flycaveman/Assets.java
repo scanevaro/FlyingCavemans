@@ -44,11 +44,12 @@ public class Assets {
             facePassion, faceKO, title, touchNH;
     public static Animation cavemanWings, cavemanFlap;
 
-    public static TextureRegion preHistoric_layer_1, preHistoric_layer_2, preHistoric_layer_3;  //todo put this in an enum or so
+    public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3;  //todo put this in an enum or so
-    public static TextureRegion jungle_historic_layer_1, jungle_historic_layer_2, jungle_historic_layer_3;  //todo put this in an enum or so
-    public static TextureRegion historic_jungle_layer_1, historic_jungle_layer_2, historic_jungle_layer_3;  //todo put this in an enum or so
-
+    public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
+    public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2, dessert_jungle_layer_3;  //todo put this in an enum or so
+    public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3;
+    public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3;
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1;
 
@@ -92,6 +93,7 @@ public class Assets {
         assetManager.load("data/sounds/music/JungleTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
     }
 
     public static void set() {
@@ -178,21 +180,24 @@ public class Assets {
         dropUp = items.findRegion("dropUp");
         pauseUp = items.findRegion("pause");
 
-        preHistoric_layer_1 = items.findRegion("desert_layer", 1);
-        preHistoric_layer_2 = items.findRegion("desert_layer", 2);
-        preHistoric_layer_3 = items.findRegion("desert_layer", 3);
+        dessert_layer_1 = items.findRegion("desert_layer", 1);
+        dessert_layer_2 = items.findRegion("desert_layer", 2);
+        dessert_layer_3 = items.findRegion("desert_layer", 3);
 
         jungle_layer_1 = items.findRegion("jungle_layer", 1);
         jungle_layer_2 = items.findRegion("jungle_layer", 2);
         jungle_layer_3 = items.findRegion("jungle_layer", 3);
 
-        jungle_historic_layer_1 = items.findRegion("groundJungle");
-        jungle_historic_layer_2 = items.findRegion("jungleToDesert");
-        jungle_historic_layer_3 = items.findRegion("jungleBackground");
+        jungle_dessert_layer_1 = items.findRegion("jungle_desert");
+        jungle_dessert_layer_2 = items.findRegion("desert_layer", 2);
+        jungle_dessert_layer_3 = items.findRegion("desert_layer", 3);
 
-        historic_jungle_layer_1 = items.findRegion("groundJungle");
-        historic_jungle_layer_2 = items.findRegion("groundToJungle");
-        historic_jungle_layer_3 = items.findRegion("jungleBackground");
+        dessert_jungle_layer_1 = items.findRegion("desert_jungle");
+        dessert_jungle_layer_2 = items.findRegion("jungle_layer", 2);
+        dessert_jungle_layer_3 = items.findRegion("jungle_layer", 3);
+
+
+        // ocean_layer_1, ocean_layer_2, ocean_layer_3;
 
         cloud1 = items.findRegion("cloud1");
         cloud2 = items.findRegion("cloud2");

@@ -1,43 +1,57 @@
 package com.deeep.flycaveman.world;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.classes.Biomes;
+import com.deeep.flycaveman.widgets.SoundManager;
 
 /**
  * Created by Elmar on 8-2-2015.
  */
 public class Area {
-    private int area = 0;
-    public static final int DESSERT = 0;
-    public static final int MOUNTAINS = 1;
     private float x;
-    private Theme theme;
+    private Biomes biomes;
+    private int someCounter = 0;
+    private SoundManager soundManager;
 
     public Area() {
-        Theme.initThemes();
-        theme = Theme.PreHistoric;
+        biomes = new Biomes();
+        soundManager = new SoundManager();
+
+        soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
+        soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
+
+        soundManager.silence();
+
+        soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
     }
 
     public void update(Body caveman) {
+        //todo make this the camera, no1 gives a shit about the caveman5
         x = caveman.getPosition().x;
-        if (Gdx.input.isKeyPressed(Input.Keys.NUM_1)) {
-            theme = Theme.Jungle;
-        } else if (Gdx.input.isKeyPressed(Input.Keys.NUM_2)) {
-            theme = Theme.PreHistoric;
-        }else if (Gdx.input.isKeyPressed(Input.Keys.NUM_3)) {
-            theme = Theme.JunglePreHistoricTransition;
+        if (x - someCounter >= 500) {
+            if (!biomes.isTransitioning()) {
+                someCounter += 500;
+                if (biomes.getCurrentBiome(true) == Biomes.DESSERT) {
+                    biomes.setNextTheme(Biomes.DESSERT_JUNGLE);
+                    System.out.println("To jungle! and beyond?");
+                    soundManager.silence();
+                    soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
+                } else {
+                    biomes.setNextTheme(Biomes.JUNGLE_DESSERT);
+                    System.out.println("To dessert! and beyond!");
+                    soundManager.silence();
+                    soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
+                }
+            } else {
+                System.out.println("not so quickly aye?");
+            }
         }
+        biomes.update(x);
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        float xPosition = x % (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2);
-        theme.background.update(x);
-        theme.background.draw(spriteBatch);
-        //spriteBatch.draw(areas[area], x - xPosition, 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
-        //spriteBatch.draw(areas[area], x - xPosition + Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
-        //spriteBatch.draw(areas[area], x - xPosition - (Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2), 0, Core.BOX2D_VIRTUAL_WIDTH + Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT);
+        biomes.draw(spriteBatch);
     }
 }

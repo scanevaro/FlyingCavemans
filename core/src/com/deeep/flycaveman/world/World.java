@@ -52,7 +52,6 @@ public class World extends Actor implements Disposable {
 
     //private Sprite backgroundSprite;
     private float scrollTimer;
-    private float obstaclesPosX;
 
     private float camPosX;
     private float camPosY;
@@ -69,7 +68,6 @@ public class World extends Actor implements Disposable {
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
     private CoinSpawner coinSpawner;
-    private Coin coin;
     private Title title;
 
     public World(Stage worldStage, Stage stage, boolean debug) {

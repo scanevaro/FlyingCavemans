@@ -20,7 +20,6 @@ public class Core implements ApplicationListener {
 
     public static boolean dialogOpen;
 
-    public SoundManager soundManager;
     private SpriteBatch spriteBatch;
     public AbstractScreen screen;
     public Dialogs dialogs;
@@ -34,7 +33,6 @@ public class Core implements ApplicationListener {
         dialogs = new Dialogs();
 
         spriteBatch = new SpriteBatch();
-        soundManager = new SoundManager();
         setScreen(new SplashScreen(this));
 
         Tween.registerAccessor(Actor.class, new ActorAccessor());

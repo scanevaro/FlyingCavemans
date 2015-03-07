@@ -123,21 +123,6 @@ public class GameInputProcessor implements InputProcessor {
             game.dialogs.update(game.screen);
             return true;
         }
-        if (keycode == Input.Keys.DOWN) {
-            game.soundManager.silence();
-            game.soundManager.playMusic(game.soundManager.getMusic("ShopTheme").getMusicObject(), true);
-            return true;
-        }
-        if (keycode == Input.Keys.UP) {
-            game.soundManager.silence();
-            game.soundManager.playMusic(game.soundManager.getMusic("JungleTheme").getMusicObject(), true);
-            return true;
-        }
-        if (keycode == Input.Keys.LEFT) {
-            game.soundManager.silence();
-            game.soundManager.playMusic(game.soundManager.getMusic("SpaceTheme").getMusicObject(), true);
-            return true;
-        }
         return false;
     }
 
