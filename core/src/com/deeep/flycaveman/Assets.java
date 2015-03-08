@@ -96,10 +96,10 @@ public class Assets {
         assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
 
         assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
-        assetManager.load("data/sounds/coin1_sound.mp3", Sound.class);
-        assetManager.load("data/sounds/coin2_sound.mp3", Sound.class);
-        assetManager.load("data/sounds/coin3_sound.mp3", Sound.class);
-        assetManager.load("data/sounds/coin4_sound.mp3", Sound.class);
+        assetManager.load("data/sounds/coin1.mp3", Sound.class);
+        assetManager.load("data/sounds/coin2.mp3", Sound.class);
+        assetManager.load("data/sounds/coin3.mp3", Sound.class);
+        assetManager.load("data/sounds/coin4.mp3", Sound.class);
     }
 
     public static void set() {
