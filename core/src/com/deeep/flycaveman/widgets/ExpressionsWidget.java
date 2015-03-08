@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.deeep.flycaveman.Assets;
@@ -35,6 +36,9 @@ public class ExpressionsWidget extends Actor {
     public void act(float delta) {
         super.act(delta);
 
+        background.act(delta);
+        face.act(delta);
+
         if (caveman.getState() == CaveMan.STATE_HAPPY)
             face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
         else if (caveman.getState() == CaveMan.STATE_TIRED)
@@ -49,7 +53,7 @@ public class ExpressionsWidget extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
+//        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         background.draw(batch, parentAlpha);
         face.draw(batch, parentAlpha);
@@ -69,9 +73,9 @@ public class ExpressionsWidget extends Actor {
 
     @Override
     public void addAction(Action action) {
-        super.addAction(action);
+//        super.addAction(action);
 
-        background.addAction(action);
-        face.addAction(action);
+        background.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+        face.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
     }
 }

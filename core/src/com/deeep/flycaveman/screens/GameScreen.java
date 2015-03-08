@@ -144,18 +144,13 @@ public class GameScreen extends AbstractScreen {
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
         flapButton.setSize(96, 96);
         flapButton.setPosition(0, 0);
-//        dropButton.setSize(96, 96);
-//        dropButton.setPosition(Core.VIRTUAL_WIDTH - dropButton.getWidth(), 0);
 
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
         stage.addActor(pauseButton);
         stage.addActor(staminaBar);
         stage.addActor(flapButton);
-//        stage.addActor(dropButton);
         stage.addActor(expressions);
-
-//        stage.getRoot().setColor(new Color(1, 1, 1, 0));
     }
 
     private void setInputProcessor() {
