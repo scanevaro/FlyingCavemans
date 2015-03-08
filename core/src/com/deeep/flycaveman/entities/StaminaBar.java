@@ -1,10 +1,12 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.Core;
 
 /**
  * Created by scanevaro on 09/02/2015.
@@ -63,5 +65,31 @@ public class StaminaBar extends Actor {
 
         bar.draw(batch, parentAlpha);
         hand.draw(batch, parentAlpha);
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+
+        background.setColor(color);
+
+        for (int x = 0; x < fill.length; x++)
+            fill[x].setColor(color);
+
+        bar.setColor(color);
+        hand.setColor(color);
+    }
+
+    @Override
+    public void addAction(Action action) {
+        super.addAction(action);
+
+        background.addAction(action);
+
+        for (int x = 0; x < fill.length; x++)
+            fill[x].addAction(action);
+
+        bar.addAction(action);
+        hand.addAction(action);
     }
 }

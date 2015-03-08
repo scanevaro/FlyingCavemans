@@ -1,6 +1,8 @@
 package com.deeep.flycaveman.entities;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -45,6 +47,20 @@ public class FlapButton extends Actor {
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         imageButton.draw(batch, parentAlpha);
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+
+        imageButton.setColor(color);
+    }
+
+    @Override
+    public void addAction(Action action) {
+        super.addAction(action);
+
+        imageButton.addAction(action);
     }
 
     @Override

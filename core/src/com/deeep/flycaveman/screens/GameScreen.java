@@ -3,10 +3,12 @@ package com.deeep.flycaveman.screens;
 import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -20,7 +22,6 @@ import com.deeep.flycaveman.entities.FlapButton;
 import com.deeep.flycaveman.entities.StaminaBar;
 import com.deeep.flycaveman.input.GameInputProcessor;
 import com.deeep.flycaveman.widgets.ExpressionsWidget;
-import com.deeep.flycaveman.widgets.SoundManager;
 import com.deeep.flycaveman.world.World;
 
 /**
@@ -63,12 +64,12 @@ public class GameScreen extends AbstractScreen {
 
         prepareScreen();
         setWidgets();
-        configureWidgets();
         prepareWorld();
 
         staminaBar = new StaminaBar(world.caveman);
 
         getGameCamera();
+        configureWidgets();
         setLayout();
         setInputProcessor();
         prepareGameOverDialog();
@@ -110,6 +111,13 @@ public class GameScreen extends AbstractScreen {
                 game.dialogs.update(game.screen);
             }
         });
+
+        distanceLabel.setColor(new Color(1, 1, 1, 0));
+        heightLabel.setColor(new Color(1, 1, 1, 0));
+        pauseButton.setColor(new Color(1, 1, 1, 0));
+        staminaBar.setColor(new Color(1, 1, 1, 0));
+        flapButton.setColor(new Color(1, 1, 1, 0));
+        expressions.setColor(new Color(1, 1, 1, 0));
     }
 
     private void prepareWorld() {
@@ -146,6 +154,8 @@ public class GameScreen extends AbstractScreen {
         stage.addActor(flapButton);
 //        stage.addActor(dropButton);
         stage.addActor(expressions);
+
+//        stage.getRoot().setColor(new Color(1, 1, 1, 0));
     }
 
     private void setInputProcessor() {
@@ -165,6 +175,15 @@ public class GameScreen extends AbstractScreen {
 
     @Override
     public void render(float delta) {
+
+        if (gameInputProcessor.flying) {
+            distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+        }
 
         /**Updates*/
         if (!Core.dialogOpen) {

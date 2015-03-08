@@ -1,6 +1,8 @@
 package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -55,5 +57,21 @@ public class ExpressionsWidget extends Actor {
 
     public void setCaveman(CaveMan caveman) {
         this.caveman = caveman;
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+
+        background.setColor(color);
+        face.setColor(color);
+    }
+
+    @Override
+    public void addAction(Action action) {
+        super.addAction(action);
+
+        background.addAction(action);
+        face.addAction(action);
     }
 }
