@@ -79,4 +79,8 @@ public class CoinSpawner {
         int ran = r.nextInt(COIN_PATTERN_COUNT);
         spawnCoins(ran, caveman, world);
     }
+
+    public void remove(Coin coin){
+        coins.remove(coin);
+    }
 }
