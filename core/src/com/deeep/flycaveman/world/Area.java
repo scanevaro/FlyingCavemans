@@ -57,7 +57,7 @@ public class Area {
 
     private Biomes biomes;
     private int someCounter = 0;
-    private SoundManager soundManager;
+    public SoundManager soundManager;
     private AREA currentArea;
     private AREA nextArea;
     private FadeableMusic currentMusic;

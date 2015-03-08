@@ -41,6 +41,11 @@ public class CaveMan implements Entity {
     public static final float maxStamina = 5.0f;
     public float strength;
 
+    public int coins = 0;
+    public int coinStreak = 0;
+    public float coinTimer = 2F;
+    public final float COIN_PICKUP_INTERVAL = 2F;
+
     public static boolean wingsPowerup;
     public static boolean upgradeStamina;
     public static boolean addSteroids;
@@ -115,6 +120,13 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
+        if(coinStreak > 0){
+            coinTimer += delta;
+            if(coinTimer >= COIN_PICKUP_INTERVAL) {
+                coinStreak = 0;
+                coinTimer = 0;
+            }
+        }
         body.getPosition().set(Gdx.input.getX(), Gdx.input.getY());
         sprite.setRegion(Assets.cavemanTexture);
 
