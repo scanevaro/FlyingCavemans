@@ -15,7 +15,6 @@ import com.deeep.flycaveman.input.GameInputProcessor;
  * Created by scanevaro on 11/10/2014.
  */
 public class CaveMan implements Entity {
-    public boolean cheats = true;
     public final float startPosX = 11.1f;
     public final float startPosY = 6.5f;
     private final float restitution = 0.1f;
@@ -39,6 +38,11 @@ public class CaveMan implements Entity {
     public float stamina;
     public static final float maxStamina = 5.0f;
     public float strength;
+
+    public int coins = 0;
+    public int coinStreak = 0;
+    public float coinTimer = 2F;
+    public final float COIN_PICKUP_INTERVAL = 2F;
 
     public static boolean wingsPowerup;
     public static boolean upgradeStamina;
@@ -114,7 +118,14 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
-        body.getPosition().set(Gdx.input.getX(), Gdx.input.getY());
+        if(coinStreak > 0){
+            coinTimer += delta;
+            if(coinTimer >= COIN_PICKUP_INTERVAL) {
+                coinStreak = 0;
+                coinTimer = 0;
+            }
+        }
+        body.getPosition().set(Gdx.input.getX(),Gdx.input.getY());
         sprite.setRegion(Assets.cavemanTexture);
 
         updateFlapping(delta);
@@ -136,8 +147,8 @@ public class CaveMan implements Entity {
         if (flapStateTime < 0.5f) {
             flapStateTime += delta;
 
-            if (strength > 0 && !cheats)
-                strength -= delta * 20;
+            if (strength > 0);
+               // strength -= delta * 20;
 
             double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
             body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
@@ -183,17 +194,16 @@ public class CaveMan implements Entity {
     }
 
     public void flap() {
-        if (stamina > 0) {
+        //if (stamina > 0) {
             if (body.getLinearVelocity().y < 0) {
                 body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
             } else {
                 body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
             }
-            if (!cheats )
-                stamina -= 1;
+            stamina -= 1;
             flapStateTime = 0;
             //todo add a way to increase the max flapstatetime
-        }
+       // }
     }
 
     public int getState() {

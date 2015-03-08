@@ -51,7 +51,7 @@ public class Assets {
     public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3;
     public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3;
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1, coin1_sound, coin2_sound, coin3_sound, coin4_sound;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -94,7 +94,11 @@ public class Assets {
         assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
+
+        assetManager.load("data/sounds/coin1.mp3", Sound.class);
+        assetManager.load("data/sounds/coin2.mp3", Sound.class);
+        assetManager.load("data/sounds/coin3.mp3", Sound.class);
+        assetManager.load("data/sounds/coin4.mp3", Sound.class);
     }
 
     public static void set() {
@@ -217,6 +221,10 @@ public class Assets {
         canOpen1 = assetManager.get("data/sounds/canOpen1.mp3");
         burp3 = assetManager.get("data/sounds/burp3.mp3");
         hitEntity1 = assetManager.get("data/sounds/hitEntity1.mp3");
+        coin1_sound = assetManager.get("data/sounds/coin1.mp3");
+        coin2_sound = assetManager.get("data/sounds/coin2.mp3");
+        coin3_sound = assetManager.get("data/sounds/coin3.mp3");
+        coin4_sound = assetManager.get("data/sounds/coin4.mp3");
     }
 
     public static void dispose() {

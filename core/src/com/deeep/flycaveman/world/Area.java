@@ -11,61 +11,13 @@ import com.deeep.flycaveman.widgets.SoundManager;
  * Created by Elmar on 8-2-2015.
  */
 public class Area {
-    public enum AREA {
-        DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "OceanTheme");
-
-        private int biomesCode;
-        private String music; // todo make use of FadeableMusic class
-
-        AREA(int biomesCode, String music) {
-            this.biomesCode = biomesCode;
-            this.music = music;
-        }
-
-        public static void test() {
-        }
-
-        public int transit(AREA from, AREA to) {
-            switch (from) { //todo from == this
-                case DESSERT:
-                    switch (to) {
-                        case JUNGLE:
-                            return Biomes.DESSERT_JUNGLE;
-                        case OCEAN:
-                            return Biomes.DESSERT_OCEAN;
-                    }
-                    break;
-                case JUNGLE:
-                    switch (to) {
-                        case DESSERT:
-                            return Biomes.JUNGLE_DESSERT;
-                        case OCEAN:
-                            return Biomes.JUNGLE_OCEAN;
-                    }
-                    break;
-                case OCEAN:
-                    switch (to) {
-                        case DESSERT:
-                            return Biomes.OCEAN_DESSERT;
-                        case JUNGLE:
-                            return Biomes.OCEAN_JUNGLE;
-                    }
-            }
-            return biomesCode;
-        }
-    }
 
     private Biomes biomes;
     private int someCounter = 0;
-    private SoundManager soundManager;
-    private AREA currentArea;
-    private AREA nextArea;
+    public SoundManager soundManager;
+
     private FadeableMusic currentMusic;
     private FadeableMusic nextMusic;
-    private FadeableMusic windMusic;
-    private FadeableMusic spaceMusic;
-
-    public static float biomesLength = 500;
 
     public Area() {
         biomes = new Biomes();
@@ -73,68 +25,36 @@ public class Area {
 
         soundManager.playMusic(soundManager.getMusic("DessertTheme").getMusicObject(), true);
         soundManager.playMusic(soundManager.getMusic("JungleTheme").getMusicObject(), true);
-        soundManager.playMusic(soundManager.getMusic("ShopTheme").getMusicObject(), true);
-        soundManager.playMusic(soundManager.getMusic("SpaceTheme").getMusicObject(), true);
-        soundManager.playMusic(soundManager.getMusic("WindTheme").getMusicObject(), true);
 
         soundManager.silence();
-        soundManager.getMusic("DessertTheme").fadeIn(5, 1f);
-        currentArea = AREA.DESSERT;
-        nextArea = getRandomArea(currentArea);
-        currentMusic = soundManager.getMusic(currentArea.music);
-        nextMusic = soundManager.getMusic(nextArea.music);
-        windMusic = soundManager.getMusic("WindTheme");
-        spaceMusic = soundManager.getMusic("SpaceTheme");
-        windMusic.setVolume(0);
-        spaceMusic.setVolume(0);
-        nextMusic.setVolume(0);
-    }
 
-    public AREA getRandomArea(AREA current) {
-        if (current == AREA.DESSERT) {
-            return AREA.JUNGLE;
-        }
-        return AREA.DESSERT;
+        soundManager.getMusic("DessertTheme").fadeIn(5, 1f);
     }
 
     public void update(Body caveman) {
         //todo make this the camera, no1 gives a shit about the caveman5
-        float biomePosition = caveman.getPosition().x - someCounter;
-
-        if (nextMusic != null) {
-            if (nextMusic.getVolume() >= 0.95f) {
-                this.currentMusic = nextMusic;
+        float x = caveman.getPosition().x;
+        soundManager.update(Gdx.graphics.getDeltaTime());
+        if (x - someCounter >= 500) {
+            if (!biomes.isTransitioning()) {
+                someCounter += 500;
+                if (biomes.getCurrentBiome(true) == Biomes.DESSERT) {
+                    biomes.setNextTheme(Biomes.DESSERT_JUNGLE);
+                    System.out.println("To jungle! and beyond?");
+                    soundManager.getMusic("DessertTheme").fadeOut(5f, 0);
+                    soundManager.getMusic("JungleTheme").fadeIn(5f, 1);
+                    System.out.println("dessert[" + soundManager.getMusic("DessertTheme").isFadingIn() + soundManager.getMusic("DessertTheme").isFadingOut() + "] Jungle[" + soundManager.getMusic("JungleTheme").isFadingIn() + soundManager.getMusic("JungleTheme").isFadingOut() + "]");
+                } else {
+                    biomes.setNextTheme(Biomes.JUNGLE_DESSERT);
+                    System.out.println("To dessert! and beyond!");
+                    soundManager.getMusic("DessertTheme").fadeIn(5f, 1);
+                    soundManager.getMusic("JungleTheme").fadeOut(5f, 0);
+                }
+            } else {
+                System.out.println("not so quickly aye?");
             }
         }
-        if (currentMusic.getVolume() <= 0) {
-            float nextVolume = biomePosition / (biomesLength * 0.2f);
-            nextMusic.setVolume(nextVolume);
-        }
-        if (biomePosition >= (biomesLength * 0.8f)) {   //larger than 80%
-            float fade = 1 - (biomePosition - biomesLength * 0.8f) / (biomesLength * 0.2f);
-            currentMusic.setVolume(fade);
-            if(caveman.getPosition().x>100) //not on the catapult we dont want to hear this. TODO make this nicer
-            windMusic.setVolume(1 - fade);
-        } else {
-            float fade = 1 - (biomePosition - biomesLength * 0.2f) / (biomesLength * 0.2f);
-            System.out.println(fade);
-            if (fade > 0)
-                if(caveman.getPosition().x>100) //not on the catapult we dont want to hear this. TODO make this nicer
-                windMusic.setVolume(fade);
-        }
-
-        System.out.println(windMusic + ": "+ windMusic.getVolume());
-
-        if (biomePosition >= biomesLength) {
-            currentMusic.setVolume(0);
-            biomes.setNextTheme(currentArea.transit(currentArea, nextArea));
-            currentArea = nextArea;
-            nextMusic = soundManager.getMusic(nextArea.music);
-            nextArea = getRandomArea(currentArea);
-            someCounter += biomesLength;
-        }
-        soundManager.update(Gdx.graphics.getDeltaTime());
-        biomes.update(caveman.getPosition().x);
+        biomes.update(x);
     }
 
     public void draw(SpriteBatch spriteBatch) {
