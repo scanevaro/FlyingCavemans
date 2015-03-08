@@ -3,8 +3,6 @@ package com.deeep.flycaveman.input;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.entities.*;
-import com.deeep.flycaveman.widgets.SoundLibrary;
-import com.deeep.flycaveman.widgets.SoundManager;
 import com.deeep.flycaveman.world.World;
 
 /**
@@ -93,9 +91,7 @@ public class GameContactListener implements ContactListener {
          * Collision for coins
          */
         if (fixtureA.getUserData() instanceof Coin || fixtureB.getUserData() instanceof Coin) {
-            Coin coin = null;
-            if(fixtureA.getUserData() instanceof Coin) coin = (Coin) fixtureA.getUserData();
-            if(fixtureB.getUserData() instanceof Coin) coin = (Coin) fixtureB.getUserData();
+            System.out.println("Coin babyyyy");
             world.caveman.coins ++;
             switch (world.caveman.coinStreak){
                 case 0:
@@ -113,7 +109,6 @@ public class GameContactListener implements ContactListener {
             }
             world.caveman.coinStreak ++;
             if(world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
-            world.coinSpawner.remove(coin);
         }
 
     }

@@ -21,6 +21,7 @@ import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.FlapButton;
 import com.deeep.flycaveman.entities.StaminaBar;
 import com.deeep.flycaveman.input.GameInputProcessor;
+import com.deeep.flycaveman.widgets.CoinsWidget;
 import com.deeep.flycaveman.widgets.ExpressionsWidget;
 import com.deeep.flycaveman.world.World;
 
@@ -48,6 +49,7 @@ public class GameScreen extends AbstractScreen {
     //    private DropButton dropButton;
     private FlapButton flapButton;
     private ExpressionsWidget expressions;
+    private CoinsWidget coinsWidget;
     /**
      * World
      */
@@ -75,10 +77,10 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
         prepareShopDialog();
 
-
         Assets.font.setScale(0.5f);
 
         expressions.setCaveman(world.caveman);
+        coinsWidget.setCaveMan(world.caveman);
     }
 
     private void prepareScreen() {
@@ -102,6 +104,7 @@ public class GameScreen extends AbstractScreen {
         flapButton = new FlapButton();
 //        dropButton = new DropButton();
         expressions = new ExpressionsWidget();
+        coinsWidget = new CoinsWidget();
     }
 
     private void configureWidgets() {
@@ -118,6 +121,7 @@ public class GameScreen extends AbstractScreen {
         staminaBar.setColor(new Color(1, 1, 1, 0));
         flapButton.setColor(new Color(1, 1, 1, 0));
         expressions.setColor(new Color(1, 1, 1, 0));
+        coinsWidget.setColor(new Color(1, 1, 1, 0));
     }
 
     private void prepareWorld() {
@@ -151,6 +155,7 @@ public class GameScreen extends AbstractScreen {
         stage.addActor(staminaBar);
         stage.addActor(flapButton);
         stage.addActor(expressions);
+        stage.addActor(coinsWidget);
     }
 
     private void setInputProcessor() {
@@ -178,6 +183,7 @@ public class GameScreen extends AbstractScreen {
             staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+        coinsWidget.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         }
 
         /**Updates*/
@@ -202,7 +208,7 @@ public class GameScreen extends AbstractScreen {
 
     private void updateUI() {
         //todo make this visible in gameoverscreen
-        distanceLabel.setText("Distance: " + String.valueOf((int)(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3)));
+        distanceLabel.setText("Distance: " + String.valueOf((int) (world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3)));
         heightLabel.setText("Height: " + String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 3));
     }
 
