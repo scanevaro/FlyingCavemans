@@ -67,7 +67,7 @@ public class World extends Actor implements Disposable {
     public Area area;
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
-    private CoinSpawner coinSpawner;
+    public CoinSpawner coinSpawner;
     private Title title;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
