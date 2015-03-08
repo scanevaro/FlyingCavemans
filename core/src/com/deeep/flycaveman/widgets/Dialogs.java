@@ -118,7 +118,7 @@ public class Dialogs {
         homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
         homeStyle.imageUp.setMinWidth(96);
         homeStyle.imageUp.setMinHeight(96);
-        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButton);
+        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButtonBroken);
         homeStyle.imageDown.setMinWidth(96);
         homeStyle.imageDown.setMinHeight(96);
         ImageButton homeButton = new ImageButton(homeStyle);
