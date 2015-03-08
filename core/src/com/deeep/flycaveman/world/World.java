@@ -185,6 +185,7 @@ public class World extends Actor implements Disposable {
     public void update(float delta) {
         coinSpawner.update(delta, caveman, this);
         gameContactListener.update();
+        title.update(delta);
         updateCamera();
         updateSky();
         space.update(delta, worldStage.getCamera().position);
