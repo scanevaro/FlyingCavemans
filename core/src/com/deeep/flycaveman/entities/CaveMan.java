@@ -15,6 +15,7 @@ import com.deeep.flycaveman.input.GameInputProcessor;
  * Created by scanevaro on 11/10/2014.
  */
 public class CaveMan implements Entity {
+    public boolean cheats = true;
     public final float startPosX = 11.1f;
     public final float startPosY = 6.5f;
     private final float restitution = 0.1f;
@@ -135,7 +136,7 @@ public class CaveMan implements Entity {
         if (flapStateTime < 0.5f) {
             flapStateTime += delta;
 
-            if (strength > 0)
+            if (strength > 0 && !cheats)
                 strength -= delta * 20;
 
             double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
@@ -188,7 +189,8 @@ public class CaveMan implements Entity {
             } else {
                 body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
             }
-            stamina -= 1;
+            if (!cheats )
+                stamina -= 1;
             flapStateTime = 0;
             //todo add a way to increase the max flapstatetime
         }

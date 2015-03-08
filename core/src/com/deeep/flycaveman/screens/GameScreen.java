@@ -206,7 +206,8 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void updateUI() {
-        distanceLabel.setText("Distance: " + String.valueOf(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3));
+        //todo make this visible in gameoverscreen
+        distanceLabel.setText("Distance: " + String.valueOf((int)(world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3)));
         heightLabel.setText("Height: " + String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 3));
     }
 

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.world.Area;
 
 import java.util.HashMap;
 
@@ -124,6 +125,12 @@ public class Biomes {
             nextLayer[i] = nextTheme;
         }
     }
+
+   // public void setNextTheme(Area.AREA nextTheme) {
+   //     for (int i = 0; i < nextLayer.length; i++) {
+   //         nextLayer[i] = nextTheme.transit(nextTheme)
+   //     }
+   // }
 
     public void update(float x) {
         for (Array<BiomeLayer> array : layers) {

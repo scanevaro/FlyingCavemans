@@ -18,7 +18,7 @@ public class FadeableMusic {
     private volatile boolean isFadingIn, isFadingOut;
 
     private String name;
-
+    public FadeableMusic(){}
     /**
      * The purpose of the class is to allow easy fade in and fade out effects by creating an extension of the original Music object from
      * the LIBGDX.Music library.
@@ -81,4 +81,8 @@ public class FadeableMusic {
         return name;
     }
 
+    public void setVolume(float volume) {
+        this.volume = volume;
+        music.setVolume(volume);
+    }
 }
