@@ -41,7 +41,7 @@ public class Assets {
             staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
             steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
-            facePassion, faceKO, title, touchNH, homeButtonBroken;
+            facePassion, faceKO, title, touchNH, buttonBroken;
     public static Animation cavemanWings, cavemanFlap;
 
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
@@ -51,7 +51,7 @@ public class Assets {
     public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3;
     public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3;
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1, coin1_sound, coin2_sound, coin3_sound, coin4_sound;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1, coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -100,6 +100,8 @@ public class Assets {
         assetManager.load("data/sounds/coin2.mp3", Sound.class);
         assetManager.load("data/sounds/coin3.mp3", Sound.class);
         assetManager.load("data/sounds/coin4.mp3", Sound.class);
+
+        assetManager.load("data/sounds/button_confirm.mp3", Sound.class);
     }
 
     public static void set() {
@@ -167,7 +169,7 @@ public class Assets {
         faceKO = items.findRegion("koface");
         title = items.findRegion("title");
         touchNH = items.findRegion("touchNH");
-        homeButtonBroken = items.findRegion("broken_button");
+        buttonBroken = items.findRegion("broken_button");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");
@@ -226,6 +228,7 @@ public class Assets {
         coin2_sound = assetManager.get("data/sounds/coin2.mp3");
         coin3_sound = assetManager.get("data/sounds/coin3.mp3");
         coin4_sound = assetManager.get("data/sounds/coin4.mp3");
+        buttonConfirm = assetManager.get("data/sounds/button_confirm.mp3");
     }
 
     public static void dispose() {

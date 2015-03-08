@@ -109,6 +109,13 @@ public class Dialogs {
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
             }
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                super.touchDown(event, x, y, pointer, button);
+                GameScreen s = (GameScreen) game.screen;
+                s.world.area.soundManager.playSound(Assets.buttonConfirm);
+                return true;
+            }
         });
         retryButton.setSize(96, 96);
         retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
@@ -118,7 +125,7 @@ public class Dialogs {
         homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
         homeStyle.imageUp.setMinWidth(96);
         homeStyle.imageUp.setMinHeight(96);
-        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButtonBroken);
+        homeStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
         homeStyle.imageDown.setMinWidth(96);
         homeStyle.imageDown.setMinHeight(96);
         ImageButton homeButton = new ImageButton(homeStyle);
@@ -126,6 +133,13 @@ public class Dialogs {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
+            }
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                super.touchDown(event, x, y, pointer, button);
+                GameScreen s = (GameScreen) game.screen;
+                s.world.area.soundManager.playSound(Assets.buttonConfirm);
+                return true;
             }
         });
         homeButton.setSize(96, 96);

@@ -28,7 +28,7 @@ public class Area {
 
         soundManager.silence();
 
-        soundManager.getMusic("DessertTheme").fadeIn(5, 1f);
+        soundManager.getMusic("DessertTheme").fadeIn(5, 0.5f);
     }
 
     public void update(Body caveman) {
@@ -42,12 +42,12 @@ public class Area {
                     biomes.setNextTheme(Biomes.DESSERT_JUNGLE);
                     System.out.println("To jungle! and beyond?");
                     soundManager.getMusic("DessertTheme").fadeOut(5f, 0);
-                    soundManager.getMusic("JungleTheme").fadeIn(5f, 1);
+                    soundManager.getMusic("JungleTheme").fadeIn(5f, 0.5F);
                     System.out.println("dessert[" + soundManager.getMusic("DessertTheme").isFadingIn() + soundManager.getMusic("DessertTheme").isFadingOut() + "] Jungle[" + soundManager.getMusic("JungleTheme").isFadingIn() + soundManager.getMusic("JungleTheme").isFadingOut() + "]");
                 } else {
                     biomes.setNextTheme(Biomes.JUNGLE_DESSERT);
                     System.out.println("To dessert! and beyond!");
-                    soundManager.getMusic("DessertTheme").fadeIn(5f, 1);
+                    soundManager.getMusic("DessertTheme").fadeIn(5f, 0.5F);
                     soundManager.getMusic("JungleTheme").fadeOut(5f, 0);
                 }
             } else {
