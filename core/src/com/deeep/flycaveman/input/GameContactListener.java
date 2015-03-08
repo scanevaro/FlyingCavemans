@@ -93,11 +93,7 @@ public class GameContactListener implements ContactListener {
          * Collision for coins
          */
         if (fixtureA.getUserData() instanceof Coin || fixtureB.getUserData() instanceof Coin) {
-            Coin coin = null;
-            if(fixtureA.getUserData() instanceof Coin)
-                coin = (Coin) fixtureA.getUserData();
-            else
-                coin = (Coin) fixtureB.getUserData();
+            System.out.println("Coin babyyyy");
             world.caveman.coins ++;
             switch (world.caveman.coinStreak){
                 case 0:
