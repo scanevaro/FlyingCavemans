@@ -113,7 +113,7 @@ public class Dialogs {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
                 GameScreen s = (GameScreen) game.screen;
-                s.world.area.soundManager.playSound(Assets.buttonConfirm);
+                //s.world.area.soundManager.playSound(Assets.buttonConfirm);
                 return true;
             }
         });
@@ -138,7 +138,7 @@ public class Dialogs {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
                 GameScreen s = (GameScreen) game.screen;
-                s.world.area.soundManager.playSound(Assets.buttonConfirm);
+                //s.world.area.soundManager.playSound(Assets.buttonConfirm);
                 return true;
             }
         });

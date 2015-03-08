@@ -19,6 +19,9 @@ public class FadeableMusic {
 
     private String name;
 
+    public FadeableMusic() {
+    }
+
     /**
      * The purpose of the class is to allow easy fade in and fade out effects by creating an extension of the original Music object from
      * the LIBGDX.Music library.
@@ -45,25 +48,20 @@ public class FadeableMusic {
         this.isFadingOut = true;
         speed = Math.abs((newVol - volume) / duration);
         targetVolMin = newVol;
-        System.out.println(name + " fadeout at: " + speed + " target: " + targetVolMax + "[" + isFadingIn + "|" + isFadingOut + "]" + " current vol: " + volume);
     }
 
     public void fadeIn(float duration, float newVol) {
         this.isFadingIn = true;
         speed = (newVol - volume) / duration;
         targetVolMax = newVol;
-        System.out.println(name + " fadein at: " + speed + " target: " + targetVolMax + "[" + isFadingIn + "|" + isFadingOut + "]" + " current vol: " + volume);
     }
 
     public void update(float delta) {
         if (isFadingOut) {
-            System.out.println("fading out");
             volume -= speed * delta;
             if (volume <= targetVolMin) {
                 volume = targetVolMin;
                 isFadingOut = false;
-                System.out.println("    | Done fading out since");
-                System.out.println("    | " + volume + " <= " + targetVolMin);
             }
             music.setVolume(volume);
         }
@@ -72,8 +70,6 @@ public class FadeableMusic {
             if (volume >= targetVolMax) {
                 volume = targetVolMax;
                 isFadingIn = false;
-                System.out.println("    | Done fading in since");
-                System.out.println("    | " + volume + " >= " + targetVolMin);
             }
             music.setVolume(volume);
         }
@@ -88,4 +84,9 @@ public class FadeableMusic {
         return name;
     }
 
+    public void setVolume(float volume) {
+        if (this.volume == volume) return;
+        this.volume = volume;
+        music.setVolume(volume);
+    }
 }
