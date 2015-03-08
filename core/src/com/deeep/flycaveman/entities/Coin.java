@@ -29,6 +29,7 @@ public class Coin {
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
         bodyDef.position.set(x, y);
+
         shape = new CircleShape();
         shape.setRadius(1);
 
@@ -37,6 +38,7 @@ public class Coin {
         fixtureDef.density = 2.5f;
         fixtureDef.friction = .25f;
         fixtureDef.restitution = 0.5F;
+        fixtureDef.isSensor = true;
 
         body = world.box2dWorld.createBody(bodyDef);
         for (Sprite s : sprites) {
@@ -44,16 +46,18 @@ public class Coin {
             s.setOrigin(s.getWidth() / 2, s.getHeight() / 2);
         }
         fixture = body.createFixture(fixtureDef);
+        fixture.setUserData(this);
 
         shape.dispose();
-        body.setActive(false);
+
+        body.setAwake(false);
     }
 
-    public void update(float delta){
+    public void update(float delta) {
         tick += delta;
     }
 
-    public void draw(Batch b){
+    public void draw(Batch b) {
         getCurrentSprite().setPosition(body.getPosition().x - sprites[1].getWidth() / 2, body.getPosition().y - sprites[1].getHeight() / 2);
         getCurrentSprite().setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         getCurrentSprite().draw(b);
@@ -61,13 +65,13 @@ public class Coin {
 
     public Sprite getCurrentSprite() {
         //System.out.println(tick);
-        if(tick < INTERVAL * 1) return sprites[0];
-        if(tick < INTERVAL * 2) return sprites[1];
-        if(tick < INTERVAL * 3) return sprites[2];
-        if(tick < INTERVAL * 4) return sprites[3];
-        if(tick < INTERVAL * 5) return sprites[4];
-        if(tick < INTERVAL * 6 - 1) return sprites[5];
-        else{
+        if (tick < INTERVAL * 1) return sprites[0];
+        if (tick < INTERVAL * 2) return sprites[1];
+        if (tick < INTERVAL * 3) return sprites[2];
+        if (tick < INTERVAL * 4) return sprites[3];
+        if (tick < INTERVAL * 5) return sprites[4];
+        if (tick < INTERVAL * 6 - 1) return sprites[5];
+        else {
             tick = 0;
             return sprites[5];
         }

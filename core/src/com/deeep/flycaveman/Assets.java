@@ -113,7 +113,6 @@ public class Assets {
         skin = new Skin();
 
         font = assetManager.get("data/font32.fnt");
-        fontBig = assetManager.get("data/font32.fnt");
 
         skin.add("default-font", font, BitmapFont.class);
 
