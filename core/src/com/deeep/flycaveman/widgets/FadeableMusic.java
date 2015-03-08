@@ -45,25 +45,20 @@ public class FadeableMusic {
         this.isFadingOut = true;
         speed = Math.abs((newVol - volume) / duration);
         targetVolMin = newVol;
-        System.out.println(name + " fadeout at: " + speed + " target: " + targetVolMax + "[" + isFadingIn + "|" + isFadingOut + "]" + " current vol: " + volume);
     }
 
     public void fadeIn(float duration, float newVol) {
         this.isFadingIn = true;
         speed = (newVol - volume) / duration;
         targetVolMax = newVol;
-        System.out.println(name + " fadein at: " + speed + " target: " + targetVolMax + "[" + isFadingIn + "|" + isFadingOut + "]" + " current vol: " + volume);
     }
 
     public void update(float delta) {
-        System.out.println(name + "[" + isFadingIn + "|" + isFadingOut + "]" + volume);
         if (isFadingOut) {
-            System.out.println("fading out");
             volume -= speed * delta;
             if (volume <= targetVolMin) {
                 volume = targetVolMin;
                 isFadingOut = false;
-                System.out.println("done fading out");
             }
             music.setVolume(volume);
         }
@@ -72,7 +67,6 @@ public class FadeableMusic {
             if (volume >= targetVolMax) {
                 volume = targetVolMax;
                 isFadingIn = false;
-                System.out.println("done fading in");
             }
             music.setVolume(volume);
         }

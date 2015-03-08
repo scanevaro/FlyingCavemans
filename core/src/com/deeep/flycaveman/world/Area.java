@@ -46,7 +46,6 @@ public class Area {
                     System.out.println("To jungle! and beyond?");
                     soundManager.getMusic("DessertTheme").fadeOut(5f, 0);
                     soundManager.getMusic("JungleTheme").fadeIn(5f, 1);
-                    System.out.println("dessert[" + soundManager.getMusic("DessertTheme").isFadingIn() + soundManager.getMusic("DessertTheme").isFadingOut() + "] Jungle[" + soundManager.getMusic("JungleTheme").isFadingIn() + soundManager.getMusic("JungleTheme").isFadingOut() + "]");
                 } else {
                     biomes.setNextTheme(Biomes.JUNGLE_DESSERT);
                     System.out.println("To dessert! and beyond!");

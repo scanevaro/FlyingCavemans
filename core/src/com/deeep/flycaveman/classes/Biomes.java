@@ -138,7 +138,7 @@ public class Biomes {
             for (BiomeLayer biomeLayer : array) {
                 try {
 
-                    spriteBatch.draw(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()), biomeLayer.getX(), 0, backgroundWidth, Core.BOX2D_VIRTUAL_HEIGHT);
+                    spriteBatch.draw(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()), biomeLayer.getX(), -1.25f, backgroundWidth, Core.BOX2D_VIRTUAL_HEIGHT);
                 } catch (NullPointerException e) {
                     System.out.println("-------------------------------------------------------------------------------");
                     System.out.println(biomeLayer);
