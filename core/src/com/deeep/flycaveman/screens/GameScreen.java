@@ -114,7 +114,7 @@ public class GameScreen extends AbstractScreen {
 
         distanceLabel.setColor(new Color(1, 1, 1, 0));
         heightLabel.setColor(new Color(1, 1, 1, 0));
-        pauseButton.setColor(new Color(1, 1, 1, 0));
+//        pauseButton.setColor(new Color(1, 1, 1, 0));
         staminaBar.setColor(new Color(1, 1, 1, 0));
         flapButton.setColor(new Color(1, 1, 1, 0));
         expressions.setColor(new Color(1, 1, 1, 0));
@@ -174,7 +174,7 @@ public class GameScreen extends AbstractScreen {
         if (gameInputProcessor.flying) {
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-            pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+//            pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
