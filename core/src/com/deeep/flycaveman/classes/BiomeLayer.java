@@ -5,18 +5,22 @@ public class BiomeLayer {
     private int theme = 0;
 
     public float xPos = 0;
+    public float yPos = 0;
     private float ratio = 0;
     private float originalX = 0;
+    private float originalY = 0;
 
     public BiomeLayer(int layer, int index, float ratio) {
         this.originalX = index * (Biomes.backgroundWidth);
+        this.originalY = 0;
         this.layer = layer;
         this.ratio = ratio;
     }
 
-    public void update(float background) {
-        xPos = originalX + background * ratio;
-        if (this.xPos + Biomes.backgroundWidth <= background - Biomes.backgroundWidth) {
+    public void update(float backgroundX, float backgroundY) {
+        xPos = originalX + backgroundX * ratio;
+        yPos = originalY + backgroundY * ratio;
+        if (this.xPos + Biomes.backgroundWidth <= backgroundX - Biomes.backgroundWidth) {
             this.originalX += ((3) * Biomes.backgroundWidth);
             this.theme = Biomes.nextLayer[layer - 1];
             if (Biomes.nextLayer[layer - 1] % 10 != 0) {
@@ -28,6 +32,9 @@ public class BiomeLayer {
 
     public float getX() {
         return xPos;
+    }
+    public float getY() {
+        return yPos;
     }
 
     public int getTheme() {

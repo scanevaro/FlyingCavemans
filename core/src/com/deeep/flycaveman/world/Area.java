@@ -133,7 +133,7 @@ public class Area {
         }
         soundManager.update(Gdx.graphics.getDeltaTime());
         updateSpaceMusic(caveman);
-        biomes.update(caveman.getPosition().x);
+        biomes.update(caveman.getPosition().x, caveman.getPosition().y);
         //40 - 80
     }
 
