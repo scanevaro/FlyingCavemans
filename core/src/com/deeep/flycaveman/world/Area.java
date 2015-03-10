@@ -65,7 +65,14 @@ public class Area {
     private FadeableMusic windMusic;
     private FadeableMusic spaceMusic;
 
+
     public static float biomesLength = 500;
+
+    private boolean inSpace = false;
+
+    private float currentMusicSoundLevel = 0;
+    private float nextMusicSoundLevel = 0;
+    private float spaceFade = 0;
 
     public Area() {
         biomes = new Biomes();
@@ -79,6 +86,7 @@ public class Area {
 
         soundManager.silence();
         soundManager.getMusic("DessertTheme").fadeIn(5, 1f);
+        currentMusicSoundLevel = 1;
         currentArea = AREA.DESSERT;
         nextArea = getRandomArea(currentArea);
         currentMusic = soundManager.getMusic(currentArea.music);
@@ -87,7 +95,7 @@ public class Area {
         spaceMusic = soundManager.getMusic("SpaceTheme");
         windMusic.setVolume(0);
         spaceMusic.setVolume(0);
-        nextMusic.setVolume(0);
+        nextMusicSoundLevel = 0;
     }
 
     public AREA getRandomArea(AREA current) {
@@ -102,17 +110,17 @@ public class Area {
         float biomePosition = caveman.getPosition().x - someCounter;
 
         if (nextMusic != null) {
-            if (nextMusic.getVolume() >= 0.95f) {
+            if (nextMusicSoundLevel >= 0.95f) {
                 this.currentMusic = nextMusic;
             }
         }
-        if (currentMusic.getVolume() <= 0) {
+        if (currentMusicSoundLevel <= 0) {
             float nextVolume = biomePosition / (biomesLength * 0.2f);
-            nextMusic.setVolume(nextVolume);
+            nextMusicSoundLevel = nextVolume;
         }
         if (biomePosition >= (biomesLength * 0.8f)) {   //larger than 80%
             float fade = 1 - (biomePosition - biomesLength * 0.8f) / (biomesLength * 0.2f);
-            currentMusic.setVolume(fade);
+            currentMusicSoundLevel = fade;
             if (caveman.getPosition().x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
                 windMusic.setVolume(1 - fade);
         } else {
@@ -124,13 +132,16 @@ public class Area {
 
 
         if (biomePosition >= biomesLength) {
-            currentMusic.setVolume(0);
+            currentMusicSoundLevel = 0;
             biomes.setNextTheme(currentArea.transit(currentArea, nextArea));
             currentArea = nextArea;
             nextMusic = soundManager.getMusic(nextArea.music);
             nextArea = getRandomArea(currentArea);
             someCounter += biomesLength;
         }
+        currentMusic.setVolume(Math.min(spaceFade, currentMusicSoundLevel));
+        nextMusic.setVolume(Math.min(spaceFade, nextMusicSoundLevel));
+
         soundManager.update(Gdx.graphics.getDeltaTime());
         updateSpaceMusic(caveman);
         biomes.update(caveman.getPosition().x, caveman.getPosition().y);
@@ -150,11 +161,11 @@ public class Area {
             if (caveman.getPosition().y < 80) {
                 fadeWind = ((caveman.getPosition().y - 40) / 20);
                 if (caveman.getPosition().y < 60) {
-                    currentMusic.setVolume((Math.max(1 - fadeWind, 0.01f)));
+                    spaceFade = (Math.max(1 - fadeWind, 0.01f));
                 } else {
+                    spaceFade = 0;
                     currentMusic.setVolume(0.01f);
                 }
-                System.out.println(fadeWind);
                 if (fadeWind > 1) {
                     fadeSpace = fadeWind - 1;
                     fadeWind = 1 - fadeWind;
@@ -162,9 +173,13 @@ public class Area {
                 }
                 windMusic.setVolume(fadeWind);
             } else {
-                currentMusic.setVolume(0.01f);
+                inSpace = true;
+                spaceFade = 0;
                 spaceMusic.setVolume(1);
             }
+        } else {
+            spaceMusic.setVolume(0);
+            spaceFade = 1;
         }
     }
 
