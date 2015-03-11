@@ -2,6 +2,7 @@ package com.deeep.flycaveman.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,7 +10,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.utils.Array;
-import com.deeep.flycaveman.Core;
 
 /**
  * Created by scanevaro on 09/12/2014.
@@ -20,7 +20,7 @@ public class SplashActor extends Actor {
 
     public SplashActor() {
         Array<TextureAtlas.AtlasRegion> atlasRegions = new TextureAtlas(Gdx.files.internal("data/newLogo.pack")).getRegions();
-        animation = new Animation(0.25f, atlasRegions);
+        animation = new Animation(0.04f, atlasRegions);
         animation.setPlayMode(Animation.PlayMode.LOOP);
 
         setActions();
@@ -42,8 +42,9 @@ public class SplashActor extends Actor {
                 getColor().b, getColor().a * parentAlpha);
 
         batch.setColor(color);
-
-        batch.draw(animation.getKeyFrame(stateTime), 0, 55, Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT - 55);
+        Gdx.graphics.getGL20().glClearColor( 0, 0, 0, 1 );
+        Gdx.graphics.getGL20().glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
+        batch.draw(animation.getKeyFrame(stateTime), (Gdx.graphics.getWidth() / 2)-(animation.getKeyFrame(stateTime).getRegionWidth() /2), (Gdx.graphics.getHeight() / 2)-(animation.getKeyFrame(stateTime).getRegionHeight()/2));
     }
 
     @Override

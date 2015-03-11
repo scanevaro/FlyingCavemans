@@ -147,10 +147,10 @@ public class SplashScreen extends AbstractScreen {
         loadingBar.setPosition(0, 5);
         loadingBar.setWidth(Core.VIRTUAL_WIDTH);
 
-        stage.addActor(loadingBar);
-        stage.addActor(loadingBg);
-        stage.addActor(loadingBarHidden);
-        stage.addActor(loadingFrame);
+        //stage.addActor(loadingBar);
+        //stage.addActor(loadingBg);
+        //stage.addActor(loadingBarHidden);
+        //stage.addActor(loadingFrame);
 
         startX = 0;
         endX = Core.VIRTUAL_WIDTH;
