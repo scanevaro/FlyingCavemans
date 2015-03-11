@@ -41,7 +41,6 @@ public class CaveMan implements Entity {
     public static final float maxStamina = 5.0f;
     public float strength;
 
-    public int coins = 0;
     public int coinStreak = 0;
     public float coinTimer = 2F;
     public final float COIN_PICKUP_INTERVAL = 2F;
@@ -56,6 +55,8 @@ public class CaveMan implements Entity {
 
     private int state;
     private com.deeep.flycaveman.world.World world;
+
+    public static int coins;
 
     public CaveMan(com.deeep.flycaveman.world.World world) {
         this.world = world;

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
@@ -29,6 +30,7 @@ public class World extends Actor implements Disposable {
 
     private Stage worldStage;
     private Stage stage;
+    private Viewport leaderViewport;
     private ShapeRenderer shapeRenderer;
     private Vector2 sky;
     public com.badlogic.gdx.physics.box2d.World box2dWorld;
@@ -93,7 +95,7 @@ public class World extends Actor implements Disposable {
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
-        entities.add(title = new Title());
+        entities.add(title = new Title(worldStage));
         entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
@@ -283,5 +285,9 @@ public class World extends Actor implements Disposable {
         shapeRenderer.dispose();
         worldStage.dispose();
         stage.dispose();
+    }
+
+    public void resize(int width, int height) {
+//        leaderViewport.update(width, height);
     }
 }

@@ -45,7 +45,7 @@ public class CoinsWidget extends Actor {
         background.act(delta);
         coin.act(delta);
 
-        amount.setText(String.valueOf(caveMan.coins));
+        amount.setText(String.valueOf(CaveMan.coins));
         amount.act(delta);
     }
 

@@ -183,7 +183,7 @@ public class GameScreen extends AbstractScreen {
             staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-        coinsWidget.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            coinsWidget.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         }
 
         /**Updates*/
@@ -233,6 +233,7 @@ public class GameScreen extends AbstractScreen {
     public void resize(int width, int height) {
         stage.getViewport().update(width, height);
         worldStage.getViewport().update(width, height);
+        world.resize(width, height);
     }
 
     @Override

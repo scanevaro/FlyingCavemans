@@ -20,7 +20,8 @@ public class SplashActor extends Actor {
 
     public SplashActor() {
         Array<TextureAtlas.AtlasRegion> atlasRegions = new TextureAtlas(Gdx.files.internal("data/newLogo.pack")).getRegions();
-        animation = new Animation(0.5f, atlasRegions);
+        animation = new Animation(0.25f, atlasRegions);
+        animation.setPlayMode(Animation.PlayMode.LOOP);
 
         setActions();
 
