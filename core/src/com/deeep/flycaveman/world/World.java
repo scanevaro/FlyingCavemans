@@ -208,7 +208,7 @@ public class World extends Actor implements Disposable {
                 remove = false;
             }
         }
-        area.update(caveman.body);
+        area.update(worldStage.getCamera().position);
         checkGameOver();
     }
 

@@ -11,7 +11,7 @@ public class BiomeLayer {
     private float originalY = 0;
 
     public BiomeLayer(int layer, int index, float ratio) {
-        this.originalX = index * (Biomes.backgroundWidth);
+        this.originalX = -index * (Biomes.backgroundWidth);
         this.originalY = 0;
         this.layer = layer;
         this.ratio = ratio;

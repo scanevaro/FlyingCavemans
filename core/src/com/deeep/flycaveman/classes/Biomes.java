@@ -139,10 +139,10 @@ public class Biomes {
     //     }
     // }
 
-    public void update(float cavemanX, float cavemanY) {
+    public void update(float backgroundX, float backgroundY) {
         for (Array<BiomeLayer> array : layers) {
             for (BiomeLayer biomeLayer : array) {
-                biomeLayer.update(cavemanX, cavemanY);
+                biomeLayer.update(backgroundX, backgroundY);
             }
         }
     }

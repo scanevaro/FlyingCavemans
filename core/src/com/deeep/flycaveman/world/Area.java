@@ -2,6 +2,7 @@ package com.deeep.flycaveman.world;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.deeep.flycaveman.classes.Biomes;
 import com.deeep.flycaveman.widgets.FadeableMusic;
@@ -105,9 +106,9 @@ public class Area {
         return AREA.DESSERT;
     }
 
-    public void update(Body caveman) {
+    public void update(Vector3 camera) {
         //todo make this the camera, no1 gives a shit about the caveman5
-        float biomePosition = caveman.getPosition().x - someCounter;
+        float biomePosition = camera.x - someCounter;
 
         if (nextMusic != null) {
             if (nextMusicSoundLevel >= 0.95f) {
@@ -121,12 +122,12 @@ public class Area {
         if (biomePosition >= (biomesLength * 0.8f)) {   //larger than 80%
             float fade = 1 - (biomePosition - biomesLength * 0.8f) / (biomesLength * 0.2f);
             currentMusicSoundLevel = fade;
-            if (caveman.getPosition().x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
+            if (camera.x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
                 windMusic.setVolume(1 - fade);
         } else {
             float fade = 1 - (biomePosition - biomesLength * 0.1f) / (biomesLength * 0.1f);
             if (fade > 0)
-                if (caveman.getPosition().x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
+                if (camera.x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
                     windMusic.setVolume(fade);
         }
 
@@ -143,24 +144,24 @@ public class Area {
         nextMusic.setVolume(Math.min(spaceFade, nextMusicSoundLevel));
 
         soundManager.update(Gdx.graphics.getDeltaTime());
-        updateSpaceMusic(caveman);
-        biomes.update(caveman.getPosition().x, caveman.getPosition().y);
+        updateSpaceMusic(camera);
+        biomes.update(camera.x, camera.y);
         //40 - 80
     }
 
-    public void updateSpaceMusic(Body caveman) {
+    public void updateSpaceMusic(Vector3 camera) {
         //80 = 0;
         //40 = 0;
         //60 = 1;
         /*
         caveman.y - 40/60. if>1, 1-%fade
          */
-        if (caveman.getPosition().y > 40) {
+        if (camera.y > 40) {
             float fadeWind = 0;
             float fadeSpace = 0;
-            if (caveman.getPosition().y < 80) {
-                fadeWind = ((caveman.getPosition().y - 40) / 20);
-                if (caveman.getPosition().y < 60) {
+            if (camera.y < 80) {
+                fadeWind = ((camera.y - 40) / 20);
+                if (camera.y < 60) {
                     spaceFade = (Math.max(1 - fadeWind, 0.01f));
                 } else {
                     spaceFade = 0;
