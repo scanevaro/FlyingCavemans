@@ -120,9 +120,9 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
-        if(coinStreak > 0){
+        if (coinStreak > 0) {
             coinTimer += delta;
-            if(coinTimer >= COIN_PICKUP_INTERVAL) {
+            if (coinTimer >= COIN_PICKUP_INTERVAL) {
                 coinStreak = 0;
                 coinTimer = 0;
             }
@@ -199,16 +199,19 @@ public class CaveMan implements Entity {
     }
 
     public void flap() {
-        if (stamina > 0) {
-            if (body.getLinearVelocity().y < 0) {
-                body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
-            } else {
-                body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
+        if (GameInputProcessor.touchingGround) return;
+        if (body.getLinearVelocity().x != 0 || body.getLinearVelocity().y != 0) {
+            if (stamina > 0) {
+                if (body.getLinearVelocity().y < 0) {
+                    body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
+                } else {
+                    body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
+                }
+                if (!cheats)
+                    stamina -= 1;
+                flapStateTime = 0;
+                //todo add a way to increase the max flapstatetime
             }
-            if (!cheats)
-                stamina -= 1;
-            flapStateTime = 0;
-            //todo add a way to increase the max flapstatetime
         }
     }
 
