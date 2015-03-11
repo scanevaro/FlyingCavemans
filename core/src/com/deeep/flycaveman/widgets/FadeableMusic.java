@@ -13,7 +13,9 @@ public class FadeableMusic {
 
     private float volume = 0;
 
-    private float quotient, product, speed, targetVolMax, targetVolMin;
+    private float speed, targetVolMax, targetVolMin;
+
+    private float maxVolume = 1;
 
     private volatile boolean isFadingIn, isFadingOut;
 
@@ -30,6 +32,13 @@ public class FadeableMusic {
         this.music = music;
         this.name = name;
         volume = music.getVolume();
+    }
+
+    public FadeableMusic(Music music, String name, float maxVolume) {
+        this.music = music;
+        this.name = name;
+        volume = music.getVolume();
+        this.maxVolume = maxVolume;
     }
 
     public float getVolume() {
@@ -63,7 +72,7 @@ public class FadeableMusic {
                 volume = targetVolMin;
                 isFadingOut = false;
             }
-            music.setVolume(volume);
+            music.setVolume(volume * maxVolume);
         }
         if (isFadingIn) {
             volume += speed * delta;
@@ -71,7 +80,7 @@ public class FadeableMusic {
                 volume = targetVolMax;
                 isFadingIn = false;
             }
-            music.setVolume(volume);
+            music.setVolume(volume * maxVolume);
         }
 
     }
@@ -87,6 +96,6 @@ public class FadeableMusic {
     public void setVolume(float volume) {
         if (this.volume == volume) return;
         this.volume = volume;
-        music.setVolume(volume);
+        music.setVolume(volume * maxVolume);
     }
 }

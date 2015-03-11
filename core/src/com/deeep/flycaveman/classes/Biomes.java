@@ -148,11 +148,10 @@ public class Biomes {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        int layerNr = 0;
+        //int layerNr = 0;
         for (Array<BiomeLayer> array : layers) {
-            layerNr++;
-
-            System.out.println(layerNr);
+            //layerNr++;
+            //System.out.println(layerNr);
             for (BiomeLayer biomeLayer : array) {
                 if (biomeLayer.getLayer() <= integerBackgroundHashMap.get(biomeLayer.getTheme()).layerAmount)
                     try {
