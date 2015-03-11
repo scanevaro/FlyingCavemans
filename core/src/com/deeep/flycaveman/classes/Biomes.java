@@ -89,10 +89,16 @@ public class Biomes {
         jungleBackground.layerAmount = 4;
 
         jungleOceanBackground = new Background(JUNGLE_OCEAN);
+        jungleOceanBackground.layer_1 = Assets.jungle_ocean_layer_1;
+        jungleOceanBackground.layer_2 = Assets.jungle_ocean_layer_2;
+        jungleOceanBackground.layer_3 = Assets.jungle_ocean_layer_3;
 
         dessertOceanBackground = new Background(DESSERT_OCEAN);
 
         oceanBackground = new Background(OCEAN);
+        oceanBackground.layer_1 = Assets.ocean_layer_1;
+        oceanBackground.layer_2 = Assets.ocean_layer_2;
+        oceanBackground.layer_3 = Assets.ocean_layer_3;
 
         integerBackgroundHashMap.put(JUNGLE_DESSERT, jungleDessertBackground);
         integerBackgroundHashMap.put(OCEAN_DESSERT, oceanDessertBackground);
@@ -164,7 +170,7 @@ public class Biomes {
                         System.out.println(biomeLayer.getX());
                         System.out.println(integerBackgroundHashMap.get(biomeLayer.getTheme()));
                         System.out.println(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()));
-                        System.exit(1);
+                        //System.exit(1);
                     }
             }
         }

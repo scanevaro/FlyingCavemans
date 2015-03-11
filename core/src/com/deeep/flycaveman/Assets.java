@@ -47,6 +47,7 @@ public class Assets {
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
+    public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3;  //todo put this in an enum or so
     public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2, dessert_jungle_layer_3;  //todo put this in an enum or so
     public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3;
     public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3;
@@ -196,10 +197,18 @@ public class Assets {
         dessert_layer_2 = items.findRegion("desert_layer", 2);
         dessert_layer_3 = items.findRegion("desert_layer", 3);
 
+        ocean_layer_1 = items.findRegion("ocean_layer", 1);
+        ocean_layer_2 = items.findRegion("ocean_layer", 2);
+        ocean_layer_3= items.findRegion("ocean_layer", 3);
+
         jungle_layer_1 = items.findRegion("jungle_layer", 1);
         jungle_layer_2 = items.findRegion("jungle_layer", 2);
         jungle_layer_3 = items.findRegion("jungle_layer", 3);
         jungle_layer_4 = items.findRegion("jungle_layer", 7);
+
+        jungle_ocean_layer_1 = items.findRegion("jungle_ocean", 1);
+        jungle_ocean_layer_2 = items.findRegion("jungle_ocean", 2);
+        jungle_ocean_layer_3 = items.findRegion("jungle_ocean", 3);
 
         jungle_dessert_layer_1 = items.findRegion("jungle_desert");
         jungle_dessert_layer_2 = items.findRegion("desert_layer", 2);
