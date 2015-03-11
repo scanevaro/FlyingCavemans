@@ -65,6 +65,7 @@ public class Area {
     private FadeableMusic windMusic;
     private FadeableMusic spaceMusic;
     private boolean firstStart = true;
+    private boolean windStart = false;
 
     public static float biomesLength = 1000;
 
@@ -126,10 +127,11 @@ public class Area {
             currentMusicSoundLevel = fade;
             if (camera.x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
                 windMusic.setVolume(1 - fade);
+            windStart = true;
         } else {
             float fade = 1 - (biomePosition - biomesLength * 0.1f) / (biomesLength * 0.1f);
             if (fade > 0)
-                if (camera.x > 100) //not on the catapult we dont want to hear this. TODO make this nicer
+                if(windStart)
                     windMusic.setVolume(fade);
         }
 
