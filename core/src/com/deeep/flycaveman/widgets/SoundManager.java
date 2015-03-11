@@ -36,7 +36,7 @@ public class SoundManager {
         if(loop){
             if(!music.isLooping()) music.setLooping(true);
         }
-        music.setVolume(0.5f);
+
         if(!music.isPlaying()) music.play();
     }
 

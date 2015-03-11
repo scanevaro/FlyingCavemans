@@ -32,6 +32,7 @@ public class FadeableMusic {
         this.music = music;
         this.name = name;
         volume = music.getVolume();
+        music.setVolume(0);
     }
 
     public FadeableMusic(Music music, String name, float maxVolume) {
@@ -39,6 +40,7 @@ public class FadeableMusic {
         this.name = name;
         volume = music.getVolume();
         this.maxVolume = maxVolume;
+        music.setVolume(0);
     }
 
     public float getVolume() {
@@ -82,7 +84,6 @@ public class FadeableMusic {
             }
             music.setVolume(volume * maxVolume);
         }
-
     }
 
     public Music getMusicObject() {

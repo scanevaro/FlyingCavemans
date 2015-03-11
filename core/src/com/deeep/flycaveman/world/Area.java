@@ -3,7 +3,6 @@ package com.deeep.flycaveman.world;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.deeep.flycaveman.classes.Biomes;
 import com.deeep.flycaveman.widgets.FadeableMusic;
 import com.deeep.flycaveman.widgets.SoundManager;
@@ -65,9 +64,9 @@ public class Area {
     private FadeableMusic nextMusic;
     private FadeableMusic windMusic;
     private FadeableMusic spaceMusic;
+    private boolean firstStart = true;
 
-
-    public static float biomesLength = 500;
+    public static float biomesLength = 1000;
 
     private boolean inSpace = false;
 
@@ -86,7 +85,7 @@ public class Area {
         soundManager.playMusic(soundManager.getMusic("WindTheme").getMusicObject(), true);
 
         soundManager.silence();
-        soundManager.getMusic("DessertTheme").fadeIn(5, 1f);
+        firstStart = true;
         currentMusicSoundLevel = 1;
         currentArea = AREA.DESSERT;
         nextArea = getRandomArea(currentArea);
@@ -96,6 +95,8 @@ public class Area {
         spaceMusic = soundManager.getMusic("SpaceTheme");
         windMusic.setVolume(0);
         spaceMusic.setVolume(0);
+        currentMusic.setVolume(0);
+        currentMusic.fadeIn(5f, 1);
         nextMusicSoundLevel = 0;
     }
 
@@ -107,7 +108,6 @@ public class Area {
     }
 
     public void update(Vector3 camera) {
-        //todo make this the camera, no1 gives a shit about the caveman5
         float biomePosition = camera.x - someCounter;
 
         if (nextMusic != null) {
@@ -140,9 +140,14 @@ public class Area {
             nextArea = getRandomArea(currentArea);
             someCounter += biomesLength;
         }
-        currentMusic.setVolume(Math.min(spaceFade, currentMusicSoundLevel));
-        nextMusic.setVolume(Math.min(spaceFade, nextMusicSoundLevel));
-
+        if (!firstStart) {
+            currentMusic.setVolume(Math.min(spaceFade, currentMusicSoundLevel));
+            nextMusic.setVolume(Math.min(spaceFade, nextMusicSoundLevel));
+        } else {
+            if (currentMusic.getVolume() >= 0.9f) {
+                firstStart = false;
+            }
+        }
         soundManager.update(Gdx.graphics.getDeltaTime());
         updateSpaceMusic(camera);
         biomes.update(camera.x, camera.y);
