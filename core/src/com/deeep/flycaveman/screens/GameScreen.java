@@ -192,6 +192,15 @@ public class GameScreen extends AbstractScreen {
             stage.act();
 
             if (world.isGameOver()) {
+
+                distanceLabel.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+                heightLabel.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+                pauseButton.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+                staminaBar.fadeOut();
+                flapButton.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+                expressions.fadeOut();
+                coinsWidget.fadeOut();
+
                 if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
                 else gameOverDialog.setVisible(true);
 

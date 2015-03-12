@@ -98,4 +98,14 @@ public class StaminaBar extends Actor {
         bar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         hand.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
     }
+
+    public void fadeOut() {
+        background.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+
+        for (int x = 0; x < fill.length; x++)
+            fill[x].addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+
+        bar.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+        hand.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+    }
 }

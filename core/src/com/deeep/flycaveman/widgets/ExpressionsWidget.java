@@ -78,4 +78,9 @@ public class ExpressionsWidget extends Actor {
         background.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         face.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
     }
+
+    public void fadeOut() {
+        background.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+        face.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+    }
 }

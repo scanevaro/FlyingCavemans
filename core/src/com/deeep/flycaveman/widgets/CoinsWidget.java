@@ -66,4 +66,10 @@ public class CoinsWidget extends Actor {
     public void setCaveMan(CaveMan caveMan) {
         this.caveMan = caveMan;
     }
+
+    public void fadeOut() {
+        background.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+        coin.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+        amount.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+    }
 }
