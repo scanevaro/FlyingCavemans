@@ -41,16 +41,14 @@ public class StartScreen {
         int posY = 350;
         for (int i = 0; i < leaderboardsItems.length; i++) {
             if (i == leaderboardsItems.length - 1) {
-                leaderboardsItems[i] = new Label("Getting your Best...", Assets.skin.get("ownScore", Label.LabelStyle.class));
-                posY -= 10;
-                leaderboardsItems[i].setPosition(70, posY);
+                leaderboardsItems[i] = new Label("Getting your Best", Assets.skin.get("ownScore", Label.LabelStyle.class));
+                posY -= 8;
+                leaderboardsItems[i].setPosition(64, posY);
             } else {
                 leaderboardsItems[i] = new Label("   Getting info...", Assets.skin);
                 leaderboardsItems[i].setPosition(70, posY);
-
                 posY -= 28;
             }
-
         }
     }
 
