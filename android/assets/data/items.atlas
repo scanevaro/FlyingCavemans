@@ -356,6 +356,15 @@ dialog
   orig: 511, 256
   offset: 0, 0
   index: -1
+dialog2
+  rotate: false
+  xy: 2, 12
+  size: 511, 256
+  split: 28, 69, 35, 61
+  pad: 0, 0, 0, 0
+  orig: 511, 256
+  offset: 0, 0
+  index: -1
 dropUp
   rotate: false
   xy: 1618, 295

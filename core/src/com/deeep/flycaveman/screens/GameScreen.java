@@ -19,10 +19,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.input.GameInputProcessor;
-import com.deeep.flycaveman.widgets.CoinsWidget;
-import com.deeep.flycaveman.widgets.ExpressionsWidget;
-import com.deeep.flycaveman.widgets.FlapButton;
-import com.deeep.flycaveman.widgets.StaminaBar;
+import com.deeep.flycaveman.widgets.*;
 import com.deeep.flycaveman.world.World;
 
 /**
@@ -45,6 +42,7 @@ public class GameScreen extends AbstractScreen {
     public static Label distance;
     private ImageButton pauseButton;
     private Window gameOverDialog, shopDialog;
+    private GameOverWidget gameOverWidget;
     private StaminaBar staminaBar;
     private FlapButton flapButton;
     private ExpressionsWidget expressions;
@@ -162,12 +160,13 @@ public class GameScreen extends AbstractScreen {
         Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
-    private void prepareGameOverDialog() {
-        gameOverDialog = game.dialogs.buildGameOver(game);
-    }
-
     private void prepareShopDialog() {
         shopDialog = game.dialogs.buildShop(game);
+    }
+
+    private void prepareGameOverDialog() {
+        gameOverDialog = game.dialogs.buildGameOver(game);
+        gameOverWidget = new GameOverWidget(game, shopDialog);
     }
 
     @Override
@@ -201,10 +200,11 @@ public class GameScreen extends AbstractScreen {
                 expressions.fadeOut();
                 coinsWidget.fadeOut();
 
-                if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
-                else gameOverDialog.setVisible(true);
+                gameOverWidget.setVisible();
+//                if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
+//                else gameOverDialog.setVisible(true);
 
-                distance.setText(distanceLabel.getText().toString());
+//                distance.setText(distanceLabel.getText().toString());
             }
         }
 

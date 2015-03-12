@@ -100,15 +100,16 @@ public class Dialogs {
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
         retryStyle.imageUp.setMinWidth(96);
         retryStyle.imageUp.setMinHeight(96);
-        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageDown.setMinWidth(96);
-        retryStyle.imageDown.setMinHeight(96);
-        ImageButton retryButton = new ImageButton(retryStyle);
+        retryStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
+        retryStyle.imageDown.setMinWidth(128);
+        retryStyle.imageDown.setMinHeight(128);
+        final ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
             }
+
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
@@ -117,7 +118,7 @@ public class Dialogs {
                 return true;
             }
         });
-        retryButton.setSize(96, 96);
+        retryButton.setSize(128, 128);
         retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
         gameOverDialog.addActor(retryButton);
 
@@ -126,14 +127,15 @@ public class Dialogs {
         homeStyle.imageUp.setMinWidth(96);
         homeStyle.imageUp.setMinHeight(96);
         homeStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
-        homeStyle.imageDown.setMinWidth(96);
-        homeStyle.imageDown.setMinHeight(96);
+        homeStyle.imageDown.setMinWidth(128);
+        homeStyle.imageDown.setMinHeight(128);
         ImageButton homeButton = new ImageButton(homeStyle);
         homeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
             }
+
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 super.touchDown(event, x, y, pointer, button);
@@ -142,7 +144,7 @@ public class Dialogs {
                 return true;
             }
         });
-        homeButton.setSize(96, 96);
+        homeButton.setSize(128, 128);
         homeButton.setPosition(0, 0);
         gameOverDialog.addActor(homeButton);
 
