@@ -31,7 +31,7 @@ public class Assets {
 
     public static Skin skin;
 
-    public static BitmapFont font, fontSmall;
+    public static BitmapFont font, fontSmall, fontSmallBold;
 
     public static TextureAtlas items;
     public static Texture darkSky;
@@ -41,7 +41,7 @@ public class Assets {
             staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
             steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
-            facePassion, faceKO, title, touchNH, buttonBroken, button;
+            facePassion, faceKO, title, touchNH, buttonBroken, button, dialog;
     public static Animation cavemanWings, cavemanFlap;
 
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
@@ -74,6 +74,7 @@ public class Assets {
     private static void loadFont() {
         assetManager.load("data/font32.fnt", BitmapFont.class);
         assetManager.load("data/font24.fnt", BitmapFont.class);
+        assetManager.load("data/font20Bold.fnt", BitmapFont.class);
     }
 
     private static void loadAtlas() {
@@ -118,9 +119,11 @@ public class Assets {
 
         font = assetManager.get("data/font32.fnt");
         fontSmall = assetManager.get("data/font24.fnt");
+        fontSmallBold = assetManager.get("data/font20Bold.fnt");
 
         skin.add("default-font", font, BitmapFont.class);
         skin.add("small-font", fontSmall, BitmapFont.class);
+        skin.add("bold20", fontSmall, BitmapFont.class);
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");
         FileHandle atlasFile = fileHandle.sibling("items.atlas");
@@ -174,6 +177,7 @@ public class Assets {
         title = items.findRegion("title");
         touchNH = items.findRegion("touchNH");
         buttonBroken = items.findRegion("broken_button");
+        dialog = items.findRegion("dialog");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");
@@ -199,7 +203,7 @@ public class Assets {
 
         ocean_layer_1 = items.findRegion("ocean_layer", 1);
         ocean_layer_2 = items.findRegion("ocean_layer", 2);
-        ocean_layer_3= items.findRegion("ocean_layer", 3);
+        ocean_layer_3 = items.findRegion("ocean_layer", 3);
 
         jungle_layer_1 = items.findRegion("jungle_layer", 1);
         jungle_layer_2 = items.findRegion("jungle_layer", 2);

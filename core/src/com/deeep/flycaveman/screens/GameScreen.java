@@ -18,11 +18,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.entities.FlapButton;
-import com.deeep.flycaveman.entities.StaminaBar;
 import com.deeep.flycaveman.input.GameInputProcessor;
 import com.deeep.flycaveman.widgets.CoinsWidget;
 import com.deeep.flycaveman.widgets.ExpressionsWidget;
+import com.deeep.flycaveman.widgets.FlapButton;
+import com.deeep.flycaveman.widgets.StaminaBar;
 import com.deeep.flycaveman.world.World;
 
 /**
@@ -46,7 +46,6 @@ public class GameScreen extends AbstractScreen {
     private ImageButton pauseButton;
     private Window gameOverDialog, shopDialog;
     private StaminaBar staminaBar;
-    //    private DropButton dropButton;
     private FlapButton flapButton;
     private ExpressionsWidget expressions;
     private CoinsWidget coinsWidget;
@@ -102,7 +101,6 @@ public class GameScreen extends AbstractScreen {
         pauseButton = new ImageButton(pauseStyle);
 
         flapButton = new FlapButton();
-//        dropButton = new DropButton();
         expressions = new ExpressionsWidget();
         coinsWidget = new CoinsWidget();
     }
@@ -117,7 +115,7 @@ public class GameScreen extends AbstractScreen {
 
         distanceLabel.setColor(new Color(1, 1, 1, 0));
         heightLabel.setColor(new Color(1, 1, 1, 0));
-//        pauseButton.setColor(new Color(1, 1, 1, 0));
+        pauseButton.setColor(new Color(1, 1, 1, 0));
         staminaBar.setColor(new Color(1, 1, 1, 0));
         flapButton.setColor(new Color(1, 1, 1, 0));
         expressions.setColor(new Color(1, 1, 1, 0));
@@ -131,7 +129,6 @@ public class GameScreen extends AbstractScreen {
         stage.addActor(world);
 
         flapButton.setCaveMan(world.caveman);
-//        dropButton.setCaveMan(world.caveman);
     }
 
     private void getGameCamera() {
@@ -179,7 +176,7 @@ public class GameScreen extends AbstractScreen {
         if (gameInputProcessor.flying) {
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-//            pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
@@ -214,16 +211,21 @@ public class GameScreen extends AbstractScreen {
 
     private void updateGameCam() {
         if (world.caveman.body.getPosition().x > world.caveman.startPosX)
-            if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2)
+            if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, world.caveman.body.getPosition().y + 0.5f, 0);
-            else
+                world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (world.caveman.body.getPosition().y + 0.5f) * 35, 0);
+            } else {
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
+                world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (Core.VIRTUAL_HEIGHT / 2 - 2) * 35, 0);
+            }
 
         if (world.caveman.body.getPosition().y > (Core.BOX2D_VIRTUAL_HEIGHT / 2f)) {
             height = world.caveman.body.getPosition().y - 9;
             gameCamera.zoom = 0.9f + (height * 2.5f) / 56;
+            world.updateStartZoom(0.9f + (height * 2.5f) / 56);
         } else {
             gameCamera.zoom = 0.9f;
+            world.updateStartZoom(0.9f);
         }
         gameCamera.zoom = Math.min(gameCamera.zoom, 2f);
         gameCamera.update();

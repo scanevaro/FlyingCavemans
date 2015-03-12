@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.Assets;
-import com.deeep.flycaveman.entities.LoadingBar;
+import com.deeep.flycaveman.widgets.LoadingBar;
 import com.deeep.flycaveman.entities.SplashActor;
 
 /**

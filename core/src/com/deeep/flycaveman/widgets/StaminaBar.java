@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.entities;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.entities.CaveMan;
 
 /**
  * Created by scanevaro on 09/02/2015.

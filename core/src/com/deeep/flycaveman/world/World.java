@@ -1,6 +1,7 @@
 package com.deeep.flycaveman.world;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
@@ -18,6 +20,7 @@ import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;
 import com.deeep.flycaveman.input.GameInputProcessor;
 import com.deeep.flycaveman.screens.GameScreen;
+import com.deeep.flycaveman.widgets.StartScreen;
 
 import java.util.Random;
 
@@ -30,7 +33,8 @@ public class World extends Actor implements Disposable {
 
     private Stage worldStage;
     private Stage stage;
-    private Viewport leaderViewport;
+    private Viewport startViewport;
+    private OrthographicCamera leaderCam;
     private ShapeRenderer shapeRenderer;
     private Vector2 sky;
     public com.badlogic.gdx.physics.box2d.World box2dWorld;
@@ -70,11 +74,16 @@ public class World extends Actor implements Disposable {
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
     public CoinSpawner coinSpawner;
-    private Title title;
+    private StartScreen startScreen;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
         this.stage = stage;
+
+        this.startViewport = new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
+        this.leaderCam = (OrthographicCamera) startViewport.getCamera();
+        leaderCam.position.set(Core.VIRTUAL_WIDTH / 2, Core.VIRTUAL_HEIGHT / 2, 0);
+
         area = new Area();
         entities = new Array<Entity>();
         // skyColor = new Color(0, 0.5f, 0.8f, 1);
@@ -95,7 +104,8 @@ public class World extends Actor implements Disposable {
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
-        entities.add(title = new Title(worldStage));
+        startScreen = new StartScreen();
+
         entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
@@ -172,10 +182,21 @@ public class World extends Actor implements Disposable {
         batch.begin();
 
         space.draw((SpriteBatch) batch);
+
+        batch.setProjectionMatrix(startViewport.getCamera().combined);
+        startScreen.draw(batch);
+
+        batch.setProjectionMatrix(worldStage.getCamera().combined);
+
         {/**Draw Box2D Body Textures*/
             for (Entity entity : entities)
                 entity.draw(batch);
         }
+
+        batch.setProjectionMatrix(startViewport.getCamera().combined);
+        startScreen.drawTut(batch);
+        batch.setProjectionMatrix(worldStage.getCamera().combined);
+
         obstacleSpawner.draw(batch);
         coinSpawner.render(batch);
         powerUpSpawner.draw((SpriteBatch) batch);
@@ -186,13 +207,12 @@ public class World extends Actor implements Disposable {
     }
 
     public void update(float delta) {
+        leaderCam.update();
         coinSpawner.update(delta, caveman, this);
         gameContactListener.update();
-        title.update(delta);
-        updateCamera();
+        startScreen.update(delta);
         updateSky();
         space.update(delta, worldStage.getCamera().position);
-        updateBackground();
         updateGround();
         updateObstacles();
         caveman.update(delta);
@@ -230,30 +250,11 @@ public class World extends Actor implements Disposable {
         return returnColor;
     }
 
-    private void updateCamera() {
-        /**camera.position.set(relative to caveman X position, relative to caveman Y position, 0);*/
-    }
-
     private void updateSky() {
         if (caveman.body.getPosition().y < 8)
             sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, 8);
         else
             sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, caveman.body.getPosition().y - Core.BOX2D_VIRTUAL_HEIGHT / 3);
-    }
-
-    private void updateBackground() {
-        //if (caveman.body.getPosition().x > backgroundSprite.getX() + Core.BOX2D_VIRTUAL_WIDTH / 3)
-        //    scrollTimer += (caveman.body.getPosition().x - backgroundSprite.getX() - Core.BOX2D_VIRTUAL_WIDTH / 3) / 50.005;
-
-//        scrollTimer += delta - delta / 2;
-
-        if (scrollTimer > 1.0f)
-            scrollTimer = 0.0f;
-
-//        backgroundSprite.setU(scrollTimer);
-//        backgroundSprite.setU2(scrollTimer + 1);
-
-//        backgroundSprite.setPosition(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 0);
     }
 
     private void updateGround() {
@@ -288,6 +289,14 @@ public class World extends Actor implements Disposable {
     }
 
     public void resize(int width, int height) {
-//        leaderViewport.update(width, height);
+        startViewport.update(width, height);
+    }
+
+    public void updateStartCam(float x, float y, float z) {
+        leaderCam.position.set(x, y, z);
+    }
+
+    public void updateStartZoom(float zoom) {
+        leaderCam.zoom = zoom;
     }
 }

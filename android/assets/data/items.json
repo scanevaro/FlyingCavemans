@@ -20,6 +20,8 @@ com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 	dialog: { titleFont: default-font, background: dialog, titleFontColor: white, stageBackground: dialogDim }
 },
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
-	default: { font: default-font, fontColor: white }
+	default: { font: default-font, fontColor: white },
+    ownScore: { font: bold20, fontColor: white },
+    defaultBackground: { font: default-font, fontColor: white, background:button }
 }
 }

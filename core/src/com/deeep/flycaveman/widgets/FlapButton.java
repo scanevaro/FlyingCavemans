@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.entities;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.entities.CaveMan;
 
 /**
  * Created by scanevaro on 12/02/2015.
