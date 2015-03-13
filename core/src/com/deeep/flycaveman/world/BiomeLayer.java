@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.world;
 
 public class BiomeLayer {
     private int layer = 1;

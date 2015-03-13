@@ -31,7 +31,7 @@ public class Assets {
 
     public static Skin skin;
 
-    public static BitmapFont font, fontSmall, fontSmallBold;
+    public static BitmapFont font64, font32, font24Bold;
 
     public static TextureAtlas items;
     public static Texture darkSky;
@@ -72,9 +72,9 @@ public class Assets {
     }
 
     private static void loadFont() {
-        assetManager.load("data/font32.fnt", BitmapFont.class);
-        assetManager.load("data/font24.fnt", BitmapFont.class);
-        assetManager.load("data/font20Bold.fnt", BitmapFont.class);
+        assetManager.load("data/fonts/font64.fnt", BitmapFont.class);
+        assetManager.load("data/fonts/font32.fnt", BitmapFont.class);
+        assetManager.load("data/fonts/font24Bold.fnt", BitmapFont.class);
     }
 
     private static void loadAtlas() {
@@ -117,13 +117,13 @@ public class Assets {
     private static void setSkin() {
         skin = new Skin();
 
-        font = assetManager.get("data/font32.fnt");
-        fontSmall = assetManager.get("data/font24.fnt");
-        fontSmallBold = assetManager.get("data/font20Bold.fnt");
+        font64 = assetManager.get("data/fonts/font64.fnt");
+        font32 = assetManager.get("data/fonts/font32.fnt");
+        font24Bold = assetManager.get("data/fonts/font24Bold.fnt");
 
-        skin.add("default-font", font, BitmapFont.class);
-        skin.add("small-font", fontSmall, BitmapFont.class);
-        skin.add("bold20", fontSmall, BitmapFont.class);
+        skin.add("default-font", font64, BitmapFont.class);
+        skin.add("small-font", font32, BitmapFont.class);
+        skin.add("bold20", font24Bold, BitmapFont.class);
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");
         FileHandle atlasFile = fileHandle.sibling("items.atlas");

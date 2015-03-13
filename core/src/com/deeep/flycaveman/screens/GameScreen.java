@@ -74,8 +74,6 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
         prepareShopDialog();
 
-        Assets.font.setScale(0.5f);
-
         expressions.setCaveman(world.caveman);
         coinsWidget.setCaveMan(world.caveman);
     }

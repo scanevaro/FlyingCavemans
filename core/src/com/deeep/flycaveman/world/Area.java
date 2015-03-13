@@ -3,7 +3,6 @@ package com.deeep.flycaveman.world;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.deeep.flycaveman.classes.Biomes;
 import com.deeep.flycaveman.widgets.FadeableMusic;
 import com.deeep.flycaveman.widgets.SoundManager;
 
