@@ -1,10 +1,14 @@
-package com.deeep.flycaveman.entities;
+package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.entities.CaveMan;
 
 /**
  * Created by scanevaro on 09/02/2015.
@@ -46,15 +50,19 @@ public class StaminaBar extends Actor {
     public void act(float delta) {
         super.act(delta);
 
-//        System.out.println(5 % 3.5);
-
         for (int x = 0; x < caveman.stamina; x++)
             fill[x].setScaleX(3.6f/*caveman.stamina / 5 * 100 / 5.0f*/);
+
+        background.act(delta);
+        for (int x = 0; x < fill.length; x++)
+            fill[x].act(delta);
+        bar.act(delta);
+        hand.act(delta);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
+//        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         background.draw(batch, parentAlpha);
 
@@ -63,5 +71,41 @@ public class StaminaBar extends Actor {
 
         bar.draw(batch, parentAlpha);
         hand.draw(batch, parentAlpha);
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+
+        background.setColor(color);
+
+        for (int x = 0; x < fill.length; x++)
+            fill[x].setColor(color);
+
+        bar.setColor(color);
+        hand.setColor(color);
+    }
+
+    @Override
+    public void addAction(Action action) {
+//        super.addAction(action);
+
+        background.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+
+        for (int x = 0; x < fill.length; x++)
+            fill[x].addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+
+        bar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+        hand.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+    }
+
+    public void fadeOut() {
+        background.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+
+        for (int x = 0; x < fill.length; x++)
+            fill[x].addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+
+        bar.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+        hand.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
     }
 }

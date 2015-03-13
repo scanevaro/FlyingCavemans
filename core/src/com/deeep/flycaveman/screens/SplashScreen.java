@@ -15,8 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.classes.Assets;
-import com.deeep.flycaveman.entities.LoadingBar;
+import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.widgets.LoadingBar;
 import com.deeep.flycaveman.entities.SplashActor;
 
 /**
@@ -147,10 +147,10 @@ public class SplashScreen extends AbstractScreen {
         loadingBar.setPosition(0, 5);
         loadingBar.setWidth(Core.VIRTUAL_WIDTH);
 
-        stage.addActor(loadingBar);
-        stage.addActor(loadingBg);
-        stage.addActor(loadingBarHidden);
-        stage.addActor(loadingFrame);
+        //stage.addActor(loadingBar);
+        //stage.addActor(loadingBg);
+        //stage.addActor(loadingBarHidden);
+        //stage.addActor(loadingFrame);
 
         startX = 0;
         endX = Core.VIRTUAL_WIDTH;

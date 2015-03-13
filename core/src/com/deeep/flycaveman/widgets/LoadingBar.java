@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.entities;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;

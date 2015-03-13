@@ -1,4 +1,4 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-import javax.xml.soap.Text;
 import java.util.Random;
 
 /**
@@ -32,26 +31,28 @@ public class Assets {
 
     public static Skin skin;
 
-    public static BitmapFont font, fontBig;
+    public static BitmapFont font, fontSmall, fontSmallBold;
 
     public static TextureAtlas items;
     public static Texture darkSky;
-    public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, quetzaTexture,
-            smallEggTexture, staminaBackground, staminaFill, staminaBar, staminaHand,
-            restartButton, catapultArmTexture,
-            catapultBaseTexture, homeButton, shopButton, staminaplus, shield, steroids,
-            wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp;
+    public static TextureRegion cloud1, cloud2, cloud3;
+    public static TextureRegion cavemanTexture, cavemanSprings, brachioTexture, brachioBackPull, brachioFrontPull,
+            brachioMidPull, quetzaTexture, smallEggTexture, smallEggBroken, staminaBackground, staminaFill, staminaBar,
+            staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
+            steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
+            mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
+            facePassion, faceKO, title, touchNH, buttonBroken, button, dialog;
     public static Animation cavemanWings, cavemanFlap;
 
-    public static TextureRegion preHistoric_layer_1, preHistoric_layer_2, preHistoric_layer_3;  //todo put this in an enum or so
-    public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3;  //todo put this in an enum or so
-    public static TextureRegion jungle_historic_layer_1, jungle_historic_layer_2, jungle_historic_layer_3;  //todo put this in an enum or so
-    public static TextureRegion historic_jungle_layer_1, historic_jungle_layer_2, historic_jungle_layer_3;  //todo put this in an enum or so
-
-    public static TextureRegion cloud1, cloud2, cloud3;
-
+    public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
+    public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
+    public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
+    public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3;  //todo put this in an enum or so
+    public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2, dessert_jungle_layer_3;  //todo put this in an enum or so
+    public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3;
+    public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3;
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1, coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -72,6 +73,8 @@ public class Assets {
 
     private static void loadFont() {
         assetManager.load("data/font32.fnt", BitmapFont.class);
+        assetManager.load("data/font24.fnt", BitmapFont.class);
+        assetManager.load("data/font20Bold.fnt", BitmapFont.class);
     }
 
     private static void loadAtlas() {
@@ -93,6 +96,15 @@ public class Assets {
         assetManager.load("data/sounds/music/JungleTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
+
+        assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
+        assetManager.load("data/sounds/coin1.mp3", Sound.class);
+        assetManager.load("data/sounds/coin2.mp3", Sound.class);
+        assetManager.load("data/sounds/coin3.mp3", Sound.class);
+        assetManager.load("data/sounds/coin4.mp3", Sound.class);
+
+        assetManager.load("data/sounds/button_confirm.mp3", Sound.class);
     }
 
     public static void set() {
@@ -106,8 +118,12 @@ public class Assets {
         skin = new Skin();
 
         font = assetManager.get("data/font32.fnt");
+        fontSmall = assetManager.get("data/font24.fnt");
+        fontSmallBold = assetManager.get("data/font20Bold.fnt");
 
         skin.add("default-font", font, BitmapFont.class);
+        skin.add("small-font", fontSmall, BitmapFont.class);
+        skin.add("bold20", fontSmall, BitmapFont.class);
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");
         FileHandle atlasFile = fileHandle.sibling("items.atlas");
@@ -124,8 +140,17 @@ public class Assets {
     private static void setTextures() {
         cavemanTexture = items.findRegion("caveman");
         brachioTexture = items.findRegion("BRACHIOSAURUS");
+        brachioBackPull = items.findRegion("brachioBackPull");
+        brachioFrontPull = items.findRegion("brachioFrontPull");
+        brachioMidPull = items.findRegion("brachioMidPull");
         quetzaTexture = items.findRegion("QUETZA");
+        quetzaHit = items.findRegion("QUETZA2");
+        mosquitoTexture = items.findRegion("mosquito1");
+        mosquitoHit = items.findRegion("mosquito2");
+        sabertooth1 = items.findRegion("sabertooth1");
+        sabertooth2 = items.findRegion("sabertooth2");
         smallEggTexture = items.findRegion("smallEgg");
+        smallEggBroken = items.findRegion("smallEgg2");
         restartButton = items.findRegion("restart");
         catapultArmTexture = items.findRegion("catapultArm");
         catapultBaseTexture = items.findRegion("catapultBase");
@@ -140,10 +165,19 @@ public class Assets {
         staminaBar = items.findRegion("staminabar");
         staminaHand = items.findRegion("staminahand");
         staminaplus = items.findRegion("staminaplus");
-        shield = items.findRegion("shield");
         steroids = items.findRegion("steroids");
         wings = items.findRegion("wings");
         springs = items.findRegion("springshoes");
+        faceBackground = items.findRegion("expresionsCircle");
+        faceHappy = items.findRegion("happyface");
+        facePain = items.findRegion("painface");
+        faceTired = items.findRegion("tiredface");
+        facePassion = items.findRegion("passionface");
+        faceKO = items.findRegion("koface");
+        title = items.findRegion("title");
+        touchNH = items.findRegion("touchNH");
+        buttonBroken = items.findRegion("broken_button");
+        dialog = items.findRegion("dialog");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");
@@ -163,21 +197,34 @@ public class Assets {
         dropUp = items.findRegion("dropUp");
         pauseUp = items.findRegion("pause");
 
-        preHistoric_layer_1 = items.findRegion("desert_layer", 1);
-        preHistoric_layer_2 = items.findRegion("desert_layer", 2);
-        preHistoric_layer_3 = items.findRegion("desert_layer", 3);
+        dessert_layer_1 = items.findRegion("desert_layer", 1);
+        dessert_layer_2 = items.findRegion("desert_layer", 2);
+        dessert_layer_3 = items.findRegion("desert_layer", 3);
+
+        ocean_layer_1 = items.findRegion("ocean_layer", 1);
+        ocean_layer_2 = items.findRegion("ocean_layer", 2);
+        ocean_layer_3 = items.findRegion("ocean_layer", 3);
 
         jungle_layer_1 = items.findRegion("jungle_layer", 1);
         jungle_layer_2 = items.findRegion("jungle_layer", 2);
         jungle_layer_3 = items.findRegion("jungle_layer", 3);
+        jungle_layer_4 = items.findRegion("jungle_layer", 7);
 
-        jungle_historic_layer_1 = items.findRegion("groundJungle");
-        jungle_historic_layer_2 = items.findRegion("jungleToDesert");
-        jungle_historic_layer_3 = items.findRegion("jungleBackground");
+        jungle_ocean_layer_1 = items.findRegion("jungle_ocean", 1);
+        jungle_ocean_layer_2 = items.findRegion("jungle_ocean", 2);
+        jungle_ocean_layer_3 = items.findRegion("jungle_ocean", 3);
 
-        historic_jungle_layer_1 = items.findRegion("groundJungle");
-        historic_jungle_layer_2 = items.findRegion("groundToJungle");
-        historic_jungle_layer_3 = items.findRegion("jungleBackground");
+        jungle_dessert_layer_1 = items.findRegion("jungle_desert");
+        jungle_dessert_layer_2 = items.findRegion("desert_layer", 2);
+        jungle_dessert_layer_3 = items.findRegion("desert_layer", 3);
+
+        dessert_jungle_layer_1 = items.findRegion("desert_jungle");
+        dessert_jungle_layer_2 = items.findRegion("jungle_layer", 2);
+        dessert_jungle_layer_3 = items.findRegion("jungle_layer", 3);
+
+        button = items.findRegion("button");
+
+        // ocean_layer_1, ocean_layer_2, ocean_layer_3;
 
         cloud1 = items.findRegion("cloud1");
         cloud2 = items.findRegion("cloud2");
@@ -195,6 +242,11 @@ public class Assets {
         canOpen1 = assetManager.get("data/sounds/canOpen1.mp3");
         burp3 = assetManager.get("data/sounds/burp3.mp3");
         hitEntity1 = assetManager.get("data/sounds/hitEntity1.mp3");
+        coin1_sound = assetManager.get("data/sounds/coin1.mp3");
+        coin2_sound = assetManager.get("data/sounds/coin2.mp3");
+        coin3_sound = assetManager.get("data/sounds/coin3.mp3");
+        coin4_sound = assetManager.get("data/sounds/coin4.mp3");
+        buttonConfirm = assetManager.get("data/sounds/button_confirm.mp3");
     }
 
     public static void dispose() {
@@ -214,18 +266,5 @@ public class Assets {
 
     public static Music loadMusicFile(String path) {
         return assetManager.get("data/sounds/music/" + path + ".ogg");
-    }
-
-    public static TextureRegion getCloud(int cloudId) {
-        switch (cloudId) {
-            case 0:
-                return cloud1;
-            case 1:
-                return cloud2;
-            case 2:
-                return cloud3;
-            default:
-                return cloud1;
-        }
     }
 }

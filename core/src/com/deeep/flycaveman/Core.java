@@ -6,9 +6,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.deeep.flycaveman.classes.ActorAccessor;
-import com.deeep.flycaveman.classes.Assets;
-import com.deeep.flycaveman.classes.Dialogs;
+import com.deeep.flycaveman.widgets.ActorAccessor;
+import com.deeep.flycaveman.widgets.Dialogs;
+import com.deeep.flycaveman.widgets.SoundManager;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
 
@@ -82,4 +82,9 @@ public class Core implements ApplicationListener {
     public SpriteBatch getSpriteBatch() {
         return spriteBatch;
     }
+
+    public static float pixelsToBoxUnit(float pixels){
+        return pixels / 35;
+    }
+
 }

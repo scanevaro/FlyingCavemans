@@ -16,9 +16,13 @@ com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
 },
 com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 	default: { titleFont: default-font, background: dialog, titleFontColor: white },
+    default1: { titleFont: small-font, background: dialog1, titleFontColor: white },
+    default2: { titleFont: small-font, background: dialog2, titleFontColor: white },
 	dialog: { titleFont: default-font, background: dialog, titleFontColor: white, stageBackground: dialogDim }
 },
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
-	default: { font: default-font, fontColor: white }
+	default: { font: default-font, fontColor: white },
+    ownScore: { font: bold20, fontColor: white },
+    defaultBackground: { font: default-font, fontColor: white, background:button }
 }
 }

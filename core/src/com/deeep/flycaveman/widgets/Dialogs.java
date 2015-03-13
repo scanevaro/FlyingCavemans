@@ -1,10 +1,11 @@
-package com.deeep.flycaveman.classes;
+package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.screens.AbstractScreen;
@@ -16,7 +17,7 @@ import com.deeep.flycaveman.screens.GameScreen;
 public class Dialogs {
     public Window window;
     public Window shopDialog;
-    private Dialog wingsDialog, staminaplusDialog, springsDialog, shieldDialog, steroidsDialog;
+    private Dialog wingsDialog, staminaplusDialog, springsDialog, steroidsDialog;
 
     public void update(AbstractScreen screen) {
         if (!Core.dialogOpen) {
@@ -99,17 +100,25 @@ public class Dialogs {
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
         retryStyle.imageUp.setMinWidth(96);
         retryStyle.imageUp.setMinHeight(96);
-        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageDown.setMinWidth(96);
-        retryStyle.imageDown.setMinHeight(96);
-        ImageButton retryButton = new ImageButton(retryStyle);
+        retryStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
+        retryStyle.imageDown.setMinWidth(128);
+        retryStyle.imageDown.setMinHeight(128);
+        final ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                super.touchDown(event, x, y, pointer, button);
+                GameScreen s = (GameScreen) game.screen;
+                //s.world.area.soundManager.playSound(Assets.buttonConfirm);
+                return true;
+            }
         });
-        retryButton.setSize(96, 96);
+        retryButton.setSize(128, 128);
         retryButton.setPosition(gameOverDialog.getWidth() - retryButton.getWidth(), 0);
         gameOverDialog.addActor(retryButton);
 
@@ -117,17 +126,25 @@ public class Dialogs {
         homeStyle.imageUp = new TextureRegionDrawable(Assets.homeButton);
         homeStyle.imageUp.setMinWidth(96);
         homeStyle.imageUp.setMinHeight(96);
-        homeStyle.imageDown = new TextureRegionDrawable(Assets.homeButton);
-        homeStyle.imageDown.setMinWidth(96);
-        homeStyle.imageDown.setMinHeight(96);
+        homeStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
+        homeStyle.imageDown.setMinWidth(128);
+        homeStyle.imageDown.setMinHeight(128);
         ImageButton homeButton = new ImageButton(homeStyle);
         homeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.setScreen(new GameScreen(game));
             }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                super.touchDown(event, x, y, pointer, button);
+                GameScreen s = (GameScreen) game.screen;
+                //s.world.area.soundManager.playSound(Assets.buttonConfirm);
+                return true;
+            }
         });
-        homeButton.setSize(96, 96);
+        homeButton.setSize(128, 128);
         homeButton.setPosition(0, 0);
         gameOverDialog.addActor(homeButton);
 
@@ -253,24 +270,6 @@ public class Dialogs {
         staminaplusButton.setPosition(shopDialog.getWidth() / 2 - staminaplusButton.getWidth() / 2, shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(staminaplusButton);
 
-        ImageButton.ImageButtonStyle shieldStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
-        shieldStyle.imageUp = new TextureRegionDrawable(Assets.shield);
-        shieldStyle.imageUp.setMinWidth(140);
-        shieldStyle.imageUp.setMinHeight(140);
-        shieldStyle.imageDown = new TextureRegionDrawable(Assets.shield);
-        shieldStyle.imageDown.setMinWidth(140);
-        shieldStyle.imageDown.setMinHeight(140);
-        ImageButton shieldButton = new ImageButton(shieldStyle);
-        shieldButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                shieldDialog.show(game.screen.stage);
-            }
-        });
-        shieldButton.setSize(140, 140);
-        shieldButton.setPosition(150, shopDialog.getHeight() / 2 - shieldButton.getHeight());
-        shopDialog.addActor(shieldButton);
-
         ImageButton.ImageButtonStyle springsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
         springsStyle.imageUp = new TextureRegionDrawable(Assets.springs);
         springsStyle.imageUp.setMinWidth(140);
@@ -352,24 +351,6 @@ public class Dialogs {
         steroidsDialog.getButtonTable().add(noButton3).width(96).height(64);
         steroidsDialog.setObject(yesButton3, true);
         steroidsDialog.setObject(noButton3, false);
-
-        shieldDialog = new Dialog("Buy Shield?", Assets.skin) {
-            protected void result(Object object) {
-                if ((Boolean) object)
-//                    if (((GameScreen) screen).coins >= 1000) {
-                    ((GameScreen) screen).world.caveman.addShield();
-//
-//                        ((GameScreen) screen).coins -= 1000;
-//                    }
-            }
-        };
-        shieldDialog.text("Buy Shield for 1000 coins?");
-        TextButton yesButton4 = new TextButton("Yes", Assets.skin);
-        TextButton noButton4 = new TextButton("No", Assets.skin);
-        shieldDialog.getButtonTable().add(yesButton4).width(96).height(64);
-        shieldDialog.getButtonTable().add(noButton4).width(96).height(64);
-        shieldDialog.setObject(yesButton4, true);
-        shieldDialog.setObject(noButton4, false);
 
         springsDialog = new Dialog("Buy Springs?", Assets.skin) {
             protected void result(Object object) {

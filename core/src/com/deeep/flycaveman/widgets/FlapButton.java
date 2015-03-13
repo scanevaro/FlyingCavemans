@@ -1,13 +1,16 @@
-package com.deeep.flycaveman.entities;
+package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.entities.CaveMan;
 
 /**
  * Created by scanevaro on 12/02/2015.
@@ -45,6 +48,20 @@ public class FlapButton extends Actor {
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         imageButton.draw(batch, parentAlpha);
+    }
+
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+
+        imageButton.setColor(color);
+    }
+
+    @Override
+    public void addAction(Action action) {
+        super.addAction(action);
+
+        imageButton.addAction(action);
     }
 
     @Override

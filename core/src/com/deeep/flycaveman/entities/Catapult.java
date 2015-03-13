@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJoint;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
-import com.deeep.flycaveman.classes.Assets;
+import com.deeep.flycaveman.Assets;
 
 /**
  * Created by scanevaro on 29/10/2014.
