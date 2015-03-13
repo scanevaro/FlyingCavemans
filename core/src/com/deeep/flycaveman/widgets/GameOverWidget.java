@@ -1,9 +1,13 @@
 package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.deeep.flycaveman.Assets;
@@ -14,9 +18,19 @@ import com.deeep.flycaveman.screens.GameScreen;
  * Created by scanevaro on 12/03/2015.
  */
 public class GameOverWidget {
-    private Window topRightWindow, bottomRightWindow, leftWindow;
+    private Window topRightWindow, bottomRightWindow;
+    private Image leftWindow;
+    private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel;
 
     public GameOverWidget(final Core game, final Window shopDialog) {
+        setTopRightWindow(game, shopDialog);
+
+        setBottomRightWindow(game, shopDialog);
+
+        setLeftWindow(game, shopDialog);
+    }
+
+    private void setTopRightWindow(final Core game, final Window shopDialog) {
         topRightWindow = new Window("UGHA UGH (Game Over)", Assets.skin);
         topRightWindow.setSize(513, 258);
         topRightWindow.setPosition(Core.VIRTUAL_WIDTH - topRightWindow.getWidth(), Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
@@ -35,7 +49,9 @@ public class GameOverWidget {
         topRightWindow.setVisible(false);
 
         game.screen.stage.addActor(topRightWindow);
+    }
 
+    private void setBottomRightWindow(final Core game, final Window shopDialog) {
         bottomRightWindow = new Window("", Assets.skin.get("default2", Window.WindowStyle.class));
         bottomRightWindow.setSize(513, 258);
         bottomRightWindow.setPosition(Core.VIRTUAL_WIDTH - bottomRightWindow.getWidth(), 0);
@@ -114,9 +130,47 @@ public class GameOverWidget {
         game.screen.stage.addActor(bottomRightWindow);
     }
 
+    private void setLeftWindow(final Core game, final Window shopDialog) {
+        leftWindow = new Image(Assets.dialog);
+        leftWindow.setSize(350, 400);
+        leftWindow.setOrigin(leftWindow.getWidth() / 2, leftWindow.getHeight() / 2);
+        leftWindow.setPosition(25, 120);
+        leftWindow.setVisible(false);
+        game.screen.stage.addActor(leftWindow);
+
+        statsLabel = new Label("Stats", Assets.skin.get("defaultBackground", Label.LabelStyle.class));
+        statsLabel.setAlignment(Align.center);
+        statsLabel.setSize(280, 80);
+        statsLabel.setPosition(-10, 420);
+        statsLabel.setVisible(false);
+        game.screen.stage.addActor(statsLabel);
+
+        distanceLabel = new Label("", Assets.skin);
+        distanceLabel.setPosition(0, 0);
+        game.screen.stage.addActor(distanceLabel);
+        maxHeightLabel = new Label("", Assets.skin);
+        maxHeightLabel.setPosition(0, 0);
+        game.screen.stage.addActor(maxHeightLabel);
+        flappingLabel = new Label("", Assets.skin);
+        flappingLabel.setPosition(0, 0);
+        game.screen.stage.addActor(flappingLabel);
+        entitiesLabel = new Label("", Assets.skin);
+        entitiesLabel.setPosition(0, 0);
+        game.screen.stage.addActor(entitiesLabel);
+        powerupsLabel = new Label("", Assets.skin);
+        powerupsLabel.setPosition(0, 0);
+        game.screen.stage.addActor(powerupsLabel);
+        coinsLabel = new Label("", Assets.skin);
+        coinsLabel.setPosition(0, 0);
+        game.screen.stage.addActor(coinsLabel);
+    }
+
     public void setVisible() {
         bottomRightWindow.setVisible(true);
         topRightWindow.setVisible(true);
-//        leftWindow.setVisible(true);
+        leftWindow.setVisible(true);
+        statsLabel.setVisible(true);
+
+        statsLabel.addAction(Actions.moveTo(62, 420, 0.2f, Interpolation.pow2));
     }
 }
