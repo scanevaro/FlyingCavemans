@@ -9,10 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -35,6 +32,7 @@ public class GameScreen extends AbstractScreen {
     private Stage worldStage;
     public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
+    private Image darkness;
     /**
      * Widgets
      */
@@ -81,6 +79,11 @@ public class GameScreen extends AbstractScreen {
     private void prepareScreen() {
         batch = game.getSpriteBatch();
         stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT), batch);
+
+        darkness = new Image(Assets.darkSky);
+        darkness.setPosition(0, 0);
+        darkness.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
+        darkness.addAction(Actions.fadeOut(0.5f));
     }
 
     private void setWidgets() {
@@ -142,6 +145,7 @@ public class GameScreen extends AbstractScreen {
         flapButton.setSize(96, 96);
         flapButton.setPosition(0, 0);
 
+        stage.addActor(darkness);
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
         stage.addActor(pauseButton);
@@ -205,7 +209,6 @@ public class GameScreen extends AbstractScreen {
 //                distance.setText(distanceLabel.getText().toString());
             }
         }
-
         /**Draws*/
         stage.draw();
     }
