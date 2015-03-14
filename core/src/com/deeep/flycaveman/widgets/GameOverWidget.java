@@ -134,33 +134,33 @@ public class GameOverWidget {
         leftWindow = new Image(Assets.dialog);
         leftWindow.setSize(350, 400);
         leftWindow.setOrigin(leftWindow.getWidth() / 2, leftWindow.getHeight() / 2);
-        leftWindow.setPosition(25, 120);
+        leftWindow.setPosition(-10, 140);
         leftWindow.setVisible(false);
         game.screen.stage.addActor(leftWindow);
 
         statsLabel = new Label("Stats", Assets.skin.get("defaultBackground", Label.LabelStyle.class));
         statsLabel.setAlignment(Align.center);
         statsLabel.setSize(280, 80);
-        statsLabel.setPosition(-10, 420);
+        statsLabel.setPosition(-10, 440);
         statsLabel.setVisible(false);
         game.screen.stage.addActor(statsLabel);
 
-        distanceLabel = new Label("", Assets.skin);
+        distanceLabel = new Label("Distance: ", Assets.skin);
         distanceLabel.setPosition(0, 0);
         game.screen.stage.addActor(distanceLabel);
-        maxHeightLabel = new Label("", Assets.skin);
+        maxHeightLabel = new Label("Max Height: ", Assets.skin);
         maxHeightLabel.setPosition(0, 0);
         game.screen.stage.addActor(maxHeightLabel);
-        flappingLabel = new Label("", Assets.skin);
+        flappingLabel = new Label("Flapping Distance: ", Assets.skin);
         flappingLabel.setPosition(0, 0);
         game.screen.stage.addActor(flappingLabel);
-        entitiesLabel = new Label("", Assets.skin);
+        entitiesLabel = new Label("Entities Smacked: ", Assets.skin);
         entitiesLabel.setPosition(0, 0);
         game.screen.stage.addActor(entitiesLabel);
-        powerupsLabel = new Label("", Assets.skin);
+        powerupsLabel = new Label("Powerups Picked up: ", Assets.skin);
         powerupsLabel.setPosition(0, 0);
         game.screen.stage.addActor(powerupsLabel);
-        coinsLabel = new Label("", Assets.skin);
+        coinsLabel = new Label("Coins Picked up: ", Assets.skin);
         coinsLabel.setPosition(0, 0);
         game.screen.stage.addActor(coinsLabel);
     }
@@ -171,6 +171,7 @@ public class GameOverWidget {
         leftWindow.setVisible(true);
         statsLabel.setVisible(true);
 
-        statsLabel.addAction(Actions.moveTo(62, 420, 0.2f, Interpolation.pow2));
+        leftWindow.addAction(Actions.moveTo(25, 140, 0.4f, Interpolation.pow2));
+        statsLabel.addAction(Actions.moveTo(62, 440, 0.4f, Interpolation.pow2));
     }
 }
