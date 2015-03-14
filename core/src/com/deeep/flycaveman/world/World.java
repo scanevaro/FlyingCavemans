@@ -20,7 +20,7 @@ import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.input.GameContactListener;
 import com.deeep.flycaveman.input.GameInputProcessor;
 import com.deeep.flycaveman.screens.GameScreen;
-import com.deeep.flycaveman.widgets.StartScreen;
+import com.deeep.flycaveman.widgets.StartScreenWidget;
 
 import java.util.Random;
 
@@ -74,7 +74,7 @@ public class World extends Actor implements Disposable {
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
     public CoinSpawner coinSpawner;
-    private StartScreen startScreen;
+    private StartScreenWidget startScreen;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
@@ -104,7 +104,7 @@ public class World extends Actor implements Disposable {
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
 
-        startScreen = new StartScreen();
+        startScreen = new StartScreenWidget();
 
         entities.add(caveman = new CaveMan(this));
 

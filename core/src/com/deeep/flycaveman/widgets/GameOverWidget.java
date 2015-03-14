@@ -36,7 +36,8 @@ public class GameOverWidget {
     private void setTopRightWindow(final Core game) {
         topRightWindow = new Window("Game Over", Assets.skin);
         topRightWindow.setSize(513, 258);
-        topRightWindow.setPosition(Core.VIRTUAL_WIDTH + topRightWindow.getWidth(), Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
+        topRightWindow.setPosition(Core.VIRTUAL_WIDTH + topRightWindow.getWidth(),
+                Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
         topRightWindow.setKeepWithinStage(false);
         //( ͡° ͜ʖ ͡°) < l'elmar face
 
@@ -93,7 +94,8 @@ public class GameOverWidget {
             }
         });
         retryButton.setSize(178, 178);
-        retryButton.setPosition(bottomRightWindow.getWidth() / 2 + 15, bottomRightWindow.getHeight() / 2 - retryButton.getHeight() / 2);
+        retryButton.setPosition(bottomRightWindow.getWidth() / 2 + 15,
+                bottomRightWindow.getHeight() / 2 - retryButton.getHeight() / 2);
         bottomRightWindow.addActor(retryButton);
 
         ImageButton.ImageButtonStyle homeStyle = new ImageButton.ImageButtonStyle();
@@ -205,7 +207,8 @@ public class GameOverWidget {
         powerupsLabel.addAction(Actions.moveTo(50, 260, 0.45f, Interpolation.linear));
         coinsLabel.addAction(Actions.moveTo(50, 220, 0.45f, Interpolation.linear));
         bottomRightWindow.addAction(Actions.moveTo(447, 0, 0.4f, Interpolation.linear));
-        topRightWindow.addAction(Actions.moveTo(447, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.linear));
+        topRightWindow.addAction(Actions.moveTo(447, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f,
+                Interpolation.linear));
     }
 
     public void moveOut() {
@@ -217,7 +220,9 @@ public class GameOverWidget {
         entitiesLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 300, 0.1f, Interpolation.linear));
         powerupsLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 260, 0.1f, Interpolation.linear));
         coinsLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 220, 0.1f, Interpolation.linear));
-        bottomRightWindow.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + bottomRightWindow.getWidth(), 0, 0.4f, Interpolation.linear));
-        topRightWindow.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + topRightWindow.getWidth(), Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.linear));
+        bottomRightWindow.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + bottomRightWindow.getWidth(), 0, 0.4f,
+                Interpolation.linear));
+        topRightWindow.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + topRightWindow.getWidth(),
+                Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.linear));
     }
 }
