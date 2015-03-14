@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Sort;
+import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 
 import java.util.Comparator;
@@ -46,7 +47,7 @@ public class Weather {
         Color color = spriteBatch.getColor();
         for (Cloud cloud : clouds) {
             if (cloud.inScreen()) { //check if inbound
-                spriteBatch.draw(Assets.getCloud(cloud.cloudId), cloud.x, cloud.y, 15, 10);
+                //spriteBatch.draw(Assets.getCloud(cloud.cloudId), cloud.x, cloud.y, 15, 10);
             }
         }
         spriteBatch.setColor(color);
