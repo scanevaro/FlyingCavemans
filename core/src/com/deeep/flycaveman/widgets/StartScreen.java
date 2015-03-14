@@ -28,14 +28,14 @@ public class StartScreen {
         touchNHold.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.6f), Actions.delay(0.2f), Actions.fadeIn(0.6f))));
 
         leaderboardsDialog = new Image(Assets.dialog);
-        leaderboardsDialog.setSize(256, 350);
+        leaderboardsDialog.setSize(300, 350);
         leaderboardsDialog.setOrigin(leaderboardsDialog.getWidth() / 2, leaderboardsDialog.getHeight() / 2);
         leaderboardsDialog.setPosition(50, 120);
 
         leaderboardsLabel = new Label("Leaderboards", Assets.skin.get("defaultBackground", Label.LabelStyle.class));
         leaderboardsLabel.setAlignment(Align.center);
-        leaderboardsLabel.setSize(180, 70);
-        leaderboardsLabel.setPosition(76, 390);
+        leaderboardsLabel.setSize(280, 80);
+        leaderboardsLabel.setPosition(62, 390);
 
         leaderboardsItems = new Label[6];
         int posY = 350;
@@ -45,7 +45,7 @@ public class StartScreen {
                 posY -= 8;
                 leaderboardsItems[i].setPosition(64, posY);
             } else {
-                leaderboardsItems[i] = new Label("   Getting info...", Assets.skin);
+                leaderboardsItems[i] = new Label("Getting info...", Assets.skin);
                 leaderboardsItems[i].setPosition(70, posY);
                 posY -= 28;
             }
