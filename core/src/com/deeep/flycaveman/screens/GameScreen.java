@@ -51,9 +51,11 @@ public class GameScreen extends AbstractScreen {
      */
     public World world;
     private float height;
+    public static boolean retry;
 
     public GameScreen(Core game) {
         this.game = game;
+        retry = false;
     }
 
     @Override
@@ -204,7 +206,9 @@ public class GameScreen extends AbstractScreen {
                 expressions.fadeOut();
                 coinsWidget.fadeOut();
 
-                gameOverWidget.setVisible();
+                if (!GameScreen.retry)
+                    gameOverWidget.setVisible();
+                else gameOverWidget.moveOut();
 //                if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
 //                else gameOverDialog.setVisible(true);
 
