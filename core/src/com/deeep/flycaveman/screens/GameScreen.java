@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -32,7 +33,7 @@ public class GameScreen extends AbstractScreen {
     private Stage worldStage;
     public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
-    private Image darkness;
+    public Image darkness;
     /**
      * Widgets
      */
@@ -74,6 +75,8 @@ public class GameScreen extends AbstractScreen {
 
         expressions.setCaveman(world.caveman);
         coinsWidget.setCaveMan(world.caveman);
+
+        stage.addActor(darkness);
     }
 
     private void prepareScreen() {
@@ -84,6 +87,7 @@ public class GameScreen extends AbstractScreen {
         darkness.setPosition(0, 0);
         darkness.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
         darkness.addAction(Actions.fadeOut(0.5f));
+        darkness.setTouchable(Touchable.disabled);
     }
 
     private void setWidgets() {
@@ -145,7 +149,6 @@ public class GameScreen extends AbstractScreen {
         flapButton.setSize(96, 96);
         flapButton.setPosition(0, 0);
 
-        stage.addActor(darkness);
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
         stage.addActor(pauseButton);
@@ -167,14 +170,13 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void prepareGameOverDialog() {
-        gameOverDialog = game.dialogs.buildGameOver(game);
         gameOverWidget = new GameOverWidget(game, shopDialog);
     }
 
     @Override
     public void render(float delta) {
 
-        if (gameInputProcessor.flying) {
+        if (GameInputProcessor.flying) {
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));

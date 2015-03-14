@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.screens.GameScreen;
@@ -21,8 +22,10 @@ public class GameOverWidget {
     private Window topRightWindow, bottomRightWindow;
     private Image leftWindow;
     private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel;
+    private GameScreen screen;
 
     public GameOverWidget(final Core game, final Window shopDialog) {
+        this.screen = (GameScreen) game.screen;
         setTopRightWindow(game);
 
         setBottomRightWindow(game, shopDialog);
@@ -70,7 +73,14 @@ public class GameOverWidget {
         retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
+                screen.darkness.addAction(Actions.fadeIn(0.4f));
+                screen.stage.addActor(screen.darkness);
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        game.setScreen(new GameScreen(game));
+                    }
+                }, 0.4f);
             }
 
             @Override
