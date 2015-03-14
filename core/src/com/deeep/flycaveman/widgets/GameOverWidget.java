@@ -23,17 +23,17 @@ public class GameOverWidget {
     private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel;
 
     public GameOverWidget(final Core game, final Window shopDialog) {
-        setTopRightWindow(game, shopDialog);
+        setTopRightWindow(game);
 
         setBottomRightWindow(game, shopDialog);
 
-        setLeftWindow(game, shopDialog);
+        setLeftWindow(game);
     }
 
-    private void setTopRightWindow(final Core game, final Window shopDialog) {
-        topRightWindow = new Window("UGHA UGH (Game Over)", Assets.skin);
+    private void setTopRightWindow(final Core game) {
+        topRightWindow = new Window("Game Over", Assets.skin);
         topRightWindow.setSize(513, 258);
-        topRightWindow.setPosition(Core.VIRTUAL_WIDTH - topRightWindow.getWidth(), Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
+        topRightWindow.setPosition(Core.VIRTUAL_WIDTH + 200, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
         //( ͡° ͜ʖ ͡°) < l'elmar face
 
 //        GameScreen.distance = new Label("", Assets.skin);
@@ -54,7 +54,7 @@ public class GameOverWidget {
     private void setBottomRightWindow(final Core game, final Window shopDialog) {
         bottomRightWindow = new Window("", Assets.skin.get("default2", Window.WindowStyle.class));
         bottomRightWindow.setSize(513, 258);
-        bottomRightWindow.setPosition(Core.VIRTUAL_WIDTH - bottomRightWindow.getWidth(), 0);
+        bottomRightWindow.setPosition(Core.VIRTUAL_WIDTH + bottomRightWindow.getWidth(), 0);
         bottomRightWindow.setVisible(false);
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
@@ -130,38 +130,44 @@ public class GameOverWidget {
         game.screen.stage.addActor(bottomRightWindow);
     }
 
-    private void setLeftWindow(final Core game, final Window shopDialog) {
+    private void setLeftWindow(final Core game) {
         leftWindow = new Image(Assets.dialog);
-        leftWindow.setSize(350, 400);
+        leftWindow.setSize(380, 400);
         leftWindow.setOrigin(leftWindow.getWidth() / 2, leftWindow.getHeight() / 2);
-        leftWindow.setPosition(-10, 140);
+        leftWindow.setPosition(-100, 140);
         leftWindow.setVisible(false);
         game.screen.stage.addActor(leftWindow);
 
         statsLabel = new Label("Stats", Assets.skin.get("defaultBackground", Label.LabelStyle.class));
         statsLabel.setAlignment(Align.center);
         statsLabel.setSize(280, 80);
-        statsLabel.setPosition(-10, 440);
+        statsLabel.setPosition(-100, 460);
         statsLabel.setVisible(false);
         game.screen.stage.addActor(statsLabel);
 
         distanceLabel = new Label("Distance: ", Assets.skin);
-        distanceLabel.setPosition(0, 0);
+        distanceLabel.setPosition(-100, 420);
+        distanceLabel.setVisible(false);
         game.screen.stage.addActor(distanceLabel);
         maxHeightLabel = new Label("Max Height: ", Assets.skin);
-        maxHeightLabel.setPosition(0, 0);
+        maxHeightLabel.setPosition(-100, 380);
+        maxHeightLabel.setVisible(false);
         game.screen.stage.addActor(maxHeightLabel);
         flappingLabel = new Label("Flapping Distance: ", Assets.skin);
-        flappingLabel.setPosition(0, 0);
+        flappingLabel.setPosition(-100, 340);
+        flappingLabel.setVisible(false);
         game.screen.stage.addActor(flappingLabel);
         entitiesLabel = new Label("Entities Smacked: ", Assets.skin);
-        entitiesLabel.setPosition(0, 0);
+        entitiesLabel.setPosition(-100, 300);
+        entitiesLabel.setVisible(false);
         game.screen.stage.addActor(entitiesLabel);
         powerupsLabel = new Label("Powerups Picked up: ", Assets.skin);
-        powerupsLabel.setPosition(0, 0);
+        powerupsLabel.setPosition(-100, 260);
+        powerupsLabel.setVisible(false);
         game.screen.stage.addActor(powerupsLabel);
         coinsLabel = new Label("Coins Picked up: ", Assets.skin);
-        coinsLabel.setPosition(0, 0);
+        coinsLabel.setPosition(-100, 220);
+        coinsLabel.setVisible(false);
         game.screen.stage.addActor(coinsLabel);
     }
 
@@ -170,8 +176,22 @@ public class GameOverWidget {
         topRightWindow.setVisible(true);
         leftWindow.setVisible(true);
         statsLabel.setVisible(true);
+        distanceLabel.setVisible(true);
+        maxHeightLabel.setVisible(true);
+        flappingLabel.setVisible(true);
+        entitiesLabel.setVisible(true);
+        powerupsLabel.setVisible(true);
+        coinsLabel.setVisible(true);
 
         leftWindow.addAction(Actions.moveTo(25, 140, 0.4f, Interpolation.pow2));
-        statsLabel.addAction(Actions.moveTo(62, 440, 0.4f, Interpolation.pow2));
+        statsLabel.addAction(Actions.moveTo(62, 460, 0.4f, Interpolation.pow2));
+        distanceLabel.addAction(Actions.moveTo(50, 420, 0.4f, Interpolation.pow2));
+        maxHeightLabel.addAction(Actions.moveTo(50, 380, 0.4f, Interpolation.pow2));
+        flappingLabel.addAction(Actions.moveTo(50, 340, 0.4f, Interpolation.pow2));
+        entitiesLabel.addAction(Actions.moveTo(50, 300, 0.4f, Interpolation.pow2));
+        powerupsLabel.addAction(Actions.moveTo(50, 260, 0.4f, Interpolation.pow2));
+        coinsLabel.addAction(Actions.moveTo(50, 220, 0.4f, Interpolation.pow2));
+        bottomRightWindow.addAction(Actions.moveTo(447, 0, 0.4f, Interpolation.pow2));
+        topRightWindow.addAction(Actions.moveTo(447, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.pow2));
     }
 }
