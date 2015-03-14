@@ -109,6 +109,12 @@ public class GameContactListener implements ContactListener {
                 }
                 world.caveman.coinStreak++;
                 if (world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
+                if(fixtureA.getUserData() instanceof Coin){
+                    world.coinSpawner.remove((Coin) fixtureA.getUserData());
+                }
+                if(fixtureB.getUserData() instanceof Coin){
+                    world.coinSpawner.remove((Coin) fixtureB.getUserData());
+                }
             }
         }
     }
