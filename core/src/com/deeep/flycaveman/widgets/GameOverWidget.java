@@ -34,6 +34,7 @@ public class GameOverWidget {
         topRightWindow = new Window("Game Over", Assets.skin);
         topRightWindow.setSize(513, 258);
         topRightWindow.setPosition(Core.VIRTUAL_WIDTH + 200, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
+        topRightWindow.setKeepWithinStage(false);
         //( ͡° ͜ʖ ͡°) < l'elmar face
 
 //        GameScreen.distance = new Label("", Assets.skin);
@@ -56,6 +57,7 @@ public class GameOverWidget {
         bottomRightWindow.setSize(513, 258);
         bottomRightWindow.setPosition(Core.VIRTUAL_WIDTH + bottomRightWindow.getWidth(), 0);
         bottomRightWindow.setVisible(false);
+        bottomRightWindow.setKeepWithinStage(false);
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
