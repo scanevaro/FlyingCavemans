@@ -8,11 +8,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -35,6 +33,7 @@ public class GameScreen extends AbstractScreen {
     private Stage worldStage;
     public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
+    public Image darkness;
     /**
      * Widgets
      */
@@ -52,9 +51,11 @@ public class GameScreen extends AbstractScreen {
      */
     public World world;
     private float height;
+    public static boolean retry;
 
     public GameScreen(Core game) {
         this.game = game;
+        retry = false;
     }
 
     @Override
@@ -76,11 +77,19 @@ public class GameScreen extends AbstractScreen {
 
         expressions.setCaveman(world.caveman);
         coinsWidget.setCaveMan(world.caveman);
+
+        stage.addActor(darkness);
     }
 
     private void prepareScreen() {
         batch = game.getSpriteBatch();
         stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT), batch);
+
+        darkness = new Image(Assets.darkSky);
+        darkness.setPosition(0, 0);
+        darkness.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
+        darkness.addAction(Actions.fadeOut(0.5f));
+        darkness.setTouchable(Touchable.disabled);
     }
 
     private void setWidgets() {
@@ -163,14 +172,13 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void prepareGameOverDialog() {
-        gameOverDialog = game.dialogs.buildGameOver(game);
         gameOverWidget = new GameOverWidget(game, shopDialog);
     }
 
     @Override
     public void render(float delta) {
 
-        if (gameInputProcessor.flying) {
+        if (GameInputProcessor.flying) {
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
@@ -198,14 +206,15 @@ public class GameScreen extends AbstractScreen {
                 expressions.fadeOut();
                 coinsWidget.fadeOut();
 
-                gameOverWidget.setVisible();
+                if (!GameScreen.retry)
+                    gameOverWidget.setVisible();
+                else gameOverWidget.moveOut();
 //                if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
 //                else gameOverDialog.setVisible(true);
 
 //                distance.setText(distanceLabel.getText().toString());
             }
         }
-
         /**Draws*/
         stage.draw();
     }

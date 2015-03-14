@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.screens.GameScreen;
@@ -21,8 +22,10 @@ public class GameOverWidget {
     private Window topRightWindow, bottomRightWindow;
     private Image leftWindow;
     private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel;
+    private GameScreen screen;
 
     public GameOverWidget(final Core game, final Window shopDialog) {
+        this.screen = (GameScreen) game.screen;
         setTopRightWindow(game);
 
         setBottomRightWindow(game, shopDialog);
@@ -70,7 +73,15 @@ public class GameOverWidget {
         retryButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game));
+                GameScreen.retry = true;
+                screen.darkness.addAction(Actions.fadeIn(0.4f));
+                screen.stage.addActor(screen.darkness);
+                Timer.schedule(new Timer.Task() {
+                    @Override
+                    public void run() {
+                        game.setScreen(new GameScreen(game));
+                    }
+                }, 0.4f);
             }
 
             @Override
@@ -185,15 +196,28 @@ public class GameOverWidget {
         powerupsLabel.setVisible(true);
         coinsLabel.setVisible(true);
 
-        leftWindow.addAction(Actions.moveTo(25, 140, 0.4f, Interpolation.linear));
-        statsLabel.addAction(Actions.moveTo(62, 460, 0.4f, Interpolation.linear));
-        distanceLabel.addAction(Actions.moveTo(50, 420, 0.4f, Interpolation.linear));
-        maxHeightLabel.addAction(Actions.moveTo(50, 380, 0.4f, Interpolation.linear));
-        flappingLabel.addAction(Actions.moveTo(50, 340, 0.4f, Interpolation.linear));
-        entitiesLabel.addAction(Actions.moveTo(50, 300, 0.4f, Interpolation.linear));
-        powerupsLabel.addAction(Actions.moveTo(50, 260, 0.4f, Interpolation.linear));
-        coinsLabel.addAction(Actions.moveTo(50, 220, 0.4f, Interpolation.linear));
+        leftWindow.addAction(Actions.moveTo(25, 140, 0.45f, Interpolation.linear));
+        statsLabel.addAction(Actions.moveTo(62, 460, 0.45f, Interpolation.linear));
+        distanceLabel.addAction(Actions.moveTo(50, 420, 0.45f, Interpolation.linear));
+        maxHeightLabel.addAction(Actions.moveTo(50, 380, 0.45f, Interpolation.linear));
+        flappingLabel.addAction(Actions.moveTo(50, 340, 0.45f, Interpolation.linear));
+        entitiesLabel.addAction(Actions.moveTo(50, 300, 0.45f, Interpolation.linear));
+        powerupsLabel.addAction(Actions.moveTo(50, 260, 0.45f, Interpolation.linear));
+        coinsLabel.addAction(Actions.moveTo(50, 220, 0.45f, Interpolation.linear));
         bottomRightWindow.addAction(Actions.moveTo(447, 0, 0.4f, Interpolation.linear));
         topRightWindow.addAction(Actions.moveTo(447, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.linear));
+    }
+
+    public void moveOut() {
+        leftWindow.addAction(Actions.moveTo(-leftWindow.getWidth(), 140, 0.1f, Interpolation.linear));
+        statsLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 460, 0.1f, Interpolation.linear));
+        distanceLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 420, 0.1f, Interpolation.linear));
+        maxHeightLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 380, 0.1f, Interpolation.linear));
+        flappingLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 340, 0.1f, Interpolation.linear));
+        entitiesLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 300, 0.1f, Interpolation.linear));
+        powerupsLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 260, 0.1f, Interpolation.linear));
+        coinsLabel.addAction(Actions.moveTo(-leftWindow.getWidth(), 220, 0.1f, Interpolation.linear));
+        bottomRightWindow.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + bottomRightWindow.getWidth(), 0, 0.4f, Interpolation.linear));
+        topRightWindow.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + topRightWindow.getWidth(), Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.linear));
     }
 }

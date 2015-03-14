@@ -69,7 +69,7 @@ public class World extends Actor implements Disposable {
 
     private Array<Entity> entities;
     private Space space;
-    public boolean gameOver;
+    public static boolean gameOver;
     public Area area;
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
@@ -115,6 +115,8 @@ public class World extends Actor implements Disposable {
 
         darkness = new Sprite(Assets.darkSky);
         shootStateTime = 0;
+
+        gameOver = false;
     }
 
     @Override
