@@ -65,6 +65,7 @@ public class Area {
     private FadeableMusic spaceMusic;
     private boolean firstStart = true;
     private boolean windStart = false;
+    private Weather weather;
 
     public static float biomesLength = 1000;
 
@@ -98,6 +99,7 @@ public class Area {
         currentMusic.setVolume(0);
         currentMusic.fadeIn(5f, 1);
         nextMusicSoundLevel = 0;
+        weather = new Weather();
     }
 
     public AREA getRandomArea(AREA current) {
@@ -110,6 +112,7 @@ public class Area {
     }
 
     public void update(Vector3 camera) {
+        weather.update(camera);
         float biomePosition = camera.x - someCounter;
 
         if (nextMusic != null) {
@@ -130,7 +133,7 @@ public class Area {
         } else {
             float fade = 1 - (biomePosition - biomesLength * 0.1f) / (biomesLength * 0.1f);
             if (fade > 0)
-                if(windStart)
+                if (windStart)
                     windMusic.setVolume(fade);
         }
 
@@ -194,6 +197,10 @@ public class Area {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        biomes.draw(spriteBatch);
+        //biomes.draw(spriteBatch);
+        for (int i = 0; i < 4; i++) {
+            //weather.draw(spriteBatch, i);
+            biomes.draw(spriteBatch, i);
+        }
     }
 }

@@ -161,7 +161,7 @@ public class Biomes {
             for (BiomeLayer biomeLayer : array) {
                 if (biomeLayer.getLayer() <= integerBackgroundHashMap.get(biomeLayer.getTheme()).layerAmount)
                     try {
-                        spriteBatch.draw(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()), biomeLayer.getX(), biomeLayer.getY()-1.25f, backgroundWidth, Core.BOX2D_VIRTUAL_HEIGHT);
+                        spriteBatch.draw(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()), biomeLayer.getX(), biomeLayer.getY() - 1.25f, backgroundWidth, Core.BOX2D_VIRTUAL_HEIGHT);
                     } catch (NullPointerException e) {
                         System.out.println("-------------------------------------------------------------------------------");
                         System.out.println(biomeLayer);
@@ -173,6 +173,26 @@ public class Biomes {
                         //System.exit(1);
                     }
             }
+        }
+    }
+
+    public void draw(SpriteBatch spriteBatch, int layer) {
+        if(layer >= layers.size)
+            return;
+        for (BiomeLayer biomeLayer : layers.get(layer)) {
+            if (biomeLayer.getLayer() <= integerBackgroundHashMap.get(biomeLayer.getTheme()).layerAmount)
+                try {
+                    spriteBatch.draw(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()), biomeLayer.getX(), biomeLayer.getY() - 1.25f, backgroundWidth, Core.BOX2D_VIRTUAL_HEIGHT);
+                } catch (NullPointerException e) {
+                    System.out.println("-------------------------------------------------------------------------------");
+                    System.out.println(biomeLayer);
+                    System.out.println(biomeLayer.getLayer());
+                    System.out.println(biomeLayer.getTheme());
+                    System.out.println(biomeLayer.getX());
+                    System.out.println(integerBackgroundHashMap.get(biomeLayer.getTheme()));
+                    System.out.println(integerBackgroundHashMap.get(biomeLayer.getTheme()).getLayer(biomeLayer.getLayer()));
+                    //System.exit(1);
+                }
         }
     }
 

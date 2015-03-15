@@ -206,9 +206,9 @@ public class Assets {
         ocean_layer_3 = items.findRegion("ocean_layer", 3);
 
         jungle_layer_1 = items.findRegion("jungle_layer", 1);
-        jungle_layer_2 = items.findRegion("jungle_layer", 2);
+        jungle_layer_2 = items.findRegion("jungle_layer", 4);
         jungle_layer_3 = items.findRegion("jungle_layer", 3);
-        jungle_layer_4 = items.findRegion("jungle_layer", 7);
+        jungle_layer_4 = items.findRegion("jungle_layer", 2);
 
         jungle_ocean_layer_1 = items.findRegion("jungle_ocean", 1);
         jungle_ocean_layer_2 = items.findRegion("jungle_ocean", 2);
@@ -266,5 +266,17 @@ public class Assets {
 
     public static Music loadMusicFile(String path) {
         return assetManager.get("data/sounds/music/" + path + ".ogg");
+    }
+
+    public static TextureRegion getCloud(int cloudId) {
+        switch (cloudId) {
+            case 1:
+                return cloud1;
+            case 2:
+                return cloud2;
+            case 3:
+                return cloud3;
+        }
+        return cloud1;
     }
 }
