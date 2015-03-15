@@ -10,7 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -40,7 +43,7 @@ public class GameScreen extends AbstractScreen {
     private TextButton distanceLabel, heightLabel;
     public static Label distance;
     private ImageButton pauseButton;
-    private Window gameOverDialog, shopDialog;
+    private ShopWidget shopWidget;
     private GameOverWidget gameOverWidget;
     private StaminaBar staminaBar;
     private FlapButton flapButton;
@@ -72,8 +75,8 @@ public class GameScreen extends AbstractScreen {
         configureWidgets();
         setLayout();
         setInputProcessor();
-        prepareGameOverDialog();
         prepareShopDialog();
+        prepareGameOverDialog();
 
         expressions.setCaveman(world.caveman);
         coinsWidget.setCaveMan(world.caveman);
@@ -168,11 +171,11 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void prepareShopDialog() {
-        shopDialog = game.dialogs.buildShop(game);
+        shopWidget = new ShopWidget(game);
     }
 
     private void prepareGameOverDialog() {
-        gameOverWidget = new GameOverWidget(game, shopDialog);
+        gameOverWidget = new GameOverWidget(game, shopWidget);
     }
 
     @Override
@@ -207,9 +210,9 @@ public class GameScreen extends AbstractScreen {
                 coinsWidget.fadeOut();
 
                 if (!GameScreen.retry)
-                    gameOverWidget.setVisible();
-                else gameOverWidget.moveOut();
-//                if (shopDialog.isVisible()) gameOverDialog.setVisible(false);
+                    gameOverWidget.setVisible(true);
+                else gameOverWidget.setVisible(false);
+//                if (shopWidget.isVisible()) gameOverDialog.setVisible(false);
 //                else gameOverDialog.setVisible(true);
 
 //                distance.setText(distanceLabel.getText().toString());
