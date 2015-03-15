@@ -14,10 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.Assets;
-import com.deeep.flycaveman.widgets.LoadingBar;
+import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.SplashActor;
+import com.deeep.flycaveman.widgets.LoadingBar;
 
 /**
  * Created by scanevaro on 09/12/2014.

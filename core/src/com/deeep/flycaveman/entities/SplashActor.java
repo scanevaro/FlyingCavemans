@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.utils.Array;
+import com.deeep.flycaveman.Core;
 
 /**
  * Created by scanevaro on 09/12/2014.
@@ -42,9 +43,9 @@ public class SplashActor extends Actor {
                 getColor().b, getColor().a * parentAlpha);
 
         batch.setColor(color);
-        Gdx.graphics.getGL20().glClearColor( 0, 0, 0, 1 );
-        Gdx.graphics.getGL20().glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
-        batch.draw(animation.getKeyFrame(stateTime), (Gdx.graphics.getWidth() / 2)-(animation.getKeyFrame(stateTime).getRegionWidth() /2), (Gdx.graphics.getHeight() / 2)-(animation.getKeyFrame(stateTime).getRegionHeight()/2));
+        Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
+        Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        batch.draw(animation.getKeyFrame(stateTime), Core.VIRTUAL_WIDTH / 2 - 192 / 2, Core.VIRTUAL_HEIGHT / 2 - 192 / 2);
     }
 
     @Override
