@@ -2,7 +2,7 @@
 items.png
 size: 2048,2048
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
 Coin1
   rotate: false
@@ -811,105 +811,105 @@ filter: Linear,Linear
 repeat: none
 argentavis2
   rotate: false
-  xy: 1305, 1402
+  xy: 1233, 1402
   size: 615, 332
   orig: 615, 332
   offset: 0, 0
   index: -1
 carnivore1
   rotate: false
-  xy: 624, 1077
+  xy: 935, 1071
   size: 265, 352
   orig: 265, 352
   offset: 0, 0
   index: -1
 carnivore2
   rotate: false
-  xy: 624, 723
+  xy: 935, 717
   size: 265, 352
   orig: 265, 352
   offset: 0, 0
   index: -1
 dropUp
   rotate: false
-  xy: 2, 1431
+  xy: 1737, 1736
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 flapUp
   rotate: false
-  xy: 309, 1431
+  xy: 544, 1434
   size: 305, 307
   orig: 305, 307
   offset: 0, 0
   index: -1
 home
   rotate: false
-  xy: 2, 1740
+  xy: 2, 1743
   size: 300, 300
   orig: 300, 300
   offset: 0, 0
   index: -1
 mosquito2
   rotate: false
-  xy: 923, 1421
+  xy: 851, 1425
   size: 380, 316
   orig: 380, 316
   offset: 0, 0
   index: -1
 pause
   rotate: false
-  xy: 304, 1740
+  xy: 304, 1743
   size: 300, 300
   orig: 300, 300
   offset: 0, 0
   index: -1
 restart
   rotate: false
-  xy: 606, 1740
+  xy: 606, 1743
   size: 300, 300
   orig: 300, 300
   offset: 0, 0
   index: -1
 shield
   rotate: false
-  xy: 935, 358
+  xy: 935, 354
   size: 256, 361
   orig: 256, 361
   offset: 0, 0
   index: -1
 shop
   rotate: false
-  xy: 616, 1431
-  size: 305, 307
-  orig: 305, 307
+  xy: 908, 1743
+  size: 300, 300
+  orig: 300, 300
   offset: 0, 0
   index: -1
 skeleton-flailing
   rotate: false
-  xy: 2, 1081
+  xy: 2, 1087
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 0
 skeleton-flailing
   rotate: false
-  xy: 2, 1081
+  xy: 2, 1087
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 30
 skeleton-flailing
   rotate: false
-  xy: 313, 1081
+  xy: 313, 1084
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 1
 skeleton-flailing
   rotate: false
-  xy: 891, 1071
+  xy: 624, 1075
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
@@ -930,21 +930,21 @@ skeleton-flailing
   index: 4
 skeleton-flailing
   rotate: false
-  xy: 2, 731
+  xy: 2, 737
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 5
 skeleton-flailing
   rotate: false
-  xy: 313, 731
+  xy: 313, 734
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 6
 skeleton-flailing
   rotate: false
-  xy: 891, 721
+  xy: 624, 725
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
@@ -965,21 +965,21 @@ skeleton-flailing
   index: 9
 skeleton-flailing
   rotate: false
-  xy: 2, 381
+  xy: 2, 387
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 10
 skeleton-flailing
   rotate: false
-  xy: 313, 381
+  xy: 313, 384
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 11
 skeleton-flailing
   rotate: false
-  xy: 624, 371
+  xy: 624, 375
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
@@ -1000,21 +1000,21 @@ skeleton-flailing
   index: 14
 skeleton-flailing
   rotate: false
-  xy: 2, 31
+  xy: 2, 37
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 15
 skeleton-flailing
   rotate: false
-  xy: 313, 31
+  xy: 313, 34
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: 16
 skeleton-flailing
   rotate: false
-  xy: 624, 21
+  xy: 624, 25
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
@@ -1042,21 +1042,21 @@ skeleton-flailing
   index: 20
 spinach
   rotate: false
-  xy: 1177, 1739
+  xy: 1479, 1742
   size: 256, 301
   orig: 256, 301
   offset: 0, 0
   index: -1
 title
   rotate: false
-  xy: 1435, 1736
+  xy: 2, 1437
   size: 540, 304
   orig: 540, 304
   offset: 0, 0
   index: -1
 tree
   rotate: false
-  xy: 908, 1740
+  xy: 1210, 1743
   size: 267, 300
   orig: 267, 300
   offset: 0, 0
