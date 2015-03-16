@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.GameScreen;
 
 /**
@@ -20,23 +19,24 @@ import com.deeep.flycaveman.screens.GameScreen;
 public class ShopWidget {
     private Window shopDialog, wingsDialog, steroidsDialog, staminaplusDialog, springsDialog;
     private GameScreen screen;
+    private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen;
 
     public ShopWidget(final Core game) {
         this.screen = (GameScreen) game.screen;
 
         shopDialog = new Window("Shopuhg!", Assets.skin);
         shopDialog.setSize(Core.VIRTUAL_WIDTH - 25, Core.VIRTUAL_HEIGHT - 25);
-        shopDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2, Core.VIRTUAL_HEIGHT + shopDialog.getHeight());
-        shopDialog.setVisible(false);
+        shopDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2,
+                Core.VIRTUAL_HEIGHT + shopDialog.getHeight());
         shopDialog.setKeepWithinStage(false);
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageUp.setMinWidth(96);
-        retryStyle.imageUp.setMinHeight(96);
-        retryStyle.imageDown = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageDown.setMinWidth(96);
-        retryStyle.imageDown.setMinHeight(96);
+        retryStyle.imageUp.setMinWidth(128);
+        retryStyle.imageUp.setMinHeight(128);
+        retryStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
+        retryStyle.imageDown.setMinWidth(178);
+        retryStyle.imageDown.setMinHeight(178);
         ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
@@ -52,8 +52,8 @@ public class ShopWidget {
                 }, 0.4f);
             }
         });
-        retryButton.setSize(96, 96);
-        retryButton.setPosition(shopDialog.getWidth() - retryButton.getWidth(), 0);
+        retryButton.setSize(178, 178);
+        retryButton.setPosition(0, 0);
         shopDialog.addActor(retryButton);
 
         ImageButton.ImageButtonStyle wingsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
@@ -130,35 +130,110 @@ public class ShopWidget {
 
         game.screen.stage.addActor(shopDialog);
 
-        buildBuyDialogs(game.screen);
+        buildBuyDialogs();
     }
 
-    private void buildBuyDialogs(AbstractScreen screen) {
+    private void buildBuyDialogs() {
         wingsDialog = new Window("Wings", Assets.skin);
+        wingsDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
+        wingsDialog.setPosition(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12);
+        wingsDialog.setKeepWithinStage(false);
+
+        screen.stage.addActor(wingsDialog);
+
         steroidsDialog = new Window("Steroids", Assets.skin);
+        steroidsDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
+        steroidsDialog.setPosition(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12);
+        steroidsDialog.setKeepWithinStage(false);
+
+        screen.stage.addActor(steroidsDialog);
+
         staminaplusDialog = new Window("Stamina Plus", Assets.skin);
-        springsDialog = new Window("SpringsDialog", Assets.skin);
+        staminaplusDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
+        staminaplusDialog.setPosition(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12);
+        staminaplusDialog.setKeepWithinStage(false);
+
+        screen.stage.addActor(staminaplusDialog);
+
+        springsDialog = new Window("Springs", Assets.skin);
+        springsDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
+        springsDialog.setPosition(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12);
+        springsDialog.setKeepWithinStage(false);
+
+        screen.stage.addActor(springsDialog);
     }
 
     private void show(String dialog) {
+        if (wingsOpen)
+            screen.stage.addActor(wingsDialog);
+        else if (steroidsOpen)
+            screen.stage.addActor(steroidsDialog);
+        else if (staminaOpen)
+            screen.stage.addActor(staminaplusDialog);
+        else if (springsOpen)
+            screen.stage.addActor(springsDialog);
+
         if (dialog.equals("wingsDialog")) {
+            wingsOpen = true;
+            steroidsOpen = false;
+            staminaOpen = false;
+            springsOpen = false;
+            screen.stage.addActor(wingsDialog);
 
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+
+            screen.stage.addActor(wingsDialog);
         } else if (dialog.equals("steroidsDialog")) {
+            steroidsOpen = true;
+            wingsOpen = false;
+            staminaOpen = false;
+            springsOpen = false;
+            screen.stage.addActor(steroidsDialog);
 
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         } else if (dialog.equals("staminaplusDialog")) {
+            staminaOpen = true;
+            steroidsOpen = false;
+            wingsOpen = false;
+            springsOpen = false;
+            screen.stage.addActor(staminaplusDialog);
 
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         } else if (dialog.equals("springsDialog")) {
+            springsOpen = true;
+            steroidsOpen = false;
+            wingsOpen = false;
+            staminaOpen = false;
+            screen.stage.addActor(springsDialog);
 
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         }
     }
 
     public void setVisible(boolean flag) {
         if (flag) {
-            shopDialog.setVisible(flag);
             shopDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2,
                     Core.VIRTUAL_HEIGHT / 2 - shopDialog.getHeight() / 2, 0.4f, Interpolation.linear));
-        } else
+        } else {
             shopDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2,
                     Core.VIRTUAL_HEIGHT + shopDialog.getHeight(), 0.4f, Interpolation.linear));
+
+            wingsDialog.setVisible(flag);
+            steroidsDialog.setVisible(flag);
+            staminaplusDialog.setVisible(flag);
+            springsDialog.setVisible(flag);
+        }
     }
 }
