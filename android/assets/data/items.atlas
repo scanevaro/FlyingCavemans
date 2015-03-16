@@ -2,7 +2,7 @@
 items.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 Coin1
   rotate: false
@@ -310,7 +310,7 @@ wings
 items2.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 BRACHIOSAURUS
   rotate: false
@@ -420,7 +420,7 @@ touchNH
 items3.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 beer
   rotate: false
@@ -496,7 +496,7 @@ skeleton-spring
 items4.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 brachioBackPull
   rotate: false
@@ -572,7 +572,7 @@ sodacan
 items5.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 brachioFrontPull
   rotate: false
@@ -655,7 +655,7 @@ skeleton-spring
 items6.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 brachioMidPull
   rotate: false
@@ -724,7 +724,7 @@ skeleton-spring
 items7.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 BambooRaft
   rotate: false
@@ -807,7 +807,7 @@ staminaplus
 items8.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 argentavis2
   rotate: false
@@ -1065,7 +1065,7 @@ tree
 items9.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 jungle_ocean
   rotate: false
@@ -1127,7 +1127,7 @@ skeleton-flailing2
 items10.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 ocean_layer
   rotate: false
@@ -1189,7 +1189,7 @@ skeleton-flailing2
 items11.png
 size: 2048,2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 skeleton-flailing
   rotate: false
