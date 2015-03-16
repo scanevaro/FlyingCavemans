@@ -25,9 +25,8 @@ public class ShopWidget {
         this.screen = (GameScreen) game.screen;
 
         shopDialog = new Window("Shopuhg!", Assets.skin);
-        shopDialog.setSize(Core.VIRTUAL_WIDTH - 25, Core.VIRTUAL_HEIGHT - 25);
-        shopDialog.setPosition(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2,
-                Core.VIRTUAL_HEIGHT + shopDialog.getHeight());
+        shopDialog.setSize(680, Core.VIRTUAL_HEIGHT - 25);
+        shopDialog.setPosition(0, Core.VIRTUAL_HEIGHT + shopDialog.getHeight());
         shopDialog.setKeepWithinStage(false);
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
@@ -107,7 +106,7 @@ public class ShopWidget {
             }
         });
         staminaplusButton.setSize(140, 140);
-        staminaplusButton.setPosition(shopDialog.getWidth() / 2 - staminaplusButton.getWidth() / 2, shopDialog.getHeight() / 2 + 38);
+        staminaplusButton.setPosition(50 + 15 + 45 + wingsButton.getWidth() + steroidsButton.getWidth(), shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(staminaplusButton);
 
         ImageButton.ImageButtonStyle springsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
@@ -134,27 +133,40 @@ public class ShopWidget {
     }
 
     private void buildBuyDialogs() {
+        buildWingsDialog();
+        buildSteroidsDialog();
+        buildStaminaDialog();
+        buildSpringsDialog();
+    }
+
+    private void buildWingsDialog() {
         wingsDialog = new Window("Wings", Assets.skin);
         wingsDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
         wingsDialog.setPosition(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12);
         wingsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(wingsDialog);
+    }
 
+    private void buildSteroidsDialog() {
         steroidsDialog = new Window("Steroids", Assets.skin);
         steroidsDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
         steroidsDialog.setPosition(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12);
         steroidsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(steroidsDialog);
+    }
 
+    private void buildStaminaDialog() {
         staminaplusDialog = new Window("Stamina Plus", Assets.skin);
         staminaplusDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
         staminaplusDialog.setPosition(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12);
         staminaplusDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(staminaplusDialog);
+    }
 
+    private void buildSpringsDialog() {
         springsDialog = new Window("Springs", Assets.skin);
         springsDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
         springsDialog.setPosition(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12);
@@ -224,11 +236,9 @@ public class ShopWidget {
 
     public void setVisible(boolean flag) {
         if (flag) {
-            shopDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2,
-                    Core.VIRTUAL_HEIGHT / 2 - shopDialog.getHeight() / 2, 0.4f, Interpolation.linear));
+            shopDialog.addAction(Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - shopDialog.getHeight() / 2, 0.4f, Interpolation.linear));
         } else {
-            shopDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - shopDialog.getWidth() / 2,
-                    Core.VIRTUAL_HEIGHT + shopDialog.getHeight(), 0.4f, Interpolation.linear));
+            shopDialog.addAction(Actions.moveTo(0, Core.VIRTUAL_HEIGHT + shopDialog.getHeight(), 0.4f, Interpolation.linear));
 
             wingsDialog.setVisible(flag);
             steroidsDialog.setVisible(flag);
