@@ -88,7 +88,7 @@ public class Area {
         soundManager.silence();
         firstStart = true;
         currentMusicSoundLevel = 1;
-        currentArea = AREA.DESSERT;
+        currentArea = AREA.JUNGLE;
         nextArea = getRandomArea(currentArea);
         currentMusic = soundManager.getMusic(currentArea.music);
         nextMusic = soundManager.getMusic(nextArea.music);
@@ -100,6 +100,7 @@ public class Area {
         currentMusic.fadeIn(5f, 1);
         nextMusicSoundLevel = 0;
         weather = new Weather();
+        System.out.println("created");
     }
 
     public AREA getRandomArea(AREA current) {

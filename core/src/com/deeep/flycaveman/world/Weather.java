@@ -52,7 +52,7 @@ public class Weather {
         if (layer >= clouds.size) return;
         for (Cloud cloud : clouds.get(layer)) {
             if (cloud.inScreen()) { //check if inbound
-                spriteBatch.draw(Assets.getCloud(cloud.cloudId), cloud.x, cloud.y, 14 * (0.2f + cloud.layer), 7 * (0.2f + cloud.layer));
+                spriteBatch.draw(Assets.getCloud(cloud.cloudId), cloud.x, cloud.y, 7 * (0.2f + cloud.layer), 3.5f * (0.2f + cloud.layer));
             }
         }
     }

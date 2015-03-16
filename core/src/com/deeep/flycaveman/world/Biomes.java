@@ -57,7 +57,7 @@ public class Biomes {
     private HashMap<Integer, Background> integerBackgroundHashMap = new HashMap<Integer, Background>();
 
     public Biomes() {
-        setNextTheme(DESSERT);
+        setNextTheme(JUNGLE);
         jungleDessertBackground = new Background(JUNGLE_DESSERT);
         jungleDessertBackground.layer_1 = Assets.jungle_dessert_layer_1;
         jungleDessertBackground.layer_2 = Assets.jungle_dessert_layer_2;
@@ -122,7 +122,7 @@ public class Biomes {
         layers.add(biomeLayer2);
         layers.add(biomeLayer3);
 
-        forceTheme(DESSERT);    //TODO random
+        forceTheme(JUNGLE);    //TODO random
     }
 
     public void forceTheme(int theme) {
