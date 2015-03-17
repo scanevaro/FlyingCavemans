@@ -3,9 +3,7 @@ package com.deeep.flycaveman.widgets;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
@@ -147,6 +145,25 @@ public class ShopWidget {
 
         screen.stage.addActor(wingsDialog);
 
+        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
+                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        textArea.setSize(300, 300);
+        textArea.setPosition(30, 134);
+        textArea.clearListeners();
+        wingsDialog.addActor(textArea);
+
+        Image star[] = new Image[3];
+        star[0] = new Image(Assets.starBlack);
+        star[1] = new Image(Assets.starBlack);
+        star[2] = new Image(Assets.starBlack);
+        int posX = 70;
+        for (Image staR : star) {
+            staR.setSize(64, 64);
+            staR.setPosition(posX, 88);
+            posX += 70;
+            wingsDialog.addActor(staR);
+        }
+
         ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
         buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
         buyStyle.imageUp.setMinWidth(160);
@@ -162,7 +179,7 @@ public class ShopWidget {
             }
         });
         buyButton.setSize(160, 96);
-        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
+        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 0);
         wingsDialog.addActor(buyButton);
     }
 
