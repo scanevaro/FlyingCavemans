@@ -41,7 +41,7 @@ public class Assets {
             staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
             steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
-            facePassion, faceKO, title, touchNH, buttonBroken, button, dialog;
+            facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown;
     public static Animation cavemanWings, cavemanFlap;
 
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
@@ -178,6 +178,8 @@ public class Assets {
         touchNH = items.findRegion("touchNH");
         buttonBroken = items.findRegion("broken_button");
         dialog = items.findRegion("dialog");
+        buyButton = items.findRegion("buyButton");
+        buyButtonDown = items.findRegion("buyButtonDown");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");

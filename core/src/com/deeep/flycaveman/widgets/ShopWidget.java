@@ -146,6 +146,24 @@ public class ShopWidget {
         wingsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(wingsDialog);
+
+        ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
+        buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
+        buyStyle.imageUp.setMinWidth(160);
+        buyStyle.imageUp.setMinHeight(96);
+        buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
+        buyStyle.imageDown.setMinWidth(160);
+        buyStyle.imageDown.setMinHeight(96);
+        ImageButton buyButton = new ImageButton(buyStyle);
+        buyButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                screen.world.caveman.addWings();
+            }
+        });
+        buyButton.setSize(160, 96);
+        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
+        wingsDialog.addActor(buyButton);
     }
 
     private void buildSteroidsDialog() {
@@ -155,6 +173,24 @@ public class ShopWidget {
         steroidsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(steroidsDialog);
+
+        ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
+        buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
+        buyStyle.imageUp.setMinWidth(160);
+        buyStyle.imageUp.setMinHeight(96);
+        buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
+        buyStyle.imageDown.setMinWidth(160);
+        buyStyle.imageDown.setMinHeight(96);
+        ImageButton buyButton = new ImageButton(buyStyle);
+        buyButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                screen.world.caveman.addSteroids();
+            }
+        });
+        buyButton.setSize(160, 96);
+        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
+        steroidsDialog.addActor(buyButton);
     }
 
     private void buildStaminaDialog() {
@@ -164,6 +200,24 @@ public class ShopWidget {
         staminaplusDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(staminaplusDialog);
+
+        ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
+        buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
+        buyStyle.imageUp.setMinWidth(160);
+        buyStyle.imageUp.setMinHeight(96);
+        buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
+        buyStyle.imageDown.setMinWidth(160);
+        buyStyle.imageDown.setMinHeight(96);
+        ImageButton buyButton = new ImageButton(buyStyle);
+        buyButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                screen.world.caveman.upgradeStamina();
+            }
+        });
+        buyButton.setSize(160, 96);
+        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
+        staminaplusDialog.addActor(buyButton);
     }
 
     private void buildSpringsDialog() {
@@ -173,6 +227,24 @@ public class ShopWidget {
         springsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(springsDialog);
+
+        ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
+        buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
+        buyStyle.imageUp.setMinWidth(160);
+        buyStyle.imageUp.setMinHeight(96);
+        buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
+        buyStyle.imageDown.setMinWidth(160);
+        buyStyle.imageDown.setMinHeight(96);
+        ImageButton buyButton = new ImageButton(buyStyle);
+        buyButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                screen.world.caveman.addSprings();
+            }
+        });
+        buyButton.setSize(160, 96);
+        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
+        springsDialog.addActor(buyButton);
     }
 
     private void show(String dialog) {
