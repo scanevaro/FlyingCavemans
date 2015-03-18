@@ -188,7 +188,8 @@ public class ShopWidget {
         wingsDialog.addActor(coinSprite);
 
         Label cost = new Label("= 50", Assets.skin);
-
+        cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
+        wingsDialog.addActor(cost);
     }
 
     private void buildSteroidsDialog() {
