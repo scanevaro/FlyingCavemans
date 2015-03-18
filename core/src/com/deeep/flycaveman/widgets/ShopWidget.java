@@ -190,13 +190,6 @@ public class ShopWidget {
         buyWingsButton = new ImageButton(buyStyle);
         buyWingsButton.addListener(new ClickListener() {
             @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                if (buyWingsButton.isDisabled()) return true;
-
-                return false;
-            }
-
-            @Override
             public void clicked(InputEvent event, float x, float y) {
                 screen.world.caveman.addWings();
             }
@@ -210,7 +203,7 @@ public class ShopWidget {
         coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
         wingsDialog.addActor(coinSprite);
 
-        Label cost = new Label("= 50", Assets.skin);
+        Label cost = new Label("= 150", Assets.skin);
         cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
         wingsDialog.addActor(cost);
     }
@@ -222,6 +215,25 @@ public class ShopWidget {
         steroidsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(steroidsDialog);
+
+        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
+                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        textArea.setSize(300, 300);
+        textArea.setPosition(30, 134);
+        textArea.clearListeners();
+        steroidsDialog.addActor(textArea);
+
+        Image star[] = new Image[3];
+        star[0] = new Image(Assets.starBlack);
+        star[1] = new Image(Assets.starBlack);
+        star[2] = new Image(Assets.starBlack);
+        int posX = 70;
+        for (Image staR : star) {
+            staR.setSize(64, 64);
+            staR.setPosition(posX, 88);
+            posX += 70;
+            steroidsDialog.addActor(staR);
+        }
 
         ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
         buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
@@ -241,8 +253,17 @@ public class ShopWidget {
             }
         });
         buySteroidsButton.setSize(160, 96);
-        buySteroidsButton.setPosition(wingsDialog.getWidth() / 2 - buySteroidsButton.getWidth() / 2, 25);
+        buySteroidsButton.setPosition(0, 0);
         steroidsDialog.addActor(buySteroidsButton);
+
+        CoinSprite coinSprite = new CoinSprite();
+        coinSprite.setSize(64, 64);
+        coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
+        steroidsDialog.addActor(coinSprite);
+
+        Label cost = new Label("= 50", Assets.skin);
+        cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
+        steroidsDialog.addActor(cost);
     }
 
     private void buildStaminaDialog() {
@@ -252,6 +273,25 @@ public class ShopWidget {
         staminaplusDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(staminaplusDialog);
+
+        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
+                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        textArea.setSize(300, 300);
+        textArea.setPosition(30, 134);
+        textArea.clearListeners();
+        staminaplusDialog.addActor(textArea);
+
+        Image star[] = new Image[3];
+        star[0] = new Image(Assets.starBlack);
+        star[1] = new Image(Assets.starBlack);
+        star[2] = new Image(Assets.starBlack);
+        int posX = 70;
+        for (Image staR : star) {
+            staR.setSize(64, 64);
+            staR.setPosition(posX, 88);
+            posX += 70;
+            staminaplusDialog.addActor(staR);
+        }
 
         ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
         buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
@@ -271,8 +311,17 @@ public class ShopWidget {
             }
         });
         buyStaminaButton.setSize(160, 96);
-        buyStaminaButton.setPosition(wingsDialog.getWidth() / 2 - buyStaminaButton.getWidth() / 2, 25);
+        buyStaminaButton.setPosition(0, 0);
         staminaplusDialog.addActor(buyStaminaButton);
+
+        CoinSprite coinSprite = new CoinSprite();
+        coinSprite.setSize(64, 64);
+        coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
+        staminaplusDialog.addActor(coinSprite);
+
+        Label cost = new Label("= 30", Assets.skin);
+        cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
+        staminaplusDialog.addActor(cost);
     }
 
     private void buildSpringsDialog() {
@@ -282,6 +331,25 @@ public class ShopWidget {
         springsDialog.setKeepWithinStage(false);
 
         screen.stage.addActor(springsDialog);
+
+        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
+                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        textArea.setSize(300, 300);
+        textArea.setPosition(30, 134);
+        textArea.clearListeners();
+        springsDialog.addActor(textArea);
+
+        Image star[] = new Image[3];
+        star[0] = new Image(Assets.starBlack);
+        star[1] = new Image(Assets.starBlack);
+        star[2] = new Image(Assets.starBlack);
+        int posX = 70;
+        for (Image staR : star) {
+            staR.setSize(64, 64);
+            staR.setPosition(posX, 88);
+            posX += 70;
+            springsDialog.addActor(staR);
+        }
 
         ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
         buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
@@ -301,8 +369,17 @@ public class ShopWidget {
             }
         });
         buySpringsButton.setSize(160, 96);
-        buySpringsButton.setPosition(wingsDialog.getWidth() / 2 - buySpringsButton.getWidth() / 2, 25);
+        buySpringsButton.setPosition(0, 0);
         springsDialog.addActor(buySpringsButton);
+
+        CoinSprite coinSprite = new CoinSprite();
+        coinSprite.setSize(64, 64);
+        coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
+        springsDialog.addActor(coinSprite);
+
+        Label cost = new Label("= 100", Assets.skin);
+        cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
+        springsDialog.addActor(cost);
     }
 
     private void show(String dialog) {
