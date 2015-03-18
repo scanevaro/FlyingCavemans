@@ -216,8 +216,7 @@ public class ShopWidget {
 
         screen.stage.addActor(steroidsDialog);
 
-        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
-                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        TextArea textArea = new TextArea("Steroids good for flying higher... Steroids taste funny", Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -274,8 +273,7 @@ public class ShopWidget {
 
         screen.stage.addActor(staminaplusDialog);
 
-        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
-                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        TextArea textArea = new TextArea("Better Stamina, Longer Flapping", Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -332,8 +330,7 @@ public class ShopWidget {
 
         screen.stage.addActor(springsDialog);
 
-        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
-                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        TextArea textArea = new TextArea("Bouncy bouncy", Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
