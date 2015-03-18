@@ -471,9 +471,16 @@ buyButton
   orig: 246, 117
   offset: 0, 0
   index: -1
-buyButtonDown
+buyButtonDisabled
   rotate: false
   xy: 250, 6
+  size: 246, 117
+  orig: 246, 117
+  offset: 0, 0
+  index: -1
+buyButtonDown
+  rotate: false
+  xy: 498, 6
   size: 246, 117
   orig: 246, 117
   offset: 0, 0

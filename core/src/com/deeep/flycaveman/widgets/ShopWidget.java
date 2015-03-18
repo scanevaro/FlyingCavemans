@@ -2,6 +2,7 @@ package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.screens.GameScreen;
 
 /**
@@ -17,6 +19,8 @@ import com.deeep.flycaveman.screens.GameScreen;
 public class ShopWidget {
     private Window shopDialog, wingsDialog, steroidsDialog, staminaplusDialog, springsDialog;
     private GameScreen screen;
+    private CoinsWidget coinsWidget;
+    private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton;
     private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen;
 
     public ShopWidget(final Core game) {
@@ -26,6 +30,7 @@ public class ShopWidget {
         shopDialog.setSize(680, Core.VIRTUAL_HEIGHT - 25);
         shopDialog.setPosition(0, Core.VIRTUAL_HEIGHT + shopDialog.getHeight());
         shopDialog.setKeepWithinStage(false);
+        shopDialog.removeCaptureListener(shopDialog.getCaptureListeners().first());
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
@@ -127,7 +132,15 @@ public class ShopWidget {
 
         game.screen.stage.addActor(shopDialog);
 
+        buildCoinWidget();
         buildBuyDialogs();
+    }
+
+    private void buildCoinWidget() {
+        coinsWidget = new CoinsWidget();
+        coinsWidget.setPosition(240, -coinsWidget.background.getHeight());
+
+        screen.stage.addActor(coinsWidget);
     }
 
     private void buildBuyDialogs() {
@@ -171,16 +184,26 @@ public class ShopWidget {
         buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
         buyStyle.imageDown.setMinWidth(160);
         buyStyle.imageDown.setMinHeight(96);
-        ImageButton buyButton = new ImageButton(buyStyle);
-        buyButton.addListener(new ClickListener() {
+        buyStyle.imageDisabled = new TextureRegionDrawable(Assets.buyButtonDisabled);
+        buyStyle.imageDisabled.setMinWidth(160);
+        buyStyle.imageDisabled.setMinHeight(96);
+        buyWingsButton = new ImageButton(buyStyle);
+        buyWingsButton.addListener(new ClickListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                if (buyWingsButton.isDisabled()) return true;
+
+                return false;
+            }
+
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 screen.world.caveman.addWings();
             }
         });
-        buyButton.setSize(160, 96);
-        buyButton.setPosition(0, 0);
-        wingsDialog.addActor(buyButton);
+        buyWingsButton.setSize(160, 96);
+        buyWingsButton.setPosition(0, 0);
+        wingsDialog.addActor(buyWingsButton);
 
         CoinSprite coinSprite = new CoinSprite();
         coinSprite.setSize(64, 64);
@@ -207,16 +230,19 @@ public class ShopWidget {
         buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
         buyStyle.imageDown.setMinWidth(160);
         buyStyle.imageDown.setMinHeight(96);
-        ImageButton buyButton = new ImageButton(buyStyle);
-        buyButton.addListener(new ClickListener() {
+        buyStyle.imageDisabled = new TextureRegionDrawable(Assets.buyButtonDisabled);
+        buyStyle.imageDisabled.setMinWidth(160);
+        buyStyle.imageDisabled.setMinHeight(96);
+        buySteroidsButton = new ImageButton(buyStyle);
+        buySteroidsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 screen.world.caveman.addSteroids();
             }
         });
-        buyButton.setSize(160, 96);
-        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
-        steroidsDialog.addActor(buyButton);
+        buySteroidsButton.setSize(160, 96);
+        buySteroidsButton.setPosition(wingsDialog.getWidth() / 2 - buySteroidsButton.getWidth() / 2, 25);
+        steroidsDialog.addActor(buySteroidsButton);
     }
 
     private void buildStaminaDialog() {
@@ -234,16 +260,19 @@ public class ShopWidget {
         buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
         buyStyle.imageDown.setMinWidth(160);
         buyStyle.imageDown.setMinHeight(96);
-        ImageButton buyButton = new ImageButton(buyStyle);
-        buyButton.addListener(new ClickListener() {
+        buyStyle.imageDisabled = new TextureRegionDrawable(Assets.buyButtonDisabled);
+        buyStyle.imageDisabled.setMinWidth(160);
+        buyStyle.imageDisabled.setMinHeight(96);
+        buyStaminaButton = new ImageButton(buyStyle);
+        buyStaminaButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 screen.world.caveman.upgradeStamina();
             }
         });
-        buyButton.setSize(160, 96);
-        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
-        staminaplusDialog.addActor(buyButton);
+        buyStaminaButton.setSize(160, 96);
+        buyStaminaButton.setPosition(wingsDialog.getWidth() / 2 - buyStaminaButton.getWidth() / 2, 25);
+        staminaplusDialog.addActor(buyStaminaButton);
     }
 
     private void buildSpringsDialog() {
@@ -261,16 +290,19 @@ public class ShopWidget {
         buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
         buyStyle.imageDown.setMinWidth(160);
         buyStyle.imageDown.setMinHeight(96);
-        ImageButton buyButton = new ImageButton(buyStyle);
-        buyButton.addListener(new ClickListener() {
+        buyStyle.imageDisabled = new TextureRegionDrawable(Assets.buyButtonDisabled);
+        buyStyle.imageDisabled.setMinWidth(160);
+        buyStyle.imageDisabled.setMinHeight(96);
+        buySpringsButton = new ImageButton(buyStyle);
+        buySpringsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 screen.world.caveman.addSprings();
             }
         });
-        buyButton.setSize(160, 96);
-        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 25);
-        springsDialog.addActor(buyButton);
+        buySpringsButton.setSize(160, 96);
+        buySpringsButton.setPosition(wingsDialog.getWidth() / 2 - buySpringsButton.getWidth() / 2, 25);
+        springsDialog.addActor(buySpringsButton);
     }
 
     private void show(String dialog) {
@@ -335,13 +367,51 @@ public class ShopWidget {
     public void setVisible(boolean flag) {
         if (flag) {
             shopDialog.addAction(Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - shopDialog.getHeight() / 2, 0.4f, Interpolation.linear));
+
+            coinsWidget.moveUp();
         } else {
             shopDialog.addAction(Actions.moveTo(0, Core.VIRTUAL_HEIGHT + shopDialog.getHeight(), 0.4f, Interpolation.linear));
 
-            wingsDialog.setVisible(flag);
-            steroidsDialog.setVisible(flag);
-            staminaplusDialog.setVisible(flag);
-            springsDialog.setVisible(flag);
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+
+            coinsWidget.moveDown();
+        }
+    }
+
+    public void update() {
+        if (CaveMan.coins >= 150) {
+            buyWingsButton.setDisabled(false);
+            buyWingsButton.setTouchable(Touchable.enabled);
+        } else {
+            buyWingsButton.setDisabled(true);
+            buyWingsButton.setTouchable(Touchable.disabled);
+        }
+
+        if (CaveMan.coins >= 100) {
+            buySpringsButton.setDisabled(false);
+            buySpringsButton.setTouchable(Touchable.enabled);
+        } else {
+            buySpringsButton.setDisabled(true);
+            buySpringsButton.setTouchable(Touchable.disabled);
+        }
+
+        if (CaveMan.coins >= 30) {
+            buyStaminaButton.setDisabled(false);
+            buyStaminaButton.setTouchable(Touchable.enabled);
+        } else {
+            buyStaminaButton.setDisabled(true);
+            buyStaminaButton.setTouchable(Touchable.disabled);
+        }
+
+        if (CaveMan.coins >= 50) {
+            buySteroidsButton.setDisabled(false);
+            buySteroidsButton.setTouchable(Touchable.enabled);
+        } else {
+            buySteroidsButton.setDisabled(true);
+            buySteroidsButton.setTouchable(Touchable.disabled);
         }
     }
 }

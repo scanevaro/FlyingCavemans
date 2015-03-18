@@ -79,7 +79,6 @@ public class GameScreen extends AbstractScreen {
         prepareGameOverDialog();
 
         expressions.setCaveman(world.caveman);
-        coinsWidget.setCaveMan(world.caveman);
 
         stage.addActor(darkness);
     }
@@ -153,6 +152,7 @@ public class GameScreen extends AbstractScreen {
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
         flapButton.setSize(96, 96);
         flapButton.setPosition(0, 0);
+        coinsWidget.setPosition(112, 0);
 
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
@@ -188,7 +188,7 @@ public class GameScreen extends AbstractScreen {
             staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-            coinsWidget.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
+            coinsWidget.fadeIn();
         }
 
         /**Updates*/
@@ -197,6 +197,7 @@ public class GameScreen extends AbstractScreen {
             updateUI();
             updateGameCam();
             world.update(delta);
+            shopWidget.update();
             stage.act();
 
             if (world.isGameOver()) {

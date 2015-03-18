@@ -2,7 +2,7 @@ package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -14,21 +14,27 @@ import com.deeep.flycaveman.entities.CaveMan;
  * Created by scanevaro on 08/03/2015.
  */
 public class CoinsWidget extends Actor {
-    private Image background, coin;
+    public Image background;
+    private Image coin;
     private Label amount;
-    private CaveMan caveMan;
 
     public CoinsWidget() {
         background = new Image(Assets.button);
         background.setSize(128, 70);
-        background.setPosition(112, 0);
 
         coin = new Image(Assets.coin1);
         coin.setSize(50, 50);
-        coin.setPosition(128, 10);
 
         amount = new Label("", Assets.skin);
-        amount.setPosition(196, 36);
+    }
+
+    @Override
+    public void setPosition(float x, float y) {
+        super.setPosition(x, y);
+
+        background.setPosition(x, y);
+        coin.setPosition(x + 16, y + 10);
+        amount.setPosition(x + 84, y + 36);
     }
 
     @Override
@@ -56,20 +62,27 @@ public class CoinsWidget extends Actor {
         amount.setColor(color);
     }
 
-    @Override
-    public void addAction(Action action) {
+    public void fadeIn() {
         background.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         coin.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         amount.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-    }
-
-    public void setCaveMan(CaveMan caveMan) {
-        this.caveMan = caveMan;
     }
 
     public void fadeOut() {
         background.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
         coin.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
         amount.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
+    }
+
+    public void moveUp() {
+        background.addAction(Actions.moveTo(240, 0, 0.4f, Interpolation.linear));
+        coin.addAction(Actions.moveTo(240 + 16, 10, 0.4f, Interpolation.linear));
+        amount.addAction(Actions.moveTo(240 + 84, 36, 0.4f, Interpolation.linear));
+    }
+
+    public void moveDown() {
+        background.addAction(Actions.moveTo(240, -background.getHeight(), 0.4f, Interpolation.linear));
+        coin.addAction(Actions.moveTo(240 + 16, -10 - background.getHeight(), 0.4f, Interpolation.linear));
+        amount.addAction(Actions.moveTo(240 + 84, -36 - background.getHeight(), 0.4f, Interpolation.linear));
     }
 }
