@@ -179,8 +179,16 @@ public class ShopWidget {
             }
         });
         buyButton.setSize(160, 96);
-        buyButton.setPosition(wingsDialog.getWidth() / 2 - buyButton.getWidth() / 2, 0);
+        buyButton.setPosition(0, 0);
         wingsDialog.addActor(buyButton);
+
+        CoinSprite coinSprite = new CoinSprite();
+        coinSprite.setSize(64, 64);
+        coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
+        wingsDialog.addActor(coinSprite);
+
+        Label cost = new Label("= 50", Assets.skin);
+
     }
 
     private void buildSteroidsDialog() {
