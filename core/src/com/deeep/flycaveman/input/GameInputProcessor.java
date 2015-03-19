@@ -79,6 +79,9 @@ public class GameInputProcessor implements InputProcessor {
             case PAUSE:
                 //TODO
                 break;
+            case FLYING:
+                world.caveman.flap();
+                break;
         }
         return false;
     }

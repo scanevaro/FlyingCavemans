@@ -31,7 +31,7 @@ public class Assets {
 
     public static Skin skin;
 
-    public static BitmapFont font64, font32, font24Bold;
+    public static BitmapFont font32, font26, font24Bold;
 
     public static TextureAtlas items;
     public static Texture darkSky;
@@ -73,7 +73,7 @@ public class Assets {
     }
 
     private static void loadFont() {
-        assetManager.load("data/fonts/font64.fnt", BitmapFont.class);
+        assetManager.load("data/fonts/font26.fnt", BitmapFont.class);
         assetManager.load("data/fonts/font32.fnt", BitmapFont.class);
         assetManager.load("data/fonts/font24Bold.fnt", BitmapFont.class);
     }
@@ -118,12 +118,12 @@ public class Assets {
     private static void setSkin() {
         skin = new Skin();
 
-        font64 = assetManager.get("data/fonts/font64.fnt");
         font32 = assetManager.get("data/fonts/font32.fnt");
+        font26 = assetManager.get("data/fonts/font26.fnt");
         font24Bold = assetManager.get("data/fonts/font24Bold.fnt");
 
-        skin.add("default-font", font64, BitmapFont.class);
-        skin.add("small-font", font32, BitmapFont.class);
+        skin.add("default-font", font32, BitmapFont.class);
+        skin.add("small-font", font26, BitmapFont.class);
         skin.add("bold20", font24Bold, BitmapFont.class);
 
         FileHandle fileHandle = Gdx.files.internal("data/items.json");

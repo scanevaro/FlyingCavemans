@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.deeep.flycaveman.Assets;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.CaveMan;
 
 /**
@@ -30,18 +29,18 @@ public class StaminaBar extends Actor {
         bar = new Image(Assets.staminaBar);
         hand = new Image(Assets.staminaHand);
 
-        background.setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2, 5);
+        background.setPosition(/*Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2*/100, 5);
 
         float posX = 3;
         for (int x = 0; x < caveMan.stamina; x++) {
-            fill[x].setPosition(Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2 + posX, 10);
+            fill[x].setPosition(/*Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2*/ 100 + posX, 10);
             fill[x].setScaleX(3.6f);
             posX += fill[x].getWidth() + 26;
         }
 
-        bar.setPosition(Core.VIRTUAL_WIDTH / 2 - bar.getWidth() / 2, 5);
+        bar.setPosition(/*Core.VIRTUAL_WIDTH / 2 - bar.getWidth() / 2*/100, 5);
         hand.setSize(48, 54);
-        hand.setPosition(Core.VIRTUAL_WIDTH / 2 - hand.getWidth() / 2, 15);
+        hand.setPosition(/*Core.VIRTUAL_WIDTH / 2 - hand.getWidth() / 2*/ 100 + background.getWidth() / 2 - hand.getWidth() / 2, 15);
 
         maxStamina = caveman.stamina;
     }

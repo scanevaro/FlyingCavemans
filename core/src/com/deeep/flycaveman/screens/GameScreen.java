@@ -46,7 +46,6 @@ public class GameScreen extends AbstractScreen {
     private ShopWidget shopWidget;
     private GameOverWidget gameOverWidget;
     private StaminaBar staminaBar;
-    private FlapButton flapButton;
     private ExpressionsWidget expressions;
     private CoinsWidget coinsWidget;
     /**
@@ -95,8 +94,8 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void setWidgets() {
-        distanceLabel = new TextButton("Distance: ", Assets.skin);
-        heightLabel = new TextButton("Height: ", Assets.skin);
+        distanceLabel = new TextButton("Distance: ", Assets.skin.get("defaultSmallFont", TextButton.TextButtonStyle.class));
+        heightLabel = new TextButton("Height: ", Assets.skin.get("defaultSmallFont", TextButton.TextButtonStyle.class));
 
         ImageButton.ImageButtonStyle pauseStyle = new ImageButton.ImageButtonStyle();
         pauseStyle.imageUp = new TextureRegionDrawable(Assets.pauseUp);
@@ -107,7 +106,6 @@ public class GameScreen extends AbstractScreen {
         pauseStyle.imageDown.setMinHeight(64);
         pauseButton = new ImageButton(pauseStyle);
 
-        flapButton = new FlapButton();
         expressions = new ExpressionsWidget();
         coinsWidget = new CoinsWidget();
     }
@@ -124,7 +122,6 @@ public class GameScreen extends AbstractScreen {
         heightLabel.setColor(new Color(1, 1, 1, 0));
         pauseButton.setColor(new Color(1, 1, 1, 0));
         staminaBar.setColor(new Color(1, 1, 1, 0));
-        flapButton.setColor(new Color(1, 1, 1, 0));
         expressions.setColor(new Color(1, 1, 1, 0));
         coinsWidget.setColor(new Color(1, 1, 1, 0));
     }
@@ -134,8 +131,6 @@ public class GameScreen extends AbstractScreen {
         gameCamera = (OrthographicCamera) worldStage.getCamera();
         world = new World(worldStage, stage, false);
         stage.addActor(world);
-
-        flapButton.setCaveMan(world.caveman);
     }
 
     private void getGameCamera() {
@@ -144,21 +139,18 @@ public class GameScreen extends AbstractScreen {
     }
 
     private void setLayout() {
-        distanceLabel.setSize(224, 64);
-        distanceLabel.setPosition(Core.VIRTUAL_WIDTH - distanceLabel.getWidth(), 1);
-        heightLabel.setSize(160, 64);
-        heightLabel.setPosition(Core.VIRTUAL_WIDTH / 2 + staminaBar.background.getWidth() - heightLabel.getWidth() / 2, 1);
+        distanceLabel.setSize(255, 72);
+        distanceLabel.setPosition(Core.VIRTUAL_WIDTH - distanceLabel.getWidth() - 50, 1);
+        heightLabel.setSize(222, 72);
+        heightLabel.setPosition(430, 1);
         pauseButton.setSize(64, 64);
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
-        flapButton.setSize(96, 96);
-        flapButton.setPosition(0, 0);
-        coinsWidget.setPosition(112, 0);
+        coinsWidget.setPosition(300, 1);
 
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
         stage.addActor(pauseButton);
         stage.addActor(staminaBar);
-        stage.addActor(flapButton);
         stage.addActor(expressions);
         stage.addActor(coinsWidget);
     }
@@ -186,7 +178,6 @@ public class GameScreen extends AbstractScreen {
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             staminaBar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-            flapButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             expressions.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             coinsWidget.fadeIn();
         }
@@ -206,7 +197,6 @@ public class GameScreen extends AbstractScreen {
                 heightLabel.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
                 pauseButton.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
                 staminaBar.fadeOut();
-                flapButton.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
                 expressions.fadeOut();
                 coinsWidget.fadeOut();
 

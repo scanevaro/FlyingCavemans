@@ -12,7 +12,8 @@ com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
 	default: { down: button, up: button }
 },
 com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
-	default: { down: button, up: button, font: default-font, fontColor: white }
+	default: { down: button, up: button, font: default-font, fontColor: white },
+  defaultSmallFont: { down: button, up: button, font: small-font, fontColor: white }
 },
 com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 	default: { titleFont: default-font, background: dialog, titleFontColor: white },
