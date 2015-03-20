@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.entities.CaveMan;
 import com.deeep.flycaveman.screens.GameScreen;
 
 /**
@@ -23,7 +24,8 @@ public class GameOverWidget {
     private Window topRightWindow, bottomRightWindow;
     private ShopWidget shopWidget;
     private Image leftWindow;
-    private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel;
+    private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel,
+            maxDistance, colectedCoins;
     private GameScreen screen;
 
     public GameOverWidget(final Core game, ShopWidget shopWidget) {
@@ -45,15 +47,12 @@ public class GameOverWidget {
                 Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
         topRightWindow.setKeepWithinStage(false);
         //( ͡° ͜ʖ ͡°) < l'elmar face
-
-//        GameScreen.distance = new Label("", Assets.skin);
-//        GameScreen.distance.setPosition(25, gameOverDialog.getHeight() / 2);
-        Label maxDistance = new Label("Max Distance: xxxxx", Assets.skin);
-        maxDistance.setPosition(100, 120);
+        maxDistance = new Label("Max Distance: xxxxx", Assets.skin);
+        maxDistance.setPosition(70, 120);
         topRightWindow.addActor(maxDistance);
 
-        Label colectedCoins = new Label("Colected Coins : xxxxx", Assets.skin);
-        colectedCoins.setPosition(100, 75);
+        colectedCoins = new Label("Colected Coins : xxxxx", Assets.skin);
+        colectedCoins.setPosition(70, 75);
         topRightWindow.addActor(colectedCoins);
 
         topRightWindow.setVisible(false);
@@ -135,7 +134,7 @@ public class GameOverWidget {
 
     private void setLeftWindow() {
         leftWindow = new Image(Assets.dialog);
-        leftWindow.setSize(380, 400);
+        leftWindow.setSize(430, 400);
         leftWindow.setOrigin(leftWindow.getWidth() / 2, leftWindow.getHeight() / 2);
         leftWindow.setPosition(-leftWindow.getWidth(), 140);
         leftWindow.setVisible(false);
@@ -187,14 +186,14 @@ public class GameOverWidget {
             powerupsLabel.setVisible(flag);
             coinsLabel.setVisible(flag);
 
-            leftWindow.addAction(Actions.moveTo(25, 140, 0.45f, Interpolation.linear));
+            leftWindow.addAction(Actions.moveTo(0, 140, 0.45f, Interpolation.linear));
             statsLabel.addAction(Actions.moveTo(62, 460, 0.45f, Interpolation.linear));
-            distanceLabel.addAction(Actions.moveTo(50, 420, 0.45f, Interpolation.linear));
-            maxHeightLabel.addAction(Actions.moveTo(50, 380, 0.45f, Interpolation.linear));
-            flappingLabel.addAction(Actions.moveTo(50, 340, 0.45f, Interpolation.linear));
-            entitiesLabel.addAction(Actions.moveTo(50, 300, 0.45f, Interpolation.linear));
-            powerupsLabel.addAction(Actions.moveTo(50, 260, 0.45f, Interpolation.linear));
-            coinsLabel.addAction(Actions.moveTo(50, 220, 0.45f, Interpolation.linear));
+            distanceLabel.addAction(Actions.moveTo(30, 420, 0.45f, Interpolation.linear));
+            maxHeightLabel.addAction(Actions.moveTo(30, 380, 0.45f, Interpolation.linear));
+            flappingLabel.addAction(Actions.moveTo(30, 340, 0.45f, Interpolation.linear));
+            entitiesLabel.addAction(Actions.moveTo(30, 300, 0.45f, Interpolation.linear));
+            powerupsLabel.addAction(Actions.moveTo(30, 260, 0.45f, Interpolation.linear));
+            coinsLabel.addAction(Actions.moveTo(30, 220, 0.45f, Interpolation.linear));
             bottomRightWindow.addAction(Actions.moveTo(447, 0, 0.4f, Interpolation.linear));
             topRightWindow.addAction(Actions.moveTo(447, Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f,
                     Interpolation.linear));
@@ -214,8 +213,15 @@ public class GameOverWidget {
         }
     }
 
-    public void update(String distance, float maxHeight) {
+    public void update(String distance, float maxHeight, float flapDistance, int smacked, int powerUpsPicked,
+                       int coinsPicked) {
         distanceLabel.setText(distance);
         maxHeightLabel.setText("Max Height: " + String.valueOf(maxHeight).substring(0, 2));
+        flappingLabel.setText("Flapping Distance: " + String.valueOf(flapDistance).substring(0, 2));
+        entitiesLabel.setText("Entities Smacked: " + String.valueOf(smacked));
+        powerupsLabel.setText("PowerUps Picked Up: " + String.valueOf(powerUpsPicked));
+        coinsLabel.setText("Coins Picked Up: " + String.valueOf(coinsPicked));
+
+        colectedCoins.setText("Colected Coins : " + String.valueOf(CaveMan.coins));
     }
 }

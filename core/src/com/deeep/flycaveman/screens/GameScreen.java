@@ -190,7 +190,8 @@ public class GameScreen extends AbstractScreen {
             updateGameCam();
             world.update(delta);
             shopWidget.update();
-            gameOverWidget.update(distanceLabel.getText().toString(), maxHeight);
+            gameOverWidget.update(distanceLabel.getText().toString(), maxHeight, world.caveman.flapDistance,
+                    world.caveman.smacked, world.caveman.powerUpsPicked, world.caveman.coinsPicked);
             stage.act();
 
             if (world.isGameOver()) {

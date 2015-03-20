@@ -51,6 +51,7 @@ public class GameContactListener implements ContactListener {
                 }
 
                 obstacle.hit();
+                world.caveman.smacked++;
 
                 Assets.hitEntity1.play();
 
@@ -85,13 +86,13 @@ public class GameContactListener implements ContactListener {
                 }
 
                 powerUp.die();
+                world.caveman.powerUpsPicked++;
             }
 
             /**
              * Collision for coins
              */
             if (fixtureA.getUserData() instanceof Coin || fixtureB.getUserData() instanceof Coin) {
-                System.out.println("Coin babyyyy");
                 world.caveman.coins++;
                 switch (world.caveman.coinStreak) {
                     case 0:
@@ -109,12 +110,14 @@ public class GameContactListener implements ContactListener {
                 }
                 world.caveman.coinStreak++;
                 if (world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
-                if(fixtureA.getUserData() instanceof Coin){
+                if (fixtureA.getUserData() instanceof Coin) {
                     world.coinSpawner.remove((Coin) fixtureA.getUserData());
                 }
-                if(fixtureB.getUserData() instanceof Coin){
+                if (fixtureB.getUserData() instanceof Coin) {
                     world.coinSpawner.remove((Coin) fixtureB.getUserData());
                 }
+
+                world.caveman.coinsPicked++;
             }
         }
     }

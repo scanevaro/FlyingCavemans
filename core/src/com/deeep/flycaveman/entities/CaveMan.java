@@ -58,6 +58,10 @@ public class CaveMan implements Entity {
 
     public static int coins;
 
+    private float startFlapDistance;
+    public float flapDistance;
+    public int smacked, powerUpsPicked, coinsPicked;
+
     public CaveMan(com.deeep.flycaveman.world.World world) {
         this.world = world;
 
@@ -107,6 +111,11 @@ public class CaveMan implements Entity {
         if (addSprings) springs++;
         stamina = 5.0f;
         flapStateTime = 0.5f;
+        startFlapDistance = 0;
+        flapDistance = 0;
+        smacked = 0;
+        powerUpsPicked = 0;
+        coinsPicked = 0;
     }
 
     public void draw(Batch batch) {
@@ -162,6 +171,11 @@ public class CaveMan implements Entity {
             sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
         } else if (strength < 300)
             strength += delta;
+
+        if (flapStateTime >= 0.5f && startFlapDistance != 0) {
+            flapDistance += body.getPosition().x - startFlapDistance;
+            startFlapDistance = 0;
+        }
     }
 
     public void addWings() {
@@ -193,12 +207,6 @@ public class CaveMan implements Entity {
         stateTimeSprings = 1.5f;
     }
 
-    public void drop() {
-        if (GameInputProcessor.touchingGround) return;
-
-        body.applyForceToCenter(0, -10000, true);
-    }
-
     public void flap() {
         if (GameInputProcessor.touchingGround) return;
         if (body.getLinearVelocity().x != 0 || body.getLinearVelocity().y != 0) {
@@ -211,6 +219,8 @@ public class CaveMan implements Entity {
                 if (!cheats)
                     stamina -= 1;
                 flapStateTime = 0;
+
+                startFlapDistance = body.getPosition().x;
                 //todo add a way to increase the max flapstatetime
             }
         }
