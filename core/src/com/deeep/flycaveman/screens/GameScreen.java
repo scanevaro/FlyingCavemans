@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -41,7 +40,6 @@ public class GameScreen extends AbstractScreen {
      * Widgets
      */
     private TextButton distanceLabel, heightLabel;
-    public static Label distance;
     private ImageButton pauseButton;
     private ShopWidget shopWidget;
     private GameOverWidget gameOverWidget;
@@ -53,6 +51,7 @@ public class GameScreen extends AbstractScreen {
      */
     public World world;
     private float height;
+    private float maxHeight;
     public static boolean retry;
 
     public GameScreen(Core game) {
@@ -63,6 +62,8 @@ public class GameScreen extends AbstractScreen {
     @Override
     public void show() {
         if (tweenManager == null) tweenManager = new TweenManager();
+
+        maxHeight = 0;
 
         prepareScreen();
         setWidgets();
@@ -189,6 +190,7 @@ public class GameScreen extends AbstractScreen {
             updateGameCam();
             world.update(delta);
             shopWidget.update();
+            gameOverWidget.update(distanceLabel.getText().toString(), maxHeight);
             stage.act();
 
             if (world.isGameOver()) {
@@ -203,10 +205,6 @@ public class GameScreen extends AbstractScreen {
                 if (!GameScreen.retry)
                     gameOverWidget.setVisible(true);
                 else gameOverWidget.setVisible(false);
-//                if (shopWidget.isVisible()) gameOverDialog.setVisible(false);
-//                else gameOverDialog.setVisible(true);
-
-//                distance.setText(distanceLabel.getText().toString());
             }
         }
         /**Draws*/
@@ -216,7 +214,10 @@ public class GameScreen extends AbstractScreen {
     private void updateUI() {
         //todo make this visible in gameoverscreen
         distanceLabel.setText("Distance: " + String.valueOf((int) (world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3)));
-        heightLabel.setText("Height: " + String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 3));
+        heightLabel.setText("Height: " + String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 2));
+
+        if (world.caveman.body.getPosition().y - 1.5f > maxHeight)
+            maxHeight = world.caveman.body.getPosition().y - 1.5f;
     }
 
     private void updateGameCam() {

@@ -213,4 +213,9 @@ public class GameOverWidget {
                     Core.VIRTUAL_HEIGHT - topRightWindow.getHeight(), 0.4f, Interpolation.linear));
         }
     }
+
+    public void update(String distance, float maxHeight) {
+        distanceLabel.setText(distance);
+        maxHeightLabel.setText("Max Height: " + String.valueOf(maxHeight).substring(0, 2));
+    }
 }
