@@ -71,9 +71,13 @@ public class Area {
 
     private boolean inSpace = false;
 
+    private int previousX = -1;
+
     private float currentMusicSoundLevel = 0;
     private float nextMusicSoundLevel = 0;
     private float spaceFade = 0;
+
+    private boolean themeSongPlaying = true;
 
     public Area() {
         biomes = new Biomes();
@@ -84,12 +88,14 @@ public class Area {
         soundManager.playMusic(soundManager.getMusic("ShopTheme").getMusicObject(), true);
         soundManager.playMusic(soundManager.getMusic("SpaceTheme").getMusicObject(), true);
         soundManager.playMusic(soundManager.getMusic("WindTheme").getMusicObject(), true);
+        soundManager.playMusic(soundManager.getMusic("Theme").getMusicObject(), true);
 
         soundManager.silence();
         firstStart = true;
         currentMusicSoundLevel = 1;
         currentArea = AREA.JUNGLE;
         nextArea = getRandomArea(currentArea);
+        //currentMusic = soundManager.getMusic("Theme");
         currentMusic = soundManager.getMusic(currentArea.music);
         nextMusic = soundManager.getMusic(nextArea.music);
         windMusic = soundManager.getMusic("WindTheme");
@@ -107,7 +113,7 @@ public class Area {
         if (current == AREA.DESSERT) {
             return AREA.JUNGLE;
         } else if (current == AREA.JUNGLE) {
-            return AREA.OCEAN;
+            return AREA.DESSERT;
         }
         return AREA.DESSERT;
     }
@@ -200,7 +206,7 @@ public class Area {
     public void draw(SpriteBatch spriteBatch) {
         //biomes.draw(spriteBatch);
         for (int i = 0; i < 4; i++) {
-            //weather.draw(spriteBatch, i);
+            weather.draw(spriteBatch, i);
             biomes.draw(spriteBatch, i);
         }
     }

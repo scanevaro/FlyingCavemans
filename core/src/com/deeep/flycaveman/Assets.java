@@ -98,8 +98,9 @@ public class Assets {
         assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
-
+        assetManager.load("data/sounds/music/Theme.ogg", Music.class);
         assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
+
         assetManager.load("data/sounds/coin1.mp3", Sound.class);
         assetManager.load("data/sounds/coin2.mp3", Sound.class);
         assetManager.load("data/sounds/coin3.mp3", Sound.class);
