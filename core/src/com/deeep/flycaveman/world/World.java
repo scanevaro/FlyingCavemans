@@ -41,7 +41,7 @@ public class World extends Actor implements Disposable {
     private GameContactListener gameContactListener;
     private Random random;
     public Ground ground;
-    public Catapult catapult;
+    //public Catapult catapult;
     private Sprite darkness;
     public CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
@@ -101,7 +101,7 @@ public class World extends Actor implements Disposable {
 
         ground = new Ground(box2dWorld);
         coinSpawner = new CoinSpawner();
-        entities.add(catapult = new Catapult(box2dWorld, ground));
+        //entities.add(catapult = new Catapult(box2dWorld, ground));
 
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
@@ -229,8 +229,8 @@ public class World extends Actor implements Disposable {
 
         if (shootStateTime > 1 && remove) {
             if (caveman.body.getPosition().x > Core.BOX2D_VIRTUAL_WIDTH) {
-                box2dWorld.destroyBody(catapult.armBody);
-                box2dWorld.destroyBody(catapult.baseBody);
+                //box2dWorld.destroyBody(catapult.armBody);
+                //box2dWorld.destroyBody(catapult.baseBody);
                 remove = false;
             }
         }

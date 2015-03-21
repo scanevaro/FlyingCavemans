@@ -33,7 +33,7 @@ public class CaveMan implements Entity {
     public Fixture fixture;
     private CircleShape shape;
     //    private PolygonShape shape;
-    public WeldJoint bulletJoint;
+    //public WeldJoint bulletJoint;
     public float size = .6f;
     public Sprite sprite;
 
@@ -98,11 +98,11 @@ public class CaveMan implements Entity {
 
         body.setActive(true);
 
-        WeldJointDef weldJointDef = new WeldJointDef();
-        weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, 7));
-        weldJointDef.collideConnected = false;
+        //WeldJointDef weldJointDef = new WeldJointDef();
+        //weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, 7));
+        //weldJointDef.collideConnected = false;
 
-        bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
+        //bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
 
         strength = 225;
 

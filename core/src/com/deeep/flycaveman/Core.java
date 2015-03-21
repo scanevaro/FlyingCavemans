@@ -5,6 +5,7 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
@@ -84,6 +85,12 @@ public class Core implements ApplicationListener {
 
     public static float pixelsToBoxUnit(float pixels) {
         return pixels / 35;
+    }
+
+    public static Vector2 pixelsToBoxUnit(Vector2 pixels) {
+        pixels.x = pixelsToBoxUnit(pixels.x);
+        pixels.y = pixelsToBoxUnit(pixels.y);
+        return pixels;
     }
 
 }

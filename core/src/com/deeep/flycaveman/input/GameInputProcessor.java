@@ -1,7 +1,9 @@
 package com.deeep.flycaveman.input;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.screens.GameScreen;
 import com.deeep.flycaveman.world.World;
@@ -21,10 +23,12 @@ public class GameInputProcessor implements InputProcessor {
 
     private Core game;
     private World world;
-    private boolean addForce;
+    //private boolean addForce;
     public static boolean flying;
     public static boolean touchingGround;
-    private float force;
+    private Vector2 originalPos;
+    private float gravity;
+    //private float force;
 
     public GameInputProcessor(Core game, World world) {
         this.game = game;
@@ -32,8 +36,10 @@ public class GameInputProcessor implements InputProcessor {
 
         flying = false;
         touchingGround = false;
-
+        originalPos = new Vector2(world.caveman.startPosX, world.caveman.startPosY);
         gameState = IDLE;
+        gravity = world.caveman.body.getGravityScale();
+        world.caveman.body.setGravityScale(0);
     }
 
     public void update(float delta) {
@@ -44,19 +50,15 @@ public class GameInputProcessor implements InputProcessor {
 
         switch (gameState) {
             case IDLE:
+
                 //TODO
                 break;
             case CATAPULTSET:
-                if (force <= 0)
-                    addForce = true;
-                else if (force > 1.2f)
-                    addForce = false;
+                Vector2 mouseCords = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+                Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
+                localCords = Core.pixelsToBoxUnit(localCords);
+                world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
-                if (addForce)
-                    force += 0.02f;
-                else force -= 0.02f;
-
-                world.catapult.armJoint.setLimits(force, force);
                 break;
             case FLYING:
                 world.caveman.body.setAngularVelocity(0/*-3*/);
@@ -90,11 +92,13 @@ public class GameInputProcessor implements InputProcessor {
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         switch (gameState) {
             case CATAPULTSET:
-                world.box2dWorld.destroyJoint(world.caveman.bulletJoint);
-                world.catapult.armJoint.setLimits((float) Math.toRadians(9), (float) Math.toRadians(75));
-                world.flying = true;
-                world.remove = true;
-
+                world.caveman.body.setGravityScale(gravity);
+                Vector2 mouseCords = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+                Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
+                localCords = Core.pixelsToBoxUnit(localCords);
+                Vector2 difference = localCords.sub(originalPos);
+                world.caveman.body.setLinearVelocity(difference.x * -2*5, difference.y * -4*5);
+                System.out.println("flying: "+difference);
                 gameState = FLYING;
                 break;
         }
