@@ -56,6 +56,9 @@ public class GameInputProcessor implements InputProcessor {
             case CATAPULTSET:
                 Vector2 mouseCords = new Vector2(Gdx.input.getX(), Gdx.input.getY());
                 Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
+                localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
+                localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
+                System.out.println(world.caveman.sprite.getHeight());
                 localCords = Core.pixelsToBoxUnit(localCords);
                 world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
@@ -92,13 +95,16 @@ public class GameInputProcessor implements InputProcessor {
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         switch (gameState) {
             case CATAPULTSET:
+                world.flying = true;
+                world.remove = true;
                 world.caveman.body.setGravityScale(gravity);
                 Vector2 mouseCords = new Vector2(Gdx.input.getX(), Gdx.input.getY());
                 Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
+                localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
+                localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
                 Vector2 difference = localCords.sub(originalPos);
-                world.caveman.body.setLinearVelocity(difference.x * -2*5, difference.y * -4*5);
-                System.out.println("flying: "+difference);
+                world.caveman.body.setLinearVelocity(difference.x * -2 * 5, difference.y * -4 * 5);
                 gameState = FLYING;
                 break;
         }

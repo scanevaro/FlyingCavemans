@@ -88,7 +88,7 @@ public class World extends Actor implements Disposable {
         entities = new Array<Entity>();
         // skyColor = new Color(0, 0.5f, 0.8f, 1);
         //97 210 260
-         skyColor = new Color(100f/255f, 220f/255f, 220f/255f, 1);
+        skyColor = new Color(100f / 255f, 220f / 255f, 220f / 255f, 1);
         //skyColor = new Color(0.38431372549019607843137254901961f, 0.81568627450980392156862745098039f, 0.85490196078431372549019607843137f, 1);
         sunColor = new Color(254f / 255f, 76f / 255f, 64f / 255f, 0f);//rgb(254, 76, 64)
         spaceColor = new Color(0, 0, 0, 1f);//
@@ -255,10 +255,11 @@ public class World extends Actor implements Disposable {
     }
 
     private void updateSky() {
-        if (caveman.body.getPosition().y < 8)
-            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, 8);
-        else
+        if (GameInputProcessor.flying) {
             sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, caveman.body.getPosition().y - Core.BOX2D_VIRTUAL_HEIGHT / 3);
+        } else {
+            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, 8);
+        }
     }
 
     private void updateGround() {

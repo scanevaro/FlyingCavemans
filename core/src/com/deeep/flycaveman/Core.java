@@ -93,4 +93,8 @@ public class Core implements ApplicationListener {
         return pixels;
     }
 
+    public static float boxUnitToPixels(float units) {
+        return units * 35f;
+    }
+
 }
