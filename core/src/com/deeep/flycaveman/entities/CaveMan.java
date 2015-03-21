@@ -120,7 +120,7 @@ public class CaveMan implements Entity {
 
     public void draw(Batch batch) {
         if (stateTimeSprings > 0)
-            sprite.setRegion(Assets.cavemanSprings);
+            sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
         else if (wingsPowerup)
             sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
 
