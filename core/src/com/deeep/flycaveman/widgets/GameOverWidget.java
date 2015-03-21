@@ -217,7 +217,7 @@ public class GameOverWidget {
                        int coinsPicked) {
         distanceLabel.setText(distance);
         maxHeightLabel.setText("Max Height: " + String.valueOf(maxHeight).substring(0, 2));
-        flappingLabel.setText("Flapping Distance: " + String.valueOf(flapDistance).substring(0, 2));
+        flappingLabel.setText("Distance While Flapping: " + String.valueOf(flapDistance).substring(0, 2));
         entitiesLabel.setText("Entities Smacked: " + String.valueOf(smacked));
         powerupsLabel.setText("PowerUps Picked Up: " + String.valueOf(powerUpsPicked));
         coinsLabel.setText("Coins Picked Up: " + String.valueOf(coinsPicked));
