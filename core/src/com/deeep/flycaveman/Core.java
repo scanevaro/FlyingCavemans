@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.utils.Timer;
+import com.deeep.flycaveman.net.GJAPI;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
 import com.deeep.flycaveman.widgets.ActorAccessor;
@@ -18,15 +20,31 @@ public class Core implements ApplicationListener {
     public static final float BOX2D_VIRTUAL_WIDTH = VIRTUAL_WIDTH / /*30*/35;
     public static final float BOX2D_VIRTUAL_HEIGHT = VIRTUAL_HEIGHT / /*30*/35;
 
+    public static final int gameID = 55294;
+
     public static boolean dialogOpen;
 
     private SpriteBatch spriteBatch;
     public AbstractScreen screen;
     public Dialogs dialogs;
+    public GJAPI gjapi;
+    private Timer timer;
 
     @Override
     public void create() {
         new Assets().load();
+
+        gjapi = new GJAPI("50cf34be8b7b46dd5075db924bef44e2", Core.gameID);
+
+        timer = new Timer();
+        timer.scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                if (gjapi.isActive()) {
+                    gjapi.pingSession();
+                }
+            }
+        }, 30, 30);
 
         /** Catch hardware back button*/
         Gdx.input.setCatchBackKey(true);

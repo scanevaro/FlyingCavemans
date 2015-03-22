@@ -1,5 +1,6 @@
 package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -14,6 +15,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.CaveMan;
+import com.deeep.flycaveman.input.TextInput;
 import com.deeep.flycaveman.screens.GameScreen;
 
 /**
@@ -27,6 +29,7 @@ public class GameOverWidget {
     private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel,
             maxDistance, colectedCoins;
     private GameScreen screen;
+    private boolean name;
 
     public GameOverWidget(final Core game, ShopWidget shopWidget) {
         this.game = game;
@@ -38,6 +41,8 @@ public class GameOverWidget {
         setBottomRightWindow();
 
         setLeftWindow();
+
+        name = true;
     }
 
     private void setTopRightWindow() {
@@ -174,6 +179,11 @@ public class GameOverWidget {
     }
 
     public void setVisible(boolean flag) {
+        if (name && !game.gjapi.isActive()) {
+            Gdx.input.getTextInput(new TextInput(game.gjapi), "Enter your Username", "username", "hint");
+            name = false;
+        }
+
         if (flag) {
             bottomRightWindow.setVisible(flag);
             topRightWindow.setVisible(flag);
