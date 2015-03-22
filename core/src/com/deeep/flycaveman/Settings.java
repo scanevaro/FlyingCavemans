@@ -7,7 +7,7 @@ public class Settings {
     public static boolean soundEnabled = true;
     public static int highscoreA = 0;
     public static int highscoreB = 0;
-    public final static String file = ".duckhunt";
+    public final static String file = ".flyingcavemen";
 
     public static void load() {
         try {
