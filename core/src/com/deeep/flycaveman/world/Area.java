@@ -93,7 +93,7 @@ public class Area {
         soundManager.silence();
         firstStart = true;
         currentMusicSoundLevel = 1;
-        currentArea = AREA.JUNGLE;
+        currentArea = AREA.DESSERT;
         nextArea = getRandomArea(currentArea);
         //currentMusic = soundManager.getMusic("Theme");
         currentMusic = soundManager.getMusic(currentArea.music);

@@ -58,7 +58,6 @@ public class GameInputProcessor implements InputProcessor {
                 Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
                 localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
-                System.out.println(world.caveman.sprite.getHeight());
                 localCords = Core.pixelsToBoxUnit(localCords);
                 world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
@@ -106,6 +105,7 @@ public class GameInputProcessor implements InputProcessor {
                 Vector2 difference = localCords.sub(originalPos);
                 world.caveman.body.setLinearVelocity(difference.x * -2 * 5, difference.y * -4 * 5);
                 gameState = FLYING;
+                flying  = true;
                 break;
         }
         return false;

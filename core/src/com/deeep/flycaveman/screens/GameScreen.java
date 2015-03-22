@@ -175,6 +175,7 @@ public class GameScreen extends AbstractScreen {
     public void render(float delta) {
 
         if (GameInputProcessor.flying) {
+
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
@@ -183,11 +184,13 @@ public class GameScreen extends AbstractScreen {
             coinsWidget.fadeIn();
         }
 
+        updateGameCam();
+
         /**Updates*/
         if (!Core.dialogOpen) {
             gameInputProcessor.update(delta);
             updateUI();
-            updateGameCam();
+
             world.update(delta);
             shopWidget.update();
             gameOverWidget.update(distanceLabel.getText().toString(), maxHeight, world.caveman.flapDistance,
@@ -223,16 +226,18 @@ public class GameScreen extends AbstractScreen {
 
     private void updateGameCam() {
         if (GameInputProcessor.flying) {
-            if (world.caveman.body.getPosition().x > world.caveman.startPosX)
-                if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
-                    gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, world.caveman.body.getPosition().y + 0.5f, 0);
-                    /**Update Start screen camera*/
-                    world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (world.caveman.body.getPosition().y + 2.5f) * 35, 0);
-                } else {
-                    gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
-                    /**Update Start screen camera*/
-                    world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (Core.VIRTUAL_HEIGHT / 2), 0);
-                }
+            System.out.println("flyfly");
+            if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
+                System.out.println("one");
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, world.caveman.body.getPosition().y + 0.5f, 0);
+                /**Update Start screen camera*/
+                world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (world.caveman.body.getPosition().y + 2.5f) * 35, 0);
+            } else {
+                System.out.println("two");
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
+                /**Update Start screen camera*/
+                world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (Core.VIRTUAL_HEIGHT / 2), 0);
+            }
         }
 
         if (world.caveman.body.getPosition().y > (Core.BOX2D_VIRTUAL_HEIGHT / 2f)) {
