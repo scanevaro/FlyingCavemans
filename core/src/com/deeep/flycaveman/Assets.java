@@ -45,7 +45,7 @@ public class Assets {
             starBright, buyButtonDisabled;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings;
 
-    public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3;  //todo put this in an enum or so
+    public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
     public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3;  //todo put this in an enum or so
@@ -238,6 +238,7 @@ public class Assets {
         dessert_layer_1 = items.findRegion("desert_layer", 1);
         dessert_layer_2 = items.findRegion("desert_layer", 2);
         dessert_layer_3 = items.findRegion("desert_layer", 3);
+        dessert_layer_4 = items.findRegion("desert_layer", 4);
 
         ocean_layer_1 = items.findRegion("ocean_layer", 1);
         ocean_layer_2 = items.findRegion("ocean_layer", 2);

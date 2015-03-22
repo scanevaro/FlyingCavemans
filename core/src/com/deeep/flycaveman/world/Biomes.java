@@ -71,7 +71,8 @@ public class Biomes {
         dessertBackground.layer_1 = Assets.dessert_layer_1;
         dessertBackground.layer_2 = Assets.dessert_layer_2;
         dessertBackground.layer_3 = Assets.dessert_layer_3;
-        dessertBackground.layer_4 = Assets.dessert_layer_3;
+        dessertBackground.layer_4 = Assets.dessert_layer_4;
+        dessertBackground.layerAmount = 4;
 
         dessertJungleBackground = new Background(DESSERT_JUNGLE);
         dessertJungleBackground.layer_1 = Assets.dessert_jungle_layer_1;
@@ -177,7 +178,7 @@ public class Biomes {
     }
 
     public void draw(SpriteBatch spriteBatch, int layer) {
-        if(layer >= layers.size)
+        if (layer >= layers.size)
             return;
         for (BiomeLayer biomeLayer : layers.get(layer)) {
             if (biomeLayer.getLayer() <= integerBackgroundHashMap.get(biomeLayer.getTheme()).layerAmount)
