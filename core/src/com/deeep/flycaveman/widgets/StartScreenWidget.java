@@ -1,5 +1,7 @@
 package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Net;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -56,6 +58,8 @@ public class StartScreenWidget {
                 posY -= 28;
             }
         }
+
+        getScores();
     }
 
     public void draw(Batch batch) {
@@ -82,5 +86,57 @@ public class StartScreenWidget {
             label.act(delta);
 
         touchNHold.act(delta);
+    }
+
+    private void getScores() {
+        Net.HttpRequest requestBests = new Net.HttpRequest("GET");
+        requestBests.setUrl("http://dreamlo.com/lb/55100e6a6e51b6057c1a1828/pipe/5");
+        Gdx.net.sendHttpRequest(requestBests, new Net.HttpResponseListener() {
+            @Override
+            public void handleHttpResponse(Net.HttpResponse httpResponse) {
+                String string = new String(httpResponse.getResult());
+                String scores[] = string.split("\n");
+
+                if (scores.length > 0)
+                    for (int i = 0; i < scores.length; i++) {
+                        String score[] = scores[i].split("\\|");
+
+                        leaderboardsItems[i].setText(String.valueOf(Integer.valueOf(score[score.length - 1]) + 1) + ")" + score[0] + ": " + score[1]);
+                    }
+            }
+
+            @Override
+            public void failed(Throwable t) {
+            }
+
+            @Override
+            public void cancelled() {
+            }
+        });
+
+        Net.HttpRequest requestBest = new Net.HttpRequest("GET");
+        requestBest.setUrl("http://dreamlo.com/lb/55100e6a6e51b6057c1a1828/pipe-get/Seba");
+        Gdx.net.sendHttpRequest(requestBest, new Net.HttpResponseListener() {
+            @Override
+            public void handleHttpResponse(Net.HttpResponse httpResponse) {
+                String string = new String(httpResponse.getResult());
+                String bests[] = string.split("\n");
+
+                if (bests.length > 0)
+                    for (int x = 0; x < bests.length; x++) {
+                        String best[] = bests[0].split("\\|");
+
+                        leaderboardsItems[5].setText(String.valueOf(Integer.valueOf(best[best.length - 1]) + 1) + ")ME: " + best[1]);
+                    }
+            }
+
+            @Override
+            public void failed(Throwable t) {
+            }
+
+            @Override
+            public void cancelled() {
+            }
+        });
     }
 }

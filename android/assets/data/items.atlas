@@ -64,8 +64,8 @@ button
   rotate: false
   xy: 1432, 3
   size: 254, 126
-  split: 26, 28, 24, 29
-  pad: 20, 24, 25, 24
+  split: 34, 37, 24, 38
+  pad: 22, 21, 12, 18
   orig: 254, 126
   offset: 0, 0
   index: -1
@@ -123,6 +123,13 @@ cloud3
   xy: 1432, 131
   size: 575, 169
   orig: 575, 169
+  offset: 0, 0
+  index: -1
+cursor
+  rotate: false
+  xy: 2014, 1994
+  size: 3, 3
+  orig: 3, 3
   offset: 0, 0
   index: -1
 desert_jungle
@@ -195,6 +202,13 @@ scorpion2
   orig: 713, 504
   offset: 0, 0
   index: -1
+selection
+  rotate: false
+  xy: 2014, 1991
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
 smallEgg
   rotate: false
   xy: 262, 8
@@ -245,6 +259,13 @@ staminahand
   orig: 71, 56
   offset: 0, 0
   index: -1
+textfield
+  rotate: false
+  xy: 2014, 1778
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
 tiredface
   rotate: false
   xy: 1924, 1134
@@ -261,7 +282,7 @@ vodka
   index: -1
 white
   rotate: false
-  xy: 2014, 1996
+  xy: 2014, 1988
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -325,8 +346,8 @@ dialog
   rotate: false
   xy: 2, 2
   size: 511, 256
-  split: 28, 69, 35, 61
-  pad: 0, 0, 84, 0
+  split: 107, 163, 49, 60
+  pad: -1, -1, 79, 0
   orig: 511, 256
   offset: 0, 0
   index: -1
@@ -334,7 +355,7 @@ dialog2
   rotate: false
   xy: 2, 2
   size: 511, 256
-  split: 28, 69, 35, 61
+  split: 107, 163, 49, 60
   pad: 0, 0, 0, 0
   orig: 511, 256
   offset: 0, 0
@@ -1107,13 +1128,6 @@ dropUp
   orig: 305, 307
   offset: 0, 0
   index: -1
-flapUp
-  rotate: false
-  xy: 869, 1402
-  size: 305, 307
-  orig: 305, 307
-  offset: 0, 0
-  index: -1
 home
   rotate: false
   xy: 237, 1711
@@ -1144,168 +1158,168 @@ shop
   index: -1
 skeleton-flailing-0
   rotate: false
-  xy: 1176, 1361
+  xy: 869, 1361
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-30
   rotate: false
-  xy: 1176, 1361
+  xy: 869, 1361
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-1
   rotate: false
-  xy: 1487, 1361
+  xy: 1180, 1361
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-10
   rotate: false
-  xy: 624, 702
+  xy: 313, 702
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-11
   rotate: false
-  xy: 935, 661
+  xy: 624, 661
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-12
   rotate: false
-  xy: 1246, 661
+  xy: 935, 661
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-13
   rotate: false
-  xy: 1557, 661
+  xy: 1246, 661
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-14
   rotate: false
-  xy: 2, 358
+  xy: 1557, 661
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-15
   rotate: false
-  xy: 313, 352
+  xy: 2, 358
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-16
   rotate: false
-  xy: 624, 352
+  xy: 313, 352
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-17
   rotate: false
-  xy: 935, 311
+  xy: 624, 311
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-18
   rotate: false
-  xy: 1246, 311
+  xy: 935, 311
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-19
   rotate: false
-  xy: 1557, 311
+  xy: 1246, 311
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-2
   rotate: false
-  xy: 2, 1058
+  xy: 1491, 1361
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-20
   rotate: false
-  xy: 2, 8
+  xy: 1557, 311
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-21
   rotate: false
-  xy: 313, 2
+  xy: 2, 8
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-22
   rotate: false
-  xy: 624, 2
+  xy: 313, 2
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-3
   rotate: false
-  xy: 313, 1052
+  xy: 2, 1058
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-4
   rotate: false
-  xy: 624, 1052
+  xy: 313, 1052
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-5
   rotate: false
-  xy: 935, 1011
+  xy: 624, 1011
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-6
   rotate: false
-  xy: 1246, 1011
+  xy: 935, 1011
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-7
   rotate: false
-  xy: 1557, 1011
+  xy: 1246, 1011
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-8
   rotate: false
-  xy: 2, 708
+  xy: 1557, 1011
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-9
   rotate: false
-  xy: 313, 702
+  xy: 2, 708
   size: 309, 348
   orig: 309, 348
   offset: 0, 0

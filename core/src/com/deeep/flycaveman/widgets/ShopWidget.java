@@ -127,8 +127,44 @@ public class ShopWidget {
             }
         });
         springsButton.setSize(140, 140);
-        springsButton.setPosition(300, shopDialog.getHeight() / 2 - springsButton.getHeight());
+        springsButton.setPosition(50, shopDialog.getHeight() / 2 - springsButton.getHeight() + 50);
         shopDialog.addActor(springsButton);
+
+        ImageButton.ImageButtonStyle magnetStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        magnetStyle.imageUp = new TextureRegionDrawable(Assets.springs);
+        magnetStyle.imageUp.setMinWidth(140);
+        magnetStyle.imageUp.setMinHeight(140);
+        magnetStyle.imageDown = new TextureRegionDrawable(Assets.springs);
+        magnetStyle.imageDown.setMinWidth(140);
+        magnetStyle.imageDown.setMinHeight(140);
+        ImageButton magnetButton = new ImageButton(magnetStyle);
+        magnetButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                show("magnetDialog");
+            }
+        });
+        magnetButton.setSize(140, 140);
+        magnetButton.setPosition(250, shopDialog.getHeight() / 2 - magnetButton.getHeight() + 50);
+        shopDialog.addActor(magnetButton);
+
+        ImageButton.ImageButtonStyle clenchStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        clenchStyle.imageUp = new TextureRegionDrawable(Assets.springs);
+        clenchStyle.imageUp.setMinWidth(140);
+        clenchStyle.imageUp.setMinHeight(140);
+        clenchStyle.imageDown = new TextureRegionDrawable(Assets.springs);
+        clenchStyle.imageDown.setMinWidth(140);
+        clenchStyle.imageDown.setMinHeight(140);
+        ImageButton clenchButton = new ImageButton(clenchStyle);
+        clenchButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                show("clenchDialog");
+            }
+        });
+        clenchButton.setSize(140, 140);
+        clenchButton.setPosition(350, shopDialog.getHeight() / 2 - clenchButton.getHeight() + 50);
+        shopDialog.addActor(clenchButton);
 
         game.screen.stage.addActor(shopDialog);
 

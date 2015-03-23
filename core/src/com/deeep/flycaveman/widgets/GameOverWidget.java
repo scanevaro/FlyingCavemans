@@ -1,6 +1,7 @@
 package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Net;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -15,7 +16,6 @@ import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.CaveMan;
-import com.deeep.flycaveman.input.TextInput;
 import com.deeep.flycaveman.screens.GameScreen;
 
 /**
@@ -29,7 +29,8 @@ public class GameOverWidget {
     private Label statsLabel, distanceLabel, maxHeightLabel, flappingLabel, entitiesLabel, powerupsLabel, coinsLabel,
             maxDistance, colectedCoins;
     private GameScreen screen;
-    private boolean name;
+    private boolean sendScore;
+    private String name;
 
     public GameOverWidget(final Core game, ShopWidget shopWidget) {
         this.game = game;
@@ -42,7 +43,7 @@ public class GameOverWidget {
 
         setLeftWindow();
 
-        name = true;
+        sendScore = true;
     }
 
     private void setTopRightWindow() {
@@ -179,9 +180,29 @@ public class GameOverWidget {
     }
 
     public void setVisible(boolean flag) {
-        if (name && !game.gjapi.isActive()) {
-            Gdx.input.getTextInput(new TextInput(game.gjapi), "Enter your Username", "username", "hint");
-            name = false;
+//        if (sendScore && !game.gjapi.isActive()) {
+//            Gdx.input.getTextInput(new TextInput(game.gjapi), "Enter your Username", "username", "hint");
+//            sendScore = false;
+//        }
+        if (sendScore && name != null) {
+            Net.HttpRequest request = new Net.HttpRequest("GET");
+            request.setUrl("http://dreamlo.com/lb/j06iUPGoVUSeIxcHpQ5wkwBXZsEVad2kuUMdRVXaqKiA/add/" + name + "/"
+                    + distanceLabel.getText().toString());
+            Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
+                @Override
+                public void handleHttpResponse(Net.HttpResponse httpResponse) {
+                }
+
+                @Override
+                public void failed(Throwable t) {
+                }
+
+                @Override
+                public void cancelled() {
+                }
+            });
+
+            sendScore = false;
         }
 
         if (flag) {
@@ -223,8 +244,10 @@ public class GameOverWidget {
         }
     }
 
-    public void update(String distance, float maxHeight, float flapDistance, int smacked, int powerUpsPicked,
+    public void update(String name, String distance, float maxHeight, float flapDistance, int smacked, int powerUpsPicked,
                        int coinsPicked) {
+        this.name = name;
+
         distanceLabel.setText(distance);
         maxHeightLabel.setText("Max Height: " + String.valueOf(maxHeight).substring(0, 2));
         flappingLabel.setText("Distance While Flapping: " + String.valueOf(flapDistance).substring(0, 2));
