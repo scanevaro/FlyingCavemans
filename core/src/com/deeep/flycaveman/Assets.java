@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import javax.xml.soap.Text;
 import java.util.Random;
 
 /**
@@ -44,7 +45,7 @@ public class Assets {
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
             starBright, buyButtonDisabled;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings;
-
+    public static TextureRegion tree;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
@@ -185,6 +186,7 @@ public class Assets {
         buyButtonDisabled = items.findRegion("buyButtonDisabled");
         starBlack = items.findRegion("starDark");
         starBright = items.findRegion("starShine");
+        tree = items.findRegion("tree");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");

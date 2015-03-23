@@ -56,9 +56,11 @@ public class GameContactListener implements ContactListener {
                 Assets.hitEntity1.play();
 
             } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {
-                GameInputProcessor.touchingGround = true;
-                GameInputProcessor.flying = false;
-                force = -1;
+                if (!GameInputProcessor.catapulting) {
+                    GameInputProcessor.touchingGround = true;
+                    GameInputProcessor.flying = false;
+                    force = -1;
+                }
             } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
                 PowerUp powerUp = null;
                 if (fixtureA.getUserData() instanceof PowerUp) {
@@ -134,14 +136,16 @@ public class GameContactListener implements ContactListener {
 
         } else if ((fixtureA.getUserData() instanceof CaveMan && fixtureB.getUserData() instanceof Ground)
                 || (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
+            if (!GameInputProcessor.catapulting) {
 
-            if (world.caveman.springs > 0) {
-                world.caveman.useSpring();
-                return;
+                if (world.caveman.springs > 0) {
+                    world.caveman.useSpring();
+                    return;
+                }
+
+                Assets.hitGround1Sound.play();
+                Assets.hitGround();
             }
-
-            Assets.hitGround1Sound.play();
-            Assets.hitGround();
         }
     }
 

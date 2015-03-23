@@ -75,6 +75,7 @@ public class World extends Actor implements Disposable {
     public PowerUpSpawner powerUpSpawner;
     public CoinSpawner coinSpawner;
     private StartScreenWidget startScreen;
+    private Tree tree;
 
     public World(Stage worldStage, Stage stage, boolean debug) {
         this.worldStage = worldStage;
@@ -108,7 +109,9 @@ public class World extends Actor implements Disposable {
 
         startScreen = new StartScreenWidget();
 
+        entities.add(tree = new Tree(0, 0));
         entities.add(caveman = new CaveMan(this));
+
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 

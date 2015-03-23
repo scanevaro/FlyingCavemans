@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -36,6 +37,7 @@ public class GameScreen extends AbstractScreen {
     public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
     public Image darkness;
+    ShapeRenderer shapeRenderer = new ShapeRenderer();
     /**
      * Widgets
      */
@@ -226,14 +228,11 @@ public class GameScreen extends AbstractScreen {
 
     private void updateGameCam() {
         if (GameInputProcessor.flying) {
-            System.out.println("flyfly");
             if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
-                System.out.println("one");
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, world.caveman.body.getPosition().y + 0.5f, 0);
                 /**Update Start screen camera*/
                 world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (world.caveman.body.getPosition().y + 2.5f) * 35, 0);
             } else {
-                System.out.println("two");
                 gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
                 /**Update Start screen camera*/
                 world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (Core.VIRTUAL_HEIGHT / 2), 0);

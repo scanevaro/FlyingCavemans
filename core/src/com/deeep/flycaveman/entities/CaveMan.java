@@ -17,8 +17,8 @@ import com.deeep.flycaveman.input.GameInputProcessor;
  */
 public class CaveMan implements Entity {
     public boolean cheats = false;
-    public final float startPosX = 11.1f;
-    public final float startPosY = 6.5f;
+    public final float startPosX = 12.6f;
+    public final float startPosY = 4.0f;
     private final float restitution = 0.1f;
 
     public static final int STATE_HAPPY = 0;

@@ -26,6 +26,7 @@ public class GameInputProcessor implements InputProcessor {
     //private boolean addForce;
     public static boolean flying;
     public static boolean touchingGround;
+    public static boolean catapulting = false;
     private Vector2 originalPos;
     private float gravity;
     //private float force;
@@ -59,6 +60,7 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
+                localCords.y = Math.max(localCords.y, 1.25f);
                 world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
                 break;
@@ -76,6 +78,7 @@ public class GameInputProcessor implements InputProcessor {
         switch (gameState) {
             case IDLE:
                 gameState = CATAPULTSET;
+                catapulting = true;
                 break;
             case GAMEOVER:
                 //TODO
@@ -102,10 +105,12 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
+                localCords.y = Math.max(localCords.y,1.25f);
                 Vector2 difference = localCords.sub(originalPos);
                 world.caveman.body.setLinearVelocity(difference.x * -2 * 5, difference.y * -4 * 5);
                 gameState = FLYING;
                 flying  = true;
+                catapulting = false;
                 break;
         }
         return false;
