@@ -10,9 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -46,6 +44,8 @@ public class GameScreen extends AbstractScreen {
     private StaminaBar staminaBar;
     private ExpressionsWidget expressions;
     private CoinsWidget coinsWidget;
+    private Dialog nameDialog;
+    private TextField textArea;
     /**
      * World
      */
@@ -54,6 +54,7 @@ public class GameScreen extends AbstractScreen {
     private float maxHeight;
     public static boolean retry;
     private static String name;
+    private String distance;
 
     public GameScreen(Core game) {
         this.game = game;
@@ -78,6 +79,7 @@ public class GameScreen extends AbstractScreen {
         setInputProcessor();
         prepareShopDialog();
         prepareGameOverDialog();
+        prepareNameDialog();
 
         expressions.setCaveman(world.caveman);
 
@@ -172,6 +174,31 @@ public class GameScreen extends AbstractScreen {
         gameOverWidget = new GameOverWidget(game, shopWidget);
     }
 
+    private void prepareNameDialog() {
+        if (name != null) return;
+
+        nameDialog = new Dialog("Insert your name", Assets.skin.get("dialog", Window.WindowStyle.class)) {
+            protected void result(Object object) {
+                if (!textArea.getText().equals(""))
+                    name = textArea.getText();
+                else name = "Anoimous";
+            }
+        };
+        nameDialog.setSize(350, 200);
+
+        textArea = new TextField("", Assets.skin.get("default2", TextField.TextFieldStyle.class));
+        textArea.setSize(200, 64);
+        textArea.setPosition(nameDialog.getWidth() / 2, nameDialog.getHeight() / 2);
+        nameDialog.addActor(textArea);
+
+        TextButton yesButton = new TextButton("Accept", Assets.skin);
+        yesButton.setSize(128, 96);
+        nameDialog.getButtonTable().add(yesButton).width(128).height(96);
+        nameDialog.setObject(yesButton, null);
+
+        nameDialog.show(stage);
+    }
+
     @Override
     public void render(float delta) {
 
@@ -192,9 +219,9 @@ public class GameScreen extends AbstractScreen {
             gameInputProcessor.update(delta);
             updateUI();
 
-            world.update(delta);
+            world.update(delta, name);
             shopWidget.update();
-            gameOverWidget.update(name, distanceLabel.getText().toString(), maxHeight, world.caveman.flapDistance,
+            gameOverWidget.update(name, distance, maxHeight, world.caveman.flapDistance,
                     world.caveman.smacked, world.caveman.powerUpsPicked, world.caveman.coinsPicked);
             stage.act();
 
@@ -218,6 +245,7 @@ public class GameScreen extends AbstractScreen {
 
     private void updateUI() {
         //todo make this visible in gameoverscreen
+        distance = String.valueOf((int) (world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3));
         distanceLabel.setText("Distance: " + String.valueOf((int) (world.caveman.body.getPosition().x - Core.BOX2D_VIRTUAL_WIDTH / 3)));
         heightLabel.setText("Height: " + String.valueOf(world.caveman.body.getPosition().y - 1.5f).substring(0, 2));
 

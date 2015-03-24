@@ -213,11 +213,11 @@ public class World extends Actor implements Disposable {
         batch.setProjectionMatrix(stage.getCamera().combined);
     }
 
-    public void update(float delta) {
+    public void update(float delta, String name) {
         leaderCam.update();
         coinSpawner.update(delta, caveman, this);
         gameContactListener.update();
-        startScreen.update(delta);
+        startScreen.update(delta, name);
         updateSky();
         space.update(delta, worldStage.getCamera().position);
         updateGround();

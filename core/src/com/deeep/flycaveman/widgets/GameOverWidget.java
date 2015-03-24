@@ -30,7 +30,7 @@ public class GameOverWidget {
             maxDistance, colectedCoins;
     private GameScreen screen;
     private boolean sendScore;
-    private String name;
+    private String name, distance;
 
     public GameOverWidget(final Core game, ShopWidget shopWidget) {
         this.game = game;
@@ -186,8 +186,7 @@ public class GameOverWidget {
 //        }
         if (sendScore && name != null) {
             Net.HttpRequest request = new Net.HttpRequest("GET");
-            request.setUrl("http://dreamlo.com/lb/j06iUPGoVUSeIxcHpQ5wkwBXZsEVad2kuUMdRVXaqKiA/add/" + name + "/"
-                    + distanceLabel.getText().toString());
+            request.setUrl("http://dreamlo.com/lb/j06iUPGoVUSeIxcHpQ5wkwBXZsEVad2kuUMdRVXaqKiA/add/" + name + "/" + distance);
             Gdx.net.sendHttpRequest(request, new Net.HttpResponseListener() {
                 @Override
                 public void handleHttpResponse(Net.HttpResponse httpResponse) {
@@ -247,8 +246,9 @@ public class GameOverWidget {
     public void update(String name, String distance, float maxHeight, float flapDistance, int smacked, int powerUpsPicked,
                        int coinsPicked) {
         this.name = name;
+        this.distance = distance;
 
-        distanceLabel.setText(distance);
+        distanceLabel.setText("Distance: " + distance);
         maxHeightLabel.setText("Max Height: " + String.valueOf(maxHeight).substring(0, 2));
         flappingLabel.setText("Distance While Flapping: " + String.valueOf(flapDistance).substring(0, 2));
         entitiesLabel.setText("Entities Smacked: " + String.valueOf(smacked));
