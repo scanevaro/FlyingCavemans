@@ -347,7 +347,7 @@ dialog
   xy: 2, 2
   size: 511, 256
   split: 107, 163, 49, 60
-  pad: -1, -1, 79, 0
+  pad: 0, 0, 79, 0
   orig: 511, 256
   offset: 0, 0
   index: -1
