@@ -254,7 +254,6 @@ textfield
   rotate: false
   xy: 2014, 1779
   size: 14, 14
-  split: 3, 3, 3, 3
   orig: 14, 14
   offset: 0, 0
   index: -1
@@ -978,124 +977,61 @@ filter: Nearest,Nearest
 repeat: none
 ocean_layer
   rotate: false
-  xy: 2, 1157
+  xy: 2, 1109
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 3
-skeleton-flailing2-10
+ocean_mountain_slides1
+  rotate: false
+  xy: 2, 1109
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+ocean_layer
   rotate: false
   xy: 2, 387
-  size: 308, 383
-  orig: 308, 383
+  size: 1920, 720
+  orig: 1920, 720
   offset: 0, 0
-  index: -1
-skeleton-flailing2-11
+  index: 4
+ocean_mountain_slides2
   rotate: false
-  xy: 312, 772
-  size: 308, 383
-  orig: 308, 383
+  xy: 2, 387
+  size: 1920, 720
+  orig: 1920, 720
   offset: 0, 0
   index: -1
-skeleton-flailing2-12
-  rotate: false
-  xy: 2, 2
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-13
-  rotate: false
-  xy: 312, 387
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-14
-  rotate: false
-  xy: 622, 772
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-15
+skeleton-flailing2-10
   rotate: false
   xy: 312, 2
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing2-16
-  rotate: false
-  xy: 622, 387
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-17
-  rotate: false
-  xy: 932, 772
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-18
+skeleton-flailing2-11
   rotate: false
   xy: 622, 2
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing2-19
-  rotate: false
-  xy: 932, 387
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-20
-  rotate: false
-  xy: 1242, 772
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-21
+skeleton-flailing2-12
   rotate: false
   xy: 932, 2
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing2-22
-  rotate: false
-  xy: 1242, 387
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-23
-  rotate: false
-  xy: 1552, 772
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-24
+skeleton-flailing2-13
   rotate: false
   xy: 1242, 2
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing2-25
-  rotate: false
-  xy: 1552, 387
-  size: 308, 383
-  orig: 308, 383
-  offset: 0, 0
-  index: -1
-skeleton-flailing2-26
+skeleton-flailing2-14
   rotate: false
   xy: 1552, 2
   size: 308, 383
@@ -1104,7 +1040,7 @@ skeleton-flailing2-26
   index: -1
 skeleton-flailing2-9
   rotate: false
-  xy: 2, 772
+  xy: 2, 2
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
@@ -1115,345 +1051,429 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-dialog1
-  rotate: false
-  xy: 2, 1711
-  size: 233, 300
-  orig: 233, 300
-  offset: 0, 0
-  index: -1
-dropUp
-  rotate: false
-  xy: 562, 1402
-  size: 305, 307
-  orig: 305, 307
-  offset: 0, 0
-  index: -1
-home
-  rotate: false
-  xy: 237, 1711
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-pause
-  rotate: false
-  xy: 539, 1711
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-restart
-  rotate: false
-  xy: 841, 1711
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-shop
-  rotate: false
-  xy: 1143, 1711
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
 skeleton-flailing-0
   rotate: false
-  xy: 869, 1361
+  xy: 1552, 1577
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-30
   rotate: false
-  xy: 869, 1361
+  xy: 1552, 1577
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-1
   rotate: false
-  xy: 1180, 1361
+  xy: 932, 807
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-10
   rotate: false
-  xy: 313, 702
+  xy: 933, 107
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-11
   rotate: false
-  xy: 624, 661
+  xy: 1244, 142
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-12
   rotate: false
-  xy: 935, 661
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-13
-  rotate: false
-  xy: 1246, 661
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-14
-  rotate: false
-  xy: 1557, 661
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-15
-  rotate: false
-  xy: 2, 358
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-16
-  rotate: false
-  xy: 313, 352
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-17
-  rotate: false
-  xy: 624, 311
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-18
-  rotate: false
-  xy: 935, 311
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-19
-  rotate: false
-  xy: 1246, 311
+  xy: 1555, 177
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-2
   rotate: false
-  xy: 1491, 1361
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-20
-  rotate: false
-  xy: 1557, 311
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-21
-  rotate: false
-  xy: 2, 8
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-22
-  rotate: false
-  xy: 313, 2
+  xy: 932, 457
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-3
   rotate: false
-  xy: 2, 1058
+  xy: 622, 37
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-4
   rotate: false
-  xy: 313, 1052
+  xy: 1242, 1192
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-5
   rotate: false
-  xy: 624, 1011
+  xy: 1553, 1227
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-6
   rotate: false
-  xy: 935, 1011
+  xy: 1243, 842
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-7
   rotate: false
-  xy: 1246, 1011
+  xy: 1243, 492
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-8
   rotate: false
-  xy: 1557, 1011
+  xy: 1554, 877
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
 skeleton-flailing-9
   rotate: false
-  xy: 2, 708
+  xy: 1554, 527
   size: 309, 348
   orig: 309, 348
   offset: 0, 0
   index: -1
-spinach
+skeleton-flailing2-15
   rotate: false
-  xy: 304, 1408
-  size: 256, 301
-  orig: 256, 301
+  xy: 2, 1542
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-starDark
+skeleton-flailing2-16
   rotate: false
-  xy: 1445, 1711
-  size: 300, 300
-  orig: 300, 300
+  xy: 2, 1157
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-starShine
+skeleton-flailing2-17
   rotate: false
-  xy: 2, 1409
-  size: 300, 300
-  orig: 300, 300
+  xy: 312, 1542
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-tree
+skeleton-flailing2-18
   rotate: false
-  xy: 1747, 1711
-  size: 267, 300
-  orig: 267, 300
+  xy: 2, 772
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-
-items12.png
-size: 1024,2048
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-carnivore1
+skeleton-flailing2-19
   rotate: false
-  xy: 623, 803
-  size: 265, 352
-  orig: 265, 352
+  xy: 312, 1157
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-carnivore2
+skeleton-flailing2-20
   rotate: false
-  xy: 624, 449
-  size: 265, 352
-  orig: 265, 352
+  xy: 622, 1542
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing-23
+skeleton-flailing2-21
   rotate: false
-  xy: 622, 1507
-  size: 309, 348
-  orig: 309, 348
+  xy: 2, 387
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing-24
+skeleton-flailing2-22
+  rotate: false
+  xy: 312, 772
+  size: 308, 383
+  orig: 308, 383
+  offset: 0, 0
+  index: -1
+skeleton-flailing2-23
   rotate: false
   xy: 622, 1157
-  size: 309, 348
-  orig: 309, 348
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing-25
+skeleton-flailing2-24
   rotate: false
-  xy: 2, 352
-  size: 309, 348
-  orig: 309, 348
+  xy: 932, 1542
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing-26
+skeleton-flailing2-25
   rotate: false
   xy: 2, 2
-  size: 309, 348
-  orig: 309, 348
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
-skeleton-flailing-27
+skeleton-flailing2-26
   rotate: false
-  xy: 312, 737
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-28
-  rotate: false
-  xy: 313, 387
-  size: 309, 348
-  orig: 309, 348
-  offset: 0, 0
-  index: -1
-skeleton-flailing-29
-  rotate: false
-  xy: 313, 37
-  size: 309, 348
-  orig: 309, 348
+  xy: 312, 387
+  size: 308, 383
+  orig: 308, 383
   offset: 0, 0
   index: -1
 skeleton-flailing2-27
   rotate: false
-  xy: 2, 1472
+  xy: 622, 772
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
 skeleton-flailing2-28
   rotate: false
-  xy: 2, 1087
+  xy: 932, 1157
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
 skeleton-flailing2-29
   rotate: false
-  xy: 312, 1472
+  xy: 1242, 1542
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
 skeleton-flailing2-30
   rotate: false
-  xy: 2, 702
+  xy: 312, 2
   size: 308, 383
   orig: 308, 383
   offset: 0, 0
   index: -1
 skeleton-flailing2-31
   rotate: false
-  xy: 312, 1087
+  xy: 622, 387
   size: 308, 383
   orig: 308, 383
+  offset: 0, 0
+  index: -1
+
+items12.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+carnivore1
+  rotate: false
+  xy: 935, 952
+  size: 265, 352
+  orig: 265, 352
+  offset: 0, 0
+  index: -1
+carnivore2
+  rotate: false
+  xy: 1246, 1302
+  size: 265, 352
+  orig: 265, 352
+  offset: 0, 0
+  index: -1
+dialog1
+  rotate: false
+  xy: 1771, 1395
+  size: 233, 300
+  orig: 233, 300
+  offset: 0, 0
+  index: -1
+dropUp
+  rotate: false
+  xy: 1557, 1697
+  size: 305, 307
+  orig: 305, 307
+  offset: 0, 0
+  index: -1
+home
+  rotate: false
+  xy: 624, 304
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 935, 650
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+restart
+  rotate: false
+  xy: 1202, 1000
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+shop
+  rotate: false
+  xy: 1237, 698
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+skeleton-flailing-13
+  rotate: false
+  xy: 2, 1656
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-14
+  rotate: false
+  xy: 2, 1306
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-15
+  rotate: false
+  xy: 313, 1656
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-16
+  rotate: false
+  xy: 2, 956
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-17
+  rotate: false
+  xy: 313, 1306
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-18
+  rotate: false
+  xy: 624, 1656
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-19
+  rotate: false
+  xy: 2, 606
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-20
+  rotate: false
+  xy: 313, 956
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-21
+  rotate: false
+  xy: 624, 1306
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-22
+  rotate: false
+  xy: 935, 1656
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-23
+  rotate: false
+  xy: 2, 256
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-24
+  rotate: false
+  xy: 313, 606
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-25
+  rotate: false
+  xy: 624, 956
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-26
+  rotate: false
+  xy: 935, 1306
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-27
+  rotate: false
+  xy: 1246, 1656
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-28
+  rotate: false
+  xy: 313, 256
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+skeleton-flailing-29
+  rotate: false
+  xy: 624, 606
+  size: 309, 348
+  orig: 309, 348
+  offset: 0, 0
+  index: -1
+spinach
+  rotate: false
+  xy: 1513, 1353
+  size: 256, 301
+  orig: 256, 301
+  offset: 0, 0
+  index: -1
+starDark
+  rotate: false
+  xy: 624, 2
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+starShine
+  rotate: false
+  xy: 1237, 396
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+tree
+  rotate: false
+  xy: 1504, 1000
+  size: 267, 300
+  orig: 267, 300
   offset: 0, 0
   index: -1
