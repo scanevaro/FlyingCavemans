@@ -54,7 +54,7 @@ public class StartScreenWidget {
                 leaderboardsItems[i] = new Label("Getting your Best", Assets.skin.get("ownScore", Label.LabelStyle.class));
                 posY -= 8;
                 leaderboardsItems[i].setPosition(-leaderboardsItems[i].getWidth(), posY);
-                leaderboardsItems[i].addAction(Actions.moveTo(64, posY, 0.4f, Interpolation.linear));
+                leaderboardsItems[i].addAction(Actions.moveTo(72, posY, 0.4f, Interpolation.linear));
             } else {
                 leaderboardsItems[i] = new Label("Getting info...", Assets.skin);
                 leaderboardsItems[i].setPosition(-leaderboardsItems[i].getWidth(), posY);
@@ -110,7 +110,6 @@ public class StartScreenWidget {
                         String score[] = scores[i].split("\\|");
 
                         leaderboardsItems[i].setText(String.valueOf(Integer.valueOf(score[score.length - 1]) + 1) + ")" + score[0] + ": " + score[1]);
-                        System.out.println(leaderboardsItems[i].getText());
                     }
             }
 
