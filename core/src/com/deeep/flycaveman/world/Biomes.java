@@ -62,10 +62,18 @@ public class Biomes {
         jungleDessertBackground.layer_1 = Assets.jungle_dessert_layer_1;
         jungleDessertBackground.layer_2 = Assets.jungle_dessert_layer_2;
         jungleDessertBackground.layer_3 = Assets.jungle_dessert_layer_3;
-        jungleDessertBackground.layer_4 = Assets.jungle_dessert_layer_3;
-
+        jungleDessertBackground.layer_4 = Assets.jungle_dessert_layer_3;    //TODO
 
         oceanDessertBackground = new Background(OCEAN_DESSERT);
+
+        //TODO
+        oceanDessertBackground.layer_1 = Assets.ocean_layer_1;
+        oceanDessertBackground.layer_2 = Assets.ocean_layer_2;
+        oceanDessertBackground.layer_3 = Assets.ocean_layer_3;
+        oceanDessertBackground.layer_4 = Assets.ocean_layer_4;
+        oceanDessertBackground.layerAmount = 4;
+
+
 
         dessertBackground = new Background(DESSERT);
         dessertBackground.layer_1 = Assets.dessert_layer_1;
@@ -78,9 +86,17 @@ public class Biomes {
         dessertJungleBackground.layer_1 = Assets.dessert_jungle_layer_1;
         dessertJungleBackground.layer_2 = Assets.dessert_jungle_layer_2;
         dessertJungleBackground.layer_3 = Assets.dessert_jungle_layer_3;
-        dessertJungleBackground.layer_4 = Assets.dessert_jungle_layer_3;
+        dessertJungleBackground.layer_4 = Assets.dessert_jungle_layer_3;    //TODO
 
         oceanJungleBackground = new Background(OCEAN_JUNGLE);
+
+        //TODO
+        oceanJungleBackground.layer_1 = Assets.ocean_layer_1;
+        oceanJungleBackground.layer_2 = Assets.ocean_layer_2;
+        oceanJungleBackground.layer_3 = Assets.ocean_layer_3;
+        oceanJungleBackground.layer_4 = Assets.ocean_layer_4;
+        oceanJungleBackground.layerAmount = 4;
+
 
         jungleBackground = new Background(JUNGLE);
         jungleBackground.layer_1 = Assets.jungle_layer_1;
@@ -93,23 +109,34 @@ public class Biomes {
         jungleOceanBackground.layer_1 = Assets.jungle_ocean_layer_1;
         jungleOceanBackground.layer_2 = Assets.jungle_ocean_layer_2;
         jungleOceanBackground.layer_3 = Assets.jungle_ocean_layer_3;
+        jungleOceanBackground.layer_4 = Assets.jungle_ocean_layer_4;
+        jungleOceanBackground.layerAmount = 4;
 
         dessertOceanBackground = new Background(DESSERT_OCEAN);
+        dessertOceanBackground.layer_1 = Assets.dessert_ocean_layer_1;
+        dessertOceanBackground.layer_2 = Assets.dessert_ocean_layer_2;
+        dessertOceanBackground.layer_3 = Assets.dessert_ocean_layer_3;
+        dessertOceanBackground.layer_4 = Assets.dessert_ocean_layer_4;
+        dessertOceanBackground.layerAmount = 4;
 
         oceanBackground = new Background(OCEAN);
         oceanBackground.layer_1 = Assets.ocean_layer_1;
         oceanBackground.layer_2 = Assets.ocean_layer_2;
         oceanBackground.layer_3 = Assets.ocean_layer_3;
+        oceanBackground.layer_4 = Assets.ocean_layer_4;
+        oceanBackground.layerAmount = 4;
 
-        integerBackgroundHashMap.put(JUNGLE_DESSERT, jungleDessertBackground);
-        integerBackgroundHashMap.put(OCEAN_DESSERT, oceanDessertBackground);
-        integerBackgroundHashMap.put(DESSERT, dessertBackground);
-        integerBackgroundHashMap.put(DESSERT_JUNGLE, dessertJungleBackground);
-        integerBackgroundHashMap.put(OCEAN_JUNGLE, oceanJungleBackground);
-        integerBackgroundHashMap.put(JUNGLE, jungleBackground);
-        integerBackgroundHashMap.put(JUNGLE_OCEAN, jungleOceanBackground);
-        integerBackgroundHashMap.put(DESSERT_OCEAN, dessertOceanBackground);
-        integerBackgroundHashMap.put(OCEAN, oceanBackground);
+        //TODO put in a list, ez
+
+        integerBackgroundHashMap.put(JUNGLE_DESSERT,    jungleDessertBackground);
+        integerBackgroundHashMap.put(OCEAN_DESSERT,     oceanDessertBackground);
+        integerBackgroundHashMap.put(DESSERT,           dessertBackground);
+        integerBackgroundHashMap.put(DESSERT_JUNGLE,    dessertJungleBackground);
+        integerBackgroundHashMap.put(OCEAN_JUNGLE,      oceanJungleBackground);
+        integerBackgroundHashMap.put(JUNGLE,            jungleBackground);
+        integerBackgroundHashMap.put(JUNGLE_OCEAN,      jungleOceanBackground);
+        integerBackgroundHashMap.put(DESSERT_OCEAN,     dessertOceanBackground);
+        integerBackgroundHashMap.put(OCEAN,             oceanBackground);
 
         for (int i = 1; i < 4; i++) {
             biomeLayer0.add(new BiomeLayer(4, i - 1, 0.6f));

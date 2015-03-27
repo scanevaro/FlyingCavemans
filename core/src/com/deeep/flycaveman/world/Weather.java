@@ -25,18 +25,18 @@ public class Weather {
         for (int i = 0; i < layers; i++) {
             clouds.add(new Array<Cloud>());
         }
-        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(4), 0.5f));
-        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(4), 0.5f));
-        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(4), 0.5f));
-        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(4), 0.5f));
-        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(4), 0.4f));
-        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(4), 0.4f));
-        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(4), 0.4f));
-        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(4), 0.4f));
-        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(4), 0f));
-        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(4), 0f));
-        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(4), 0f));
-        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(4), 0f));
+        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(3)+1, 0.5f));
+        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(3)+1, 0.5f));
+        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(3)+1, 0.5f));
+        clouds.get(0).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 2,random.nextInt(3)+1, 0.5f));
+        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(3)+1, 0.4f));
+        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(3)+1, 0.4f));
+        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(3)+1, 0.4f));
+        clouds.get(1).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 3,random.nextInt(3)+1, 0.4f));
+        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(3)+1, 0f));
+        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(3)+1, 0f));
+        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(3)+1, 0f));
+        clouds.get(2).add(new Cloud(random.nextFloat() * (Core.BOX2D_VIRTUAL_WIDTH * 2), random.nextFloat() * (backgroundHeight) + backgroundHeight * 2, 4,random.nextInt(3)+1, 0f));
     }
 
 
@@ -71,7 +71,6 @@ public class Weather {
             this.layer = layer;
             this.ratio = ratio;
             this.cloudId = cloudId;
-
         }
 
         public void update(float horizontalX, float horizontalY) {

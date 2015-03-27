@@ -11,7 +11,7 @@ import com.deeep.flycaveman.widgets.SoundManager;
  */
 public class Area {
     public enum AREA {
-        DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "DessertTheme");//"OceanTheme");
+        DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "OceanTheme");//"OceanTheme");
 
         private int biomesCode;
         private String music; // todo make use of FadeableMusic class
@@ -89,6 +89,7 @@ public class Area {
         soundManager.playMusic(soundManager.getMusic("SpaceTheme").getMusicObject(), true);
         soundManager.playMusic(soundManager.getMusic("WindTheme").getMusicObject(), true);
         soundManager.playMusic(soundManager.getMusic("Theme").getMusicObject(), true);
+        soundManager.playMusic(soundManager.getMusic("OceanTheme").getMusicObject(), true);
 
         soundManager.silence();
         firstStart = true;
@@ -111,6 +112,8 @@ public class Area {
 
     public AREA getRandomArea(AREA current) {
         if (current == AREA.DESSERT) {
+            return AREA.OCEAN;
+        } else if (current == AREA.OCEAN) {
             return AREA.JUNGLE;
         } else if (current == AREA.JUNGLE) {
             return AREA.DESSERT;

@@ -49,10 +49,11 @@ public class Assets {
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
-    public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3;  //todo put this in an enum or so
+    public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3, jungle_ocean_layer_4;  //todo put this in an enum or so
     public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2, dessert_jungle_layer_3;  //todo put this in an enum or so
-    public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3;
-    public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3;
+    public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3, ocean_layer_4;
+    public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3, dessert_ocean_layer_4;
+
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1, coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm;
 
@@ -101,6 +102,7 @@ public class Assets {
         assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/Theme.ogg", Music.class);
         assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/OceanTheme.ogg", Music.class);
 
         assetManager.load("data/sounds/coin1.mp3", Sound.class);
         assetManager.load("data/sounds/coin2.mp3", Sound.class);
@@ -245,6 +247,7 @@ public class Assets {
         ocean_layer_1 = items.findRegion("ocean_layer", 1);
         ocean_layer_2 = items.findRegion("ocean_layer", 2);
         ocean_layer_3 = items.findRegion("ocean_layer", 3);
+        ocean_layer_4 = items.findRegion("ocean_layer", 4);
 
         jungle_layer_1 = items.findRegion("jungle_layer", 1);
         jungle_layer_2 = items.findRegion("jungle_layer", 4);
@@ -252,8 +255,9 @@ public class Assets {
         jungle_layer_4 = items.findRegion("jungle_layer", 2);
 
         jungle_ocean_layer_1 = items.findRegion("jungle_ocean", 1);
-        jungle_ocean_layer_2 = items.findRegion("jungle_ocean", 2);
-        jungle_ocean_layer_3 = items.findRegion("jungle_ocean", 3);
+        jungle_ocean_layer_2 = items.findRegion("ocean_layer", 2); //TODO
+        jungle_ocean_layer_3 = items.findRegion("ocean_layer", 3); //TODO
+        jungle_ocean_layer_4 = items.findRegion("ocean_layer", 4); //TODO
 
         jungle_dessert_layer_1 = items.findRegion("jungle_desert");
         jungle_dessert_layer_2 = items.findRegion("desert_layer", 2);
@@ -262,6 +266,11 @@ public class Assets {
         dessert_jungle_layer_1 = items.findRegion("desert_jungle");
         dessert_jungle_layer_2 = items.findRegion("jungle_layer", 2);
         dessert_jungle_layer_3 = items.findRegion("jungle_layer", 3);
+
+        dessert_ocean_layer_1  = items.findRegion("desert_ocean", 1);
+        dessert_ocean_layer_2  = items.findRegion("ocean_layer", 2);
+        dessert_ocean_layer_3  = items.findRegion("ocean_layer", 3);
+        dessert_ocean_layer_4  = items.findRegion("ocean_layer", 4);
 
         button = items.findRegion("button");
 

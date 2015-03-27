@@ -105,11 +105,11 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
-                localCords.y = Math.max(localCords.y,1.25f);
+                localCords.y = Math.max(localCords.y, 1.25f);
                 Vector2 difference = localCords.sub(originalPos);
                 world.caveman.body.setLinearVelocity(difference.x * -2 * 5, difference.y * -4 * 5);
                 gameState = FLYING;
-                flying  = true;
+                flying = true;
                 catapulting = false;
                 break;
         }
@@ -136,6 +136,11 @@ public class GameInputProcessor implements InputProcessor {
         if (keycode == Input.Keys.R) {
             game.setScreen(new GameScreen(game));
             return true;
+        }
+        if (keycode == Input.Keys.NUM_2) {
+            world.caveman.body.setGravityScale(gravity / 2);
+        } else if (keycode == Input.Keys.NUM_4) {
+            world.caveman.body.setGravityScale(gravity / 8);
         }
         if (keycode == Input.Keys.BACK) {
             game.dialogs.update(game.screen);

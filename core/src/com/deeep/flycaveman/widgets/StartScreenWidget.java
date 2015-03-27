@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 
+import java.util.Iterator;
+import java.util.Map;
+
 /**
  * Created by scanevaro on 06/03/2015.
  */
@@ -90,16 +93,19 @@ public class StartScreenWidget {
 
         touchNHold.act(delta);
 
-        getBest(name);
+        //getBest(name);
     }
 
     private void getScores() {
-        Net.HttpRequest requestBests = new Net.HttpRequest("GET");
-        requestBests.setUrl("http://dreamlo.com/lb/55100e6a6e51b6057c1a1828/pipe/5");
+        Net.HttpRequest requestBests = new Net.HttpRequest(Net.HttpMethods.GET);
+        requestBests.setUrl("http:/games/cavemanHighscores.php");
+        //requestBests.setHeader("Access-Control-Allow-Origin", "*");
+
         Gdx.net.sendHttpRequest(requestBests, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
-                String string = new String(httpResponse.getResult());
+                System.out.println(httpResponse);
+                String string = new String(httpResponse.getResultAsString());
                 String scores[] = string.split("\n");
 
                 if (scores.length > 0)
@@ -107,17 +113,29 @@ public class StartScreenWidget {
                         String score[] = scores[i].split("\\|");
 
                         leaderboardsItems[i].setText(String.valueOf(Integer.valueOf(score[score.length - 1]) + 1) + ")" + score[0] + ": " + score[1]);
+                        System.out.println(leaderboardsItems[i].getText());
                     }
             }
 
             @Override
             public void failed(Throwable t) {
+                System.out.println(t);
             }
 
             @Override
             public void cancelled() {
+                System.out.println("Cancel");
             }
         });
+    }
+
+    public static void printMap(Map mp) {
+        Iterator it = mp.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
     }
 
     private void getBest(String name) {
