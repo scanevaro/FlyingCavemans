@@ -12,7 +12,6 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-import javax.xml.soap.Text;
 import java.util.Random;
 
 /**
@@ -43,9 +42,8 @@ public class Assets {
             steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
-            starBright, buyButtonDisabled;
+            starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings;
-    public static TextureRegion tree;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
@@ -77,7 +75,7 @@ public class Assets {
     private static void loadFont() {
         assetManager.load("data/fonts/font26.fnt", BitmapFont.class);
         assetManager.load("data/fonts/font32.fnt", BitmapFont.class);
-        assetManager.load("data/fonts/font24Bold.fnt", BitmapFont.class);
+        assetManager.load("data/fonts/font27Bold.fnt", BitmapFont.class);
     }
 
     private static void loadAtlas() {
@@ -124,7 +122,7 @@ public class Assets {
 
         font32 = assetManager.get("data/fonts/font32.fnt");
         font26 = assetManager.get("data/fonts/font26.fnt");
-        font24Bold = assetManager.get("data/fonts/font24Bold.fnt");
+        font24Bold = assetManager.get("data/fonts/font27Bold.fnt");
 
         skin.add("default-font", font32, BitmapFont.class);
         skin.add("small-font", font26, BitmapFont.class);
@@ -189,6 +187,9 @@ public class Assets {
         starBlack = items.findRegion("starDark");
         starBright = items.findRegion("starShine");
         tree = items.findRegion("tree");
+        mute1Button = items.findRegion("mute1");
+        mute2Button = items.findRegion("mute2");
+        resumeButton = items.findRegion("resume");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");
@@ -267,10 +268,10 @@ public class Assets {
         dessert_jungle_layer_2 = items.findRegion("jungle_layer", 2);
         dessert_jungle_layer_3 = items.findRegion("jungle_layer", 3);
 
-        dessert_ocean_layer_1  = items.findRegion("desert_ocean", 1);
-        dessert_ocean_layer_2  = items.findRegion("ocean_layer", 2);
-        dessert_ocean_layer_3  = items.findRegion("ocean_layer", 3);
-        dessert_ocean_layer_4  = items.findRegion("ocean_layer", 4);
+        dessert_ocean_layer_1 = items.findRegion("desert_ocean", 1);
+        dessert_ocean_layer_2 = items.findRegion("ocean_layer", 2);
+        dessert_ocean_layer_3 = items.findRegion("ocean_layer", 3);
+        dessert_ocean_layer_4 = items.findRegion("ocean_layer", 4);
 
         button = items.findRegion("button");
 

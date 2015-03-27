@@ -118,7 +118,7 @@ public class GameScreen extends AbstractScreen {
         pauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.dialogs.update(game.screen);
+                game.dialogs.update(game);
             }
         });
 
@@ -201,9 +201,7 @@ public class GameScreen extends AbstractScreen {
 
     @Override
     public void render(float delta) {
-
         if (GameInputProcessor.flying) {
-
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             pauseButton.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));

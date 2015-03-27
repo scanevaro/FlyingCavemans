@@ -143,7 +143,7 @@ public class GameInputProcessor implements InputProcessor {
             world.caveman.body.setGravityScale(gravity / 8);
         }
         if (keycode == Input.Keys.BACK) {
-            game.dialogs.update(game.screen);
+            game.dialogs.update(game);
             return true;
         }
         return false;

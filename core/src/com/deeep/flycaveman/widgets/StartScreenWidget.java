@@ -1,5 +1,6 @@
 package com.deeep.flycaveman.widgets;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -10,9 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
-
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Created by scanevaro on 06/03/2015.
@@ -56,7 +54,7 @@ public class StartScreenWidget {
                 leaderboardsItems[i] = new Label("Getting your Best", Assets.skin.get("ownScore", Label.LabelStyle.class));
                 posY -= 8;
                 leaderboardsItems[i].setPosition(-leaderboardsItems[i].getWidth(), posY);
-                leaderboardsItems[i].addAction(Actions.moveTo(64, posY, 0.4f, Interpolation.linear));
+                leaderboardsItems[i].addAction(Actions.moveTo(72, posY, 0.4f, Interpolation.linear));
             } else {
                 leaderboardsItems[i] = new Label("Getting info...", Assets.skin);
                 leaderboardsItems[i].setPosition(-leaderboardsItems[i].getWidth(), posY);
@@ -93,27 +91,25 @@ public class StartScreenWidget {
 
         touchNHold.act(delta);
 
-        //getBest(name);
+        getBest(name);
     }
 
     private void getScores() {
         Net.HttpRequest requestBests = new Net.HttpRequest(Net.HttpMethods.GET);
-        requestBests.setUrl("http:/games/cavemanHighscores.php");
-        //requestBests.setHeader("Access-Control-Allow-Origin", "*");
-
+        if (Gdx.app.getType() == Application.ApplicationType.WebGL)
+            requestBests.setUrl("http:/games/cavemanHighscores.php");
+        else requestBests.setUrl("http://dreamlo.com/lb/55100e6a6e51b6057c1a1828/pipe/5");
         Gdx.net.sendHttpRequest(requestBests, new Net.HttpResponseListener() {
             @Override
             public void handleHttpResponse(Net.HttpResponse httpResponse) {
                 System.out.println(httpResponse);
                 String string = new String(httpResponse.getResultAsString());
                 String scores[] = string.split("\n");
-
                 if (scores.length > 0)
                     for (int i = 0; i < scores.length; i++) {
                         String score[] = scores[i].split("\\|");
 
                         leaderboardsItems[i].setText(String.valueOf(Integer.valueOf(score[score.length - 1]) + 1) + ")" + score[0] + ": " + score[1]);
-                        System.out.println(leaderboardsItems[i].getText());
                     }
             }
 
@@ -129,19 +125,12 @@ public class StartScreenWidget {
         });
     }
 
-    public static void printMap(Map mp) {
-        Iterator it = mp.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-            it.remove(); // avoids a ConcurrentModificationException
-        }
-    }
-
     private void getBest(String name) {
         if (name != null && !name.equals("") && getBest) {
             Net.HttpRequest requestBest = new Net.HttpRequest("GET");
-            requestBest.setUrl("http://dreamlo.com/lb/55100e6a6e51b6057c1a1828/pipe-get/" + name);
+            if (Gdx.app.getType() == Application.ApplicationType.WebGL)
+                requestBest.setUrl("http://deeepgames.com/games/cavemanHighscores.php?name=" + name);
+            else requestBest.setUrl("http://dreamlo.com/lb/55100e6a6e51b6057c1a1828/pipe-get/" + name);
             Gdx.net.sendHttpRequest(requestBest, new Net.HttpResponseListener() {
                 @Override
                 public void handleHttpResponse(Net.HttpResponse httpResponse) {
