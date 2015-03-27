@@ -91,7 +91,8 @@ public class World extends Actor implements Disposable {
         //97 210 260
         skyColor = new Color(100f / 255f, 220f / 255f, 220f / 255f, 1);
         //skyColor = new Color(0.38431372549019607843137254901961f, 0.81568627450980392156862745098039f, 0.85490196078431372549019607843137f, 1);
-        sunColor = new Color(254f / 255f, 76f / 255f, 64f / 255f, 0f);//rgb(254, 76, 64)
+        // sunColor = new Color(254f / 255f, 76f / 255f, 64f / 255f, 0f);//rgb(254, 76, 64) // this is red
+        sunColor = new Color(65f / 255f, 157f / 255f, 217f / 255f, 0f); // this is blue
         spaceColor = new Color(0, 0, 0, 1f);//
         shapeRenderer = new ShapeRenderer();
         space = new Space();
@@ -141,13 +142,13 @@ public class World extends Actor implements Disposable {
         float percentage;
         Color bottomColor = shapeRenderer.getColor();
         Color topColor = shapeRenderer.getColor();
-        if (caveman.body.getPosition().y > 60) {
-            percentage = (caveman.body.getPosition().y - 60) / (30);
+        if (caveman.body.getPosition().y > Area.HALF_SPACE) {
+            percentage = (caveman.body.getPosition().y - Area.HALF_SPACE) / (Area.FULL_SPACE-Area.HALF_SPACE);
             bottomColor = toColor(percentage, sunColor, spaceColor);
             topColor = toColor(Math.min(percentage + 0.4f, 1), sunColor, spaceColor);
             //shapeRenderer.setColor(toColor(percentage, sunColor, spaceColor));
-        } else if (caveman.body.getPosition().y > 30) {
-            percentage = (caveman.body.getPosition().y - 30) / (30);
+        } else if (caveman.body.getPosition().y > Area.BEGIN_SPACE) {
+            percentage = (caveman.body.getPosition().y - Area.BEGIN_SPACE) / (Area.HALF_SPACE-Area.BEGIN_SPACE);
             //shapeRenderer.setColor(toColor(percentage, skyColor, sunColor));
             bottomColor = toColor(percentage, skyColor, sunColor);
             topColor = toColor(Math.min(percentage + 0.4f, 1), skyColor, sunColor);

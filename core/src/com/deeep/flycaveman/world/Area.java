@@ -10,6 +10,9 @@ import com.deeep.flycaveman.widgets.SoundManager;
  * Created by Elmar on 8-2-2015.
  */
 public class Area {
+    public static final int BEGIN_SPACE = 60;
+    public static final int HALF_SPACE = 80;
+    public static final int FULL_SPACE = 120;
     public enum AREA {
         DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "OceanTheme");//"OceanTheme");
 
@@ -178,12 +181,12 @@ public class Area {
         /*
         caveman.y - 40/60. if>1, 1-%fade
          */
-        if (camera.y > 40) {
+        if (camera.y > BEGIN_SPACE) {
             float fadeWind = 0;
             float fadeSpace = 0;
-            if (camera.y < 80) {
-                fadeWind = ((camera.y - 40) / 20);
-                if (camera.y < 60) {
+            if (camera.y < FULL_SPACE) {
+                fadeWind = ((camera.y - BEGIN_SPACE) / (HALF_SPACE - BEGIN_SPACE));
+                if (camera.y < HALF_SPACE) {
                     spaceFade = (Math.max(1 - fadeWind, 0.01f));
                 } else {
                     spaceFade = 0;
