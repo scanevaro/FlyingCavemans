@@ -23,6 +23,11 @@ public class ShopWidget {
     private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton;
     private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen;
 
+    private final int wingsPrice = 75,
+            springsPrice = 50,
+            steroidsPrice = 25,
+            staminaPrice = 15;
+
     public ShopWidget(final Core game) {
         this.screen = (GameScreen) game.screen;
 
@@ -239,7 +244,7 @@ public class ShopWidget {
         coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
         wingsDialog.addActor(coinSprite);
 
-        Label cost = new Label("= 150", Assets.skin);
+        Label cost = new Label("= " + wingsPrice, Assets.skin);
         cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
         wingsDialog.addActor(cost);
     }
@@ -296,7 +301,7 @@ public class ShopWidget {
         coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
         steroidsDialog.addActor(coinSprite);
 
-        Label cost = new Label("= 50", Assets.skin);
+        Label cost = new Label("= " + steroidsPrice, Assets.skin);
         cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
         steroidsDialog.addActor(cost);
     }
@@ -353,7 +358,7 @@ public class ShopWidget {
         coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
         staminaplusDialog.addActor(coinSprite);
 
-        Label cost = new Label("= 30", Assets.skin);
+        Label cost = new Label("= " + staminaPrice, Assets.skin);
         cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
         staminaplusDialog.addActor(cost);
     }
@@ -410,7 +415,7 @@ public class ShopWidget {
         coinSprite.setPosition(wingsDialog.getWidth() / 2, 15);
         springsDialog.addActor(coinSprite);
 
-        Label cost = new Label("= 100", Assets.skin);
+        Label cost = new Label("= " + springsPrice, Assets.skin);
         cost.setPosition(wingsDialog.getWidth() / 2 + 64 + 4, 24);
         springsDialog.addActor(cost);
     }
@@ -492,7 +497,7 @@ public class ShopWidget {
     }
 
     public void update() {
-        if (CaveMan.coins >= 150) {
+        if (CaveMan.coins >= wingsPrice) {
             buyWingsButton.setDisabled(false);
             buyWingsButton.setTouchable(Touchable.enabled);
         } else {
@@ -500,7 +505,7 @@ public class ShopWidget {
             buyWingsButton.setTouchable(Touchable.disabled);
         }
 
-        if (CaveMan.coins >= 100) {
+        if (CaveMan.coins >= springsPrice) {
             buySpringsButton.setDisabled(false);
             buySpringsButton.setTouchable(Touchable.enabled);
         } else {
@@ -508,7 +513,7 @@ public class ShopWidget {
             buySpringsButton.setTouchable(Touchable.disabled);
         }
 
-        if (CaveMan.coins >= 30) {
+        if (CaveMan.coins >= staminaPrice) {
             buyStaminaButton.setDisabled(false);
             buyStaminaButton.setTouchable(Touchable.enabled);
         } else {
@@ -516,7 +521,7 @@ public class ShopWidget {
             buyStaminaButton.setTouchable(Touchable.disabled);
         }
 
-        if (CaveMan.coins >= 50) {
+        if (CaveMan.coins >= steroidsPrice) {
             buySteroidsButton.setDisabled(false);
             buySteroidsButton.setTouchable(Touchable.enabled);
         } else {

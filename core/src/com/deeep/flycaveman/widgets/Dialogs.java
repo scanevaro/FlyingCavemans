@@ -41,7 +41,7 @@ public class Dialogs {
             }
 
             window = new Window("Pause", Assets.skin);
-            window.setSize(480, 275);
+            window.setSize(480, 250);
 
             ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
             retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
