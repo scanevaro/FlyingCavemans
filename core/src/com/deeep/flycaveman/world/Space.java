@@ -37,7 +37,8 @@ public class Space {
         float cavemanX = cameraPos.x - 16;
         float cavemanY = cameraPos.y;
         for (Star star : stars) {
-            if (star.x < GameScreen.gameCamera.position.x-GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) {
+            //star.x += 0.1 * deltaT;
+            if (star.x < GameScreen.gameCamera.position.x - GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) {
                 star.x = cavemanX + (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) * random.nextFloat() + GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth;
                 star.y = cavemanY + random.nextFloat() * GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 4 - (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 2);
             }

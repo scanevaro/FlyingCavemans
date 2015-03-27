@@ -139,30 +139,39 @@ public class World extends Actor implements Disposable {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.setColor(skyColor);
         //
-        float percentage;
+        float percentage = 0;
         Color bottomColor = shapeRenderer.getColor();
         Color topColor = shapeRenderer.getColor();
+        Color color = shapeRenderer.getColor();
         if (caveman.body.getPosition().y > Area.HALF_SPACE) {
-            percentage = (caveman.body.getPosition().y - Area.HALF_SPACE) / (Area.FULL_SPACE-Area.HALF_SPACE);
-            bottomColor = toColor(percentage, sunColor, spaceColor);
-            topColor = toColor(Math.min(percentage + 0.4f, 1), sunColor, spaceColor);
-            //shapeRenderer.setColor(toColor(percentage, sunColor, spaceColor));
-        } else if (caveman.body.getPosition().y > Area.BEGIN_SPACE) {
-            percentage = (caveman.body.getPosition().y - Area.BEGIN_SPACE) / (Area.HALF_SPACE-Area.BEGIN_SPACE);
-            //shapeRenderer.setColor(toColor(percentage, skyColor, sunColor));
-            bottomColor = toColor(percentage, skyColor, sunColor);
-            topColor = toColor(Math.min(percentage + 0.4f, 1), skyColor, sunColor);
+            percentage = (caveman.body.getPosition().y - Area.HALF_SPACE) / (Area.FULL_SPACE - Area.HALF_SPACE);
+            color = toColor(percentage, sunColor, spaceColor);
+        } else if (caveman.body.getPosition().y > Area.BEGIN_SPACE){
+            percentage = (caveman.body.getPosition().y - Area.BEGIN_SPACE) / (Area.HALF_SPACE - Area.BEGIN_SPACE);
+            color = toColor(percentage, skyColor, sunColor);
         }
+        //if (caveman.body.getPosition().y > Area.HALF_SPACE) {
+        //    percentage = (caveman.body.getPosition().y - Area.HALF_SPACE) / (Area.FULL_SPACE - Area.HALF_SPACE);
+        //    bottomColor = toColor(percentage, sunColor, spaceColor);
+        //    topColor = toColor(Math.min(percentage + 0.2f, 1), sunColor, spaceColor);
+        //    //shapeRenderer.setColor(toColor(percentage, sunColor, spaceColor));
+        //} else if (caveman.body.getPosition().y > Area.BEGIN_SPACE) {
+        //    percentage = (caveman.body.getPosition().y - Area.BEGIN_SPACE) / (Area.HALF_SPACE - Area.BEGIN_SPACE);
+        //    //shapeRenderer.setColor(toColor(percentage, skyColor, sunColor));
+        //    bottomColor = toColor(percentage, skyColor, sunColor);
+        //    topColor = toColor(Math.min(percentage + 0.2f, 1), skyColor, sunColor);
+        //}
         //System.out.println(worldStage.getViewport().getCamera().position.x + ", " + worldStage.getCamera().position.y);
         //TODO this
-        shapeRenderer.rect(
-                GameScreen.gameCamera.position.x - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) / 2),
-                GameScreen.gameCamera.position.y - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight) / 2),
-                0, 0,
-                GameScreen.gameCamera.viewportWidth * GameScreen.gameCamera.zoom,
-                GameScreen.gameCamera.viewportHeight * GameScreen.gameCamera.zoom,
-                1, 1, 0,
-                bottomColor, bottomColor, topColor, topColor);/*
+        //shapeRenderer.rect(
+        //        GameScreen.gameCamera.position.x - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) / 2),
+        //        GameScreen.gameCamera.position.y - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight) / 2),
+        //        0, 0,
+        //        GameScreen.gameCamera.viewportWidth * GameScreen.gameCamera.zoom,
+        //        GameScreen.gameCamera.viewportHeight * GameScreen.gameCamera.zoom,
+        //        1, 1, 0,
+        //        bottomColor, bottomColor, topColor, topColor);
+        /*
         shapeRenderer.rect(
                 worldStage.getCamera().position.x - worldStage.getCamera().viewportWidth / 2,
                 worldStage.getCamera().position.y - worldStage.getCamera().viewportHeight / 2,
@@ -172,7 +181,13 @@ public class World extends Actor implements Disposable {
                 1, 1, 0,
                 bottomColor, bottomColor, topColor, topColor);*/
         //shapeRenderer.rect(sky.x, sky.y - 32, Core.BOX2D_VIRTUAL_WIDTH + 32, Core.BOX2D_VIRTUAL_HEIGHT + 32);
-
+        shapeRenderer.setColor(color);
+        shapeRenderer.rect(
+                GameScreen.gameCamera.position.x - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) / 2),
+                GameScreen.gameCamera.position.y - ((GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight) / 2),
+                GameScreen.gameCamera.viewportWidth * GameScreen.gameCamera.zoom,
+                GameScreen.gameCamera.viewportHeight * GameScreen.gameCamera.zoom
+        );
         shapeRenderer.end();
 
         batch.begin();
@@ -251,6 +266,7 @@ public class World extends Actor implements Disposable {
         // -50 * 0.5f
         // -25
         //
+        System.out.println("percentage: " + percentage);
         float tempR = percentage * (cur.r - target.r);
         float tempG = percentage * (cur.g - target.g);
         float tempB = percentage * (cur.b - target.b);
