@@ -138,7 +138,7 @@ public class GameContactListener implements ContactListener {
                 || (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
             if (!GameInputProcessor.catapulting) {
 
-                if (world.caveman.springs > 0) {
+                if (world.caveman.springsJumps > 0) {
                     world.caveman.useSpring();
                     return;
                 }

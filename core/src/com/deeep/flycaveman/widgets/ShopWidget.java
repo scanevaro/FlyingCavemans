@@ -22,9 +22,10 @@ public class ShopWidget {
     private CoinsWidget coinsWidget;
     private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton, buyMagnetButton, buyClenchButton;
     private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen, magnetOpen, clenchOpen;
+    private Image starsWings[], starsSteroids[], starsStamina[], starsSprings[], starsMagnet[], starsClench[];
 
-    private final int wingsPrice = 75,
-            springsPrice = 50,
+    private final int wingsPrice = 25,
+            springsPrice = 35,
             steroidsPrice = 25,
             staminaPrice = 15,
             magnetPrice = 35,
@@ -98,7 +99,7 @@ public class ShopWidget {
             }
         });
         steroidsButton.setSize(140, 140);
-        steroidsButton.setPosition(50 + 15 + 20 + wingsButton.getWidth(), shopDialog.getHeight() / 2 + 38);
+        steroidsButton.setPosition(50 + 15 + 20 + wingsButton.getWidth() + 35, shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(steroidsButton);
 
         ImageButton.ImageButtonStyle staminaplusStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
@@ -116,7 +117,7 @@ public class ShopWidget {
             }
         });
         staminaplusButton.setSize(140, 140);
-        staminaplusButton.setPosition(50 + 15 + 45 + wingsButton.getWidth() + steroidsButton.getWidth(), shopDialog.getHeight() / 2 + 38);
+        staminaplusButton.setPosition(50 + 15 + 45 + wingsButton.getWidth() + steroidsButton.getWidth() + 35 + 35, shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(staminaplusButton);
 
         ImageButton.ImageButtonStyle springsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
@@ -134,7 +135,7 @@ public class ShopWidget {
             }
         });
         springsButton.setSize(140, 140);
-        springsButton.setPosition(50, shopDialog.getHeight() / 2 - springsButton.getHeight() + 35);
+        springsButton.setPosition(50, shopDialog.getHeight() / 2 - springsButton.getHeight() + 25);
         shopDialog.addActor(springsButton);
 
         ImageButton.ImageButtonStyle magnetStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
@@ -152,7 +153,7 @@ public class ShopWidget {
             }
         });
         magnetButton.setSize(140, 140);
-        magnetButton.setPosition(225, shopDialog.getHeight() / 2 - magnetButton.getHeight() + 35);
+        magnetButton.setPosition(225 + 35, shopDialog.getHeight() / 2 - magnetButton.getHeight() + 25);
         shopDialog.addActor(magnetButton);
 
         ImageButton.ImageButtonStyle clenchStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
@@ -170,7 +171,7 @@ public class ShopWidget {
             }
         });
         clenchButton.setSize(140, 140);
-        clenchButton.setPosition(390, shopDialog.getHeight() / 2 - clenchButton.getHeight() + 35);
+        clenchButton.setPosition(390 + 35 + 35, shopDialog.getHeight() / 2 - clenchButton.getHeight() + 25);
         shopDialog.addActor(clenchButton);
 
         game.screen.stage.addActor(shopDialog);
@@ -210,12 +211,12 @@ public class ShopWidget {
         textArea.clearListeners();
         wingsDialog.addActor(textArea);
 
-        Image star[] = new Image[3];
-        star[0] = new Image(Assets.starBlack);
-        star[1] = new Image(Assets.starBlack);
-        star[2] = new Image(Assets.starBlack);
+        starsWings = new Image[3];
+        starsWings[0] = new Image(Assets.starBlack);
+        starsWings[1] = new Image(Assets.starBlack);
+        starsWings[2] = new Image(Assets.starBlack);
         int posX = 70;
-        for (Image staR : star) {
+        for (Image staR : starsWings) {
             staR.setSize(64, 64);
             staR.setPosition(posX, 88);
             posX += 70;
@@ -236,7 +237,7 @@ public class ShopWidget {
         buyWingsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addWings();
+                screen.world.caveman.addWings(wingsPrice);
             }
         });
         buyWingsButton.setSize(160, 96);
@@ -267,12 +268,12 @@ public class ShopWidget {
         textArea.clearListeners();
         steroidsDialog.addActor(textArea);
 
-        Image star[] = new Image[3];
-        star[0] = new Image(Assets.starBlack);
-        star[1] = new Image(Assets.starBlack);
-        star[2] = new Image(Assets.starBlack);
+        starsSteroids = new Image[3];
+        starsSteroids[0] = new Image(Assets.starBlack);
+        starsSteroids[1] = new Image(Assets.starBlack);
+        starsSteroids[2] = new Image(Assets.starBlack);
         int posX = 70;
-        for (Image staR : star) {
+        for (Image staR : starsSteroids) {
             staR.setSize(64, 64);
             staR.setPosition(posX, 88);
             posX += 70;
@@ -324,12 +325,12 @@ public class ShopWidget {
         textArea.clearListeners();
         staminaplusDialog.addActor(textArea);
 
-        Image star[] = new Image[3];
-        star[0] = new Image(Assets.starBlack);
-        star[1] = new Image(Assets.starBlack);
-        star[2] = new Image(Assets.starBlack);
+        starsStamina = new Image[3];
+        starsStamina[0] = new Image(Assets.starBlack);
+        starsStamina[1] = new Image(Assets.starBlack);
+        starsStamina[2] = new Image(Assets.starBlack);
         int posX = 70;
-        for (Image staR : star) {
+        for (Image staR : starsStamina) {
             staR.setSize(64, 64);
             staR.setPosition(posX, 88);
             posX += 70;
@@ -381,12 +382,12 @@ public class ShopWidget {
         textArea.clearListeners();
         springsDialog.addActor(textArea);
 
-        Image star[] = new Image[3];
-        star[0] = new Image(Assets.starBlack);
-        star[1] = new Image(Assets.starBlack);
-        star[2] = new Image(Assets.starBlack);
+        starsSprings = new Image[3];
+        starsSprings[0] = new Image(Assets.starBlack);
+        starsSprings[1] = new Image(Assets.starBlack);
+        starsSprings[2] = new Image(Assets.starBlack);
         int posX = 70;
-        for (Image staR : star) {
+        for (Image staR : starsSprings) {
             staR.setSize(64, 64);
             staR.setPosition(posX, 88);
             posX += 70;
@@ -438,12 +439,12 @@ public class ShopWidget {
         textArea.clearListeners();
         magnetDialog.addActor(textArea);
 
-        Image star[] = new Image[3];
-        star[0] = new Image(Assets.starBlack);
-        star[1] = new Image(Assets.starBlack);
-        star[2] = new Image(Assets.starBlack);
+        starsMagnet = new Image[3];
+        starsMagnet[0] = new Image(Assets.starBlack);
+        starsMagnet[1] = new Image(Assets.starBlack);
+        starsMagnet[2] = new Image(Assets.starBlack);
         int posX = 70;
-        for (Image staR : star) {
+        for (Image staR : starsMagnet) {
             staR.setSize(64, 64);
             staR.setPosition(posX, 88);
             posX += 70;
@@ -495,12 +496,12 @@ public class ShopWidget {
         textArea.clearListeners();
         clenchDialog.addActor(textArea);
 
-        Image star[] = new Image[3];
-        star[0] = new Image(Assets.starBlack);
-        star[1] = new Image(Assets.starBlack);
-        star[2] = new Image(Assets.starBlack);
+        starsClench = new Image[3];
+        starsClench[0] = new Image(Assets.starBlack);
+        starsClench[1] = new Image(Assets.starBlack);
+        starsClench[2] = new Image(Assets.starBlack);
         int posX = 70;
-        for (Image staR : star) {
+        for (Image staR : starsClench) {
             staR.setSize(64, 64);
             staR.setPosition(posX, 88);
             posX += 70;
@@ -659,6 +660,11 @@ public class ShopWidget {
     }
 
     public void update() {
+        updateButtons();
+        updateStars();
+    }
+
+    private void updateButtons() {
         if (CaveMan.coins >= wingsPrice) {
             buyWingsButton.setDisabled(false);
             buyWingsButton.setTouchable(Touchable.enabled);
@@ -701,5 +707,11 @@ public class ShopWidget {
             buyClenchButton.setDisabled(true);
             buyClenchButton.setTouchable(Touchable.disabled);
         }
+    }
+
+    private void updateStars() {
+        if (CaveMan.wings == 1) starsWings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.wings == 2) starsWings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.wings == 3) starsWings[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
     }
 }
