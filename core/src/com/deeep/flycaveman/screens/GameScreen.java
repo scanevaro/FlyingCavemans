@@ -188,7 +188,7 @@ public class GameScreen extends AbstractScreen {
 
         textArea = new TextField("", Assets.skin.get("default2", TextField.TextFieldStyle.class));
         textArea.setSize(200, 64);
-        textArea.setPosition(nameDialog.getWidth() / 2, nameDialog.getHeight() / 2);
+        textArea.setPosition(nameDialog.getWidth() / 2 - 25, nameDialog.getHeight() / 2 + 5);
         nameDialog.addActor(textArea);
 
         TextButton yesButton = new TextButton("Accept", Assets.skin);
