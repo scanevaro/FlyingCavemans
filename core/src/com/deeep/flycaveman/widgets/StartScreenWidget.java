@@ -142,6 +142,8 @@ public class StartScreenWidget {
                             String best[] = bests[0].split("\\|");
 
                             leaderboardsItems[5].setText(String.valueOf(Integer.valueOf(best[best.length - 1]) + 1) + ")ME: " + best[1]);
+
+                            GameOverWidget.maxDistanceF = best[1];
                         }
                 }
 

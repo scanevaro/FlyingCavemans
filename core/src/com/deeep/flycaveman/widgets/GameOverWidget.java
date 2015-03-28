@@ -31,6 +31,7 @@ public class GameOverWidget {
     private GameScreen screen;
     private boolean sendScore;
     private String name, distance;
+    public static String maxDistanceF;
 
     public GameOverWidget(final Core game, ShopWidget shopWidget) {
         this.game = game;
@@ -53,7 +54,7 @@ public class GameOverWidget {
                 Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
         topRightWindow.setKeepWithinStage(false);
         //( ͡° ͜ʖ ͡°) < l'elmar face
-        maxDistance = new Label("Max Distance: xxxxx", Assets.skin);
+        maxDistance = new Label("Max Distance: ", Assets.skin);
         maxDistance.setPosition(70, 120);
         topRightWindow.addActor(maxDistance);
 
@@ -140,7 +141,7 @@ public class GameOverWidget {
 
     private void setLeftWindow() {
         leftWindow = new Image(Assets.dialog);
-        leftWindow.setSize(430, 400);
+        leftWindow.setSize(470, 400);
         leftWindow.setOrigin(leftWindow.getWidth() / 2, leftWindow.getHeight() / 2);
         leftWindow.setPosition(-leftWindow.getWidth(), 140);
         leftWindow.setVisible(false);
@@ -250,11 +251,14 @@ public class GameOverWidget {
 
         distanceLabel.setText("Distance: " + distance);
         maxHeightLabel.setText("Max Height: " + String.valueOf(maxHeight).substring(0, 2));
-        flappingLabel.setText("Distance While Flapping: " + String.valueOf(flapDistance).substring(0, 2));
+        flappingLabel.setText("Distance W/Flapping: " + String.valueOf(flapDistance).substring(0, 2));
         entitiesLabel.setText("Entities Smacked: " + String.valueOf(smacked));
         powerupsLabel.setText("PowerUps Picked Up: " + String.valueOf(powerUpsPicked));
         coinsLabel.setText("Coins Picked Up: " + String.valueOf(coinsPicked));
 
         colectedCoins.setText("Colected Coins : " + String.valueOf(CaveMan.coins));
+        maxDistance.setText("Max Distance: " + maxDistanceF);
+
+        //TODO new record animation
     }
 }

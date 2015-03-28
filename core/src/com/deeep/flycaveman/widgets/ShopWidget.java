@@ -17,16 +17,18 @@ import com.deeep.flycaveman.screens.GameScreen;
  * Created by scanevaro on 15/03/2015.
  */
 public class ShopWidget {
-    private Window shopDialog, wingsDialog, steroidsDialog, staminaplusDialog, springsDialog;
+    private Window shopDialog, wingsDialog, steroidsDialog, staminaplusDialog, springsDialog, clenchDialog, magnetDialog;
     private GameScreen screen;
     private CoinsWidget coinsWidget;
-    private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton;
-    private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen;
+    private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton, buyMagnetButton, buyClenchButton;
+    private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen, magnetOpen, clenchOpen;
 
     private final int wingsPrice = 75,
             springsPrice = 50,
             steroidsPrice = 25,
-            staminaPrice = 15;
+            staminaPrice = 15,
+            magnetPrice = 35,
+            clenchPrice = 35;
 
     public ShopWidget(final Core game) {
         this.screen = (GameScreen) game.screen;
@@ -189,6 +191,8 @@ public class ShopWidget {
         buildSteroidsDialog();
         buildStaminaDialog();
         buildSpringsDialog();
+        buildMagnetDialog();
+        buildClenchDialog();
     }
 
     private void buildWingsDialog() {
@@ -420,62 +424,218 @@ public class ShopWidget {
         springsDialog.addActor(cost);
     }
 
+    private void buildMagnetDialog() {
+        magnetDialog = new Window("Magnet", Assets.skin);
+        magnetDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
+        magnetDialog.setPosition(Core.VIRTUAL_WIDTH + magnetDialog.getWidth(), 12);
+        magnetDialog.setKeepWithinStage(false);
+
+        screen.stage.addActor(magnetDialog);
+
+        TextArea textArea = new TextArea("Absorv powerups when they are close to you", Assets.skin);
+        textArea.setSize(300, 300);
+        textArea.setPosition(30, 134);
+        textArea.clearListeners();
+        magnetDialog.addActor(textArea);
+
+        Image star[] = new Image[3];
+        star[0] = new Image(Assets.starBlack);
+        star[1] = new Image(Assets.starBlack);
+        star[2] = new Image(Assets.starBlack);
+        int posX = 70;
+        for (Image staR : star) {
+            staR.setSize(64, 64);
+            staR.setPosition(posX, 88);
+            posX += 70;
+            magnetDialog.addActor(staR);
+        }
+
+        ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
+        buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
+        buyStyle.imageUp.setMinWidth(160);
+        buyStyle.imageUp.setMinHeight(96);
+        buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
+        buyStyle.imageDown.setMinWidth(160);
+        buyStyle.imageDown.setMinHeight(96);
+        buyStyle.imageDisabled = new TextureRegionDrawable(Assets.buyButtonDisabled);
+        buyStyle.imageDisabled.setMinWidth(160);
+        buyStyle.imageDisabled.setMinHeight(96);
+        buyMagnetButton = new ImageButton(buyStyle);
+        buyMagnetButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                screen.world.caveman.addMagnet();
+            }
+        });
+        buyMagnetButton.setSize(160, 96);
+        buyMagnetButton.setPosition(0, 0);
+        magnetDialog.addActor(buyMagnetButton);
+
+        CoinSprite coinSprite = new CoinSprite();
+        coinSprite.setSize(64, 64);
+        coinSprite.setPosition(magnetDialog.getWidth() / 2, 15);
+        magnetDialog.addActor(coinSprite);
+
+        Label cost = new Label("= " + magnetPrice, Assets.skin);
+        cost.setPosition(magnetDialog.getWidth() / 2 + 64 + 4, 24);
+        magnetDialog.addActor(cost);
+    }
+
+    private void buildClenchDialog() {
+        clenchDialog = new Window("Clench Butt!", Assets.skin);
+        clenchDialog.setSize(350, Core.VIRTUAL_HEIGHT - 24);
+        clenchDialog.setPosition(Core.VIRTUAL_WIDTH + clenchDialog.getWidth(), 12);
+        clenchDialog.setKeepWithinStage(false);
+
+        screen.stage.addActor(clenchDialog);
+
+        TextArea textArea = new TextArea("Learn how to clench the butt to bounce a bit higher off the ground!... It hurts!!", Assets.skin);
+        textArea.setSize(300, 300);
+        textArea.setPosition(30, 134);
+        textArea.clearListeners();
+        clenchDialog.addActor(textArea);
+
+        Image star[] = new Image[3];
+        star[0] = new Image(Assets.starBlack);
+        star[1] = new Image(Assets.starBlack);
+        star[2] = new Image(Assets.starBlack);
+        int posX = 70;
+        for (Image staR : star) {
+            staR.setSize(64, 64);
+            staR.setPosition(posX, 88);
+            posX += 70;
+            clenchDialog.addActor(staR);
+        }
+
+        ImageButton.ImageButtonStyle buyStyle = new ImageButton.ImageButtonStyle(/*Assets.skin.get(Button.ButtonStyle.class)*/);
+        buyStyle.imageUp = new TextureRegionDrawable(Assets.buyButton);
+        buyStyle.imageUp.setMinWidth(160);
+        buyStyle.imageUp.setMinHeight(96);
+        buyStyle.imageDown = new TextureRegionDrawable(Assets.buyButtonDown);
+        buyStyle.imageDown.setMinWidth(160);
+        buyStyle.imageDown.setMinHeight(96);
+        buyStyle.imageDisabled = new TextureRegionDrawable(Assets.buyButtonDisabled);
+        buyStyle.imageDisabled.setMinWidth(160);
+        buyStyle.imageDisabled.setMinHeight(96);
+        buyClenchButton = new ImageButton(buyStyle);
+        buyClenchButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                screen.world.caveman.addClench();
+            }
+        });
+        buyClenchButton.setSize(160, 96);
+        buyClenchButton.setPosition(0, 0);
+        clenchDialog.addActor(buyClenchButton);
+
+        CoinSprite coinSprite = new CoinSprite();
+        coinSprite.setSize(64, 64);
+        coinSprite.setPosition(clenchDialog.getWidth() / 2, 15);
+        clenchDialog.addActor(coinSprite);
+
+        Label cost = new Label("= " + clenchPrice, Assets.skin);
+        cost.setPosition(clenchDialog.getWidth() / 2 + 64 + 4, 24);
+        clenchDialog.addActor(cost);
+    }
+
     private void show(String dialog) {
-        if (wingsOpen)
-            screen.stage.addActor(wingsDialog);
-        else if (steroidsOpen)
-            screen.stage.addActor(steroidsDialog);
-        else if (staminaOpen)
-            screen.stage.addActor(staminaplusDialog);
-        else if (springsOpen)
-            screen.stage.addActor(springsDialog);
+        if (wingsOpen) screen.stage.addActor(wingsDialog);
+        else if (steroidsOpen) screen.stage.addActor(steroidsDialog);
+        else if (staminaOpen) screen.stage.addActor(staminaplusDialog);
+        else if (springsOpen) screen.stage.addActor(springsDialog);
+        else if (magnetOpen) screen.stage.addActor(magnetDialog);
+        else if (clenchOpen) screen.stage.addActor(clenchDialog);
 
         if (dialog.equals("wingsDialog")) {
             wingsOpen = true;
             steroidsOpen = false;
             staminaOpen = false;
             springsOpen = false;
+            magnetOpen = false;
+            clenchOpen = false;
             screen.stage.addActor(wingsDialog);
 
             wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
-
-            screen.stage.addActor(wingsDialog);
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         } else if (dialog.equals("steroidsDialog")) {
             steroidsOpen = true;
             wingsOpen = false;
             staminaOpen = false;
             springsOpen = false;
+            magnetOpen = false;
+            clenchOpen = false;
             screen.stage.addActor(steroidsDialog);
 
             wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         } else if (dialog.equals("staminaplusDialog")) {
             staminaOpen = true;
             steroidsOpen = false;
             wingsOpen = false;
             springsOpen = false;
+            magnetOpen = false;
+            clenchOpen = false;
             screen.stage.addActor(staminaplusDialog);
 
             wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         } else if (dialog.equals("springsDialog")) {
             springsOpen = true;
             steroidsOpen = false;
             wingsOpen = false;
             staminaOpen = false;
+            magnetOpen = false;
+            clenchOpen = false;
             screen.stage.addActor(springsDialog);
 
             wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+        } else if (dialog.equals("magnetDialog")) {
+            springsOpen = false;
+            steroidsOpen = false;
+            wingsOpen = false;
+            staminaOpen = false;
+            magnetOpen = true;
+            clenchOpen = false;
+            screen.stage.addActor(magnetDialog);
+
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+        } else if (dialog.equals("clenchDialog")) {
+            springsOpen = true;
+            steroidsOpen = false;
+            wingsOpen = false;
+            staminaOpen = false;
+            magnetOpen = false;
+            clenchOpen = true;
+            screen.stage.addActor(clenchDialog);
+
+            wingsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + wingsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH - springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
         }
     }
 
@@ -491,6 +651,8 @@ public class ShopWidget {
             steroidsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + steroidsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             staminaplusDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + staminaplusDialog.getWidth(), 12, 0.4f, Interpolation.linear));
             springsDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            magnetDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
+            clenchDialog.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH + springsDialog.getWidth(), 12, 0.4f, Interpolation.linear));
 
             coinsWidget.moveDown();
         }
@@ -504,7 +666,6 @@ public class ShopWidget {
             buyWingsButton.setDisabled(true);
             buyWingsButton.setTouchable(Touchable.disabled);
         }
-
         if (CaveMan.coins >= springsPrice) {
             buySpringsButton.setDisabled(false);
             buySpringsButton.setTouchable(Touchable.enabled);
@@ -512,7 +673,6 @@ public class ShopWidget {
             buySpringsButton.setDisabled(true);
             buySpringsButton.setTouchable(Touchable.disabled);
         }
-
         if (CaveMan.coins >= staminaPrice) {
             buyStaminaButton.setDisabled(false);
             buyStaminaButton.setTouchable(Touchable.enabled);
@@ -520,13 +680,26 @@ public class ShopWidget {
             buyStaminaButton.setDisabled(true);
             buyStaminaButton.setTouchable(Touchable.disabled);
         }
-
         if (CaveMan.coins >= steroidsPrice) {
             buySteroidsButton.setDisabled(false);
             buySteroidsButton.setTouchable(Touchable.enabled);
         } else {
             buySteroidsButton.setDisabled(true);
             buySteroidsButton.setTouchable(Touchable.disabled);
+        }
+        if (CaveMan.coins >= magnetPrice) {
+            buyMagnetButton.setDisabled(false);
+            buyMagnetButton.setTouchable(Touchable.enabled);
+        } else {
+            buyMagnetButton.setDisabled(true);
+            buyMagnetButton.setTouchable(Touchable.disabled);
+        }
+        if (CaveMan.coins >= clenchPrice) {
+            buyClenchButton.setDisabled(false);
+            buyClenchButton.setTouchable(Touchable.enabled);
+        } else {
+            buyClenchButton.setDisabled(true);
+            buyClenchButton.setTouchable(Touchable.disabled);
         }
     }
 }

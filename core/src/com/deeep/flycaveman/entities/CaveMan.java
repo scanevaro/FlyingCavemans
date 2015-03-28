@@ -228,4 +228,12 @@ public class CaveMan implements Entity {
     public void setState(int state) {
         this.state = state;
     }
+
+    public void addMagnet() {
+
+    }
+
+    public void addClench() {
+
+    }
 }

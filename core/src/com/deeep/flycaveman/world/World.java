@@ -113,7 +113,6 @@ public class World extends Actor implements Disposable {
         entities.add(tree = new Tree(0, 0));
         entities.add(caveman = new CaveMan(this));
 
-
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 
         this.debug = debug;
@@ -146,7 +145,7 @@ public class World extends Actor implements Disposable {
         if (caveman.body.getPosition().y > Area.HALF_SPACE) {
             percentage = (caveman.body.getPosition().y - Area.HALF_SPACE) / (Area.FULL_SPACE - Area.HALF_SPACE);
             color = toColor(percentage, sunColor, spaceColor);
-        } else if (caveman.body.getPosition().y > Area.BEGIN_SPACE){
+        } else if (caveman.body.getPosition().y > Area.BEGIN_SPACE) {
             percentage = (caveman.body.getPosition().y - Area.BEGIN_SPACE) / (Area.HALF_SPACE - Area.BEGIN_SPACE);
             color = toColor(percentage, skyColor, sunColor);
         }
