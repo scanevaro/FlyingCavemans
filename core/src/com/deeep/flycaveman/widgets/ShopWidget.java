@@ -39,11 +39,11 @@ public class ShopWidget {
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
-        retryStyle.imageUp.setMinWidth(128);
-        retryStyle.imageUp.setMinHeight(128);
+        retryStyle.imageUp.setMinWidth(104);
+        retryStyle.imageUp.setMinHeight(104);
         retryStyle.imageDown = new TextureRegionDrawable(Assets.buttonBroken);
-        retryStyle.imageDown.setMinWidth(178);
-        retryStyle.imageDown.setMinHeight(178);
+        retryStyle.imageDown.setMinWidth(145);
+        retryStyle.imageDown.setMinHeight(145);
         ImageButton retryButton = new ImageButton(retryStyle);
         retryButton.addListener(new ClickListener() {
             @Override
@@ -59,7 +59,7 @@ public class ShopWidget {
                 }, 0.4f);
             }
         });
-        retryButton.setSize(178, 178);
+        retryButton.setSize(145, 145);
         retryButton.setPosition(0, 0);
         shopDialog.addActor(retryButton);
 
@@ -132,14 +132,14 @@ public class ShopWidget {
             }
         });
         springsButton.setSize(140, 140);
-        springsButton.setPosition(50, shopDialog.getHeight() / 2 - springsButton.getHeight() + 50);
+        springsButton.setPosition(50, shopDialog.getHeight() / 2 - springsButton.getHeight() + 35);
         shopDialog.addActor(springsButton);
 
         ImageButton.ImageButtonStyle magnetStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
-        magnetStyle.imageUp = new TextureRegionDrawable(Assets.springs);
+        magnetStyle.imageUp = new TextureRegionDrawable(Assets.magnet);
         magnetStyle.imageUp.setMinWidth(140);
         magnetStyle.imageUp.setMinHeight(140);
-        magnetStyle.imageDown = new TextureRegionDrawable(Assets.springs);
+        magnetStyle.imageDown = new TextureRegionDrawable(Assets.magnet);
         magnetStyle.imageDown.setMinWidth(140);
         magnetStyle.imageDown.setMinHeight(140);
         ImageButton magnetButton = new ImageButton(magnetStyle);
@@ -150,14 +150,14 @@ public class ShopWidget {
             }
         });
         magnetButton.setSize(140, 140);
-        magnetButton.setPosition(250, shopDialog.getHeight() / 2 - magnetButton.getHeight() + 50);
+        magnetButton.setPosition(225, shopDialog.getHeight() / 2 - magnetButton.getHeight() + 35);
         shopDialog.addActor(magnetButton);
 
         ImageButton.ImageButtonStyle clenchStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
-        clenchStyle.imageUp = new TextureRegionDrawable(Assets.springs);
+        clenchStyle.imageUp = new TextureRegionDrawable(Assets.clench);
         clenchStyle.imageUp.setMinWidth(140);
         clenchStyle.imageUp.setMinHeight(140);
-        clenchStyle.imageDown = new TextureRegionDrawable(Assets.springs);
+        clenchStyle.imageDown = new TextureRegionDrawable(Assets.clench);
         clenchStyle.imageDown.setMinWidth(140);
         clenchStyle.imageDown.setMinHeight(140);
         ImageButton clenchButton = new ImageButton(clenchStyle);
@@ -168,7 +168,7 @@ public class ShopWidget {
             }
         });
         clenchButton.setSize(140, 140);
-        clenchButton.setPosition(350, shopDialog.getHeight() / 2 - clenchButton.getHeight() + 50);
+        clenchButton.setPosition(390, shopDialog.getHeight() / 2 - clenchButton.getHeight() + 35);
         shopDialog.addActor(clenchButton);
 
         game.screen.stage.addActor(shopDialog);

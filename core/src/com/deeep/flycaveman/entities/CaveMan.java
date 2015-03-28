@@ -5,10 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.physics.box2d.joints.WeldJoint;
-import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.input.GameInputProcessor;
 
@@ -52,6 +49,7 @@ public class CaveMan implements Entity {
     public int springs;
     public float stateTimeSprings;
     private float flapStateTime = 0;
+    private float stateTime = 0;
 
     private int state;
     private com.deeep.flycaveman.world.World world;
@@ -123,6 +121,9 @@ public class CaveMan implements Entity {
             sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
         else if (wingsPowerup)
             sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
+        else if (flapStateTime < 0.5f) sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
+        else if (GameInputProcessor.flying) sprite.setRegion(Assets.cavemanFly.getKeyFrame(stateTime));
+        else sprite.setRegion(Assets.cavemanTexture);
 
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
@@ -130,6 +131,8 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
+        stateTime += delta;
+
         if (coinStreak > 0) {
             coinTimer += delta;
             if (coinTimer >= COIN_PICKUP_INTERVAL) {
@@ -138,7 +141,7 @@ public class CaveMan implements Entity {
             }
         }
         body.getPosition().set(Gdx.input.getX(), Gdx.input.getY());
-        sprite.setRegion(Assets.cavemanTexture);
+
 
         updateFlapping(delta);
 
@@ -158,20 +161,12 @@ public class CaveMan implements Entity {
 
     public void updateFlapping(float delta) {
         if (GameInputProcessor.touchingGround) return;
-
         if (flapStateTime < 0.5f) {
             flapStateTime += delta;
-
-            if (strength > 0 && !cheats)
-                strength -= delta * 20;
-
+            if (strength > 0 && !cheats) strength -= delta * 20;
             double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
             body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
-
-            sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
-        } else if (strength < 300)
-            strength += delta;
-
+        } else if (strength < 300) strength += delta;
         if (flapStateTime >= 0.5f && startFlapDistance != 0) {
             flapDistance += body.getPosition().x - startFlapDistance;
             startFlapDistance = 0;
