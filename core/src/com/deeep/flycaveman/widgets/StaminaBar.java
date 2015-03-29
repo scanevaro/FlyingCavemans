@@ -15,59 +15,40 @@ import com.deeep.flycaveman.entities.CaveMan;
 public class StaminaBar extends Actor {
     private CaveMan caveman;
     public Image background, fill[], bar, hand;
-    private float maxStamina;
 
     public StaminaBar(CaveMan caveMan) {
         this.caveman = caveMan;
-
         background = new Image(Assets.staminaBackground);
-
         fill = new Image[(int) caveMan.stamina];
-        for (int i = 0; i < (int) caveMan.stamina; i++)
-            fill[i] = new Image(Assets.staminaFill);
-
+        for (int i = 0; i < (int) caveMan.stamina; i++) fill[i] = new Image(Assets.staminaFill);
         bar = new Image(Assets.staminaBar);
         hand = new Image(Assets.staminaHand);
-
-        background.setPosition(/*Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2*/100, 5);
-
+        background.setPosition(100, 5);
         float posX = 3;
         for (int x = 0; x < caveMan.stamina; x++) {
-            fill[x].setPosition(/*Core.VIRTUAL_WIDTH / 2 - background.getWidth() / 2*/ 100 + posX, 10);
-            fill[x].setScaleX(3.6f);
-            posX += fill[x].getWidth() + 26;
+            fill[x].setPosition(100 + posX, 10);
+//            fill[x].setScaleX(3.6f);
+            fill[x].setWidth(background.getWidth() / caveMan.stamina - 2);
+            posX += fill[x].getWidth() + 1;
         }
-
-        bar.setPosition(/*Core.VIRTUAL_WIDTH / 2 - bar.getWidth() / 2*/100, 5);
+        bar.setPosition(100, 5);
         hand.setSize(48, 54);
-        hand.setPosition(/*Core.VIRTUAL_WIDTH / 2 - hand.getWidth() / 2*/ 100 + background.getWidth() / 2 - hand.getWidth() / 2, 15);
-
-        maxStamina = caveman.stamina;
+        hand.setPosition(100 + background.getWidth() / 2 - hand.getWidth() / 2, 15);
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-
-        for (int x = 0; x < caveman.stamina; x++)
-            fill[x].setScaleX(3.6f/*caveman.stamina / 5 * 100 / 5.0f*/);
-
         background.act(delta);
-        for (int x = 0; x < fill.length; x++)
-            fill[x].act(delta);
+        for (int x = 0; x < fill.length; x++) fill[x].act(delta);
         bar.act(delta);
         hand.act(delta);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-//        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
-
         background.draw(batch, parentAlpha);
-
-        for (int x = 0; x < caveman.stamina; x++)
-            fill[x].draw(batch, parentAlpha);
-
+        for (int x = 0; x < caveman.stamina; x++) fill[x].draw(batch, parentAlpha);
         bar.draw(batch, parentAlpha);
         hand.draw(batch, parentAlpha);
     }
@@ -75,35 +56,23 @@ public class StaminaBar extends Actor {
     @Override
     public void setColor(Color color) {
         super.setColor(color);
-
         background.setColor(color);
-
-        for (int x = 0; x < fill.length; x++)
-            fill[x].setColor(color);
-
+        for (int x = 0; x < fill.length; x++) fill[x].setColor(color);
         bar.setColor(color);
         hand.setColor(color);
     }
 
     @Override
     public void addAction(Action action) {
-//        super.addAction(action);
-
         background.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-
-        for (int x = 0; x < fill.length; x++)
-            fill[x].addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
-
+        for (int x = 0; x < fill.length; x++) fill[x].addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         bar.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         hand.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
     }
 
     public void fadeOut() {
         background.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
-
-        for (int x = 0; x < fill.length; x++)
-            fill[x].addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
-
+        for (int x = 0; x < fill.length; x++) fill[x].addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
         bar.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
         hand.addAction(Actions.delay(0.25f, Actions.fadeOut(1.0f)));
     }
