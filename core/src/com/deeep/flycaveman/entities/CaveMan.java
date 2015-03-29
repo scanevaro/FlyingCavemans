@@ -37,12 +37,8 @@ public class CaveMan implements Entity {
     public int coinStreak = 0;
     public float coinTimer = 2F;
     public final float COIN_PICKUP_INTERVAL = 2F;
-    public static boolean wingsPowerup;
     public static int wings;
-    public static boolean upgradeStamina;
-    public static boolean addSteroids;
-    public static boolean addSprings;
-    public static int springsJumps, staminaSize, steroids, springs;
+    public static int springsJumps, staminaSize, steroids, springs, magnet, clench;
     public float stateTimeSprings;
     private float flapStateTime = 0;
     private float stateTime = 0;
@@ -68,38 +64,46 @@ public class CaveMan implements Entity {
         fixtureDef.friction = .25f;
         fixtureDef.restitution = restitution;
         body = world.box2dWorld.createBody(bodyDef);
-        if (!wingsPowerup) sprite = new Sprite(Assets.cavemanTexture);
-        else sprite = new Sprite(Assets.cavemanWings.getKeyFrame(0));
+        sprite = new Sprite(Assets.cavemanTexture);
         sprite.setSize(size * 2, size * 2);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         body.setUserData(sprite);
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
         shape.dispose();
-//        armBody.setAwake(false);
+        //armBody.setAwake(false);
         body.setActive(true);
         //WeldJointDef weldJointDef = new WeldJointDef();
         //weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, 7));
         //weldJointDef.collideConnected = false;
         //bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
         strength = 225;
-        if (wingsPowerup && wings == 1) strength += 25;
-        else if (wingsPowerup && wings == 2) strength += 50;
-        else if (wingsPowerup && wings == 3) strength += 75;
-        if (addSteroids) strength += 25;
-        if (addSprings && springs == 1) springsJumps++;
-        stamina = 5.0f;
-        flapStateTime = 0.5f;
-        startFlapDistance = 0;
-        flapDistance = 0;
-        smacked = 0;
-        powerUpsPicked = 0;
-        coinsPicked = 0;
+        {/**Buyable Items*/
+            if (wings >= 1) strength += 25;
+            if (wings >= 2) strength += 25;
+            if (wings == 3) strength += 25;
+            if (steroids >= 1) strength += 25;
+            if (steroids >= 2) strength += 25;
+            if (steroids == 3) strength += 25;
+            if (springs >= 1) springsJumps++;
+            if (springs >= 2) springsJumps++;
+            if (springs == 3) springsJumps++;
+            if (staminaSize == 0) stamina = 5.0f;
+            if (staminaSize >= 1) stamina++;
+            if (staminaSize >= 2) stamina++;
+            if (staminaSize >= 3) stamina++;
+            flapStateTime = 0.5f;
+            startFlapDistance = 0;
+            flapDistance = 0;
+            smacked = 0;
+            powerUpsPicked = 0;
+            coinsPicked = 0;
+        }
     }
 
     public void draw(Batch batch) {
         if (stateTimeSprings > 0) sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
-        else if (wingsPowerup) sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
+        else if (wings > 0) sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
         else if (flapStateTime < 0.5f) sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
         else if (GameInputProcessor.flying) sprite.setRegion(Assets.cavemanFly.getKeyFrame(stateTime));
         else sprite.setRegion(Assets.cavemanTexture);
@@ -141,27 +145,6 @@ public class CaveMan implements Entity {
         }
     }
 
-    public void addWings(int price) {
-        CaveMan.wingsPowerup = true;
-        if (wings < 3) wings++;
-        CaveMan.coins -= price;
-    }
-
-    public void upgradeStamina() {
-        CaveMan.upgradeStamina = true;
-        if (staminaSize < 3) staminaSize++;
-    }
-
-    public void addSteroids() {
-        CaveMan.addSteroids = true;
-        if (steroids < 3) steroids++;
-    }
-
-    public void addSprings() {
-        CaveMan.addSprings = true;
-        if (springs < 3) springs++;
-    }
-
     public void useSpring() {
         body.applyForce(500, 2500, body.getPosition().x, body.getPosition().y, true);
         Assets.boing.play();
@@ -192,9 +175,33 @@ public class CaveMan implements Entity {
         this.state = state;
     }
 
-    public void addMagnet() {
+    public void addWings(int price) {
+        if (wings < 3) wings++;
+        coins -= price;
     }
 
-    public void addClench() {
+    public void addStamina(int price) {
+        if (staminaSize < 3) staminaSize++;
+        coins -= price;
+    }
+
+    public void addSteroids(int price) {
+        if (steroids < 3) steroids++;
+        coins -= price;
+    }
+
+    public void addSprings(int price) {
+        if (springs < 3) springs++;
+        coins -= price;
+    }
+
+    public void addMagnet(int price) {
+        if (CaveMan.magnet < 3) CaveMan.magnet++;
+        coins -= price;
+    }
+
+    public void addClench(int price) {
+        if (CaveMan.clench < 3) CaveMan.clench++;
+        coins -= price;
     }
 }

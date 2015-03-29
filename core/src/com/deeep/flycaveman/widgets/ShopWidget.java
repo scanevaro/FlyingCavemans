@@ -24,12 +24,12 @@ public class ShopWidget {
     private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen, magnetOpen, clenchOpen;
     private Image starsWings[], starsSteroids[], starsStamina[], starsSprings[], starsMagnet[], starsClench[];
 
-    private final int wingsPrice = 25,
-            springsPrice = 35,
-            steroidsPrice = 25,
-            staminaPrice = 15,
-            magnetPrice = 35,
-            clenchPrice = 35;
+    private final int wingsPrice = 1/*25*/,
+            springsPrice = 1/*35*/,
+            steroidsPrice = 1/*25*/,
+            staminaPrice = 1/*15*/,
+            magnetPrice = 1/*35*/,
+            clenchPrice = 1/*35*/;
 
     public ShopWidget(final Core game) {
         this.screen = (GameScreen) game.screen;
@@ -294,7 +294,7 @@ public class ShopWidget {
         buySteroidsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addSteroids();
+                screen.world.caveman.addSteroids(steroidsPrice);
             }
         });
         buySteroidsButton.setSize(160, 96);
@@ -351,7 +351,7 @@ public class ShopWidget {
         buyStaminaButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.upgradeStamina();
+                screen.world.caveman.addStamina(staminaPrice);
             }
         });
         buyStaminaButton.setSize(160, 96);
@@ -408,7 +408,7 @@ public class ShopWidget {
         buySpringsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addSprings();
+                screen.world.caveman.addSprings(springsPrice);
             }
         });
         buySpringsButton.setSize(160, 96);
@@ -465,7 +465,7 @@ public class ShopWidget {
         buyMagnetButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addMagnet();
+                screen.world.caveman.addMagnet(magnetPrice);
             }
         });
         buyMagnetButton.setSize(160, 96);
@@ -522,7 +522,7 @@ public class ShopWidget {
         buyClenchButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addClench();
+                screen.world.caveman.addClench(clenchPrice);
             }
         });
         buyClenchButton.setSize(160, 96);
@@ -713,5 +713,20 @@ public class ShopWidget {
         if (CaveMan.wings == 1) starsWings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.wings == 2) starsWings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.wings == 3) starsWings[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.steroids == 1) starsSteroids[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.steroids == 2) starsSteroids[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.steroids == 3) starsSteroids[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.staminaSize == 1) starsStamina[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.staminaSize == 2) starsStamina[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.staminaSize == 3) starsStamina[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.springs == 1) starsSprings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.springs == 2) starsSprings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.springs == 3) starsSprings[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.magnet == 1) starsMagnet[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.magnet == 2) starsMagnet[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.magnet == 3) starsMagnet[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.clench == 1) starsClench[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.clench == 2) starsClench[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.clench == 3) starsClench[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
     }
 }
