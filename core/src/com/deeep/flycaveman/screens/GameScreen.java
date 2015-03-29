@@ -181,7 +181,7 @@ public class GameScreen extends AbstractScreen {
             protected void result(Object object) {
                 if (!textArea.getText().equals(""))
                     name = textArea.getText();
-                else name = "Anoimous";
+                else name = "Anonymous";
             }
         };
         nameDialog.setSize(350, 200);

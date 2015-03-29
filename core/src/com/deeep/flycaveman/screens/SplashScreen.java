@@ -54,7 +54,7 @@ public class SplashScreen extends AbstractScreen {
             public void clicked(InputEvent event, float x, float y) {
                 if (Assets.assetManager.update()) {
                     timer.cancel();
-                    game.setScreen(new GameScreen(game));
+                    game.setScreen(new IntroScreen(game));
                 }
             }
         });
@@ -85,7 +85,7 @@ public class SplashScreen extends AbstractScreen {
                 Timer.schedule(timer = new Timer.Task() {
                     @Override
                     public void run() {
-                        game.setScreen(new GameScreen(game));
+                        game.setScreen(new IntroScreen(game));
                     }
                 }, 0.5f/*DURATION*/ - splashSprite.stateTime);
             } else {
@@ -98,7 +98,7 @@ public class SplashScreen extends AbstractScreen {
                 Timer.schedule(timer = new Timer.Task() {
                     @Override
                     public void run() {
-                        game.setScreen(new GameScreen(game));
+                        game.setScreen(new IntroScreen(game));
                     }
                 }, 0.5f);
             }

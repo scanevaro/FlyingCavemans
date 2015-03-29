@@ -1,7 +1,6 @@
 package com.deeep.flycaveman.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -23,9 +22,7 @@ public class SplashActor extends Actor {
         Array<TextureAtlas.AtlasRegion> atlasRegions = new TextureAtlas(Gdx.files.internal("data/newLogo.pack")).getRegions();
         animation = new Animation(0.08f, atlasRegions);
         animation.setPlayMode(Animation.PlayMode.LOOP);
-
         setActions();
-
         stateTime = 0;
     }
 
@@ -39,10 +36,7 @@ public class SplashActor extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        Color color = new Color(getColor().r, getColor().g,
-                getColor().b, getColor().a * parentAlpha);
-
-        batch.setColor(color);
+        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
         Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
         Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         batch.draw(animation.getKeyFrame(stateTime), Core.VIRTUAL_WIDTH / 2 - 192 / 2, Core.VIRTUAL_HEIGHT / 2 - 192 / 2);
@@ -51,7 +45,6 @@ public class SplashActor extends Actor {
     @Override
     public void act(float delta) {
         super.act(delta);
-
         stateTime += delta;
     }
 }

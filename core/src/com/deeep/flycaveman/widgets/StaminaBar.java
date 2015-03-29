@@ -27,7 +27,6 @@ public class StaminaBar extends Actor {
         float posX = 3;
         for (int x = 0; x < caveMan.stamina; x++) {
             fill[x].setPosition(100 + posX, 10);
-//            fill[x].setScaleX(3.6f);
             fill[x].setWidth(background.getWidth() / caveMan.stamina - 2);
             posX += fill[x].getWidth() + 1;
         }

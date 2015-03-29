@@ -42,7 +42,8 @@ public class Assets {
             steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
-            starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench;
+            starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench, intro1, intro2,
+            intro3, intro4, intro5;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
@@ -192,6 +193,11 @@ public class Assets {
         resumeButton = items.findRegion("resume");
         magnet = items.findRegion("magnet");
         clench = items.findRegion("clenchButt");
+        intro1 = items.findRegion("1");
+        intro2 = items.findRegion("2");
+        intro3 = items.findRegion("3");
+        intro4 = items.findRegion("4");
+        intro5 = items.findRegion("5");
 
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");
