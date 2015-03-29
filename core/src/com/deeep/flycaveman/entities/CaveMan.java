@@ -88,7 +88,7 @@ public class CaveMan implements Entity {
             if (springs >= 1) springsJumps++;
             if (springs >= 2) springsJumps++;
             if (springs == 3) springsJumps++;
-            if (staminaSize == 0) stamina = 5.0f;
+            stamina = 5.0f;
             if (staminaSize >= 1) stamina++;
             if (staminaSize >= 2) stamina++;
             if (staminaSize >= 3) stamina++;
