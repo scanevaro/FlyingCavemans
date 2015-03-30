@@ -68,13 +68,13 @@ public class SplashScreen extends AbstractScreen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0.1f, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         stage.act();
         stage.draw();
-
         if (Assets.assetManager.update() && !Assets.loaded) {
             Assets.set();
-
+            Assets.loadMusicFile("introTheme").play();
+            Assets.loadMusicFile("introTheme").setVolume(1);
+            Assets.loadMusicFile("introTheme").setLooping(true);
             if (splashSprite.stateTime < 3f) {
                 /**Delay fade out*/
                 splashSprite.addAction(Actions.delay(3f - splashSprite.stateTime, Actions.fadeOut(0.5f)));
@@ -102,12 +102,9 @@ public class SplashScreen extends AbstractScreen {
                     }
                 }, 0.5f);
             }
-
             Assets.loaded = true;
         }
-
         percent = Interpolation.linear.apply(percent, Assets.assetManager.getProgress(), 0.1f);
-
         loadingBarHidden.setX(startX + endX * percent);
         loadingBg.setSize(Core.VIRTUAL_WIDTH, 50);
         loadingBg.setX(loadingBarHidden.getX() + 30);
@@ -146,12 +143,10 @@ public class SplashScreen extends AbstractScreen {
         loadingBar = new LoadingBar(anim);
         loadingBar.setPosition(0, 5);
         loadingBar.setWidth(Core.VIRTUAL_WIDTH);
-
         //stage.addActor(loadingBar);
         //stage.addActor(loadingBg);
         //stage.addActor(loadingBarHidden);
         //stage.addActor(loadingFrame);
-
         startX = 0;
         endX = Core.VIRTUAL_WIDTH;
     }

@@ -16,7 +16,7 @@ import com.deeep.flycaveman.Core;
  * Created by scanevaro on 06/03/2015.
  */
 public class StartScreenWidget {
-    public Image title, touchNHold, leaderboardsDialog;
+    public Image title, leaderboardsDialog;
     private Label leaderboardsLabel, leaderboardsItems[];
     private boolean getBest;
 
@@ -28,12 +28,6 @@ public class StartScreenWidget {
         title.setOrigin(title.getWidth() / 2, title.getHeight() / 2);
         title.setPosition(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT / 2);
         title.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2, Core.VIRTUAL_HEIGHT / 2, 0.35f, Interpolation.linear));
-
-        touchNHold = new Image(Assets.touchNH);
-        touchNHold.setSize(632, 128);
-        touchNHold.setOrigin(touchNHold.getWidth() / 2, touchNHold.getHeight() / 2);
-        touchNHold.setPosition(150, 70);
-        touchNHold.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.6f), Actions.delay(0.2f), Actions.fadeIn(0.6f))));
 
         leaderboardsDialog = new Image(Assets.dialog);
         leaderboardsDialog.setSize(300, 350);
@@ -62,35 +56,21 @@ public class StartScreenWidget {
                 posY -= 28;
             }
         }
-
         getScores();
     }
 
     public void draw(Batch batch) {
         title.draw(batch, 1);
-
         leaderboardsDialog.draw(batch, 1);
-
         leaderboardsLabel.draw(batch, 1);
-
-        for (Label label : leaderboardsItems)
-            label.draw(batch, 1);
-    }
-
-    public void drawTut(Batch batch) {
-        touchNHold.draw(batch, 1);
+        for (Label label : leaderboardsItems) label.draw(batch, 1);
     }
 
     public void update(float delta, String name) {
         title.act(delta);
         leaderboardsDialog.act(delta);
         leaderboardsLabel.act(delta);
-
-        for (Label label : leaderboardsItems)
-            label.act(delta);
-
-        touchNHold.act(delta);
-
+        for (Label label : leaderboardsItems) label.act(delta);
         getBest(name);
     }
 
@@ -108,7 +88,6 @@ public class StartScreenWidget {
                 if (scores.length > 0)
                     for (int i = 0; i < scores.length; i++) {
                         String score[] = scores[i].split("\\|");
-
                         leaderboardsItems[i].setText(String.valueOf(Integer.valueOf(score[score.length - 1]) + 1) + ")" + score[0] + ": " + score[1]);
                     }
             }
@@ -136,13 +115,10 @@ public class StartScreenWidget {
                 public void handleHttpResponse(Net.HttpResponse httpResponse) {
                     String string = new String(httpResponse.getResult());
                     String bests[] = string.split("\n");
-
                     if (bests.length > 0)
                         for (int x = 0; x < bests.length; x++) {
                             String best[] = bests[0].split("\\|");
-
                             leaderboardsItems[5].setText(String.valueOf(Integer.valueOf(best[best.length - 1]) + 1) + ")ME: " + best[1]);
-
                             GameOverWidget.maxDistanceF = best[1];
                         }
                 }
@@ -155,7 +131,6 @@ public class StartScreenWidget {
                 public void cancelled() {
                 }
             });
-
             getBest = false;
         }
     }

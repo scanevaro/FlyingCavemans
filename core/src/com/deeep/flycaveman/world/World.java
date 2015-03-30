@@ -210,14 +210,7 @@ public class World extends Actor implements Disposable {
 
         batch.setProjectionMatrix(worldStage.getCamera().combined);
 
-        {/**Draw Box2D Body Textures*/
-            for (Entity entity : entities)
-                entity.draw(batch);
-        }
-
-        batch.setProjectionMatrix(startViewport.getCamera().combined);
-        startScreen.drawTut(batch);
-        batch.setProjectionMatrix(worldStage.getCamera().combined);
+        for (Entity entity : entities) entity.draw(batch);
 
         obstacleSpawner.draw(batch);
         coinSpawner.render(batch);

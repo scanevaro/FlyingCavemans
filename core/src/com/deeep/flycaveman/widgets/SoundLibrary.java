@@ -27,6 +27,7 @@ public class SoundLibrary {
     public static FadeableMusic dessertMusic;
     public static FadeableMusic themeMusic;
     public static FadeableMusic oceanMusic;
+    public static FadeableMusic introMusic;
 
     public static ArrayList<FadeableMusic> musicList;
 
@@ -38,6 +39,7 @@ public class SoundLibrary {
         this.windMusic = new FadeableMusic(Assets.loadMusicFile("WindTheme"), "WindTheme", 0.5f);
         this.themeMusic = new FadeableMusic(Assets.loadMusicFile("Theme"), "Theme", 0.5f);
         this.oceanMusic = new FadeableMusic(Assets.loadMusicFile("OceanTheme"), "OceanTheme", 0.5f);
+        this.introMusic = new FadeableMusic(Assets.loadMusicFile("introTheme"), "introTheme", 0.5f);
         musicList = new ArrayList<FadeableMusic>();
         musicList.add(shopMusic);
         musicList.add(jungleMusic);
@@ -46,6 +48,7 @@ public class SoundLibrary {
         musicList.add(windMusic);
         musicList.add(themeMusic);
         musicList.add(oceanMusic);
+        musicList.add(introMusic);
     }
 
     public static FadeableMusic getMusicFromString(String s) {

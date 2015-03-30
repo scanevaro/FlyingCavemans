@@ -43,7 +43,7 @@ public class Assets {
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
             starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench, intro1, intro2,
-            intro3, intro4, intro5;
+            intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
@@ -102,6 +102,7 @@ public class Assets {
         assetManager.load("data/sounds/music/Theme.ogg", Music.class);
         assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
         assetManager.load("data/sounds/music/OceanTheme.ogg", Music.class);
+        assetManager.load("data/sounds/music/introTheme.ogg", Music.class);
 
         assetManager.load("data/sounds/coin1.mp3", Sound.class);
         assetManager.load("data/sounds/coin2.mp3", Sound.class);
@@ -198,13 +199,20 @@ public class Assets {
         intro3 = items.findRegion("3");
         intro4 = items.findRegion("4");
         intro5 = items.findRegion("5");
-
         coin1 = items.findRegion("Coin1");
         coin2 = items.findRegion("Coin2");
         coin3 = items.findRegion("Coin3");
         coin4 = items.findRegion("Coin4");
         coin5 = items.findRegion("Coin5");
         coin6 = items.findRegion("Coin6");
+        flapUp = items.findRegion("flapUp");
+        dropUp = items.findRegion("dropUp");
+        pauseUp = items.findRegion("pause");
+        tutorial0 = items.findRegion("tutorial0");
+        tutorial1 = items.findRegion("tutorial1");
+        tutorial2 = items.findRegion("tutorial2");
+        tutorial3 = items.findRegion("tutorial3");
+        tutorial4 = items.findRegion("tutorial4");
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);
@@ -245,9 +253,6 @@ public class Assets {
                 , items.findRegion("skeleton-fly-10"), items.findRegion("skeleton-fly-11")
                 , items.findRegion("skeleton-fly-12"));
         cavemanFly.setPlayMode(Animation.PlayMode.LOOP);
-        flapUp = items.findRegion("flapUp");
-        dropUp = items.findRegion("dropUp");
-        pauseUp = items.findRegion("pause");
 
         dessert_layer_1 = items.findRegion("desert_layer", 1);
         dessert_layer_2 = items.findRegion("desert_layer", 2);
@@ -284,8 +289,6 @@ public class Assets {
 
         button = items.findRegion("button");
 
-        // ocean_layer_1, ocean_layer_2, ocean_layer_3;
-
         cloud1 = items.findRegion("cloud1");
         cloud2 = items.findRegion("cloud2");
         cloud3 = items.findRegion("cloud3");
@@ -316,12 +319,9 @@ public class Assets {
 
     public static void hitGround() {
         float random = rand.nextFloat();
-        if (random >= 0.65f)
-            hurt1.play();
-        else if (random < 0.65f && random > 0.45f)
-            hurt2.play();
-        else
-            hurt3.play();
+        if (random >= 0.65f) hurt1.play();
+        else if (random < 0.65f && random > 0.45f) hurt2.play();
+        else hurt3.play();
     }
 
     public static Music loadMusicFile(String path) {

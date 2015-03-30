@@ -729,65 +729,319 @@ filter: Nearest,Nearest
 repeat: none
 brachioMidPull
   rotate: false
-  xy: 1547, 356
+  xy: 1280, 1904
   size: 397, 142
   orig: 397, 142
   offset: 0, 0
   index: -1
+button
+  rotate: false
+  xy: 250, 1920
+  size: 254, 126
+  split: 34, 37, 24, 38
+  pad: 22, 21, 12, 18
+  orig: 254, 126
+  offset: 0, 0
+  index: -1
+buyButton
+  rotate: false
+  xy: 506, 1918
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+buyButtonDisabled
+  rotate: false
+  xy: 2, 1929
+  size: 246, 117
+  orig: 246, 117
+  offset: 0, 0
+  index: -1
+buyButtonDown
+  rotate: false
+  xy: 764, 1918
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
 carnivore1
   rotate: false
-  xy: 1547, 2
+  xy: 2, 751
   size: 265, 352
   orig: 265, 352
   offset: 0, 0
   index: -1
-jungle_layer
+carnivore2
   rotate: false
-  xy: 2, 1222
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 2
-jungle_layer
-  rotate: false
-  xy: 2, 500
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 3
-skeleton-spring-10
-  rotate: false
-  xy: 620, 15
-  size: 307, 483
-  orig: 307, 483
+  xy: 2, 397
+  size: 265, 352
+  orig: 265, 352
   offset: 0, 0
   index: -1
-skeleton-spring-11
+dialog1
   rotate: false
-  xy: 929, 15
-  size: 307, 483
-  orig: 307, 483
+  xy: 811, 1607
+  size: 233, 300
+  orig: 233, 300
   offset: 0, 0
   index: -1
-skeleton-spring-12
+home
   rotate: false
-  xy: 1238, 15
-  size: 307, 483
-  orig: 307, 483
+  xy: 1046, 1602
+  size: 300, 300
+  orig: 300, 300
   offset: 0, 0
   index: -1
-skeleton-spring-8
+magnet
   rotate: false
-  xy: 2, 15
-  size: 307, 483
-  orig: 307, 483
+  xy: 2, 1709
+  size: 300, 209
+  orig: 300, 209
   offset: 0, 0
   index: -1
-skeleton-spring-9
+meat
   rotate: false
-  xy: 311, 15
-  size: 307, 483
-  orig: 307, 483
+  xy: 1022, 1909
+  size: 256, 137
+  orig: 256, 137
+  offset: 0, 0
+  index: -1
+mute1
+  rotate: false
+  xy: 1348, 1602
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+mute2
+  rotate: false
+  xy: 1650, 1573
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+pause
+  rotate: false
+  xy: 2, 1407
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+restart
+  rotate: false
+  xy: 562, 1305
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+resume
+  rotate: false
+  xy: 864, 1300
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+shop
+  rotate: false
+  xy: 1166, 1300
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+skeleton-flap well-10
+  rotate: false
+  xy: 1295, 657
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-11
+  rotate: false
+  xy: 1637, 657
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-12
+  rotate: false
+  xy: 269, 384
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-13
+  rotate: false
+  xy: 611, 379
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-14
+  rotate: false
+  xy: 953, 379
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-15
+  rotate: false
+  xy: 1295, 350
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-16
+  rotate: false
+  xy: 1637, 350
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-17
+  rotate: false
+  xy: 2, 77
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-18
+  rotate: false
+  xy: 344, 72
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-19
+  rotate: false
+  xy: 686, 72
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-2
+  rotate: false
+  xy: 304, 998
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-3
+  rotate: false
+  xy: 646, 993
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-4
+  rotate: false
+  xy: 988, 993
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-5
+  rotate: false
+  xy: 1330, 964
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-6
+  rotate: false
+  xy: 1672, 964
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-7
+  rotate: false
+  xy: 269, 691
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-8
+  rotate: false
+  xy: 611, 686
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-flap well-9
+  rotate: false
+  xy: 953, 686
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
+skeleton-fly-6
+  rotate: false
+  xy: 562, 1634
+  size: 247, 282
+  orig: 247, 282
+  offset: 0, 0
+  index: -1
+spinach
+  rotate: false
+  xy: 304, 1403
+  size: 256, 301
+  orig: 256, 301
+  offset: 0, 0
+  index: -1
+springshoes
+  rotate: false
+  xy: 304, 1706
+  size: 256, 210
+  orig: 256, 210
+  offset: 0, 0
+  index: -1
+staminaplus
+  rotate: false
+  xy: 1679, 1875
+  size: 256, 171
+  orig: 256, 171
+  offset: 0, 0
+  index: -1
+starDark
+  rotate: false
+  xy: 1468, 1271
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+starShine
+  rotate: false
+  xy: 2, 1105
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+tree
+  rotate: false
+  xy: 1770, 1271
+  size: 267, 300
+  orig: 267, 300
+  offset: 0, 0
+  index: -1
+tutorial0
+  rotate: false
+  xy: 1028, 2
+  size: 306, 346
+  orig: 306, 346
+  offset: 0, 0
+  index: -1
+tutorial1
+  rotate: false
+  xy: 1336, 2
+  size: 306, 346
+  orig: 306, 346
+  offset: 0, 0
+  index: -1
+tutorial2
+  rotate: false
+  xy: 1644, 2
+  size: 306, 346
+  orig: 306, 346
   offset: 0, 0
   index: -1
 
@@ -802,6 +1056,68 @@ jungle_layer
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
+  index: 2
+jungle_layer
+  rotate: false
+  xy: 2, 487
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 3
+skeleton-spring-10
+  rotate: false
+  xy: 620, 2
+  size: 307, 483
+  orig: 307, 483
+  offset: 0, 0
+  index: -1
+skeleton-spring-11
+  rotate: false
+  xy: 929, 2
+  size: 307, 483
+  orig: 307, 483
+  offset: 0, 0
+  index: -1
+skeleton-spring-12
+  rotate: false
+  xy: 1238, 2
+  size: 307, 483
+  orig: 307, 483
+  offset: 0, 0
+  index: -1
+skeleton-spring-13
+  rotate: false
+  xy: 1547, 2
+  size: 307, 483
+  orig: 307, 483
+  offset: 0, 0
+  index: -1
+skeleton-spring-8
+  rotate: false
+  xy: 2, 2
+  size: 307, 483
+  orig: 307, 483
+  offset: 0, 0
+  index: -1
+skeleton-spring-9
+  rotate: false
+  xy: 311, 2
+  size: 307, 483
+  orig: 307, 483
+  offset: 0, 0
+  index: -1
+
+items8.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+jungle_layer
+  rotate: false
+  xy: 2, 1209
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
   index: 4
 jungle_ocean
   rotate: false
@@ -810,42 +1126,42 @@ jungle_ocean
   orig: 1920, 720
   offset: 0, 0
   index: 1
-skeleton-spring-13
+skeleton-spring-14
   rotate: false
   xy: 2, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-14
+skeleton-spring-15
   rotate: false
   xy: 311, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-15
+skeleton-spring-16
   rotate: false
   xy: 620, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-16
+skeleton-spring-17
   rotate: false
   xy: 929, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-17
+skeleton-spring-18
   rotate: false
   xy: 1238, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-18
+skeleton-spring-19
   rotate: false
   xy: 1547, 2
   size: 307, 483
@@ -853,7 +1169,7 @@ skeleton-spring-18
   offset: 0, 0
   index: -1
 
-items8.png
+items9.png
 size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
@@ -872,120 +1188,44 @@ jungle_ocean
   orig: 1920, 720
   offset: 0, 0
   index: 3
-skeleton-spring-19
+skeleton-spring-20
   rotate: false
   xy: 2, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-20
+skeleton-spring-21
   rotate: false
   xy: 311, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-21
+skeleton-spring-22
   rotate: false
   xy: 620, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-22
+skeleton-spring-23
   rotate: false
   xy: 929, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-23
+skeleton-spring-24
   rotate: false
   xy: 1238, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-spring-24
-  rotate: false
-  xy: 1547, 2
-  size: 307, 483
-  orig: 307, 483
-  offset: 0, 0
-  index: -1
-
-items9.png
-size: 2048,2048
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-buyButtonDisabled
-  rotate: false
-  xy: 1796, 167
-  size: 246, 117
-  orig: 246, 117
-  offset: 0, 0
-  index: -1
-ocean_layer
-  rotate: false
-  xy: 2, 1315
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 1
-ocean_layer
-  rotate: false
-  xy: 2, 593
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 2
-skeleton-flap well-2
-  rotate: false
-  xy: 1547, 286
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-fly-6
-  rotate: false
-  xy: 1547, 2
-  size: 247, 282
-  orig: 247, 282
-  offset: 0, 0
-  index: -1
 skeleton-spring-25
   rotate: false
-  xy: 2, 108
-  size: 307, 483
-  orig: 307, 483
-  offset: 0, 0
-  index: -1
-skeleton-spring-26
-  rotate: false
-  xy: 311, 108
-  size: 307, 483
-  orig: 307, 483
-  offset: 0, 0
-  index: -1
-skeleton-spring-27
-  rotate: false
-  xy: 620, 108
-  size: 307, 483
-  orig: 307, 483
-  offset: 0, 0
-  index: -1
-skeleton-spring-28
-  rotate: false
-  xy: 929, 108
-  size: 307, 483
-  orig: 307, 483
-  offset: 0, 0
-  index: -1
-skeleton-spring-29
-  rotate: false
-  xy: 1238, 108
+  xy: 1547, 2
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
@@ -996,125 +1236,60 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-button
-  rotate: false
-  xy: 820, 2
-  size: 254, 126
-  split: 34, 37, 24, 38
-  pad: 22, 21, 12, 18
-  orig: 254, 126
-  offset: 0, 0
-  index: -1
-buyButton
-  rotate: false
-  xy: 1078, 139
-  size: 256, 128
-  orig: 256, 128
-  offset: 0, 0
-  index: -1
-buyButtonDown
-  rotate: false
-  xy: 1336, 139
-  size: 256, 128
-  orig: 256, 128
-  offset: 0, 0
-  index: -1
-carnivore2
-  rotate: false
-  xy: 1712, 222
-  size: 265, 352
-  orig: 265, 352
-  offset: 0, 0
-  index: -1
-magnet
-  rotate: false
-  xy: 2, 58
-  size: 300, 209
-  orig: 300, 209
-  offset: 0, 0
-  index: -1
-meat
-  rotate: false
-  xy: 820, 130
-  size: 256, 137
-  orig: 256, 137
-  offset: 0, 0
-  index: -1
 ocean_layer
   rotate: false
-  xy: 2, 1298
+  xy: 2, 1209
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
-ocean_mountain_slides1
-  rotate: false
-  xy: 2, 1298
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: -1
+  index: 1
 ocean_layer
   rotate: false
-  xy: 2, 576
+  xy: 2, 487
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
-ocean_mountain_slides2
+  index: 2
+skeleton-spring-26
   rotate: false
-  xy: 2, 576
-  size: 1920, 720
-  orig: 1920, 720
+  xy: 2, 2
+  size: 307, 483
+  orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-flap well-3
+skeleton-spring-27
   rotate: false
-  xy: 2, 269
-  size: 340, 305
-  orig: 340, 305
+  xy: 311, 2
+  size: 307, 483
+  orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-flap well-4
+skeleton-spring-28
   rotate: false
-  xy: 344, 269
-  size: 340, 305
-  orig: 340, 305
+  xy: 620, 2
+  size: 307, 483
+  orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-flap well-5
+skeleton-spring-29
   rotate: false
-  xy: 686, 269
-  size: 340, 305
-  orig: 340, 305
+  xy: 929, 2
+  size: 307, 483
+  orig: 307, 483
   offset: 0, 0
   index: -1
-skeleton-flap well-6
+tutorial3
   rotate: false
-  xy: 1028, 269
-  size: 340, 305
-  orig: 340, 305
+  xy: 1238, 139
+  size: 306, 346
+  orig: 306, 346
   offset: 0, 0
   index: -1
-skeleton-flap well-7
+tutorial4
   rotate: false
-  xy: 1370, 269
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-springshoes
-  rotate: false
-  xy: 304, 57
-  size: 256, 210
-  orig: 256, 210
-  offset: 0, 0
-  index: -1
-staminaplus
-  rotate: false
-  xy: 562, 96
-  size: 256, 171
-  orig: 256, 171
+  xy: 1546, 139
+  size: 306, 346
+  orig: 306, 346
   offset: 0, 0
   index: -1
 
@@ -1123,205 +1298,65 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+ocean_layer
+  rotate: false
+  xy: 2, 724
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 3
+ocean_mountain_slides1
+  rotate: false
+  xy: 2, 724
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+ocean_layer
+  rotate: false
+  xy: 2, 2
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 4
+ocean_mountain_slides2
+  rotate: false
+  xy: 2, 2
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: -1
+
+items12.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
 1
   rotate: false
-  xy: 964, 714
+  xy: 964, 407
   size: 960, 632
   orig: 960, 632
   offset: 0, 0
   index: -1
 2
   rotate: false
-  xy: 964, 1348
+  xy: 964, 1041
   size: 960, 652
   orig: 960, 652
   offset: 0, 0
   index: -1
 4
   rotate: false
-  xy: 2, 1140
+  xy: 2, 833
   size: 960, 860
   orig: 960, 860
   offset: 0, 0
   index: -1
 5
   rotate: false
-  xy: 2, 309
+  xy: 2, 2
   size: 960, 829
   orig: 960, 829
-  offset: 0, 0
-  index: -1
-home
-  rotate: false
-  xy: 1712, 105
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-skeleton-flap well-10
-  rotate: false
-  xy: 344, 2
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-11
-  rotate: false
-  xy: 1306, 407
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-12
-  rotate: false
-  xy: 686, 2
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-13
-  rotate: false
-  xy: 1648, 407
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-14
-  rotate: false
-  xy: 1028, 100
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-15
-  rotate: false
-  xy: 1370, 100
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-8
-  rotate: false
-  xy: 2, 2
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-9
-  rotate: false
-  xy: 964, 407
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-
-items12.png
-size: 2048,1024
-format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
-dialog1
-  rotate: false
-  xy: 646, 11
-  size: 233, 300
-  orig: 233, 300
-  offset: 0, 0
-  index: -1
-mute1
-  rotate: false
-  xy: 344, 314
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-mute2
-  rotate: false
-  xy: 686, 621
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-pause
-  rotate: false
-  xy: 344, 12
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-restart
-  rotate: false
-  xy: 988, 621
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-resume
-  rotate: false
-  xy: 1290, 621
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-shop
-  rotate: false
-  xy: 1592, 621
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-skeleton-flap well-16
-  rotate: false
-  xy: 2, 616
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-17
-  rotate: false
-  xy: 2, 309
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-18
-  rotate: false
-  xy: 344, 616
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-skeleton-flap well-19
-  rotate: false
-  xy: 2, 2
-  size: 340, 305
-  orig: 340, 305
-  offset: 0, 0
-  index: -1
-spinach
-  rotate: false
-  xy: 646, 313
-  size: 256, 301
-  orig: 256, 301
-  offset: 0, 0
-  index: -1
-starDark
-  rotate: false
-  xy: 904, 319
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-starShine
-  rotate: false
-  xy: 1206, 319
-  size: 300, 300
-  orig: 300, 300
-  offset: 0, 0
-  index: -1
-tree
-  rotate: false
-  xy: 1508, 319
-  size: 267, 300
-  orig: 267, 300
   offset: 0, 0
   index: -1

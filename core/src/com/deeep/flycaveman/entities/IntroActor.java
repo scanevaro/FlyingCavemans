@@ -18,23 +18,29 @@ public class IntroActor extends Actor {
         im1 = new Image(Assets.intro1);
         im1.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
         im1.setColor(1, 1, 1, 0);
-        im1.addAction(new SequenceAction(Actions.fadeIn(0.25f), Actions.delay(1.0f), Actions.fadeOut(0.25f)));
+        im1.addAction(new SequenceAction(Actions.fadeIn(0.5f), Actions.delay(1.75f), Actions.fadeOut(0.5f)));
         im2 = new Image(Assets.intro2);
         im2.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
         im2.setColor(1, 1, 1, 0);
-        im2.addAction(new SequenceAction(Actions.delay(0.75f), Actions.fadeIn(0.50f), Actions.delay(1.0f), Actions.fadeOut(0.25f)));
+        im2.addAction(new SequenceAction(Actions.delay(3.0f), Actions.fadeIn(0.5f), Actions.delay(1.75f),
+                Actions.fadeOut(0.5f)));
         im3 = new Image(Assets.intro3);
         im3.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
         im3.setColor(1, 1, 1, 0);
-        im3.addAction(new SequenceAction(Actions.delay(2.0f), Actions.fadeIn(0.25f), Actions.delay(1.0f), Actions.fadeOut(0.25f)));
+        im3.addAction(new SequenceAction(Actions.delay(3.00f + 3.00f), Actions.fadeIn(0.5f), Actions.delay(1.75f),
+                Actions.fadeOut(0.5f)));
         im4 = new Image(Assets.intro4);
         im4.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
         im4.setColor(1, 1, 1, 0);
-        im4.addAction(new SequenceAction(Actions.delay(3.0f), Actions.fadeIn(0.25f), Actions.delay(1.0f), Actions.fadeOut(0.25f)));
+        im4.addAction(new SequenceAction(Actions.delay(3.00f + 3.00f + 3.00f), Actions.fadeIn(0.5f),
+                Actions.delay(1.75f), Actions.fadeOut(0.5f)));
         im5 = new Image(Assets.intro5);
         im5.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
         im5.setColor(1, 1, 1, 0);
-        im5.addAction(new SequenceAction(Actions.delay(4.0f), Actions.fadeIn(0.25f), Actions.delay(1.0f), Actions.fadeOut(0.25f)));
+        im5.addAction(new SequenceAction(Actions.delay(3.00f + 3.00f + 3.00f + 3.00f), Actions.fadeIn(0.5f),
+                Actions.delay(1.75f), Actions.fadeOut(0.5f)));
+
+        setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
     }
 
     @Override

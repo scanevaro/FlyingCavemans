@@ -24,6 +24,8 @@ public class SplashActor extends Actor {
         animation.setPlayMode(Animation.PlayMode.LOOP);
         setActions();
         stateTime = 0;
+
+        setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
     }
 
     private void setActions() {

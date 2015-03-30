@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -45,7 +46,8 @@ public class GameScreen extends AbstractScreen {
     private ExpressionsWidget expressions;
     private CoinsWidget coinsWidget;
     private Dialog nameDialog;
-    private TextField textArea;
+    private TextField nameTextArea;
+    private TutorialWidget tutorialWidget;
     /**
      * World
      */
@@ -112,6 +114,7 @@ public class GameScreen extends AbstractScreen {
 
         expressions = new ExpressionsWidget();
         coinsWidget = new CoinsWidget();
+        tutorialWidget = new TutorialWidget();
     }
 
     private void configureWidgets() {
@@ -150,6 +153,8 @@ public class GameScreen extends AbstractScreen {
         pauseButton.setSize(64, 64);
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
         coinsWidget.setPosition(300, 1);
+        tutorialWidget.setSize(306, 346);
+        tutorialWidget.setPosition(Core.VIRTUAL_WIDTH / 2 - tutorialWidget.getWidth() / 2, Core.VIRTUAL_HEIGHT + tutorialWidget.getHeight());
 
         stage.addActor(distanceLabel);
         stage.addActor(heightLabel);
@@ -179,17 +184,21 @@ public class GameScreen extends AbstractScreen {
 
         nameDialog = new Dialog("Insert your name", Assets.skin.get("dialog", Window.WindowStyle.class)) {
             protected void result(Object object) {
-                if (!textArea.getText().equals(""))
-                    name = textArea.getText();
+                if (!nameTextArea.getText().equals(""))
+                    name = nameTextArea.getText();
                 else name = "Anonymous";
+
+                nameDialog.addAction(Actions.moveTo(nameDialog.getX(), -nameDialog.getHeight(), 0.25f, Interpolation.linear));
+                tutorialWidget.moveDown();
             }
         };
+        nameDialog.setKeepWithinStage(false);
         nameDialog.setSize(350, 200);
 
-        textArea = new TextField("", Assets.skin.get("default2", TextField.TextFieldStyle.class));
-        textArea.setSize(200, 64);
-        textArea.setPosition(nameDialog.getWidth() / 2 - 25, nameDialog.getHeight() / 2 + 5);
-        nameDialog.addActor(textArea);
+        nameTextArea = new TextField("", Assets.skin.get("default2", TextField.TextFieldStyle.class));
+        nameTextArea.setSize(200, 64);
+        nameTextArea.setPosition(nameDialog.getWidth() / 2 - 25, nameDialog.getHeight() / 2 + 5);
+        nameDialog.addActor(nameTextArea);
 
         TextButton yesButton = new TextButton("Accept", Assets.skin);
         yesButton.setSize(128, 96);
@@ -197,6 +206,7 @@ public class GameScreen extends AbstractScreen {
         nameDialog.setObject(yesButton, null);
 
         nameDialog.show(stage);
+        stage.addActor(tutorialWidget);
     }
 
     @Override

@@ -26,14 +26,11 @@ public class IntroScreen extends AbstractScreen {
         splashSprite = new IntroActor();
     }
 
-    private void configureActors() {
-        splashSprite.setColor(1, 1, 1, 0);
-    }
-
     private void setListeners() {
         splashSprite.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                timer.cancel();
                 game.setScreen(new GameScreen(game));
             }
         });
@@ -61,7 +58,6 @@ public class IntroScreen extends AbstractScreen {
         stage = new Stage(new FitViewport(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT));
         Gdx.input.setInputProcessor(stage);
         setActors();
-        configureActors();
         setListeners();
         setLayout();
 
@@ -70,7 +66,7 @@ public class IntroScreen extends AbstractScreen {
             public void run() {
                 game.setScreen(new GameScreen(game));
             }
-        }, 5.5f);
+        }, 15.0f);
     }
 
     @Override
