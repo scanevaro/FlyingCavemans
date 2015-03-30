@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.deeep.flycaveman.Assets;
@@ -29,13 +30,13 @@ public class TutorialWidget extends Actor {
         text.setOrigin(text.getWidth() / 2, text.getHeight() / 2);
         text.setPosition(Core.VIRTUAL_WIDTH / 2 - text.getWidth() / 2, Core.VIRTUAL_HEIGHT + text.getHeight());
         text.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.6f), Actions.delay(0.2f), Actions.fadeIn(0.6f))));
-
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 addAction(Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
                 text.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - text.getWidth() / 2, -text.getHeight(), 0.2f, Interpolation.linear));
-                background.addAction(Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
+                background.addAction(new SequenceAction(Actions.fadeOut(0.35f, Interpolation.fade),
+                        Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear)));
                 clearListeners();
             }
         });
