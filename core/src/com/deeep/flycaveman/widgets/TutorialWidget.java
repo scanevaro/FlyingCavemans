@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.FocusListener;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 
@@ -19,7 +18,7 @@ public class TutorialWidget extends Actor {
     private Animation animation;
     private float stateTime;
     private Image text;
-    private FocusListener focusListener;
+    public Image background;
 
     public TutorialWidget() {
         animation = new Animation(0.25f, Assets.tutorial0, Assets.tutorial1, Assets.tutorial2, Assets.tutorial3,
@@ -34,25 +33,17 @@ public class TutorialWidget extends Actor {
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                addAction(Actions.moveTo(getX(), -getHeight(), 0.4f, Interpolation.linear));
+                addAction(Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
                 text.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - text.getWidth() / 2, -text.getHeight(), 0.2f, Interpolation.linear));
+                background.addAction(Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
+                clearListeners();
             }
         });
-        focusListener = new FocusListener() {
-            public void keyboardFocusChanged(FocusEvent event, Actor actor, boolean focused) {
-                if (!focused) focusChanged(event);
-            }
-
-            public void scrollFocusChanged(FocusEvent event, Actor actor, boolean focused) {
-                if (!focused) focusChanged(event);
-            }
-
-            private void focusChanged(FocusEvent event) {
-                event.cancel();
-                addAction(Actions.moveTo(getX(), -getHeight(), 0.4f, Interpolation.linear));
-            }
-        };
-        addListener(focusListener);
+        background = new Image(Assets.items.findRegion("white"));
+        background.setColor(0, 0, 0, 0.45f);
+        background.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
+        background.setPosition(0, 0);
+        background.addAction(Actions.alpha(0));
     }
 
     @Override
@@ -60,17 +51,20 @@ public class TutorialWidget extends Actor {
         super.act(delta);
         stateTime += delta;
         text.act(delta);
+        background.act(delta);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        background.draw(batch, parentAlpha);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
-        batch.draw(animation.getKeyFrame(stateTime), getX(), getY(), getWidth(), getHeight());
+        batch.draw(animation.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 - 306 / 2, getY() + 346 / 2, 306, 346);
         text.draw(batch, parentAlpha);
     }
 
     public void moveDown() {
-        addAction(Actions.moveTo(getX(), Core.VIRTUAL_HEIGHT / 2 - getHeight() / 2, 0.4f, Interpolation.linear));
+        addAction(Actions.moveTo(0, 0, 0.4f, Interpolation.linear));
         text.addAction(Actions.moveTo(150, 70, 0.4f, Interpolation.linear));
+        background.addAction(Actions.alpha(0.45f, 0.4f, Interpolation.fade));
     }
 }
