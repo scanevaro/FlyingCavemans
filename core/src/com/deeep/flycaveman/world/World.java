@@ -196,7 +196,8 @@ public class World extends Actor implements Disposable {
         gameContactListener.update();
         startScreen.update(delta, name);
         updateSky();
-        space.update(delta, worldStage.getCamera().position);
+        if (GameInputProcessor.flying)
+            space.update(delta, worldStage.getCamera().position, caveman.body);
         updateGround();
         updateObstacles();
         caveman.update(delta);

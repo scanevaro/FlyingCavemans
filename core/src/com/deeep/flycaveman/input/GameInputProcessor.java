@@ -12,6 +12,8 @@ import com.deeep.flycaveman.world.World;
  * Created by scanevaro on 11/10/2014.
  */
 public class GameInputProcessor implements InputProcessor {
+    public static float limit = 2;
+    public static float strength = 5;
     private final int IDLE = 0;
     private final int CATAPULTSET = 1;
     private final int FLYING = 2;
@@ -61,7 +63,7 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
                 localCords.y = Math.max(localCords.y, 1.25f);
-                localCords = limit(originalPos, localCords, 2);
+                localCords = limit(originalPos, localCords, limit);
                 world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
                 break;
@@ -80,10 +82,8 @@ public class GameInputProcessor implements InputProcessor {
         double length = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
         double angle = Math.atan2(deltaY, deltaX) + Math.PI;
         length = Math.min(length, maxLength);
-        System.out.println(length);
         deltaX = Math.cos(-angle) * length;
         deltaY = Math.sin(angle ) * length;
-        System.out.println(deltaX + ", " + deltaY);
         deltaX += vector1.x;
         deltaY += vector1.y;
         return new Vector2((float) deltaX, (float) deltaY);
@@ -122,9 +122,9 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
                 localCords.y = Math.max(localCords.y, 1.25f);
-                localCords = limit(originalPos, localCords, 2);
+                localCords = limit(originalPos, localCords, limit);
                 Vector2 difference = localCords.sub(originalPos);
-                world.caveman.body.setLinearVelocity(difference.x * -2 * 5, difference.y * -4 * 5);
+                world.caveman.body.setLinearVelocity(difference.x * -2 * strength, difference.y * -4 * strength);
                 gameState = FLYING;
                 flying = true;
                 catapulting = false;

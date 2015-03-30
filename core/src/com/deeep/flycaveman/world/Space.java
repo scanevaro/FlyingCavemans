@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.screens.GameScreen;
 
@@ -33,15 +34,21 @@ public class Space {
         starTex = new Texture(pixmap);
     }
 
-    public void update(float deltaT, Vector3 cameraPos) {
+    public void update(float deltaT, Vector3 cameraPos, Body cavemanBody) {
         float cavemanX = cameraPos.x - 16;
         float cavemanY = cameraPos.y;
         for (Star star : stars) {
-            if (star.x < GameScreen.gameCamera.position.x-GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) {
+            if (star.x < GameScreen.gameCamera.position.x - GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) {
                 star.x = cavemanX + (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth) * random.nextFloat() + GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportWidth;
                 star.y = cavemanY + random.nextFloat() * GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 4 - (GameScreen.gameCamera.zoom * GameScreen.gameCamera.viewportHeight * 2);
             }
-            star.transparency = Math.min(Math.max(0, (star.y - 80) / 80), 1);
+            star.transparency = Math.min(Math.max(0, (star.y - Area.HALF_SPACE) / Area.HALF_SPACE), 1);
+        }
+        if (cavemanBody.getPosition().y > Area.HALF_SPACE) {
+            float gravity = Math.min(0.5f, 1 - (.5f * (cavemanBody.getPosition().y - Area.HALF_SPACE) / (Area.MAX_SPACE)));
+            cavemanBody.setGravityScale(gravity);
+        } else {
+            cavemanBody.setGravityScale(1);
         }
     }
 

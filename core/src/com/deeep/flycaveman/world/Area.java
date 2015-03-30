@@ -13,6 +13,7 @@ public class Area {
     public static final int BEGIN_SPACE = 60;
     public static final int HALF_SPACE = 80;
     public static final int FULL_SPACE = 120;
+    public static final int MAX_SPACE = 160; // for lowest gravity
     public enum AREA {
         DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "OceanTheme");//"OceanTheme");
 
