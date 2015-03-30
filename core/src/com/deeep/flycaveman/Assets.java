@@ -45,16 +45,22 @@ public class Assets {
             starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench, intro1, intro2,
             intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
-    public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3, dessert_layer_4;  //todo put this in an enum or so
-    public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3, jungle_layer_4;  //todo put this in an enum or so
-    public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2, jungle_dessert_layer_3;  //todo put this in an enum or so
-    public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3, jungle_ocean_layer_4;  //todo put this in an enum or so
-    public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2, dessert_jungle_layer_3;  //todo put this in an enum or so
+    public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
+            dessert_layer_4;  //todo put this in an enum or so
+    public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3,
+            jungle_layer_4;  //todo put this in an enum or so
+    public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2,
+            jungle_dessert_layer_3;  //todo put this in an enum or so
+    public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3,
+            jungle_ocean_layer_4;  //todo put this in an enum or so
+    public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2,
+            dessert_jungle_layer_3;  //todo put this in an enum or so
     public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3, ocean_layer_4;
-    public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3, dessert_ocean_layer_4;
-
+    public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3,
+            dessert_ocean_layer_4;
     public static TextureRegion vodka, meat, soda, spinach;
-    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1, coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm;
+    public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1,
+            coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm, buy;
 
     public Assets() {
         assetManager = new AssetManager();
@@ -108,6 +114,7 @@ public class Assets {
         assetManager.load("data/sounds/coin2.mp3", Sound.class);
         assetManager.load("data/sounds/coin3.mp3", Sound.class);
         assetManager.load("data/sounds/coin4.mp3", Sound.class);
+        assetManager.load("data/sounds/buy.mp3", Sound.class);
 
         assetManager.load("data/sounds/button_confirm.mp3", Sound.class);
     }
@@ -310,6 +317,7 @@ public class Assets {
         coin3_sound = assetManager.get("data/sounds/coin3.mp3");
         coin4_sound = assetManager.get("data/sounds/coin4.mp3");
         buttonConfirm = assetManager.get("data/sounds/button_confirm.mp3");
+        buy = assetManager.get("data/sounds/buy.mp3");
     }
 
     public static void dispose() {

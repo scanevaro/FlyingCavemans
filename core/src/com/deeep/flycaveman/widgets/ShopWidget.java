@@ -237,7 +237,7 @@ public class ShopWidget {
         buyWingsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addWings(wingsPrice);
+                if (screen.world.caveman.addWings(wingsPrice)) Assets.buy.play();
             }
         });
         buyWingsButton.setSize(160, 96);
@@ -294,7 +294,7 @@ public class ShopWidget {
         buySteroidsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addSteroids(steroidsPrice);
+                if (screen.world.caveman.addSteroids(steroidsPrice)) Assets.buy.play();
             }
         });
         buySteroidsButton.setSize(160, 96);
@@ -351,7 +351,7 @@ public class ShopWidget {
         buyStaminaButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addStamina(staminaPrice);
+                if (screen.world.caveman.addStamina(staminaPrice)) Assets.buy.play();
             }
         });
         buyStaminaButton.setSize(160, 96);
@@ -408,7 +408,7 @@ public class ShopWidget {
         buySpringsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addSprings(springsPrice);
+                if (screen.world.caveman.addSprings(springsPrice)) Assets.buy.play();
             }
         });
         buySpringsButton.setSize(160, 96);
@@ -465,7 +465,7 @@ public class ShopWidget {
         buyMagnetButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addMagnet(magnetPrice);
+                if (screen.world.caveman.addMagnet(magnetPrice)) Assets.buy.play();
             }
         });
         buyMagnetButton.setSize(160, 96);
@@ -522,7 +522,7 @@ public class ShopWidget {
         buyClenchButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                screen.world.caveman.addClench(clenchPrice);
+                if (screen.world.caveman.addClench(clenchPrice)) Assets.buy.play();
             }
         });
         buyClenchButton.setSize(160, 96);

@@ -175,33 +175,45 @@ public class CaveMan implements Entity {
         this.state = state;
     }
 
-    public void addWings(int price) {
+    public boolean addWings(int price) {
         if (wings < 3) wings++;
+        else return false;
         coins -= price;
+        return true;
     }
 
-    public void addStamina(int price) {
+    public boolean addStamina(int price) {
         if (staminaSize < 3) staminaSize++;
+        else return false;
         coins -= price;
+        return true;
     }
 
-    public void addSteroids(int price) {
+    public boolean addSteroids(int price) {
         if (steroids < 3) steroids++;
+        else return false;
         coins -= price;
+        return true;
     }
 
-    public void addSprings(int price) {
+    public boolean addSprings(int price) {
         if (springs < 3) springs++;
+        else return false;
         coins -= price;
+        return true;
     }
 
-    public void addMagnet(int price) {
+    public boolean addMagnet(int price) {
         if (CaveMan.magnet < 3) CaveMan.magnet++;
+        else return false;
         coins -= price;
+        return true;
     }
 
-    public void addClench(int price) {
+    public boolean addClench(int price) {
         if (CaveMan.clench < 3) CaveMan.clench++;
+        else return false;
         coins -= price;
+        return true;
     }
 }

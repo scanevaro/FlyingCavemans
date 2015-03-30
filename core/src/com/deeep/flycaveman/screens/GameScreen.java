@@ -102,7 +102,6 @@ public class GameScreen extends AbstractScreen {
     private void setWidgets() {
         distanceLabel = new TextButton("Distance: ", Assets.skin.get("defaultSmallFont", TextButton.TextButtonStyle.class));
         heightLabel = new TextButton("Height: ", Assets.skin.get("defaultSmallFont", TextButton.TextButtonStyle.class));
-
         ImageButton.ImageButtonStyle pauseStyle = new ImageButton.ImageButtonStyle();
         pauseStyle.imageUp = new TextureRegionDrawable(Assets.pauseUp);
         pauseStyle.imageUp.setMinWidth(64);
@@ -111,10 +110,10 @@ public class GameScreen extends AbstractScreen {
         pauseStyle.imageDown.setMinWidth(64);
         pauseStyle.imageDown.setMinHeight(64);
         pauseButton = new ImageButton(pauseStyle);
-
         expressions = new ExpressionsWidget();
         coinsWidget = new CoinsWidget();
         tutorialWidget = new TutorialWidget();
+        //pickupsWidget = new PickupsWidget();
     }
 
     private void configureWidgets() {
