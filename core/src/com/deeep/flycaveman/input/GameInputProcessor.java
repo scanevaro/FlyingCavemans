@@ -61,6 +61,7 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
                 localCords.y = Math.max(localCords.y, 1.25f);
+                localCords = limit(originalPos, localCords, 2);
                 world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
                 break;
@@ -71,6 +72,21 @@ public class GameInputProcessor implements InputProcessor {
                 world.caveman.body.setAngularVelocity(0);
                 break;
         }
+    }
+
+    private Vector2 limit(Vector2 vector1, Vector2 vector2, float maxLength) {
+        double deltaX = vector1.x - vector2.x;
+        double deltaY = vector1.y - vector2.y;
+        double length = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
+        double angle = Math.atan2(deltaY, deltaX) + Math.PI;
+        length = Math.min(length, maxLength);
+        System.out.println(length);
+        deltaX = Math.cos(-angle) * length;
+        deltaY = Math.sin(angle ) * length;
+        System.out.println(deltaX + ", " + deltaY);
+        deltaX += vector1.x;
+        deltaY += vector1.y;
+        return new Vector2((float) deltaX, (float) deltaY);
     }
 
     @Override
@@ -106,6 +122,7 @@ public class GameInputProcessor implements InputProcessor {
                 localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
                 localCords = Core.pixelsToBoxUnit(localCords);
                 localCords.y = Math.max(localCords.y, 1.25f);
+                localCords = limit(originalPos, localCords, 2);
                 Vector2 difference = localCords.sub(originalPos);
                 world.caveman.body.setLinearVelocity(difference.x * -2 * 5, difference.y * -4 * 5);
                 gameState = FLYING;
