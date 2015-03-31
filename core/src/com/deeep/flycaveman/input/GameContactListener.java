@@ -33,28 +33,26 @@ public class GameContactListener implements ContactListener {
         if (!world.caveman.cheats) {
             if (fixtureA.getUserData() instanceof Obstacle || fixtureB.getUserData() instanceof Obstacle) {
                 Obstacle obstacle = null;
-
                 if (fixtureA.getUserData() != null)
                     obstacle = (Obstacle) fixtureA.getUserData();
                 else obstacle = (Obstacle) fixtureB.getUserData();
-
                 switch (obstacle.type) {
-                    case 0: //SMALL_EGG
-                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x, smallEggForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                    case 0: /**SMALL_EGG*/
+                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                                smallEggForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 1: //BRACHIOSAURUS
-                        world.caveman.body.setLinearVelocity(brachioForce / 2 + world.caveman.body.getLinearVelocity().x, brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                    case 1: /**BRACHIOSAURUS*/
+                        world.caveman.body.setLinearVelocity(brachioForce / 2 + world.caveman.body.getLinearVelocity().x,
+                                brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 2: //QUETZALCOATLUS
-                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x, quetzaForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                    case 2: /**QUETZALCOATLUS*/
+                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                                quetzaForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                 }
-
                 obstacle.hit();
                 world.caveman.smacked++;
-
                 Assets.hitEntity1.play();
-
             } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {
                 if (!GameInputProcessor.catapulting) {
                     GameInputProcessor.touchingGround = true;
@@ -63,37 +61,25 @@ public class GameContactListener implements ContactListener {
                 }
             } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
                 PowerUp powerUp = null;
-                if (fixtureA.getUserData() instanceof PowerUp) {
-                    powerUp = (PowerUp) fixtureA.getUserData();
-                } else {
-                    powerUp = (PowerUp) fixtureB.getUserData();
-                }
-                world.caveman.stamina = Math.max(0, Math.min(world.caveman.maxStamina, world.caveman.stamina + ((float) powerUp.type.getPercentage() / 100f) * world.caveman.maxStamina));
-                if (powerUp.type == PowerUp.Type.SPINACH) {
-                    //extreme
-                }
-
-                if (powerUp.type == PowerUp.Type.MEAT) {
-                    Assets.eat1.play();
-                } else if (powerUp.type == PowerUp.Type.SODACAN) {
-                    Assets.canOpen1.play();
-                } else if (powerUp.type == PowerUp.Type.SPINACH) {
+                if (fixtureA.getUserData() instanceof PowerUp) powerUp = (PowerUp) fixtureA.getUserData();
+                else powerUp = (PowerUp) fixtureB.getUserData();
+                world.caveman.stamina = Math.max(0, Math.min(world.caveman.maxStamina,
+                        world.caveman.stamina + ((float) powerUp.type.getPercentage() / 100f) * world.caveman.maxStamina));
+                if (powerUp.type == PowerUp.Type.SPINACH) world.caveman.grabSpinach();
+                if (powerUp.type == PowerUp.Type.MEAT) Assets.eat1.play();
+                else if (powerUp.type == PowerUp.Type.SODACAN) Assets.canOpen1.play();
+                else if (powerUp.type == PowerUp.Type.SPINACH) {
                     Assets.burp3.play();
-
                     world.caveman.setState(CaveMan.STATE_PASSION);
                 } else if (powerUp.type == PowerUp.Type.VODKA) {
                     Assets.slurp.play();
-
                     world.caveman.setState(CaveMan.STATE_PAIN);
                 }
-
                 powerUp.die();
                 world.caveman.powerUpsPicked++;
             }
 
-            /**
-             * Collision for coins
-             */
+            /**Collision for coins*/
             if (fixtureA.getUserData() instanceof Coin || fixtureB.getUserData() instanceof Coin) {
                 world.caveman.coins++;
                 switch (world.caveman.coinStreak) {
@@ -112,13 +98,8 @@ public class GameContactListener implements ContactListener {
                 }
                 world.caveman.coinStreak++;
                 if (world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
-                if (fixtureA.getUserData() instanceof Coin) {
-                    world.coinSpawner.remove((Coin) fixtureA.getUserData());
-                }
-                if (fixtureB.getUserData() instanceof Coin) {
-                    world.coinSpawner.remove((Coin) fixtureB.getUserData());
-                }
-
+                if (fixtureA.getUserData() instanceof Coin) world.coinSpawner.remove((Coin) fixtureA.getUserData());
+                if (fixtureB.getUserData() instanceof Coin) world.coinSpawner.remove((Coin) fixtureB.getUserData());
                 world.caveman.coinsPicked++;
             }
         }
@@ -128,21 +109,17 @@ public class GameContactListener implements ContactListener {
     public void endContact(Contact contact) {
         GameInputProcessor.touchingGround = false;
         GameInputProcessor.flying = true;
-
         final Fixture fixtureA = contact.getFixtureA();
         final Fixture fixtureB = contact.getFixtureB();
-
-        if ((fixtureA.getUserData() != null && fixtureA.getUserData() instanceof Obstacle) || (fixtureB.getUserData() != null && fixtureB.getUserData() instanceof Obstacle)) {
-
-        } else if ((fixtureA.getUserData() instanceof CaveMan && fixtureB.getUserData() instanceof Ground)
-                || (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
+        if ((fixtureA.getUserData() != null && fixtureA.getUserData() instanceof Obstacle) ||
+                (fixtureB.getUserData() != null && fixtureB.getUserData() instanceof Obstacle)) {
+        } else if ((fixtureA.getUserData() instanceof CaveMan && fixtureB.getUserData() instanceof Ground) ||
+                (fixtureB.getUserData() instanceof CaveMan && fixtureA.getUserData() instanceof Ground)) {
             if (!GameInputProcessor.catapulting) {
-
                 if (world.caveman.springsJumps > 0) {
                     world.caveman.useSpring();
                     return;
                 }
-
                 Assets.hitGround1Sound.play();
                 Assets.hitGround();
             }

@@ -45,7 +45,7 @@ public class CaveMan implements Entity {
     private int state;
     private com.deeep.flycaveman.world.World world;
     public static int coins;
-    private float startFlapDistance;
+    private float startFlapDistance, spinachStateTime;
     public float flapDistance;
     public int smacked, powerUpsPicked, coinsPicked;
 
@@ -78,6 +78,7 @@ public class CaveMan implements Entity {
         //weldJointDef.collideConnected = false;
         //bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
         strength = 225;
+        spinachStateTime = 1;
         {/**Buyable Items*/
             if (wings >= 1) strength += 25;
             if (wings >= 2) strength += 25;
@@ -125,7 +126,8 @@ public class CaveMan implements Entity {
         updateFlapping(delta);
         stateTimeSprings -= delta;
         if (stamina > 1) state = STATE_HAPPY;
-        if (stamina <= 1) state = STATE_TIRED;
+        else if (stamina <= 1) state = STATE_TIRED;
+        if (spinachStateTime < 1) state = STATE_PASSION;
         if (GameInputProcessor.touchingGround) state = STATE_PAIN;
         if (world.isGameOver()) state = STATE_KO;
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)) cheats = !cheats;
@@ -135,9 +137,15 @@ public class CaveMan implements Entity {
         if (GameInputProcessor.touchingGround) return;
         if (flapStateTime < 0.5f) {
             flapStateTime += delta;
-            if (strength > 0 && !cheats) strength -= delta * 20;
-            double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
-            body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
+            if (spinachStateTime < 1) {
+                spinachStateTime += delta;
+                double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+                body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
+            } else if (strength > 0 && !cheats) {
+                strength -= delta * 20;
+                double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+                body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
+            }
         } else if (strength < 300) strength += delta;
         if (flapStateTime >= 0.5f && startFlapDistance != 0) {
             flapDistance += body.getPosition().x - startFlapDistance;
@@ -155,11 +163,11 @@ public class CaveMan implements Entity {
     public void flap() {
         if (GameInputProcessor.touchingGround) return;
         if (body.getLinearVelocity().x != 0 || body.getLinearVelocity().y != 0) {
-            if (stamina > 0) {
+            if (spinachStateTime < 1 || stamina > 0) {
                 if (body.getLinearVelocity().y < 0)
                     body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y / 2);
                 else body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y);
-                if (!cheats) stamina -= 1;
+                if (!cheats && spinachStateTime >= 1) stamina -= 1;
                 flapStateTime = 0;
                 startFlapDistance = body.getPosition().x;
                 //todo add a way to increase the max flapstatetime
@@ -215,5 +223,9 @@ public class CaveMan implements Entity {
         else return false;
         coins -= price;
         return true;
+    }
+
+    public void grabSpinach() {
+        spinachStateTime = -0.5f;
     }
 }

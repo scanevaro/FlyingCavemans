@@ -21,44 +21,32 @@ public class ExpressionsWidget extends Actor {
     public ExpressionsWidget() {
         background = new Image(Assets.faceBackground);
         background.setSize(96, 96);
-        background.setPosition(/*Core.VIRTUAL_WIDTH / 3 - background.getWidth() / 2*/0, 0);
-
+        background.setPosition(0, 0);
         happyFace = new TextureRegionDrawable(Assets.faceHappy);
         tiredFace = new TextureRegionDrawable(Assets.faceTired);
         okFace = new TextureRegionDrawable(Assets.faceKO);
         painFace = new TextureRegionDrawable(Assets.facePain);
         passionFace = new TextureRegionDrawable(Assets.facePassion);
-
         face = new Image();
         face.setSize(90, 90);
-        face.setPosition(/*Core.VIRTUAL_WIDTH / 3 - face.getWidth() / 2*/3, 3);
-
+        face.setPosition(3, 3);
         face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
     }
 
     @Override
     public void act(float delta) {
         super.act(delta);
-
         background.act(delta);
         face.act(delta);
-
-        if (caveman.getState() == CaveMan.STATE_HAPPY)
-            face.setDrawable(happyFace);
-        else if (caveman.getState() == CaveMan.STATE_TIRED)
-            face.setDrawable(tiredFace);
-        else if (caveman.getState() == CaveMan.STATE_KO)
-            face.setDrawable(okFace);
-        else if (caveman.getState() == CaveMan.STATE_PAIN)
-            face.setDrawable(painFace);
-        else if (caveman.getState() == CaveMan.STATE_PASSION)
-            face.setDrawable(passionFace);
+        if (caveman.getState() == CaveMan.STATE_HAPPY) face.setDrawable(happyFace);
+        else if (caveman.getState() == CaveMan.STATE_TIRED) face.setDrawable(tiredFace);
+        else if (caveman.getState() == CaveMan.STATE_KO) face.setDrawable(okFace);
+        else if (caveman.getState() == CaveMan.STATE_PAIN) face.setDrawable(painFace);
+        else if (caveman.getState() == CaveMan.STATE_PASSION) face.setDrawable(passionFace);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-//        batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
-
         background.draw(batch, parentAlpha);
         face.draw(batch, parentAlpha);
     }
@@ -70,15 +58,12 @@ public class ExpressionsWidget extends Actor {
     @Override
     public void setColor(Color color) {
         super.setColor(color);
-
         background.setColor(color);
         face.setColor(color);
     }
 
     @Override
     public void addAction(Action action) {
-//        super.addAction(action);
-
         background.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
         face.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
     }

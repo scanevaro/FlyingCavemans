@@ -37,7 +37,7 @@ public class TutorialWidget extends Actor {
         text2.setSize(432, 239);
         text2.setOrigin(text2.getWidth() / 2, text2.getHeight() / 2);
         text2.setPosition(Core.VIRTUAL_WIDTH / 2, Core.VIRTUAL_HEIGHT + text2.getHeight());
-        text2.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.6f), Actions.delay(0.2f), Actions.fadeIn(0.6f))));
+        text2.addAction(Actions.forever(Actions.sequence(Actions.fadeIn(0.6f), Actions.delay(0.5f), Actions.fadeOut(0.6f))));
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
