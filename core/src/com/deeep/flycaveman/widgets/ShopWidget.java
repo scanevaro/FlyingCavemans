@@ -710,23 +710,23 @@ public class ShopWidget {
     }
 
     private void updateStars() {
-        if (CaveMan.wings == 1) starsWings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.wings == 2) starsWings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.wings >= 1) starsWings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.wings >= 2) starsWings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.wings == 3) starsWings[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.steroids == 1) starsSteroids[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.steroids == 2) starsSteroids[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.steroids >= 1) starsSteroids[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.steroids >= 2) starsSteroids[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.steroids == 3) starsSteroids[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.staminaSize == 1) starsStamina[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.staminaSize == 2) starsStamina[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.staminaSize >= 1) starsStamina[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.staminaSize >= 2) starsStamina[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.staminaSize == 3) starsStamina[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.springs == 1) starsSprings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.springs == 2) starsSprings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.springs >= 1) starsSprings[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.springs >= 2) starsSprings[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.springs == 3) starsSprings[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.magnet == 1) starsMagnet[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.magnet == 2) starsMagnet[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.magnet >= 1) starsMagnet[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.magnet >= 2) starsMagnet[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.magnet == 3) starsMagnet[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.clench == 1) starsClench[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
-        if (CaveMan.clench == 2) starsClench[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.clench >= 1) starsClench[0].setDrawable(new TextureRegionDrawable(Assets.starBright));
+        if (CaveMan.clench >= 2) starsClench[1].setDrawable(new TextureRegionDrawable(Assets.starBright));
         if (CaveMan.clench == 3) starsClench[2].setDrawable(new TextureRegionDrawable(Assets.starBright));
     }
 }
