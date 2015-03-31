@@ -22,6 +22,7 @@ public class CaveMan implements Entity {
     public static final int STATE_PAIN = 2;
     public static final int STATE_KO = 3;
     public static final int STATE_PASSION = 4;
+    public static float spinachTime = -0.5f;
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -45,7 +46,8 @@ public class CaveMan implements Entity {
     private int state;
     private com.deeep.flycaveman.world.World world;
     public static int coins;
-    private float startFlapDistance, spinachStateTime;
+    private float startFlapDistance;
+    public float spinachStateTime;
     public float flapDistance;
     public int smacked, powerUpsPicked, coinsPicked;
 
@@ -226,6 +228,6 @@ public class CaveMan implements Entity {
     }
 
     public void grabSpinach() {
-        spinachStateTime = -0.5f;
+        spinachStateTime = spinachTime;
     }
 }

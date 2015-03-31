@@ -6,231 +6,210 @@ filter: Nearest,Nearest
 repeat: none
 3
   rotate: false
-  xy: 2, 86
+  xy: 2, 85
   size: 960, 516
   orig: 960, 516
   offset: 0, 0
   index: -1
 Coin1
   rotate: false
-  xy: 744, 54
+  xy: 744, 53
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin2
   rotate: false
-  xy: 1924, 1200
+  xy: 1924, 1258
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin3
   rotate: false
-  xy: 1607, 66
+  xy: 1484, 15
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin4
   rotate: false
-  xy: 776, 54
+  xy: 1544, 65
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin5
   rotate: false
-  xy: 1924, 1168
+  xy: 776, 53
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin6
   rotate: false
-  xy: 1639, 66
+  xy: 1924, 1226
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 QUETZA
   rotate: false
-  xy: 964, 3
+  xy: 964, 2
   size: 128, 93
   orig: 128, 93
   offset: 0, 0
   index: -1
 QUETZA2
   rotate: false
-  xy: 1094, 3
+  xy: 1094, 2
   size: 128, 93
   orig: 128, 93
   offset: 0, 0
   index: -1
 catapultBase
   rotate: false
-  xy: 2, 3
+  xy: 2, 2
   size: 247, 81
   orig: 247, 81
   offset: 0, 0
   index: -1
 caveman
   rotate: false
-  xy: 633, 38
+  xy: 633, 37
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
 cavemanFlap1
   rotate: false
-  xy: 1924, 1538
+  xy: 1924, 1537
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanFlap2
   rotate: false
-  xy: 1924, 1475
+  xy: 1924, 1474
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings1
   rotate: false
-  xy: 1924, 1412
+  xy: 1924, 1411
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings2
   rotate: false
-  xy: 1924, 1349
+  xy: 1924, 1348
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cloud2
   rotate: false
-  xy: 1679, 8
+  xy: 1679, 7
   size: 330, 109
   orig: 330, 109
   offset: 0, 0
   index: -1
 cursor
   rotate: false
-  xy: 251, 9
+  xy: 251, 8
   size: 3, 3
   orig: 3, 3
   offset: 0, 0
   index: -1
 desert_jungle
   rotate: false
-  xy: 2, 1326
+  xy: 2, 1325
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 1
 desert_layer
   rotate: false
-  xy: 2, 604
+  xy: 2, 603
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 1
 expresionsCircle
   rotate: false
-  xy: 1924, 1601
+  xy: 1924, 1600
   size: 79, 74
   orig: 79, 74
   offset: 0, 0
   index: -1
-happyface
-  rotate: false
-  xy: 1484, 40
-  size: 61, 56
-  orig: 61, 56
-  offset: 0, 0
-  index: -1
-koface
-  rotate: false
-  xy: 1924, 1232
-  size: 59, 57
-  orig: 59, 57
-  offset: 0, 0
-  index: -1
-passionface
-  rotate: false
-  xy: 1547, 2
-  size: 48, 44
-  orig: 48, 44
-  offset: 0, 0
-  index: -1
 scorpion1
   rotate: false
-  xy: 964, 98
+  xy: 964, 97
   size: 713, 504
   orig: 713, 504
   offset: 0, 0
   index: -1
 selection
   rotate: false
-  xy: 633, 35
+  xy: 633, 34
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 skeleton-spring-0
   rotate: false
-  xy: 1679, 119
+  xy: 1679, 118
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
 skeleton-spring-30
   rotate: false
-  xy: 1679, 119
+  xy: 1679, 118
   size: 307, 483
   orig: 307, 483
   offset: 0, 0
   index: -1
 smallEgg
   rotate: false
-  xy: 1224, 9
+  xy: 1224, 8
   size: 128, 87
   orig: 128, 87
   offset: 0, 0
   index: -1
 smallEgg2
   rotate: false
-  xy: 1354, 9
+  xy: 1354, 8
   size: 128, 87
   orig: 128, 87
   offset: 0, 0
   index: -1
 springJump
   rotate: false
-  xy: 1924, 1677
+  xy: 1924, 1676
   size: 69, 116
   orig: 69, 116
   offset: 0, 0
   index: -1
 staminabar
   rotate: false
-  xy: 251, 14
+  xy: 251, 13
   size: 189, 70
   orig: 189, 70
   offset: 0, 0
   index: -1
 staminabarBackground
   rotate: false
-  xy: 442, 14
+  xy: 442, 13
   size: 189, 70
   orig: 189, 70
   offset: 0, 0
   index: -1
 staminafill
   rotate: false
-  xy: 2014, 1987
+  xy: 2014, 1986
   size: 9, 59
   split: 4, 4, 23, 23
   orig: 9, 59
@@ -238,14 +217,14 @@ staminafill
   index: -1
 staminahand
   rotate: false
-  xy: 1924, 1291
+  xy: 1924, 1290
   size: 71, 56
   orig: 71, 56
   offset: 0, 0
   index: -1
 textfield
   rotate: false
-  xy: 1995, 1779
+  xy: 1995, 1778
   size: 14, 14
   split: 4, 4, 4, 4
   pad: 0, 0, 0, 1
@@ -254,21 +233,21 @@ textfield
   index: -1
 tiredface
   rotate: false
-  xy: 1547, 48
+  xy: 1484, 47
   size: 58, 48
   orig: 58, 48
   offset: 0, 0
   index: -1
 vodka
   rotate: false
-  xy: 1924, 1795
+  xy: 1924, 1794
   size: 88, 251
   orig: 88, 251
   offset: 0, 0
   index: -1
 white
   rotate: false
-  xy: 1997, 1346
+  xy: 1224, 5
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
@@ -429,7 +408,7 @@ dialog2
   orig: 511, 256
   offset: 0, 0
   index: -1
-painface
+drunkFace
   rotate: false
   xy: 1815, 102
   size: 135, 124
@@ -498,6 +477,20 @@ desert_ocean
   orig: 1920, 720
   offset: 0, 0
   index: 3
+happyface
+  rotate: false
+  xy: 943, 307
+  size: 135, 124
+  orig: 135, 124
+  offset: 0, 0
+  index: -1
+koface
+  rotate: false
+  xy: 1885, 478
+  size: 135, 124
+  orig: 135, 124
+  offset: 0, 0
+  index: -1
 mosquito1
   rotate: false
   xy: 1121, 286
@@ -510,6 +503,13 @@ mosquito2
   xy: 1503, 286
   size: 380, 316
   orig: 380, 316
+  offset: 0, 0
+  index: -1
+painface
+  rotate: false
+  xy: 1885, 352
+  size: 135, 124
+  orig: 135, 124
   offset: 0, 0
   index: -1
 skeleton-fly-0
@@ -644,6 +644,13 @@ jungle_layer
   orig: 1920, 720
   offset: 0, 0
   index: 1
+passionface
+  rotate: false
+  xy: 1805, 157
+  size: 135, 124
+  orig: 135, 124
+  offset: 0, 0
+  index: -1
 skeleton-spring-4
   rotate: false
   xy: 2, 109

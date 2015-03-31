@@ -43,6 +43,9 @@ public class ExpressionsWidget extends Actor {
         else if (caveman.getState() == CaveMan.STATE_KO) face.setDrawable(okFace);
         else if (caveman.getState() == CaveMan.STATE_PAIN) face.setDrawable(painFace);
         else if (caveman.getState() == CaveMan.STATE_PASSION) face.setDrawable(passionFace);
+
+//        if (caveman.spinachStateTime == CaveMan.spinachTime)
+//            face.addAction(Actions.scaleBy(0.5f, 0.5f, 0.2f, Interpolation.linear));
     }
 
     @Override
