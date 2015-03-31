@@ -43,7 +43,8 @@ public class Assets {
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
             starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench, intro1, intro2,
-            intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4;
+            intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4, tutorial20, tutorial21,
+            tutorial22, tutorial23, tutorial24, touch2;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
@@ -188,6 +189,7 @@ public class Assets {
         faceKO = items.findRegion("koface");
         title = items.findRegion("title");
         touchNH = items.findRegion("touchNH");
+        touch2 = items.findRegion("touch2");
         buttonBroken = items.findRegion("broken_button");
         dialog = items.findRegion("dialog");
         buyButton = items.findRegion("buyButton");
@@ -220,6 +222,11 @@ public class Assets {
         tutorial2 = items.findRegion("tutorial2");
         tutorial3 = items.findRegion("tutorial3");
         tutorial4 = items.findRegion("tutorial4");
+        tutorial20 = items.findRegion("tutorial20");
+        tutorial21 = items.findRegion("tutorial21");
+        tutorial22 = items.findRegion("tutorial22");
+        tutorial23 = items.findRegion("tutorial23");
+        tutorial24 = items.findRegion("tutorial24");
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);

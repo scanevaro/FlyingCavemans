@@ -16,25 +16,34 @@ import com.deeep.flycaveman.Core;
  * Created by scanevaro on 29/03/2015.
  */
 public class TutorialWidget extends Actor {
-    private Animation animation;
+    private Animation animation1, animation2;
     private float stateTime;
-    private Image text;
+    private Image text1, text2;
     public Image background;
 
     public TutorialWidget() {
-        animation = new Animation(0.25f, Assets.tutorial0, Assets.tutorial1, Assets.tutorial2, Assets.tutorial3,
+        animation1 = new Animation(0.25f, Assets.tutorial0, Assets.tutorial1, Assets.tutorial2, Assets.tutorial3,
                 Assets.tutorial4);
-        animation.setPlayMode(Animation.PlayMode.LOOP);
-        text = new Image(Assets.touchNH);
-        text.setSize(632, 128);
-        text.setOrigin(text.getWidth() / 2, text.getHeight() / 2);
-        text.setPosition(Core.VIRTUAL_WIDTH / 2 - text.getWidth() / 2, Core.VIRTUAL_HEIGHT + text.getHeight());
-        text.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.6f), Actions.delay(0.2f), Actions.fadeIn(0.6f))));
+        animation1.setPlayMode(Animation.PlayMode.LOOP);
+        text1 = new Image(Assets.touchNH);
+        text1.setSize(432, 239);
+        text1.setOrigin(text1.getWidth() / 2, text1.getHeight() / 2);
+        text1.setPosition(0, Core.VIRTUAL_HEIGHT + text1.getHeight());
+        text1.addAction(Actions.forever(Actions.sequence(Actions.fadeIn(0.6f), Actions.delay(0.5f), Actions.fadeOut(0.6f))));
+        animation2 = new Animation(0.25f, Assets.tutorial20, Assets.tutorial21, Assets.tutorial22, Assets.tutorial23,
+                Assets.tutorial24);
+        animation2.setPlayMode(Animation.PlayMode.LOOP);
+        text2 = new Image(Assets.touch2);
+        text2.setSize(432, 239);
+        text2.setOrigin(text2.getWidth() / 2, text2.getHeight() / 2);
+        text2.setPosition(Core.VIRTUAL_WIDTH / 2, Core.VIRTUAL_HEIGHT + text2.getHeight());
+        text2.addAction(Actions.forever(Actions.sequence(Actions.fadeOut(0.6f), Actions.delay(0.2f), Actions.fadeIn(0.6f))));
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 addAction(Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
-                text.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2 - text.getWidth() / 2, -text.getHeight(), 0.2f, Interpolation.linear));
+                text1.addAction(Actions.moveTo(0, -text1.getHeight(), 0.2f, Interpolation.linear));
+                text2.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2, -text2.getHeight(), 0.2f, Interpolation.linear));
                 background.addAction(new SequenceAction(Actions.fadeOut(0.35f, Interpolation.fade),
                         Actions.moveTo(0, -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear)));
                 clearListeners();
@@ -51,7 +60,8 @@ public class TutorialWidget extends Actor {
     public void act(float delta) {
         super.act(delta);
         stateTime += delta;
-        text.act(delta);
+        text1.act(delta);
+        text2.act(delta);
         background.act(delta);
     }
 
@@ -59,13 +69,16 @@ public class TutorialWidget extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         background.draw(batch, parentAlpha);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
-        batch.draw(animation.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 - 306 / 2, getY() + 346 / 2, 306, 346);
-        text.draw(batch, parentAlpha);
+        batch.draw(animation1.getKeyFrame(stateTime), getX() + 50, getY() + 346 / 2, 306, 346);
+        batch.draw(animation2.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 + 306 / 2 - 100, getY() + 346 / 2, 306, 346);
+        text1.draw(batch, parentAlpha);
+        text2.draw(batch, parentAlpha);
     }
 
     public void moveDown() {
         addAction(Actions.moveTo(0, 0, 0.4f, Interpolation.linear));
-        text.addAction(Actions.moveTo(150, 70, 0.4f, Interpolation.linear));
+        text1.addAction(Actions.moveTo(0, 25, 0.4f, Interpolation.linear));
+        text2.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2, 25, 0.4f, Interpolation.linear));
         background.addAction(Actions.alpha(0.45f, 0.4f, Interpolation.fade));
     }
 }
