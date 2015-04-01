@@ -11,9 +11,7 @@ import com.deeep.flycaveman.world.World;
 public class GameContactListener implements ContactListener {
     private com.deeep.flycaveman.world.World world;
     private float force;
-    private final float smallEggForce = 10;
-    private final float brachioForce = 20;
-    private final float quetzaForce = 18;
+    private final float smallEggForce = 10, brachioForce = 20, quetzaForce = 18, argenForce = 20, toucanForce = 35;
 
     public GameContactListener(World world) {
         this.world = world;
@@ -48,6 +46,14 @@ public class GameContactListener implements ContactListener {
                     case 2: /**QUETZALCOATLUS*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 quetzaForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                        break;
+                    case 3: /**ARGENTAVIS*/
+                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                                argenForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                        break;
+                    case 4: /**TOUCAN*/
+                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                                toucanForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                 }
                 obstacle.hit();
