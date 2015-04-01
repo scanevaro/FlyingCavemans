@@ -109,12 +109,14 @@ public class MusicController {
                 //    spaceNoise.setVolume(Math.max(spaceRatio, windNoise.getVolume()));
                 //    System.out.println("space: "+ spaceRatio + " noise: "+ (spaceRatio));
                 //}
-                //if (Core.dialogOpen || World.gameOver) {
-                //    windNoise.fadeOut(transitionDuration, 0);
-                //    state = State.TRANSIT_THEME;
-                //    nextMusic = soundManager.getMusic("Theme");
-                //    crossFade(transitionDuration);
-                //}
+
+
+                if (Core.dialogOpen || World.gameOver) {
+                    windNoise.fadeOut(transitionDuration, 0);
+                    state = State.TRANSIT_THEME;
+                    nextMusic = soundManager.getMusic("Theme");
+                    crossFade(transitionDuration);
+                }
                 break;
             case TRANSIT_GAME:
                 if (isDoneTransitioning()) {
