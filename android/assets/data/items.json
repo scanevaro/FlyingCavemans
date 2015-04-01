@@ -22,7 +22,7 @@ com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
 	dialog: { titleFont: default-font, background: dialog, titleFontColor: white, stageBackground: dialogDim }
 },
 com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
-    default: { font: bold20, fontColor: white },
+    default: { font: small-font, fontColor: white },
     default2: { selection: selection, background: textfield, font: default-font, fontColor: white, cursor: cursor }
 },
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
