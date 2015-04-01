@@ -43,7 +43,7 @@ public class World extends Actor implements Disposable {
     public Ground ground;
     //public Catapult catapult;
     private Sprite darkness;
-    public CaveMan caveman;
+    public static CaveMan caveman;
     private Box2DDebugRenderer debugRenderer;
     private int skyColorHeight = 0;
     private Color skyColor;
@@ -272,6 +272,7 @@ public class World extends Actor implements Disposable {
         shapeRenderer.dispose();
         worldStage.dispose();
         stage.dispose();
+        caveman = null;
     }
 
     public void resize(int width, int height) {

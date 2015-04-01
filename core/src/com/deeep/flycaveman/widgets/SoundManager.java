@@ -86,4 +86,7 @@ public class SoundManager {
         }
     }
 
+    public boolean isPlaying(Music musicObject) {
+        return musicObject.isPlaying();
+    }
 }

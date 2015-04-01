@@ -12,6 +12,8 @@ import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
 import com.deeep.flycaveman.widgets.ActorAccessor;
 import com.deeep.flycaveman.widgets.Dialogs;
+import com.deeep.flycaveman.world.MusicController;
+import com.deeep.flycaveman.world.World;
 
 public class Core implements ApplicationListener {
     public static final float VIRTUAL_WIDTH = 960;
@@ -32,6 +34,7 @@ public class Core implements ApplicationListener {
     @Override
     public void create() {
         new Assets().load();
+
 
 //        gjapi = new GJAPI("50cf34be8b7b46dd5075db924bef44e2", Core.gameID);
 //
@@ -59,7 +62,8 @@ public class Core implements ApplicationListener {
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
-
+        if(MusicController.musicController != null) MusicController.musicController.updateSoundManager(Gdx.graphics.getDeltaTime());
+        if(MusicController.musicController != null) MusicController.musicController.update(World.caveman);
         if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
     }
 

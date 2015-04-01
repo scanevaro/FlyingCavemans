@@ -143,7 +143,8 @@ public class CaveMan implements Entity {
                 spinachStateTime += delta;
                 double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
                 body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
-            } else if (strength > 0 && !cheats) {
+            } else if (strength > 0) {
+                if(!cheats)
                 strength -= delta * 20;
                 double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
                 body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);

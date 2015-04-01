@@ -18,6 +18,7 @@ import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.SplashActor;
 import com.deeep.flycaveman.widgets.LoadingBar;
+import com.deeep.flycaveman.world.MusicController;
 
 /**
  * Created by scanevaro on 09/12/2014.
@@ -54,6 +55,8 @@ public class SplashScreen extends AbstractScreen {
             public void clicked(InputEvent event, float x, float y) {
                 if (Assets.assetManager.update()) {
                     timer.cancel();
+                    MusicController.musicController = new MusicController();
+                    System.out.println("Jezus lord!");
                     game.setScreen(new IntroScreen(game));
                 }
             }
@@ -72,9 +75,6 @@ public class SplashScreen extends AbstractScreen {
         stage.draw();
         if (Assets.assetManager.update() && !Assets.loaded) {
             Assets.set();
-            Assets.loadMusicFile("introTheme").play();
-            Assets.loadMusicFile("introTheme").setVolume(1);
-            Assets.loadMusicFile("introTheme").setLooping(true);
             if (splashSprite.stateTime < 3f) {
                 /**Delay fade out*/
                 splashSprite.addAction(Actions.delay(3f - splashSprite.stateTime, Actions.fadeOut(0.5f)));
@@ -85,6 +85,8 @@ public class SplashScreen extends AbstractScreen {
                 Timer.schedule(timer = new Timer.Task() {
                     @Override
                     public void run() {
+                        MusicController.musicController = new MusicController();
+                        System.out.println("Jezus lord!");
                         game.setScreen(new IntroScreen(game));
                     }
                 }, 0.5f/*DURATION*/ - splashSprite.stateTime);
@@ -98,6 +100,8 @@ public class SplashScreen extends AbstractScreen {
                 Timer.schedule(timer = new Timer.Task() {
                     @Override
                     public void run() {
+                        MusicController.musicController = new MusicController();
+                        System.out.println("Jezus lord!");
                         game.setScreen(new IntroScreen(game));
                     }
                 }, 0.5f);

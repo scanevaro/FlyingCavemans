@@ -88,20 +88,20 @@ public class GameContactListener implements ContactListener {
             /**Collision for coins*/
             if (fixtureA.getUserData() instanceof Coin || fixtureB.getUserData() instanceof Coin) {
                 world.caveman.coins++;
-                switch (world.caveman.coinStreak) {
-                    case 0:
-                        world.area.soundManager.playSound(Assets.coin1_sound);
-                        break;
-                    case 1:
-                        world.area.soundManager.playSound(Assets.coin2_sound);
-                        break;
-                    case 2:
-                        world.area.soundManager.playSound(Assets.coin3_sound);
-                        break;
-                    case 3:
-                        world.area.soundManager.playSound(Assets.coin4_sound);
-                        break;
-                }
+                //switch (world.caveman.coinStreak) {
+                //    case 0:
+                //        world.area.soundManager.playSound(Assets.coin1_sound);
+                //        break;
+                //    case 1:
+                //        world.area.soundManager.playSound(Assets.coin2_sound);
+                //        break;
+                //    case 2:
+                //        world.area.soundManager.playSound(Assets.coin3_sound);
+                //        break;
+                //    case 3:
+                //        world.area.soundManager.playSound(Assets.coin4_sound);
+                //        break;
+                //}
                 world.caveman.coinStreak++;
                 if (world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
                 if (fixtureA.getUserData() instanceof Coin) world.coinSpawner.remove((Coin) fixtureA.getUserData());

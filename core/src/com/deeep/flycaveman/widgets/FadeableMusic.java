@@ -38,7 +38,7 @@ public class FadeableMusic {
     public FadeableMusic(Music music, String name, float maxVolume) {
         this.music = music;
         this.name = name;
-        volume = music.getVolume();
+        volume = 0;
         this.maxVolume = maxVolume;
         music.setVolume(0);
     }
@@ -75,6 +75,7 @@ public class FadeableMusic {
                 isFadingOut = false;
             }
             music.setVolume(volume * maxVolume);
+
         }
         if (isFadingIn) {
             volume += speed * delta;

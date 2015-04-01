@@ -36,7 +36,7 @@ public class SoundLibrary {
         this.jungleMusic = new FadeableMusic(Assets.loadMusicFile("JungleTheme"), "JungleTheme", 0.35f);
         this.spaceMusic = new FadeableMusic(Assets.loadMusicFile("SpaceTheme"), "SpaceTheme", 0.3f);
         this.dessertMusic = new FadeableMusic(Assets.loadMusicFile("DessertTheme"), "DessertTheme", 0.35f);
-        this.windMusic = new FadeableMusic(Assets.loadMusicFile("WindTheme"), "WindTheme", 0.5f);
+        this.windMusic = new FadeableMusic(Assets.loadMusicFile("WindTheme"), "WindTheme", 1f);
         this.themeMusic = new FadeableMusic(Assets.loadMusicFile("Theme"), "Theme", 0.5f);
         this.oceanMusic = new FadeableMusic(Assets.loadMusicFile("OceanTheme"), "OceanTheme", 0.5f);
         this.introMusic = new FadeableMusic(Assets.loadMusicFile("introTheme"), "introTheme", 0.5f);
