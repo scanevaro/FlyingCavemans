@@ -252,16 +252,7 @@ public class Assets {
                 , items.findRegion("skeleton-spring-6"), items.findRegion("skeleton-spring-7")
                 , items.findRegion("skeleton-spring-8"), items.findRegion("skeleton-spring-9")
                 , items.findRegion("skeleton-spring-10"), items.findRegion("skeleton-spring-11")
-                , items.findRegion("skeleton-spring-12"), items.findRegion("skeleton-spring-13")
-                , items.findRegion("skeleton-spring-14"), items.findRegion("skeleton-spring-15")
-                , items.findRegion("skeleton-spring-16"), items.findRegion("skeleton-spring-17")
-                , items.findRegion("skeleton-spring-18"), items.findRegion("skeleton-spring-19")
-                , items.findRegion("skeleton-spring-20"), items.findRegion("skeleton-spring-21")
-                , items.findRegion("skeleton-spring-22"), items.findRegion("skeleton-spring-23")
-                , items.findRegion("skeleton-spring-24"), items.findRegion("skeleton-spring-25")
-                , items.findRegion("skeleton-spring-26"), items.findRegion("skeleton-spring-27")
-                , items.findRegion("skeleton-spring-28"), items.findRegion("skeleton-spring-29")
-                , items.findRegion("skeleton-spring-30"));
+                , items.findRegion("skeleton-spring-12"));
         cavemanSprings.setPlayMode(Animation.PlayMode.LOOP);
         cavemanFly = new Animation(0.1f, items.findRegion("skeleton-fly-0"), items.findRegion("skeleton-fly-1")
                 , items.findRegion("skeleton-fly-2"), items.findRegion("skeleton-fly-3")
