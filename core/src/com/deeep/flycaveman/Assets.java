@@ -51,17 +51,24 @@ public class Assets {
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3,
             jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_dessert_layer_1, jungle_dessert_layer_2,
-            jungle_dessert_layer_3;  //todo put this in an enum or so
+            jungle_dessert_layer_3, jungle_dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_ocean_layer_1, jungle_ocean_layer_2, jungle_ocean_layer_3,
             jungle_ocean_layer_4;  //todo put this in an enum or so
     public static TextureRegion dessert_jungle_layer_1, dessert_jungle_layer_2,
-            dessert_jungle_layer_3;  //todo put this in an enum or so
+            dessert_jungle_layer_3, dessert_jungle_layer_4;  //todo put this in an enum or so
     public static TextureRegion ocean_layer_1, ocean_layer_2, ocean_layer_3, ocean_layer_4;
+    public static TextureRegion ocean_dessert_layer_1, ocean_dessert_layer_2, ocean_dessert_layer_3,
+            ocean_dessert_layer_4;
     public static TextureRegion dessert_ocean_layer_1, dessert_ocean_layer_2, dessert_ocean_layer_3,
             dessert_ocean_layer_4;
+    public static TextureRegion ocean_jungle_layer_1, ocean_jungle_layer_2, ocean_jungle_layer_3,
+            ocean_jungle_layer_4;
+
+
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1,
             coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm, buy;
+
 
     public Assets() {
         assetManager = new AssetManager();
@@ -279,22 +286,34 @@ public class Assets {
         jungle_layer_4 = items.findRegion("jungle_layer", 2);
 
         jungle_ocean_layer_1 = items.findRegion("jungle_ocean", 1);
-        jungle_ocean_layer_2 = items.findRegion("ocean_layer", 2); //TODO
-        jungle_ocean_layer_3 = items.findRegion("ocean_layer", 3); //TODO
-        jungle_ocean_layer_4 = items.findRegion("ocean_layer", 4); //TODO
+        jungle_ocean_layer_2 = items.findRegion("jungle_ocean", 2);
+        jungle_ocean_layer_3 = items.findRegion("jungle_ocean", 3);
+        jungle_ocean_layer_4 = items.findRegion("jungle_ocean", 4);
 
-        jungle_dessert_layer_1 = items.findRegion("jungle_desert");
-        jungle_dessert_layer_2 = items.findRegion("desert_layer", 2);
-        jungle_dessert_layer_3 = items.findRegion("desert_layer", 3);
+        jungle_dessert_layer_1 = items.findRegion("jungle_desert", 1);
+        jungle_dessert_layer_2 = items.findRegion("jungle_desert", 2);
+        jungle_dessert_layer_3 = items.findRegion("jungle_desert", 3);
+        jungle_dessert_layer_4 = items.findRegion("jungle_desert", 4);
 
-        dessert_jungle_layer_1 = items.findRegion("desert_jungle");
-        dessert_jungle_layer_2 = items.findRegion("jungle_layer", 2);
-        dessert_jungle_layer_3 = items.findRegion("jungle_layer", 3);
+        dessert_jungle_layer_1 = items.findRegion("desert_jungle", 1);
+        dessert_jungle_layer_2 = items.findRegion("desert_jungle", 2);
+        dessert_jungle_layer_3 = items.findRegion("desert_jungle", 3);
+        dessert_jungle_layer_4 = items.findRegion("desert_jungle", 4);
 
         dessert_ocean_layer_1 = items.findRegion("desert_ocean", 1);
-        dessert_ocean_layer_2 = items.findRegion("ocean_layer", 2);
-        dessert_ocean_layer_3 = items.findRegion("ocean_layer", 3);
-        dessert_ocean_layer_4 = items.findRegion("ocean_layer", 4);
+        dessert_ocean_layer_2 = items.findRegion("desert_ocean", 2);
+        dessert_ocean_layer_3 = items.findRegion("desert_ocean", 3);
+        dessert_ocean_layer_4 = items.findRegion("desert_ocean", 4);
+
+        ocean_dessert_layer_1 = items.findRegion("ocean_desert", 1);
+        ocean_dessert_layer_2 = items.findRegion("ocean_desert", 2);
+        ocean_dessert_layer_3 = items.findRegion("ocean_desert", 3);
+        ocean_dessert_layer_4 = items.findRegion("ocean_desert", 4);
+
+        ocean_jungle_layer_1 = items.findRegion("ocean_jungle", 1);
+        ocean_jungle_layer_2 = items.findRegion("ocean_jungle", 2);
+        ocean_jungle_layer_3 = items.findRegion("ocean_jungle", 3);
+        ocean_jungle_layer_4 = items.findRegion("ocean_jungle", 4);
 
         button = items.findRegion("button");
 

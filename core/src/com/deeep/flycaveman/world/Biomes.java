@@ -62,18 +62,15 @@ public class Biomes {
         jungleDessertBackground.layer_1 = Assets.jungle_dessert_layer_1;
         jungleDessertBackground.layer_2 = Assets.jungle_dessert_layer_2;
         jungleDessertBackground.layer_3 = Assets.jungle_dessert_layer_3;
-        jungleDessertBackground.layer_4 = Assets.jungle_dessert_layer_3;    //TODO
+        jungleDessertBackground.layer_4 = Assets.jungle_dessert_layer_4;
+        jungleDessertBackground.layerAmount = 4;
 
         oceanDessertBackground = new Background(OCEAN_DESSERT);
-
-        //TODO
-        oceanDessertBackground.layer_1 = Assets.ocean_layer_1;
-        oceanDessertBackground.layer_2 = Assets.ocean_layer_2;
-        oceanDessertBackground.layer_3 = Assets.ocean_layer_3;
-        oceanDessertBackground.layer_4 = Assets.ocean_layer_4;
+        oceanDessertBackground.layer_1 = Assets.ocean_dessert_layer_1;
+        oceanDessertBackground.layer_2 = Assets.ocean_dessert_layer_2;
+        oceanDessertBackground.layer_3 = Assets.ocean_dessert_layer_3;
+        oceanDessertBackground.layer_4 = Assets.ocean_dessert_layer_4;
         oceanDessertBackground.layerAmount = 4;
-
-
 
         dessertBackground = new Background(DESSERT);
         dessertBackground.layer_1 = Assets.dessert_layer_1;
@@ -86,17 +83,15 @@ public class Biomes {
         dessertJungleBackground.layer_1 = Assets.dessert_jungle_layer_1;
         dessertJungleBackground.layer_2 = Assets.dessert_jungle_layer_2;
         dessertJungleBackground.layer_3 = Assets.dessert_jungle_layer_3;
-        dessertJungleBackground.layer_4 = Assets.dessert_jungle_layer_3;    //TODO
+        dessertJungleBackground.layer_4 = Assets.dessert_jungle_layer_4;
+        dessertJungleBackground.layerAmount = 4;
 
         oceanJungleBackground = new Background(OCEAN_JUNGLE);
-
-        //TODO
-        oceanJungleBackground.layer_1 = Assets.ocean_layer_1;
-        oceanJungleBackground.layer_2 = Assets.ocean_layer_2;
-        oceanJungleBackground.layer_3 = Assets.ocean_layer_3;
-        oceanJungleBackground.layer_4 = Assets.ocean_layer_4;
+        oceanJungleBackground.layer_1 = Assets.ocean_jungle_layer_1;
+        oceanJungleBackground.layer_2 = Assets.ocean_jungle_layer_2;
+        oceanJungleBackground.layer_3 = Assets.ocean_jungle_layer_3;
+        oceanJungleBackground.layer_4 = Assets.ocean_jungle_layer_4;
         oceanJungleBackground.layerAmount = 4;
-
 
         jungleBackground = new Background(JUNGLE);
         jungleBackground.layer_1 = Assets.jungle_layer_1;
