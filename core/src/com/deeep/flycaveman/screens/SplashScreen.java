@@ -56,7 +56,6 @@ public class SplashScreen extends AbstractScreen {
                 if (Assets.assetManager.update()) {
                     timer.cancel();
                     MusicController.musicController = new MusicController();
-                    System.out.println("Jezus lord!");
                     game.setScreen(new IntroScreen(game));
                 }
             }
@@ -101,7 +100,6 @@ public class SplashScreen extends AbstractScreen {
                     @Override
                     public void run() {
                         MusicController.musicController = new MusicController();
-                        System.out.println("Jezus lord!");
                         game.setScreen(new IntroScreen(game));
                     }
                 }, 0.5f);

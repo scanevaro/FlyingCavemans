@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.input.GameInputProcessor;
@@ -50,6 +51,7 @@ public class CaveMan implements Entity {
     public float spinachStateTime;
     public float flapDistance;
     public int smacked, powerUpsPicked, coinsPicked;
+    private Vector2 speedVec;
 
     public CaveMan(com.deeep.flycaveman.world.World world) {
         this.world = world;
@@ -75,6 +77,7 @@ public class CaveMan implements Entity {
         shape.dispose();
         //armBody.setAwake(false);
         body.setActive(true);
+        speedVec = new Vector2(0,0);
         //WeldJointDef weldJointDef = new WeldJointDef();
         //weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, 7));
         //weldJointDef.collideConnected = false;
@@ -116,6 +119,8 @@ public class CaveMan implements Entity {
     }
 
     public void update(float delta) {
+        speedVec.set(body.getLinearVelocity().x, body.getLinearVelocity().y);
+        body.setTransform(body.getPosition(), (float) Math.toRadians(speedVec.angle()-45));
         stateTime += delta;
         if (coinStreak > 0) {
             coinTimer += delta;

@@ -12,6 +12,7 @@ import com.deeep.flycaveman.world.World;
  * Created by scanevaro on 11/10/2014.
  */
 public class GameInputProcessor implements InputProcessor {
+    public static double ropeLength = 0;
     public static float limit = 2;
     public static float strength = 5;
     private final int IDLE = 0;
@@ -21,7 +22,7 @@ public class GameInputProcessor implements InputProcessor {
     private final int DRAGGING = 4;
     private final int GAMEOVER = 5;
     private final int PAUSE = 6;
-    private int gameState;
+    public static int gameState;
 
     private Core game;
     private World world;
