@@ -255,10 +255,10 @@ public class GameOverWidget {
         entitiesLabel.setText("Entities Smacked: " + String.valueOf(smacked));
         powerupsLabel.setText("PowerUps Picked Up: " + String.valueOf(powerUpsPicked));
         coinsLabel.setText("Coins Picked Up: " + String.valueOf(coinsPicked));
-
         colectedCoins.setText("Colected Coins : " + String.valueOf(CaveMan.coins));
-        maxDistance.setText("Max Distance: " + maxDistanceF);
-
+        if (maxDistanceF == null)
+            maxDistance.setText("Max Distance: " + distance);
+        else maxDistance.setText("Max Distance: " + maxDistanceF);
         //TODO new record animation
     }
 }
