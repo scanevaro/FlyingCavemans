@@ -76,35 +76,35 @@ catapultBase
   index: -1
 caveman
   rotate: false
-  xy: 1924, 988
+  xy: 1924, 1300
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
 cavemanFlap1
   rotate: false
-  xy: 1924, 1225
+  xy: 1924, 1537
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanFlap2
   rotate: false
-  xy: 1924, 1162
+  xy: 1924, 1474
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings1
   rotate: false
-  xy: 1924, 1099
+  xy: 1924, 1411
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings2
   rotate: false
-  xy: 1924, 1036
+  xy: 1924, 1348
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
@@ -132,51 +132,51 @@ desert_jungle
   index: 2
 expresionsCircle
   rotate: false
-  xy: 1924, 1288
+  xy: 1924, 1600
   size: 79, 74
   orig: 79, 74
   offset: 0, 0
   index: -1
 five
   rotate: false
-  xy: 1924, 813
-  size: 64, 49
-  orig: 64, 49
+  xy: 1924, 1234
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 infinite
   rotate: false
-  xy: 1924, 1690
-  size: 94, 102
-  orig: 94, 102
+  xy: 1924, 1168
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 minus
   rotate: false
-  xy: 1924, 1586
-  size: 94, 102
-  orig: 94, 102
+  xy: 1924, 1102
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 one
   rotate: false
-  xy: 1924, 762
-  size: 64, 49
-  orig: 64, 49
+  xy: 1924, 1036
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 percentage
   rotate: false
-  xy: 1924, 922
+  xy: 1924, 970
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 plus
   rotate: false
-  xy: 1924, 1482
-  size: 94, 102
-  orig: 94, 102
+  xy: 1924, 904
+  size: 64, 64
+  orig: 64, 64
   offset: 0, 0
   index: -1
 scorpion1
@@ -223,7 +223,7 @@ smallEgg2
   index: -1
 springJump
   rotate: false
-  xy: 1924, 1364
+  xy: 1924, 1676
   size: 69, 116
   orig: 69, 116
   offset: 0, 0
@@ -259,7 +259,7 @@ staminafill
   index: -1
 staminahand
   rotate: false
-  xy: 1924, 864
+  xy: 1924, 846
   size: 71, 56
   orig: 71, 56
   offset: 0, 0
@@ -282,7 +282,7 @@ textfield
   index: -1
 tiredface
   rotate: false
-  xy: 1924, 712
+  xy: 1924, 796
   size: 58, 48
   orig: 58, 48
   offset: 0, 0

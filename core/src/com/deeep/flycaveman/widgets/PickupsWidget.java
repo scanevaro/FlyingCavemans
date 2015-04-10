@@ -63,36 +63,76 @@ public class PickupsWidget extends Actor {
     public void show(PowerUp.Type type) {
         if (type == PowerUp.Type.VODKA) {
             stamina.addAction(new SequenceAction(
-                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)/*,
-                    Actions.scaleBy(1.2f, 1.2f, 0.25f), Actions.scaleBy(0.5f, 0.5f, 0.25f)*/,
+                    Actions.moveTo(192, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
                     Actions.delay(0.5f),
                     Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
             minus.addAction(new SequenceAction(
-                    Actions.moveTo(20, Core.VIRTUAL_HEIGHT / 2 - minus.getHeight() / 2, 0.4f)/*,
-                    Actions.scaleBy(1.2f, 1.2f, 0.25f), Actions.scaleBy(0.5f, 0.5f, 0.25f)*/,
+                    Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - minus.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
                     Actions.delay(0.5f),
                     Actions.moveTo(-minus.getWidth(), Core.VIRTUAL_HEIGHT / 2 - minus.getHeight() / 2, 0.4f)));
+            five.addAction(new SequenceAction(
+                    Actions.moveTo(64, Core.VIRTUAL_HEIGHT / 2 - five.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - five.getHeight() / 2, 0.4f)));
+            percentage.addAction(new SequenceAction(
+                    Actions.moveTo(128, Core.VIRTUAL_HEIGHT / 2 - percentage.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-percentage.getWidth(), Core.VIRTUAL_HEIGHT / 2 - percentage.getHeight() / 2, 0.4f)));
         } else if (type == PowerUp.Type.SPINACH) {
             stamina.addAction(new SequenceAction(
-                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)/*,
-                    Actions.scaleBy(1.2f, 1.2f, 0.25f), Actions.scaleBy(0.5f, 0.5f, 0.25f)*/,
+                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
                     Actions.delay(0.5f),
                     Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
             infinite.addAction(new SequenceAction(
-                    Actions.moveTo(20, Core.VIRTUAL_HEIGHT / 2 - infinite.getHeight() / 2, 0.4f)/*,
-                    Actions.scaleBy(1.2f, 1.2f, 0.25f), Actions.scaleBy(0.5f, 0.5f, 0.25f)*/,
+                    Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - infinite.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
                     Actions.delay(0.5f),
                     Actions.moveTo(-infinite.getWidth(), Core.VIRTUAL_HEIGHT / 2 - infinite.getHeight() / 2, 0.4f)));
         } else if (type == PowerUp.Type.SODACAN) {
             stamina.addAction(new SequenceAction(
-                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)/*,
-                    Actions.scaleBy(1.2f, 1.2f, 0.25f), Actions.scaleBy(0.5f, 0.5f, 0.25f)*/,
+                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
+            plus.addAction(new SequenceAction(
+                    Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - plus.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-plus.getWidth(), Core.VIRTUAL_HEIGHT / 2 - plus.getHeight() / 2, 0.4f)));
+            five.addAction(new SequenceAction(
+                    Actions.moveTo(35, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
+            percentage.addAction(new SequenceAction(
+                    Actions.moveTo(45, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
                     Actions.delay(0.5f),
                     Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
         } else if (type == PowerUp.Type.MEAT) {
             stamina.addAction(new SequenceAction(
-                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)/*,
-                    Actions.scaleBy(1.2f, 1.2f, 0.25f), Actions.scaleBy(0.5f, 0.5f, 0.25f)*/,
+                    Actions.moveTo(80, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
+            plus.addAction(new SequenceAction(
+                    Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - plus.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-plus.getWidth(), Core.VIRTUAL_HEIGHT / 2 - plus.getHeight() / 2, 0.4f)));
+            one.addAction(new SequenceAction(
+                    Actions.moveTo(35, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
+                    Actions.delay(0.5f),
+                    Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
+            percentage.addAction(new SequenceAction(
+                    Actions.moveTo(45, Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f),
+                    Actions.scaleBy(0.5f, 0.5f, 0.25f), Actions.scaleBy(-0.5f, -0.5f, 0.25f),
                     Actions.delay(0.5f),
                     Actions.moveTo(-stamina.getWidth(), Core.VIRTUAL_HEIGHT / 2 - stamina.getHeight() / 2, 0.4f)));
         }
