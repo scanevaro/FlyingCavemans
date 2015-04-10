@@ -2,18 +2,24 @@ package com.deeep.flycaveman.input;
 
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
+import com.deeep.flycaveman.screens.GameScreen;
 import com.deeep.flycaveman.world.World;
 
 /**
  * Created by scanevaro on 14/10/2014.
  */
 public class GameContactListener implements ContactListener {
+    private Core game;
+    private GameScreen screen;
     private com.deeep.flycaveman.world.World world;
     private float force;
     private final float smallEggForce = 10, brachioForce = 20, quetzaForce = 18, argenForce = 20, toucanForce = 35;
 
-    public GameContactListener(World world) {
+    public GameContactListener(Core game, World world) {
+        this.game = game;
+        screen = (GameScreen) game.screen;
         this.world = world;
     }
 
@@ -83,6 +89,7 @@ public class GameContactListener implements ContactListener {
                 }
                 powerUp.die();
                 world.caveman.powerUpsPicked++;
+                screen.pickupsWidget.show(powerUp.type);
             }
 
             /**Collision for coins*/

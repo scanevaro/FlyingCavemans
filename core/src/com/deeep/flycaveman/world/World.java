@@ -31,6 +31,7 @@ public class World extends Actor implements Disposable {
     private final float TIMESTEP = 1 / 60f;
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 
+    private Core game;
     private Stage worldStage;
     private Stage stage;
     private Viewport startViewport;
@@ -77,7 +78,8 @@ public class World extends Actor implements Disposable {
     private StartScreenWidget startScreen;
     private Tree tree;
 
-    public World(Stage worldStage, Stage stage, boolean debug) {
+    public World(Core game, Stage worldStage, Stage stage, boolean debug) {
+        this.game = game;
         this.worldStage = worldStage;
         this.stage = stage;
 
@@ -99,7 +101,7 @@ public class World extends Actor implements Disposable {
         scrollTimer = 0;
 
         box2dWorld = new com.badlogic.gdx.physics.box2d.World(new Vector2(0, -18.81f), true);
-        box2dWorld.setContactListener(gameContactListener = new GameContactListener(this));
+        box2dWorld.setContactListener(gameContactListener = new GameContactListener(game, this));
 
         ground = new Ground(box2dWorld);
         coinSpawner = new CoinSpawner();

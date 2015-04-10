@@ -49,6 +49,7 @@ public class GameScreen extends AbstractScreen {
     private Dialog nameDialog;
     private TextField nameTextArea;
     private TutorialWidget tutorialWidget;
+    public PickupsWidget pickupsWidget;
     /**
      * World
      */
@@ -114,7 +115,7 @@ public class GameScreen extends AbstractScreen {
         expressions = new ExpressionsWidget();
         coinsWidget = new CoinsWidget();
         tutorialWidget = new TutorialWidget();
-        //pickupsWidget = new PickupsWidget();
+        pickupsWidget = new PickupsWidget();
     }
 
     private void configureWidgets() {
@@ -136,7 +137,7 @@ public class GameScreen extends AbstractScreen {
     private void prepareWorld() {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
         gameCamera = (OrthographicCamera) worldStage.getCamera();
-        world = new World(worldStage, stage, false);
+        world = new World(game, worldStage, stage, false);
         stage.addActor(world);
     }
 
@@ -163,6 +164,7 @@ public class GameScreen extends AbstractScreen {
         stage.addActor(expressions);
         stage.addActor(coinsWidget);
         stage.addActor(tutorialWidget);
+        stage.addActor(pickupsWidget);
     }
 
     private void setInputProcessor() {

@@ -23,7 +23,7 @@ import java.util.Random;
  */
 public class Assets {
 
-    private static Random rand;
+    public static Random rand;
 
     public static AssetManager assetManager;
 
@@ -35,7 +35,6 @@ public class Assets {
 
     public static TextureAtlas items;
     public static Texture darkSky;
-    public static TextureRegion cloud1, cloud2, cloud3;
     public static TextureRegion cavemanTexture, brachioTexture, brachioBackPull, brachioFrontPull,
             brachioMidPull, quetzaTexture, smallEggTexture, smallEggBroken, staminaBackground, staminaFill, staminaBar,
             staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
@@ -44,7 +43,8 @@ public class Assets {
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
             starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench, intro1, intro2,
             intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4, tutorial20, tutorial21,
-            tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit;
+            tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit, staminaText,
+            plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
@@ -238,6 +238,13 @@ public class Assets {
         toucanHit = items.findRegion("toucan2");
         argenTexture = items.findRegion("argentavis1");
         argenHit = items.findRegion("argentavis2");
+        staminaText = items.findRegion("staminaText");
+        plus = items.findRegion("plus");
+        minus = items.findRegion("minus");
+        infinite = items.findRegion("infinite");
+        percentage = items.findRegion("percentage");
+        one = items.findRegion("one");
+        five = items.findRegion("five");
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);

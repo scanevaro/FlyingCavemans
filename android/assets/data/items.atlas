@@ -76,35 +76,35 @@ catapultBase
   index: -1
 caveman
   rotate: false
-  xy: 1924, 1300
+  xy: 1924, 988
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
 cavemanFlap1
   rotate: false
-  xy: 1924, 1537
+  xy: 1924, 1225
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanFlap2
   rotate: false
-  xy: 1924, 1474
+  xy: 1924, 1162
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings1
   rotate: false
-  xy: 1924, 1411
+  xy: 1924, 1099
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings2
   rotate: false
-  xy: 1924, 1348
+  xy: 1924, 1036
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
@@ -132,9 +132,51 @@ desert_jungle
   index: 2
 expresionsCircle
   rotate: false
-  xy: 1924, 1600
+  xy: 1924, 1288
   size: 79, 74
   orig: 79, 74
+  offset: 0, 0
+  index: -1
+five
+  rotate: false
+  xy: 1924, 813
+  size: 64, 49
+  orig: 64, 49
+  offset: 0, 0
+  index: -1
+infinite
+  rotate: false
+  xy: 1924, 1690
+  size: 94, 102
+  orig: 94, 102
+  offset: 0, 0
+  index: -1
+minus
+  rotate: false
+  xy: 1924, 1586
+  size: 94, 102
+  orig: 94, 102
+  offset: 0, 0
+  index: -1
+one
+  rotate: false
+  xy: 1924, 762
+  size: 64, 49
+  orig: 64, 49
+  offset: 0, 0
+  index: -1
+percentage
+  rotate: false
+  xy: 1924, 922
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+plus
+  rotate: false
+  xy: 1924, 1482
+  size: 94, 102
+  orig: 94, 102
   offset: 0, 0
   index: -1
 scorpion1
@@ -181,9 +223,16 @@ smallEgg2
   index: -1
 springJump
   rotate: false
-  xy: 1924, 1676
+  xy: 1924, 1364
   size: 69, 116
   orig: 69, 116
+  offset: 0, 0
+  index: -1
+staminaText
+  rotate: false
+  xy: 633, 35
+  size: 128, 48
+  orig: 128, 48
   offset: 0, 0
   index: -1
 staminabar
@@ -210,7 +259,7 @@ staminafill
   index: -1
 staminahand
   rotate: false
-  xy: 1924, 1242
+  xy: 1924, 864
   size: 71, 56
   orig: 71, 56
   offset: 0, 0
@@ -233,7 +282,7 @@ textfield
   index: -1
 tiredface
   rotate: false
-  xy: 1924, 1192
+  xy: 1924, 712
   size: 58, 48
   orig: 58, 48
   offset: 0, 0
