@@ -78,6 +78,8 @@ public class World extends Actor implements Disposable {
     private StartScreenWidget startScreen;
     private Tree tree;
 
+    public static Rope rope;
+
     public World(Core game, Stage worldStage, Stage stage, boolean debug) {
         this.game = game;
         this.worldStage = worldStage;
@@ -109,11 +111,13 @@ public class World extends Actor implements Disposable {
 
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
-
+        caveman = new CaveMan(this);
         startScreen = new StartScreenWidget();
+        rope = new Rope(caveman.startPosX, caveman.startPosY);
+        entities.add(tree = new Tree(11.1f, 0.5f));
+        entities.add(rope);
+        entities.add(caveman);
 
-        entities.add(tree = new Tree(0, 0));
-        entities.add(caveman = new CaveMan(this));
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 
@@ -180,7 +184,6 @@ public class World extends Actor implements Disposable {
         startScreen.draw(batch);
 
         batch.setProjectionMatrix(worldStage.getCamera().combined);
-
         for (Entity entity : entities) entity.draw(batch);
 
         obstacleSpawner.draw(batch);
@@ -203,6 +206,7 @@ public class World extends Actor implements Disposable {
         updateGround();
         updateObstacles();
         caveman.update(delta);
+        rope.update(caveman);
         powerUpSpawner.update(delta);
         /** updatePowerUps(); */
         updateWorld();

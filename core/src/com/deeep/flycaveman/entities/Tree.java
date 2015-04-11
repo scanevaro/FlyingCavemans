@@ -12,7 +12,7 @@ public class Tree implements Entity{
 
     public Tree(float x, float y) {
         sprite = new Sprite(Assets.tree);
-        sprite.setPosition(11.1f, 0.5f);
+        sprite.setPosition(x,y);
         sprite.setSize(4,8);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
 

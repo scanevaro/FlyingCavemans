@@ -68,6 +68,7 @@ public class Assets {
     public static TextureRegion vodka, meat, soda, spinach;
     public static Sound hitGround1Sound, boing, hurt1, hurt2, hurt3, slurp, eat1, canOpen1, burp3, hitEntity1,
             coin1_sound, coin2_sound, coin3_sound, coin4_sound, buttonConfirm, buy;
+    public static TextureRegion rope;
 
 
     public Assets() {
@@ -158,6 +159,7 @@ public class Assets {
     }
 
     private static void setTextures() {
+        rope = new TextureRegion(new Texture(Gdx.files.internal("rope.png")));
         cavemanTexture = items.findRegion("caveman");
         brachioTexture = items.findRegion("BRACHIOSAURUS");
         brachioBackPull = items.findRegion("brachioBackPull");
