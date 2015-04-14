@@ -109,6 +109,7 @@ public class GameContactListener implements ContactListener {
                 //        world.area.soundManager.playSound(Assets.coin4_sound);
                 //        break;
                 //}
+                screen.pickupsWidget.show(world.caveman.coinStreak);
                 world.caveman.coinStreak++;
                 if (world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
                 if (fixtureA.getUserData() instanceof Coin) world.coinSpawner.remove((Coin) fixtureA.getUserData());

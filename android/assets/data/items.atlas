@@ -13,42 +13,42 @@ repeat: none
   index: -1
 Coin1
   rotate: false
-  xy: 2014, 1820
+  xy: 2006, 1755
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin2
   rotate: false
-  xy: 2014, 1788
+  xy: 2006, 1723
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin3
   rotate: false
-  xy: 2006, 1756
+  xy: 1995, 1691
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin4
   rotate: false
-  xy: 2006, 1724
+  xy: 1995, 1659
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin5
   rotate: false
-  xy: 1995, 1692
+  xy: 1990, 1627
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin6
   rotate: false
-  xy: 1995, 1660
+  xy: 1990, 1595
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
@@ -62,35 +62,35 @@ catapultBase
   index: -1
 caveman
   rotate: false
-  xy: 1924, 1234
+  xy: 1924, 1168
   size: 109, 46
   orig: 109, 46
   offset: 0, 0
   index: -1
 cavemanFlap1
   rotate: false
-  xy: 1924, 1471
+  xy: 1924, 1405
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanFlap2
   rotate: false
-  xy: 1924, 1408
+  xy: 1924, 1342
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings1
   rotate: false
-  xy: 1924, 1345
+  xy: 1924, 1279
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
   index: -1
 cavemanWings2
   rotate: false
-  xy: 1924, 1282
+  xy: 1924, 1216
   size: 86, 61
   orig: 86, 61
   offset: 0, 0
@@ -132,7 +132,7 @@ drunkFace
   index: -1
 expresionsCircle
   rotate: false
-  xy: 1924, 1534
+  xy: 1924, 1468
   size: 79, 74
   orig: 79, 74
   offset: 0, 0
@@ -144,9 +144,16 @@ five
   orig: 64, 64
   offset: 0, 0
   index: -1
+fourCoin
+  rotate: false
+  xy: 2014, 1982
+  size: 30, 63
+  orig: 30, 63
+  offset: 0, 0
+  index: -1
 infinite
   rotate: false
-  xy: 1924, 1168
+  xy: 1924, 1544
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -167,7 +174,7 @@ one
   index: -1
 oneCoin
   rotate: false
-  xy: 2014, 1982
+  xy: 2014, 1917
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
@@ -273,7 +280,7 @@ steroids
   index: -1
 textfield
   rotate: false
-  xy: 2027, 1708
+  xy: 2027, 1707
   size: 14, 14
   split: 4, 4, 4, 4
   pad: 0, 0, 0, 1
@@ -282,7 +289,7 @@ textfield
   index: -1
 threeCoin
   rotate: false
-  xy: 2014, 1917
+  xy: 2014, 1852
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
@@ -296,7 +303,7 @@ tiredface
   index: -1
 twoCoin
   rotate: false
-  xy: 2014, 1852
+  xy: 2014, 1787
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
