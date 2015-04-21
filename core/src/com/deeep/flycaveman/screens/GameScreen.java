@@ -154,7 +154,7 @@ public class GameScreen extends AbstractScreen {
         pauseButton.setSize(64, 64);
         pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
         coinsWidget.setPosition(300, 1);
-        tutorialWidget.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
+        tutorialWidget.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT * 2);
         tutorialWidget.setPosition(0, Core.VIRTUAL_HEIGHT);
 
         stage.addActor(distanceLabel);
@@ -192,7 +192,7 @@ public class GameScreen extends AbstractScreen {
                 else name = "Anonymous";
 
                 nameDialog.addAction(Actions.moveTo(nameDialog.getX(), -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
-                tutorialWidget.moveDown();
+                tutorialWidget.moveFirstDown();
             }
         };
         nameDialog.setKeepWithinStage(false);

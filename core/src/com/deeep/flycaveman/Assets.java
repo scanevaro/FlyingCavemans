@@ -45,7 +45,7 @@ public class Assets {
             intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4, tutorial20, tutorial21,
             tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit, staminaText,
             plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3, coinText, oneCoin, twoCoin, threeCoin,
-            fourCoin;
+            fourCoin, grabCoins, grabPowerups;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
@@ -253,6 +253,8 @@ public class Assets {
         twoCoin = items.findRegion("twoCoin");
         threeCoin = items.findRegion("threeCoin");
         fourCoin = items.findRegion("fourCoin");
+        grabCoins = items.findRegion("grabCoins");
+        grabPowerups = items.findRegion("grabPowerups");
 
         cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);

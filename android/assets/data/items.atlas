@@ -1018,6 +1018,13 @@ carnivore2
   orig: 265, 352
   offset: 0, 0
   index: -1
+grabCoins
+  rotate: false
+  xy: 1517, 356
+  size: 432, 239
+  orig: 432, 239
+  offset: 0, 0
+  index: -1
 happyface
   rotate: false
   xy: 260, 22
@@ -1093,13 +1100,6 @@ spinach
   xy: 1784, 53
   size: 256, 301
   orig: 256, 301
-  offset: 0, 0
-  index: -1
-touch2
-  rotate: false
-  xy: 1517, 356
-  size: 432, 239
-  orig: 432, 239
   offset: 0, 0
   index: -1
 
@@ -1193,93 +1193,93 @@ filter: Nearest,Nearest
 repeat: none
 dialog1
   rotate: false
-  xy: 1782, 298
+  xy: 1805, 61
   size: 233, 300
   orig: 233, 300
   offset: 0, 0
   index: -1
+grabPowerups
+  rotate: false
+  xy: 1440, 363
+  size: 432, 239
+  orig: 432, 239
+  offset: 0, 0
+  index: -1
 mosquito1
   rotate: false
-  xy: 676, 282
+  xy: 676, 286
   size: 380, 316
   orig: 380, 316
   offset: 0, 0
   index: -1
 mosquito2
   rotate: false
-  xy: 1058, 282
+  xy: 1058, 286
   size: 380, 316
   orig: 380, 316
   offset: 0, 0
   index: -1
 ocean_desert
   rotate: false
-  xy: 2, 1322
+  xy: 2, 1326
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 1
 ocean_desert
   rotate: false
-  xy: 2, 600
+  xy: 2, 604
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 2
 skeleton-crash-0
   rotate: false
-  xy: 1110, 2
+  xy: 1174, 6
   size: 321, 278
   orig: 321, 278
-  offset: 0, 0
-  index: -1
-skeleton-crash-1
-  rotate: false
-  xy: 1433, 2
-  size: 321, 278
-  orig: 321, 278
-  offset: 0, 0
-  index: -1
-skeleton-flap well-1
-  rotate: false
-  xy: 1440, 293
-  size: 340, 305
-  orig: 340, 305
   offset: 0, 0
   index: -1
 skeleton-fly-5
   rotate: false
-  xy: 1756, 9
+  xy: 676, 2
   size: 247, 282
   orig: 247, 282
   offset: 0, 0
   index: -1
 skeleton-fly-7
   rotate: false
-  xy: 1756, 9
+  xy: 676, 2
+  size: 247, 282
+  orig: 247, 282
+  offset: 0, 0
+  index: -1
+skeleton-fly-6
+  rotate: false
+  xy: 925, 2
   size: 247, 282
   orig: 247, 282
   offset: 0, 0
   index: -1
 skeleton-spring-10
   rotate: false
-  xy: 2, 169
+  xy: 2, 173
   size: 335, 429
   orig: 335, 429
   offset: 0, 0
   index: -1
 skeleton-spring-11
   rotate: false
-  xy: 339, 169
+  xy: 339, 173
   size: 335, 429
   orig: 335, 429
   offset: 0, 0
   index: -1
-touchNH
+tutorial0
   rotate: false
-  xy: 676, 41
-  size: 432, 239
-  orig: 432, 239
+  xy: 1497, 15
+  size: 306, 346
+  orig: 306, 346
   offset: 0, 0
   index: -1
 
@@ -1290,84 +1290,98 @@ filter: Nearest,Nearest
 repeat: none
 magnet
   rotate: false
-  xy: 2, 30
+  xy: 870, 32
   size: 300, 209
   orig: 300, 209
   offset: 0, 0
   index: -1
 ocean_desert
   rotate: false
-  xy: 2, 1311
+  xy: 2, 1313
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 3
 ocean_desert
   rotate: false
-  xy: 2, 589
+  xy: 2, 591
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 4
-skeleton-crash-2
+skeleton-crash-1
   rotate: false
-  xy: 1542, 2
+  xy: 1430, 4
   size: 321, 278
   orig: 321, 278
   offset: 0, 0
   index: -1
+skeleton-flap well-1
+  rotate: false
+  xy: 1234, 284
+  size: 340, 305
+  orig: 340, 305
+  offset: 0, 0
+  index: -1
 skeleton-flap well-2
   rotate: false
-  xy: 1542, 282
+  xy: 1576, 284
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
 springshoes
   rotate: false
-  xy: 304, 29
+  xy: 1172, 31
   size: 256, 210
   orig: 256, 210
   offset: 0, 0
   index: -1
 staminaplus
   rotate: false
-  xy: 562, 68
+  xy: 1753, 111
   size: 256, 171
   orig: 256, 171
   offset: 0, 0
   index: -1
-tutorial0
+touch2
   rotate: false
-  xy: 2, 241
-  size: 306, 346
-  orig: 306, 346
+  xy: 2, 2
+  size: 432, 239
+  orig: 432, 239
+  offset: 0, 0
+  index: -1
+touchNH
+  rotate: false
+  xy: 436, 2
+  size: 432, 239
+  orig: 432, 239
   offset: 0, 0
   index: -1
 tutorial1
   rotate: false
-  xy: 310, 241
+  xy: 2, 243
   size: 306, 346
   orig: 306, 346
   offset: 0, 0
   index: -1
 tutorial2
   rotate: false
-  xy: 618, 241
+  xy: 310, 243
   size: 306, 346
   orig: 306, 346
   offset: 0, 0
   index: -1
 tutorial3
   rotate: false
-  xy: 926, 241
+  xy: 618, 243
   size: 306, 346
   orig: 306, 346
   offset: 0, 0
   index: -1
 tutorial4
   rotate: false
-  xy: 1234, 241
+  xy: 926, 243
   size: 306, 346
   orig: 306, 346
   offset: 0, 0
@@ -1380,84 +1394,84 @@ filter: Nearest,Nearest
 repeat: none
 ocean_jungle
   rotate: false
-  xy: 2, 1315
+  xy: 2, 1311
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 1
 ocean_jungle
   rotate: false
-  xy: 2, 593
+  xy: 2, 589
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: 2
+skeleton-crash-2
+  rotate: false
+  xy: 2, 2
+  size: 321, 278
+  orig: 321, 278
+  offset: 0, 0
+  index: -1
 skeleton-crash-3
   rotate: false
-  xy: 2, 6
+  xy: 325, 2
   size: 321, 278
   orig: 321, 278
   offset: 0, 0
   index: -1
 skeleton-crash-4
   rotate: false
-  xy: 325, 6
+  xy: 648, 2
   size: 321, 278
   orig: 321, 278
   offset: 0, 0
   index: -1
 skeleton-crash-5
   rotate: false
-  xy: 648, 6
+  xy: 971, 2
   size: 321, 278
   orig: 321, 278
   offset: 0, 0
   index: -1
 skeleton-flap well-3
   rotate: false
-  xy: 2, 286
+  xy: 2, 282
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
 skeleton-flap well-4
   rotate: false
-  xy: 344, 286
+  xy: 344, 282
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
 skeleton-flap well-5
   rotate: false
-  xy: 686, 286
+  xy: 686, 282
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
 skeleton-flap well-6
   rotate: false
-  xy: 1028, 286
+  xy: 1028, 282
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
 skeleton-flap well-7
   rotate: false
-  xy: 1370, 286
+  xy: 1370, 282
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
-skeleton-fly-6
-  rotate: false
-  xy: 971, 2
-  size: 247, 282
-  orig: 247, 282
-  offset: 0, 0
-  index: -1
 tree
   rotate: false
-  xy: 1712, 245
+  xy: 1712, 241
   size: 297, 346
   orig: 297, 346
   offset: 0, 0
