@@ -256,7 +256,11 @@ public class Assets {
         grabCoins = items.findRegion("grabCoins");
         grabPowerups = items.findRegion("grabPowerups");
 
-        cavemanWings = new Animation(0.1f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"));
+        cavemanWings = new Animation(0.03f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"),
+                items.findRegion("cavemanWings3"), items.findRegion("cavemanWings4"),
+                items.findRegion("cavemanWings5"), items.findRegion("cavemanWings6"),
+                items.findRegion("cavemanWings7"), items.findRegion("cavemanWings8"),
+                items.findRegion("cavemanWings9"), items.findRegion("cavemanWings10"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);
         cavemanFlap = new Animation(0.015f, items.findRegion("skeleton-flap well-0"), items.findRegion("skeleton-flap well-1")
                 , items.findRegion("skeleton-flap well-2"), items.findRegion("skeleton-flap well-3")

@@ -24,6 +24,8 @@ public class CaveMan implements Entity {
     public static final int STATE_KO = 3;
     public static final int STATE_PASSION = 4;
     public static float spinachTime = -0.5f;
+    private final float size = .6f;
+    private float textureSizeX, textureSizeY;
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -31,7 +33,7 @@ public class CaveMan implements Entity {
     private CircleShape shape;
     //    private PolygonShape shape;
     //public WeldJoint bulletJoint;
-    public float size = .6f;
+
     public Sprite sprite;
     public float stamina;
     public static final float maxStamina = 5.0f;
@@ -58,7 +60,6 @@ public class CaveMan implements Entity {
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(startPosX, startPosY);
-//        bodyDef.fixedRotation = true;
         bodyDef.bullet = true;
         shape = new CircleShape();
         shape.setRadius(size);
@@ -69,19 +70,16 @@ public class CaveMan implements Entity {
         fixtureDef.restitution = restitution;
         body = world.box2dWorld.createBody(bodyDef);
         sprite = new Sprite(Assets.cavemanTexture);
+        textureSizeX = Assets.cavemanTexture.getRegionWidth();
+        textureSizeY = Assets.cavemanTexture.getRegionHeight();
         sprite.setSize(size * 2, size * 2);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         body.setUserData(sprite);
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
         shape.dispose();
-        //armBody.setAwake(false);
         body.setActive(true);
-        speedVec = new Vector2(0,0);
-        //WeldJointDef weldJointDef = new WeldJointDef();
-        //weldJointDef.initialize(body, world.catapult.armBody, new Vector2(11, 7));
-        //weldJointDef.collideConnected = false;
-        //bulletJoint = (WeldJoint) world.box2dWorld.createJoint(weldJointDef);
+        speedVec = new Vector2(0, 0);
         strength = 225;
         spinachStateTime = 1;
         {/**Buyable Items*/
@@ -113,6 +111,11 @@ public class CaveMan implements Entity {
         else if (flapStateTime < 0.5f) sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
         else if (GameInputProcessor.flying) sprite.setRegion(Assets.cavemanFly.getKeyFrame(stateTime));
         else sprite.setRegion(Assets.cavemanTexture);
+        {/**Sprite size*/
+            float sizeX = sprite.getRegionWidth() * (size * 2) / textureSizeX;
+            float sizeY = sprite.getRegionHeight() * (size * 2) / textureSizeY;
+            sprite.setSize(sizeX, sizeY);
+        }
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
@@ -120,7 +123,7 @@ public class CaveMan implements Entity {
 
     public void update(float delta) {
         speedVec.set(body.getLinearVelocity().x, body.getLinearVelocity().y);
-        body.setTransform(body.getPosition(), (float) Math.toRadians(speedVec.angle()-45));
+        body.setTransform(body.getPosition(), (float) Math.toRadians(speedVec.angle() - 45));
         stateTime += delta;
         if (coinStreak > 0) {
             coinTimer += delta;
@@ -149,8 +152,8 @@ public class CaveMan implements Entity {
                 double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
                 body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
             } else if (strength > 0) {
-                if(!cheats)
-                strength -= delta * 20;
+                if (!cheats)
+                    strength -= delta * 20;
                 double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
                 body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
             }
