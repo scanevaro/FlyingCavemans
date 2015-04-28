@@ -36,9 +36,9 @@ public class Assets {
     public static TextureAtlas items;
     public static Texture darkSky;
     public static TextureRegion cavemanTexture, brachioTexture, brachioBackPull, brachioFrontPull,
-            brachioMidPull, quetzaTexture, smallEggTexture, smallEggBroken, staminaBackground, staminaFill, staminaBar,
+            brachioMidPull, smallEggTexture, smallEggBroken, staminaBackground, staminaFill, staminaBar,
             staminaHand, restartButton, catapultArmTexture, catapultBaseTexture, homeButton, shopButton, staminaplus,
-            steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp, quetzaHit,
+            steroids, wings, springs, coin1, coin2, coin3, coin4, coin5, coin6, flapUp, dropUp, pauseUp,
             mosquitoTexture, mosquitoHit, sabertooth1, sabertooth2, faceBackground, faceHappy, facePain, faceTired,
             facePassion, faceKO, title, touchNH, buttonBroken, button, dialog, buyButton, buyButtonDown, starBlack,
             starBright, buyButtonDisabled, tree, mute1Button, mute2Button, resumeButton, magnet, clench, intro1, intro2,
@@ -46,7 +46,7 @@ public class Assets {
             tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit, staminaText,
             plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3, coinText, oneCoin, twoCoin, threeCoin,
             fourCoin, grabCoins, grabPowerups;
-    public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly;
+    public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly, quetzaHit, quetzaTexture;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3,
@@ -166,8 +166,6 @@ public class Assets {
         brachioBackPull = items.findRegion("brachioBackPull");
         brachioFrontPull = items.findRegion("brachioFrontPull");
         brachioMidPull = items.findRegion("brachioMidPull");
-        quetzaTexture = items.findRegion("QUETZA");
-        quetzaHit = items.findRegion("QUETZA2");
         mosquitoTexture = items.findRegion("mosquito1");
         mosquitoHit = items.findRegion("mosquito2");
         sabertooth1 = items.findRegion("sabertooth1");
@@ -290,6 +288,20 @@ public class Assets {
                 , items.findRegion("skeleton-fly-10"), items.findRegion("skeleton-fly-11")
                 , items.findRegion("skeleton-fly-12"));
         cavemanFly.setPlayMode(Animation.PlayMode.LOOP);
+        quetzaTexture = new Animation(0.1f, items.findRegion("ptero-flapping-0"), items.findRegion("ptero-flapping-1"),
+                items.findRegion("ptero-flapping-2"), items.findRegion("ptero-flapping-3"),
+                items.findRegion("ptero-flapping-4"), items.findRegion("ptero-flapping-5"),
+                items.findRegion("ptero-flapping-6"), items.findRegion("ptero-flapping-7"),
+                items.findRegion("ptero-flapping-8"), items.findRegion("ptero-flapping-9"),
+                items.findRegion("ptero-flapping-10"));
+        quetzaTexture.setPlayMode(Animation.PlayMode.LOOP);
+        quetzaHit = new Animation(0.1f, items.findRegion("ptero-flapping hit2-0"),
+                items.findRegion("ptero-flapping hit2-1"), items.findRegion("ptero-flapping hit2-2"),
+                items.findRegion("ptero-flapping hit2-3"), items.findRegion("ptero-flapping hit2-4"),
+                items.findRegion("ptero-flapping hit2-5"), items.findRegion("ptero-flapping hit2-6"),
+                items.findRegion("ptero-flapping hit2-7"), items.findRegion("ptero-flapping hit2-8"),
+                items.findRegion("ptero-flapping hit2-9"), items.findRegion("ptero-flapping hit2-10"));
+        quetzaHit.setPlayMode(Animation.PlayMode.LOOP);
 
         dessert_layer_1 = items.findRegion("desert_layer", 1);
         dessert_layer_2 = items.findRegion("desert_layer", 2);

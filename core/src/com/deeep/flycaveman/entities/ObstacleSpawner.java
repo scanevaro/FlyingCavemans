@@ -23,23 +23,15 @@ public class ObstacleSpawner {
         this.removals = new Array<Obstacle>();
     }
 
-    public void update() {
-        if (entities.size < maxPowerUps)
-            if (entities.size < 8)
-                spawnRandomRandom(world.caveman);
-
+    public void update(float delta) {
+        for (Obstacle obstacle : entities) obstacle.update(delta);
+        for (Obstacle obstacle : removals) obstacle.update(delta);
+        if (entities.size < maxPowerUps) if (entities.size < 8) spawnRandomRandom(world.caveman);
         for (int i = 0; i < entities.size; i++) {
-            if (entities.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) {
-                entities.get(i).die();
-            }
-            if (entities.get(i).isDead()) {
-                removals.add(entities.get(i));
-            }
+            if (entities.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) entities.get(i).die();
+            if (entities.get(i).isDead()) removals.add(entities.get(i));
         }
-
-        for (Obstacle obstacle : removals)
-            world.box2dWorld.destroyBody(obstacle.body);
-
+        for (Obstacle obstacle : removals) world.box2dWorld.destroyBody(obstacle.body);
         entities.removeAll(removals, true);
         removals.clear();
     }

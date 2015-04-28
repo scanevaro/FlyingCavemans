@@ -23,4 +23,8 @@ public class Tree implements Entity{
         sprite.draw(batch);
 
     }
+
+    @Override
+    public void update(float delta) {
+    }
 }

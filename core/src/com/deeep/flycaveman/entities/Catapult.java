@@ -122,4 +122,8 @@ public class Catapult implements Entity {
         baseSprite.setRotation(baseBody.getAngle() * MathUtils.radiansToDegrees);
         baseSprite.draw(batch);
     }
+
+    @Override
+    public void update(float delta) {
+    }
 }

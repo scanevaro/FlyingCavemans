@@ -7,4 +7,5 @@ import com.badlogic.gdx.graphics.g2d.Batch;
  */
 public interface Entity {
     public void draw(Batch batch);
+    public void update(float delta);
 }

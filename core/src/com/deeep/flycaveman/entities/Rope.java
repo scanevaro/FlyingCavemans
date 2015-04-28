@@ -1,6 +1,5 @@
 package com.deeep.flycaveman.entities;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
@@ -32,7 +31,7 @@ public class Rope implements Entity {
         float dX = startPos.x - caveMan.body.getPosition().x;
         float dY = startPos.y - caveMan.body.getPosition().y;
         float angle = (float) ((float) Math.atan2(dY, dX) + Math.PI);
-        if(GameInputProcessor.catapulting) {
+        if (GameInputProcessor.catapulting) {
             if (distance > (ropeSprites.size()) * lengthPerPiece) {
                 Sprite sprite = new Sprite(Assets.rope);
                 sprite.setSize(0.5f, 0.5f);
@@ -46,7 +45,7 @@ public class Rope implements Entity {
                 ropeSprites.get(i).setRotation((float) Math.toDegrees(angle));
             }
             //add stretch
-        }else{
+        } else {
             // drop that rope. and destretch
         }
     }
@@ -57,5 +56,9 @@ public class Rope implements Entity {
         for (Sprite sprite : ropeSprites) {
             sprite.draw(batch);
         }
+    }
+
+    @Override
+    public void update(float delta) {
     }
 }

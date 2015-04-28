@@ -107,7 +107,7 @@ public class World extends Actor implements Disposable {
 
         ground = new Ground(box2dWorld);
         coinSpawner = new CoinSpawner();
-        //entities.add(catapult = new Catapult(box2dWorld, ground));
+        /**entities.add(catapult = new Catapult(box2dWorld, ground));*/
 
         obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
@@ -117,7 +117,6 @@ public class World extends Actor implements Disposable {
         entities.add(tree = new Tree(11.1f, 0.5f));
         entities.add(rope);
         entities.add(caveman);
-
 
         sky = new Vector2(caveman.body.getPosition().x - 11.1f, caveman.body.getPosition().y - 8);
 
@@ -133,7 +132,6 @@ public class World extends Actor implements Disposable {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         batch.setProjectionMatrix(worldStage.getCamera().combined);
-        //System.out.println(worldStage.getCamera().position.x);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
 
         batch.end();
@@ -167,7 +165,6 @@ public class World extends Actor implements Disposable {
         batch.begin();
 
         area.draw((SpriteBatch) batch);
-        //backgroundSprite.draw(batch);
 
         batch.end();
         batch.begin();
@@ -189,9 +186,7 @@ public class World extends Actor implements Disposable {
         obstacleSpawner.draw(batch);
         coinSpawner.render(batch);
         powerUpSpawner.draw((SpriteBatch) batch);
-        //darkness.setAlpha(((Math.max(caveman.body.getPosition().y,50)-50)/100));
-        //darkness.draw(batch);
-        //draw stars
+        /**draw stars*/
         batch.setProjectionMatrix(stage.getCamera().combined);
     }
 
@@ -201,19 +196,15 @@ public class World extends Actor implements Disposable {
         gameContactListener.update();
         startScreen.update(delta, name);
         updateSky();
-        if (GameInputProcessor.flying)
-            space.update(delta, worldStage.getCamera().position, caveman.body);
+        if (GameInputProcessor.flying) space.update(delta, worldStage.getCamera().position, caveman.body);
         updateGround();
-        updateObstacles();
+        updateObstacles(delta);
         caveman.update(delta);
         rope.update(caveman);
         powerUpSpawner.update(delta);
         /** updatePowerUps(); */
         updateWorld();
-
-        if (flying)
-            shootStateTime += delta;
-
+        if (flying) shootStateTime += delta;
         if (shootStateTime > 1 && remove) {
             if (caveman.body.getPosition().x > Core.BOX2D_VIRTUAL_WIDTH) {
                 //box2dWorld.destroyBody(catapult.armBody);
@@ -226,14 +217,6 @@ public class World extends Actor implements Disposable {
     }
 
     private Color toColor(float percentage, Color cur, Color target) {
-        // 200 -> 150 @ 10%
-        // 50   * 0.1
-        // 5
-        // 200 - 5 -> 195
-        // 150 -> 200 @ 50%
-        // -50 * 0.5f
-        // -25
-        //
         float tempR = percentage * (cur.r - target.r);
         float tempG = percentage * (cur.g - target.g);
         float tempB = percentage * (cur.b - target.b);
@@ -254,8 +237,8 @@ public class World extends Actor implements Disposable {
             ground.body.setTransform(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 1, 0);
     }
 
-    private void updateObstacles() {
-        obstacleSpawner.update();
+    private void updateObstacles(float delta) {
+        obstacleSpawner.update(delta);
     }
 
 
