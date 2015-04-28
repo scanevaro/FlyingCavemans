@@ -199,6 +199,7 @@ public class World extends Actor implements Disposable {
         if (GameInputProcessor.flying) space.update(delta, worldStage.getCamera().position, caveman.body);
         updateGround();
         updateObstacles(delta);
+        for (Entity entity : entities) entity.update(delta);
         caveman.update(delta);
         rope.update(caveman);
         powerUpSpawner.update(delta);
