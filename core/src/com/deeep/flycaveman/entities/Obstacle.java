@@ -35,7 +35,7 @@ public class Obstacle implements Entity {
 
     public Obstacle(World world, float positionX, Random random) {
         bodyDef = new BodyDef();
-        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
         shape = new PolygonShape();
         positionX += random.nextInt(100);
         float typeRand = random.nextFloat();
@@ -108,6 +108,7 @@ public class Obstacle implements Entity {
         shape.dispose();
 
         body.setAwake(false);
+//        body.setActive(true);
     }
 
     @Override
@@ -141,6 +142,15 @@ public class Obstacle implements Entity {
     @Override
     public void update(float delta) {
         stateTime += delta;
+        if (!hit && type == Type.QUETZALCOATLUS.ordinal()
+                || type == Type.ARGENTAVIS.ordinal()
+                || type == Type.TOUCAN.ordinal()) {
+            body.setTransform(body.getPosition().x - (delta * 6), body.getPosition().y, body.getAngle());
+        } else if (hit && type == Type.QUETZALCOATLUS.ordinal()
+                || type == Type.ARGENTAVIS.ordinal()
+                || type == Type.TOUCAN.ordinal()) {
+            body.setTransform(body.getPosition().x, body.getPosition().y - (delta * 10), body.getAngle());
+        }
     }
 
     public void die() {

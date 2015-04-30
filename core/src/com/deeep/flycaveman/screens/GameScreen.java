@@ -137,7 +137,7 @@ public class GameScreen extends AbstractScreen {
     private void prepareWorld() {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
         gameCamera = (OrthographicCamera) worldStage.getCamera();
-        world = new World(game, worldStage, stage, false);
+        world = new World(game, worldStage, stage, true);
         stage.addActor(world);
     }
 

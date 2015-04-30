@@ -169,8 +169,7 @@ public class World extends Actor implements Disposable {
         batch.end();
         batch.begin();
 
-        if (debug)
-            debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
+        if (debug) debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
 
         batch.end();
         batch.begin();

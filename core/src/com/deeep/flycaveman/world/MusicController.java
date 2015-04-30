@@ -11,7 +11,7 @@ import com.deeep.flycaveman.widgets.SoundManager;
  */
 public class MusicController {
     public static MusicController musicController;
-    private SoundManager soundManager;
+    public SoundManager soundManager;
     FadeableMusic currentMusic, nextMusic;
     FadeableMusic spaceMusic, spaceNoise;
     FadeableMusic windNoise;
@@ -97,7 +97,7 @@ public class MusicController {
                     } else {
                         curVol = 1;
                     }
-                } else{
+                } else {
                     curVol = 1;
                 }
 

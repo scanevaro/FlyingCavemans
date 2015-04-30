@@ -5,6 +5,7 @@ import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.*;
 import com.deeep.flycaveman.screens.GameScreen;
+import com.deeep.flycaveman.world.MusicController;
 import com.deeep.flycaveman.world.World;
 
 /**
@@ -95,20 +96,20 @@ public class GameContactListener implements ContactListener {
             /**Collision for coins*/
             if (fixtureA.getUserData() instanceof Coin || fixtureB.getUserData() instanceof Coin) {
                 world.caveman.coins++;
-                //switch (world.caveman.coinStreak) {
-                //    case 0:
-                //        world.area.soundManager.playSound(Assets.coin1_sound);
-                //        break;
-                //    case 1:
-                //        world.area.soundManager.playSound(Assets.coin2_sound);
-                //        break;
-                //    case 2:
-                //        world.area.soundManager.playSound(Assets.coin3_sound);
-                //        break;
-                //    case 3:
-                //        world.area.soundManager.playSound(Assets.coin4_sound);
-                //        break;
-                //}
+                switch (world.caveman.coinStreak) {
+                    case 0:
+                        MusicController.musicController.soundManager.playSound(Assets.coin1_sound);
+                        break;
+                    case 1:
+                        MusicController.musicController.soundManager.playSound(Assets.coin2_sound);
+                        break;
+                    case 2:
+                        MusicController.musicController.soundManager.playSound(Assets.coin3_sound);
+                        break;
+                    case 3:
+                        MusicController.musicController.soundManager.playSound(Assets.coin4_sound);
+                        break;
+                }
                 screen.pickupsWidget.show(world.caveman.coinStreak);
                 world.caveman.coinStreak++;
                 if (world.caveman.coinStreak > 3) world.caveman.coinStreak = 3;
