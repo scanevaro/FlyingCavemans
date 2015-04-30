@@ -14,11 +14,13 @@ import java.util.Random;
  * Created by scanevaro on 14/10/2014.
  */
 public class Obstacle implements Entity {
+
     public static enum Type {
         SMALL_EGG, BRACHIOSAURUS, QUETZALCOATLUS, ARGENTAVIS, TOUCAN
     }
 
     private boolean dead = false;
+
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -102,7 +104,9 @@ public class Obstacle implements Entity {
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
+
         shape.dispose();
+
         body.setAwake(false);
     }
 

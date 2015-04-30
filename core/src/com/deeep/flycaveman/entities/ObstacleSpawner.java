@@ -3,6 +3,7 @@ package com.deeep.flycaveman.entities;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
+import com.deeep.flycaveman.world.Area;
 import com.deeep.flycaveman.world.World;
 
 import java.util.Random;

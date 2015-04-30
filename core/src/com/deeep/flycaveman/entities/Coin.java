@@ -17,10 +17,15 @@ public class Coin {
     public Body body;
     public Fixture fixture;
 
+    public boolean isMagnetic = false;
+
     private float tick;
     private Sprite[] sprites;
     private CircleShape shape;
     private FixtureDef fixtureDef;
+    private World world;
+
+    private double magVel;
 
     private final float INTERVAL = 0.07F;
 
@@ -51,13 +56,36 @@ public class Coin {
         shape.dispose();
 
         body.setAwake(false);
+        this.world = world;
     }
 
     public void update(float delta) {
+        if(distanceToCaveman() > 20.){
+            isMagnetic = false;
+        }else{
+            isMagnetic = true;
+        }
+        isMagnetic = true;
+        if(isMagnetic){
+            magVel += 1;
+            System.out.println(magVel);
+            if(isAheadOfCaveman())
+                x -= magVel;
+            else
+                x += magVel;
+
+            if(isAboveCaveman())
+                y -= magVel;
+            else
+                y += magVel;
+        }else{
+            magVel = 0;
+        }
         tick += delta;
     }
 
     public void draw(Batch b) {
+        if(!isMagnetic) return;
         getCurrentSprite().setPosition(body.getPosition().x - sprites[1].getWidth() / 2, body.getPosition().y - sprites[1].getHeight() / 2);
         getCurrentSprite().setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         getCurrentSprite().draw(b);
@@ -75,5 +103,31 @@ public class Coin {
             tick = 0;
             return sprites[5];
         }
+    }
+
+    private boolean isAheadOfCaveman(){
+        return world.caveman.body.getPosition().x <= this.x;
+    }
+
+    private boolean isAboveCaveman(){
+        return world.caveman.body.getPosition().y <= this.y;
+    }
+
+    private double angleToCaveman(){
+        return Math.atan2((world.caveman.body.getPosition().y-this.y)*(world.caveman.body.getPosition().y-this.y), (world.caveman.body.getPosition().x-this.x)*(world.caveman.body.getPosition().x-this.x));
+    }
+
+    private double distanceToCaveman(){
+        return Math.sqrt((world.caveman.body.getPosition().x-this.x)*(world.caveman.body.getPosition().x-this.x) + (world.caveman.body.getPosition().y-this.y)*(world.caveman.body.getPosition().y-this.y));
+    }
+
+    private float xDistanceToCaveman(){
+        System.out.println("x: " + (world.caveman.body.getPosition().x-this.x));
+        return world.caveman.body.getPosition().x-this.x;
+    }
+
+    private float yDistanceToCaveman(){
+        System.out.println("y: " + (world.caveman.body.getPosition().y-this.y));
+        return world.caveman.body.getPosition().y-this.y;
     }
 }
