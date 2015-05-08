@@ -3,6 +3,7 @@ package com.deeep.flycaveman.widgets;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -16,7 +17,7 @@ import com.deeep.flycaveman.screens.GameScreen;
  * Created by scanevaro on 14/01/2015.
  */
 public class Dialogs {
-    public Window window;
+    public Window pauseWindow;
     private ImageButton retryButton, muteButton, resumeButton;
 
     public void update(Core game) {
@@ -31,17 +32,23 @@ public class Dialogs {
 
     private void build(final Core game) {
         if (game.screen instanceof GameScreen) {
-            if (window != null) {
+            if (pauseWindow != null) {
                 if (Settings.soundEnabled) muteButton.setChecked(false);
                 else muteButton.setChecked(true);
 
-                window.setPosition(Core.VIRTUAL_WIDTH / 2 - window.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2);
-                game.screen.stage.addActor(window);
+                pauseWindow.setPosition(Core.VIRTUAL_WIDTH / 2 - pauseWindow.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2);
+                game.screen.stage.addActor(pauseWindow);
                 return;
             }
 
-            window = new Window("Pause", Assets.skin);
-            window.setSize(480, 250);
+            pauseWindow = new Window("", Assets.skin);
+            pauseWindow.setSize(480, 250);
+            pauseWindow.padTop(0);
+
+            TextButton pauseTitle = new TextButton("Pause", Assets.skin);
+            pauseTitle.setSize(250, 100);
+            pauseTitle.setPosition(pauseWindow.getWidth() / 2 - pauseTitle.getWidth() / 2, 150);
+            pauseWindow.addActor(pauseTitle);
 
             ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
             retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
@@ -63,13 +70,13 @@ public class Dialogs {
                             game.setScreen(new GameScreen(game));
                         }
                     }, 0.4f);
-                    window.remove();
+                    pauseWindow.remove();
                     Core.dialogOpen = false;
                 }
             });
             retryButton.setSize(178, 178);
             retryButton.setPosition(0, 0);
-            window.addActor(retryButton);
+            pauseWindow.addActor(retryButton);
 
             ImageButton.ImageButtonStyle muteStyle = new ImageButton.ImageButtonStyle();
             muteStyle.imageUp = new TextureRegionDrawable(Assets.mute1Button);
@@ -95,8 +102,8 @@ public class Dialogs {
                 }
             });
             muteButton.setSize(178, 178);
-            muteButton.setPosition(window.getWidth() / 2 - muteButton.getWidth() / 2, 0);
-            window.addActor(muteButton);
+            muteButton.setPosition(pauseWindow.getWidth() / 2 - muteButton.getWidth() / 2, 0);
+            pauseWindow.addActor(muteButton);
 
             ImageButton.ImageButtonStyle resumeStyle = new ImageButton.ImageButtonStyle();
             resumeStyle.imageUp = new TextureRegionDrawable(Assets.resumeButton);
@@ -109,23 +116,22 @@ public class Dialogs {
             resumeButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    window.remove();
+                    pauseWindow.remove();
                     Core.dialogOpen = false;
                 }
             });
             resumeButton.setSize(178, 178);
-            resumeButton.setPosition(window.getWidth() - resumeButton.getWidth(), 0);
-            window.addActor(resumeButton);
+            resumeButton.setPosition(pauseWindow.getWidth() - resumeButton.getWidth(), 0);
+            pauseWindow.addActor(resumeButton);
 
-            window.setPosition(Core.VIRTUAL_WIDTH / 2 - window.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2);
+            pauseWindow.setPosition(Core.VIRTUAL_WIDTH / 2 - pauseWindow.getWidth() / 2, Core.VIRTUAL_HEIGHT / 2);
 
             /**Add to screen stage*/
-            game.screen.stage.addActor(window);
+            game.screen.stage.addActor(pauseWindow);
         }
     }
 
     private void remove() {
-        if (window != null)
-            window.remove();
+        if (pauseWindow != null) pauseWindow.remove();
     }
 }
