@@ -5,10 +5,7 @@ import com.badlogic.gdx.Net;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -48,18 +45,25 @@ public class GameOverWidget {
     }
 
     private void setTopRightWindow() {
-        topRightWindow = new Window("Game Over", Assets.skin);
+        topRightWindow = new Window("", Assets.skin);
         topRightWindow.setSize(513, 258);
         topRightWindow.setPosition(Core.VIRTUAL_WIDTH + topRightWindow.getWidth(),
                 Core.VIRTUAL_HEIGHT - topRightWindow.getHeight());
         topRightWindow.setKeepWithinStage(false);
+        topRightWindow.padTop(0);
+
+        TextButton gameOverTitle = new TextButton("Game Over", Assets.skin);
+        gameOverTitle.setSize(320, 100);
+        gameOverTitle.setPosition(topRightWindow.getWidth() / 2 - gameOverTitle.getWidth() / 2, 160);
+        topRightWindow.addActor(gameOverTitle);
+
         //( ͡° ͜ʖ ͡°) < l'elmar face
         maxDistance = new Label("Max Distance: ", Assets.skin);
-        maxDistance.setPosition(70, 120);
+        maxDistance.setPosition(70, 110);
         topRightWindow.addActor(maxDistance);
 
         colectedCoins = new Label("Colected Coins : xxxxx", Assets.skin);
-        colectedCoins.setPosition(70, 75);
+        colectedCoins.setPosition(70, 65);
         topRightWindow.addActor(colectedCoins);
 
         topRightWindow.setVisible(false);
