@@ -23,13 +23,19 @@ public class ShopWidget {
     private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton, buyMagnetButton, buyClenchButton;
     private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen, magnetOpen, clenchOpen;
     private Image starsWings[], starsSteroids[], starsStamina[], starsSprings[], starsMagnet[], starsClench[];
-
     private final int wingsPrice = 1/*25*/,
             springsPrice = 1/*35*/,
             steroidsPrice = 1/*25*/,
             staminaPrice = 1/*15*/,
             magnetPrice = 1/*35*/,
             clenchPrice = 1/*35*/;
+    private String wingsDesc = "Wings help cavemen flap like birds and flying lizards." +
+            " Just no time until cavemen grow a pair like them....",
+            steroidsDesc = "Steroids good for flying higher... Steroids taste funny",
+            staminaPlusDesc = "More Stamina = More Flapping = Longer Flying = Evolve",
+            springsDesc = "Bounce of the flor. Longer flying. Auhgg!!",
+            clenchDesc = "Learn how to clench the butt to bounce a bit higher off the ground!... It hurts!!",
+            magnetDesc = "Absorv powerups when they are close to you";
 
     public ShopWidget(final Core game) {
         this.screen = (GameScreen) game.screen;
@@ -210,8 +216,7 @@ public class ShopWidget {
 
         screen.stage.addActor(wingsDialog);
 
-        TextArea textArea = new TextArea("Wings help cavemen flap like birds and flying lizards." +
-                " Just no time until cavemen grow a pair like them....", Assets.skin);
+        TextArea textArea = new TextArea(wingsDesc, Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -268,7 +273,7 @@ public class ShopWidget {
 
         screen.stage.addActor(steroidsDialog);
 
-        TextArea textArea = new TextArea("Steroids good for flying higher... Steroids taste funny", Assets.skin);
+        TextArea textArea = new TextArea(steroidsDesc, Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -325,7 +330,7 @@ public class ShopWidget {
 
         screen.stage.addActor(staminaplusDialog);
 
-        TextArea textArea = new TextArea("Better Stamina, Longer Flapping", Assets.skin);
+        TextArea textArea = new TextArea(staminaPlusDesc, Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -382,7 +387,7 @@ public class ShopWidget {
 
         screen.stage.addActor(springsDialog);
 
-        TextArea textArea = new TextArea("Bouncy bouncy", Assets.skin);
+        TextArea textArea = new TextArea(springsDesc, Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -439,7 +444,7 @@ public class ShopWidget {
 
         screen.stage.addActor(magnetDialog);
 
-        TextArea textArea = new TextArea("Absorv powerups when they are close to you", Assets.skin);
+        TextArea textArea = new TextArea(magnetDesc, Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
@@ -496,7 +501,7 @@ public class ShopWidget {
 
         screen.stage.addActor(clenchDialog);
 
-        TextArea textArea = new TextArea("Learn how to clench the butt to bounce a bit higher off the ground!... It hurts!!", Assets.skin);
+        TextArea textArea = new TextArea(clenchDesc, Assets.skin);
         textArea.setSize(300, 300);
         textArea.setPosition(30, 134);
         textArea.clearListeners();
