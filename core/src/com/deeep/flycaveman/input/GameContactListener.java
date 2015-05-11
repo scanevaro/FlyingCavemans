@@ -71,6 +71,10 @@ public class GameContactListener implements ContactListener {
                     GameInputProcessor.touchingGround = true;
                     GameInputProcessor.flying = false;
                     force = -1;
+                    if ((world.caveman.fixture.getRestitution() / 2) <= 0.1f)
+                        world.caveman.fixture.setRestitution(0.1f);
+                    else world.caveman.fixture.setRestitution(world.caveman.fixture.getRestitution() / 2);
+                    System.out.println("Restitution " + world.caveman.fixture.getRestitution() / (1 / 3));
                 }
             } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
                 PowerUp powerUp = null;

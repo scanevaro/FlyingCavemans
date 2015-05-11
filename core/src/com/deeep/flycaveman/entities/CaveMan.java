@@ -96,6 +96,9 @@ public class CaveMan implements Entity {
             if (staminaSize >= 1) stamina++;
             if (staminaSize >= 2) stamina++;
             if (staminaSize >= 3) stamina++;
+            if (clench >= 1) fixture.setRestitution(0.35f);
+            if (clench >= 2) fixture.setRestitution(0.5f);
+            if (clench >= 3) fixture.setRestitution(0.575f);
             flapStateTime = 0.5f;
             startFlapDistance = 0;
             flapDistance = 0;
