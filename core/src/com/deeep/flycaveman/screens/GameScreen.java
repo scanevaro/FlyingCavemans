@@ -189,7 +189,7 @@ public class GameScreen extends AbstractScreen {
             protected void result(Object object) {
                 if (!nameTextArea.getText().equals(""))
                     name = nameTextArea.getText();
-                else name = "Anonymous";
+                else name = "Anon";
 
                 nameDialog.addAction(Actions.moveTo(nameDialog.getX(), -Core.VIRTUAL_HEIGHT, 0.25f, Interpolation.linear));
                 tutorialWidget.moveFirstDown();
@@ -201,6 +201,7 @@ public class GameScreen extends AbstractScreen {
         nameTextArea = new TextField("", Assets.skin.get("default2", TextField.TextFieldStyle.class));
         nameTextArea.setSize(200, 64);
         nameTextArea.setPosition(nameDialog.getWidth() / 2 - 25, nameDialog.getHeight() / 2 + 5);
+        nameTextArea.setMaxLength(7);
         nameDialog.addActor(nameTextArea);
 
         TextButton yesButton = new TextButton("Accept", Assets.skin);
