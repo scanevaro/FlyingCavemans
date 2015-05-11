@@ -34,11 +34,17 @@ public class ShopWidget {
     public ShopWidget(final Core game) {
         this.screen = (GameScreen) game.screen;
 
-        shopDialog = new Window("Shopuhg!", Assets.skin);
+        shopDialog = new Window("", Assets.skin);
         shopDialog.setSize(680, Core.VIRTUAL_HEIGHT - 25);
         shopDialog.setPosition(0, Core.VIRTUAL_HEIGHT + shopDialog.getHeight());
         shopDialog.setKeepWithinStage(false);
         shopDialog.removeCaptureListener(shopDialog.getCaptureListeners().first());
+        shopDialog.padTop(0);
+
+        TextButton shopTitle = new TextButton("Shopuhg!", Assets.skin);
+        shopTitle.setSize(320, 90);
+        shopTitle.setPosition(shopDialog.getWidth() / 2 - shopTitle.getWidth() / 2, shopDialog.getHeight() - shopTitle.getHeight());
+        shopDialog.addActor(shopTitle);
 
         ImageButton.ImageButtonStyle retryStyle = new ImageButton.ImageButtonStyle();
         retryStyle.imageUp = new TextureRegionDrawable(Assets.restartButton);
