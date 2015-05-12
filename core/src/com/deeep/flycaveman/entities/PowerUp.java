@@ -76,8 +76,8 @@ public class PowerUp implements Entity {
         bodyDef.type = BodyDef.BodyType.StaticBody;
         shape = new PolygonShape();
         bodyDef.position.set(x, y);
-        if (type != Type.MEAT) shape.setAsBox(drinkX, drinkY);
-        else shape.setAsBox(meatX, meatY);
+        if (type != Type.MEAT) shape.setAsBox(drinkX - .1f, drinkY - .1f);
+        else shape.setAsBox(meatX - .15f, meatY - .1f);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
