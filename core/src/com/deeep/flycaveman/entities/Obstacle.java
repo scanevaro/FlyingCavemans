@@ -47,14 +47,14 @@ public class Obstacle implements Entity {
         else type = Type.TOUCAN.ordinal();
         if (type == Type.SMALL_EGG.ordinal()) {
             bodyDef.position.set(positionX, 1.8f);
-            shape.setAsBox(smallEggSize, smallEggSize);
+            shape.setAsBox(smallEggSize / 2, smallEggSize - 0.1f);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             bodyDef.position.set(positionX, 4f);
             shape.setAsBox(brachioSizeX, brachioSizeY);
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
-            shape.setAsBox(quetzaSizeX, quetzaSizeY);
+            shape.setAsBox(quetzaSizeX / 2 + 0.3f, quetzaSizeY / 2 - 0.6f);
         } else if (type == Type.ARGENTAVIS.ordinal()) {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
@@ -133,8 +133,9 @@ public class Obstacle implements Entity {
             float sizeX = sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX;
             float sizeY = sprite.getRegionHeight() * (realSizeY * 2) / textureSizeY;
             sprite.setSize(sizeX, sizeY);
+            sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         }
-        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
+        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2 + 0.5f, body.getPosition().y - sprite.getHeight() / 2.5f);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
     }

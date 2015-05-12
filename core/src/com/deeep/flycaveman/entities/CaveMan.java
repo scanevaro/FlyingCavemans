@@ -38,6 +38,7 @@ public class CaveMan implements Entity {
     public float stamina;
     public static final float maxStamina = 5.0f;
     public float strength;
+    private final float maxStrength = 100;
     public int coinStreak = 0;
     public float coinTimer = 2F;
     public final float COIN_PICKUP_INTERVAL = 2F;
@@ -62,7 +63,7 @@ public class CaveMan implements Entity {
         bodyDef.position.set(startPosX, startPosY);
         bodyDef.bullet = true;
         shape = new CircleShape();
-        shape.setRadius(size);
+        shape.setRadius(size - .2f);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.density = 2.5f;
@@ -80,7 +81,7 @@ public class CaveMan implements Entity {
         shape.dispose();
         body.setActive(true);
         speedVec = new Vector2(0, 0);
-        strength = 225;
+        strength = 125;
         spinachStateTime = 1;
         {/**Buyable Items*/
             if (wings >= 1) strength += 25;
@@ -118,6 +119,7 @@ public class CaveMan implements Entity {
             float sizeX = sprite.getRegionWidth() * (size * 2) / textureSizeX;
             float sizeY = sprite.getRegionHeight() * (size * 2) / textureSizeY;
             sprite.setSize(sizeX, sizeY);
+            sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         }
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
@@ -152,15 +154,14 @@ public class CaveMan implements Entity {
             flapStateTime += delta;
             if (spinachStateTime < 1) {
                 spinachStateTime += delta;
-                double force = 300 * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
+                double force = maxStrength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
                 body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
             } else if (strength > 0) {
-                if (!cheats)
-                    strength -= delta * 20;
+                if (!cheats) strength -= delta * 20;
                 double force = strength * Math.sqrt(Math.max(0, 0.25 - Math.pow(0.5f - flapStateTime, 2)));
                 body.applyForceToCenter(5 * (flapStateTime / 0.5f), (float) force, true);
             }
-        } else if (strength < 300) strength += delta;
+        } else if (strength < maxStrength) strength += delta;
         if (flapStateTime >= 0.5f && startFlapDistance != 0) {
             flapDistance += body.getPosition().x - startFlapDistance;
             startFlapDistance = 0;
