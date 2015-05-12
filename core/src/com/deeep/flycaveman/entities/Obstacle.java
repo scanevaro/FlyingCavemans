@@ -58,7 +58,7 @@ public class Obstacle implements Entity {
         } else if (type == Type.ARGENTAVIS.ordinal()) {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
-            shape.setAsBox(quetzaSizeX + 0.5f, quetzaSizeY + 0.5f);
+            shape.setAsBox(quetzaSizeX / 2 + 0.5f, quetzaSizeY / 2 - 0.5f);
         } else if (type == Type.TOUCAN.ordinal()) {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
@@ -135,7 +135,23 @@ public class Obstacle implements Entity {
             sprite.setSize(sizeX, sizeY);
             sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         }
-        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2 + 0.5f, body.getPosition().y - sprite.getHeight() / 2.5f);
+        {/**Sprite Position*/
+            if (type == Type.SMALL_EGG.ordinal())
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+            else if (type == Type.BRACHIOSAURUS.ordinal())
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+            else if (type == Type.QUETZALCOATLUS.ordinal())
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2 + 0.5f,
+                        body.getPosition().y - sprite.getHeight() / 2.5f);
+            else if (type == Type.ARGENTAVIS.ordinal())
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 5);
+            else if (type == Type.TOUCAN.ordinal())
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+        }
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
     }
