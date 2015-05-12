@@ -202,6 +202,31 @@ public class PickupsWidget extends Actor {
                     Actions.delay(0.35f),
                     Actions.moveTo(-minus.getWidth() - five.getWidth() - percentage.getWidth(),
                             Core.VIRTUAL_HEIGHT / 2 - (minus.getHeight() / 2) + 50, 0.2f)));
+        } else if (type == PowerUp.Type.BEER) {
+            stamina.addAction(new SequenceAction(
+                    Actions.moveTo(20, Core.VIRTUAL_HEIGHT / 2 - (stamina.getHeight() * 2) + 50, 0.2f),
+                    Actions.scaleBy(0.25f, 0.25f, 0.2f), Actions.scaleBy(-0.25f, -0.25f, 0.2f),
+                    Actions.delay(0.35f),
+                    Actions.moveTo(-stamina.getWidth() - 20,
+                            Core.VIRTUAL_HEIGHT / 2 - (stamina.getHeight() * 2) + 50, 0.2f)));
+            percentage.addAction(new SequenceAction(
+                    Actions.moveTo(128, Core.VIRTUAL_HEIGHT / 2 - (percentage.getHeight() / 2) + 50, 0.2f),
+                    Actions.scaleBy(0.25f, 0.25f, 0.2f), Actions.scaleBy(-0.25f, -0.25f, 0.2f),
+                    Actions.delay(0.35f),
+                    Actions.moveTo(-percentage.getWidth(),
+                            Core.VIRTUAL_HEIGHT / 2 - (percentage.getHeight() / 2) + 50, 0.2f)));
+            five.addAction(new SequenceAction(
+                    Actions.moveTo(64, Core.VIRTUAL_HEIGHT / 2 - (five.getHeight() / 2) + 50, 0.2f),
+                    Actions.scaleBy(0.25f, 0.25f, 0.2f), Actions.scaleBy(-0.25f, -0.25f, 0.2f),
+                    Actions.delay(0.35f),
+                    Actions.moveTo(-five.getWidth() - percentage.getWidth(),
+                            Core.VIRTUAL_HEIGHT / 2 - (five.getHeight() / 2) + 50, 0.3f)));
+            minus.addAction(new SequenceAction(
+                    Actions.moveTo(0, Core.VIRTUAL_HEIGHT / 2 - (minus.getHeight() / 2) + 50, 0.2f),
+                    Actions.scaleBy(0.25f, 0.25f, 0.2f), Actions.scaleBy(-0.25f, -0.25f, 0.2f),
+                    Actions.delay(0.35f),
+                    Actions.moveTo(-minus.getWidth() - five.getWidth() - percentage.getWidth(),
+                            Core.VIRTUAL_HEIGHT / 2 - (minus.getHeight() / 2) + 50, 0.2f)));
         } else if (type == PowerUp.Type.SPINACH) {
             stamina.addAction(new SequenceAction(
                     Actions.moveTo(20, Core.VIRTUAL_HEIGHT / 2 - (stamina.getHeight() * 2) + 50, 0.2f),

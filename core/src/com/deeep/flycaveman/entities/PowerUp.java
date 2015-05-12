@@ -12,25 +12,12 @@ import com.deeep.flycaveman.world.World;
  */
 public class PowerUp implements Entity {
 
-    private boolean dead = false;
-
-    public void die() {
-        dead = true;
-    }
-
-    public void update(float deltaT) {
-
-    }
-
-    public boolean isDead() {
-        return dead;
-    }
-
     public static enum Type {
         MEAT(100),
         SPINACH(100),
         VODKA(-50),
-        SODACAN(50);
+        SODACAN(50),
+        BEER(-50);
         int percentage;
 
         Type(int percentage) {
@@ -49,6 +36,20 @@ public class PowerUp implements Entity {
     private FixtureDef fixtureDef;
     public Fixture fixture;
     private PolygonShape shape;
+    private boolean dead = false;
+    private final float powX = 0.6f, powY = 1.2f;
+    private float realSizeX, realSizeY, textureSizeX, textureSizeY;
+
+    public void die() {
+        dead = true;
+    }
+
+    public void update(float deltaT) {
+    }
+
+    public boolean isDead() {
+        return dead;
+    }
 
     public PowerUp(Type type, World world, float x, float y) {
         this.type = type;
@@ -65,40 +66,102 @@ public class PowerUp implements Entity {
             case SODACAN:
                 sprite = new Sprite(Assets.soda);
                 break;
+            case BEER:
+                sprite = new Sprite(Assets.beer);
+                break;
             default:
                 sprite = new Sprite(Assets.vodka);
         }
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
-
         shape = new PolygonShape();
         bodyDef.position.set(x, y);
-//        shape.setAsBox(1, 1.5f);
-        shape.setAsBox(0.6f, 1.2f);
+        shape.setAsBox(powX, powY);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
-
         body = world.box2dWorld.createBody(bodyDef);
-
-//        title.setSize(2, 3);
-        sprite.setSize(1.2f, 2.4f);
+        switch (type) {
+            case MEAT:
+                sprite.setSize(powX * 2, powY * 2);
+                realSizeX = powX;
+                realSizeY = powY;
+                break;
+            case SPINACH:
+                sprite.setSize(powX * 2, powY * 2);
+                realSizeX = powX;
+                realSizeY = powY;
+                break;
+            case VODKA:
+                sprite.setSize(powX * 2, powY * 2);
+                realSizeX = powX;
+                realSizeY = powY;
+                break;
+            case SODACAN:
+                sprite.setSize(powX * 2, powY * 2);
+                realSizeX = powX;
+                realSizeY = powY;
+                break;
+            case BEER:
+                sprite.setSize(powX * 2, powY * 2);
+                realSizeX = powX;
+                realSizeY = powY;
+                break;
+            default:
+                break;
+        }
         body.setUserData(sprite);
-
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
-
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
-
         shape.dispose();
-
         body.setAwake(false);
+        textureSizeX = sprite.getRegionWidth();
+        textureSizeY = sprite.getRegionHeight();
     }
 
 
     @Override
     public void draw(Batch batch) {
-        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
+        switch (type) {
+            case MEAT:
+                sprite.setSize(sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX,
+                        sprite.getRegionHeight() * (realSizeY * 2) / textureSizeY);
+                sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+                break;
+            case SPINACH:
+                sprite.setSize(sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX,
+                        sprite.getRegionHeight() * (realSizeY * 2) / textureSizeY);
+                sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+                break;
+            case VODKA:
+                sprite.setSize(sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX,
+                        sprite.getRegionHeight() * (realSizeY * 2) / textureSizeY);
+                sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+                break;
+            case SODACAN:
+                sprite.setSize(sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX,
+                        sprite.getRegionHeight() * (realSizeY * 2) / textureSizeY);
+                sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+                break;
+            case BEER:
+                sprite.setSize(sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX,
+                        sprite.getRegionHeight() * (realSizeY * 2) / textureSizeY);
+                sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+                break;
+            default:
+                break;
+        }
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
     }

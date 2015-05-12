@@ -51,7 +51,7 @@ public class PowerUpSpawner {
         float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + 5 + random.nextFloat() * 60;
 
         float y = Math.max(5, caveMan.body.getPosition().y - 20 + random.nextFloat() * 60);
-        switch (random.nextInt(4)) {
+        switch (random.nextInt(5)) {
             case 0:
                 tempType = PowerUp.Type.MEAT;
                 break;
@@ -63,6 +63,9 @@ public class PowerUpSpawner {
                 break;
             case 3:
                 tempType = PowerUp.Type.VODKA;
+                break;
+            case 4:
+                tempType = PowerUp.Type.BEER;
                 break;
             default:
                 tempType = PowerUp.Type.VODKA;
