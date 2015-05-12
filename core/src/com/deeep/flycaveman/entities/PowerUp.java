@@ -37,7 +37,7 @@ public class PowerUp implements Entity {
     public Fixture fixture;
     private PolygonShape shape;
     private boolean dead = false;
-    private final float powX = 0.6f, powY = 1.2f;
+    private final float drinkX = 0.45f, drinkY = 0.8f, meatX = 0.8f, meatY = 0.6f;
     private float realSizeX, realSizeY, textureSizeX, textureSizeY;
 
     public void die() {
@@ -76,36 +76,37 @@ public class PowerUp implements Entity {
         bodyDef.type = BodyDef.BodyType.StaticBody;
         shape = new PolygonShape();
         bodyDef.position.set(x, y);
-        shape.setAsBox(powX, powY);
+        if (type != Type.MEAT) shape.setAsBox(drinkX, drinkY);
+        else shape.setAsBox(meatX, meatY);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
         body = world.box2dWorld.createBody(bodyDef);
         switch (type) {
             case MEAT:
-                sprite.setSize(powX * 2, powY * 2);
-                realSizeX = powX;
-                realSizeY = powY;
+                sprite.setSize(meatX * 2, meatY * 2);
+                realSizeX = meatX;
+                realSizeY = meatY;
                 break;
             case SPINACH:
-                sprite.setSize(powX * 2, powY * 2);
-                realSizeX = powX;
-                realSizeY = powY;
+                sprite.setSize(drinkX * 2, drinkY * 2);
+                realSizeX = drinkX;
+                realSizeY = drinkY;
                 break;
             case VODKA:
-                sprite.setSize(powX * 2, powY * 2);
-                realSizeX = powX;
-                realSizeY = powY;
+                sprite.setSize(drinkX * 2, drinkY * 2);
+                realSizeX = drinkX;
+                realSizeY = drinkY;
                 break;
             case SODACAN:
-                sprite.setSize(powX * 2, powY * 2);
-                realSizeX = powX;
-                realSizeY = powY;
+                sprite.setSize(drinkX * 2, drinkY * 2);
+                realSizeX = drinkX;
+                realSizeY = drinkY;
                 break;
             case BEER:
-                sprite.setSize(powX * 2, powY * 2);
-                realSizeX = powX;
-                realSizeY = powY;
+                sprite.setSize(drinkX * 2, drinkY * 2);
+                realSizeX = drinkX;
+                realSizeY = drinkY;
                 break;
             default:
                 break;
