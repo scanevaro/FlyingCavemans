@@ -20,7 +20,6 @@ public class Obstacle implements Entity {
     }
 
     private boolean dead = false;
-
     private BodyDef bodyDef;
     public Body body;
     private FixtureDef fixtureDef;
@@ -50,7 +49,7 @@ public class Obstacle implements Entity {
             shape.setAsBox(smallEggSize / 2, smallEggSize - 0.1f);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             bodyDef.position.set(positionX, 4f);
-            shape.setAsBox(brachioSizeX, brachioSizeY);
+            shape.setAsBox(brachioSizeX / 3, brachioSizeY - 0.5f);
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
@@ -67,6 +66,35 @@ public class Obstacle implements Entity {
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
+        if (type == Type.BRACHIOSAURUS.ordinal()) {
+            BodyDef bodyDef2 = new BodyDef();
+            bodyDef2.type = BodyDef.BodyType.DynamicBody;
+            PolygonShape shape2 = new PolygonShape();
+            bodyDef2.position.set(positionX - 2.65f, 2.5f);
+            shape2.setAsBox(brachioSizeX / 3, brachioSizeY / 2 + 1);
+            FixtureDef fixtureDef2 = new FixtureDef();
+            fixtureDef2.shape = shape2;
+            fixtureDef2.isSensor = true;
+            Body body2 = world.box2dWorld.createBody(bodyDef2);
+            Fixture fixture2 = body2.createFixture(fixtureDef2);
+            fixture2.setUserData(this);
+            shape2.dispose();
+            body2.setAwake(false);
+
+            BodyDef bodyDef3 = new BodyDef();
+            bodyDef3.type = BodyDef.BodyType.DynamicBody;
+            PolygonShape shape3 = new PolygonShape();
+            bodyDef3.position.set(positionX + 2.6f, 2.5f);
+            shape3.setAsBox(brachioSizeX / 3, brachioSizeY / 2 + 1);
+            FixtureDef fixtureDef3 = new FixtureDef();
+            fixtureDef3.shape = shape3;
+            fixtureDef3.isSensor = true;
+            Body body3 = world.box2dWorld.createBody(bodyDef3);
+            Fixture fixture3 = body3.createFixture(fixtureDef3);
+            fixture3.setUserData(this);
+            shape3.dispose();
+            body3.setAwake(false);
+        }
         body = world.box2dWorld.createBody(bodyDef);
         if (type == Type.SMALL_EGG.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.smallEggTexture));
@@ -104,11 +132,8 @@ public class Obstacle implements Entity {
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
-
         shape.dispose();
-
         body.setAwake(false);
-//        body.setActive(true);
     }
 
     @Override
