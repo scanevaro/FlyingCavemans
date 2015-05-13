@@ -16,7 +16,8 @@ public class GameContactListener implements ContactListener {
     private GameScreen screen;
     private com.deeep.flycaveman.world.World world;
     private float force;
-    private final float smallEggForce = 10, brachioForce = 20, quetzaForce = 18, argenForce = 20, toucanForce = 35;
+    private final float smallEggForce = 10, sabretoothForce = 15, brachioForce = 20, quetzaForce = 18, argenForce = 20,
+            toucanForce = 35;
 
     public GameContactListener(Core game, World world) {
         this.game = game;
@@ -71,6 +72,10 @@ public class GameContactListener implements ContactListener {
                     case 4: /**TOUCAN*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 toucanForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                        break;
+                    case 5: /**SABRETOOTH*/
+                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                                sabretoothForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                 }
                 if (obstacle.type == Obstacle.Type.BRACHIOSAURUS.ordinal()) {

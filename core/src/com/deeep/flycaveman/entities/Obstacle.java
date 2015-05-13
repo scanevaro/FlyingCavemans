@@ -16,7 +16,7 @@ import java.util.Random;
 public class Obstacle implements Entity {
 
     public static enum Type {
-        SMALL_EGG, BRACHIOSAURUS, QUETZALCOATLUS, ARGENTAVIS, TOUCAN
+        SMALL_EGG, BRACHIOSAURUS, QUETZALCOATLUS, ARGENTAVIS, TOUCAN, SABRETOOTH
     }
 
     private boolean dead = false;
@@ -26,8 +26,9 @@ public class Obstacle implements Entity {
     private Fixture fixture;
     private PolygonShape shape;
     public int type;
-    private float smallEggSize = 0.8f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4, brachioSizeY = 3, realSizeX,
-            realSizeY, textureSizeX, textureSizeY;
+    private final float smallEggSizeX = 0.5f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
+            brachioSizeY = 3, sabretoothSize = 0.5f;
+    private float realSizeX, realSizeY, textureSizeX, textureSizeY;
     private Sprite sprite;
     private boolean hit;
     private float stateTime;
@@ -38,32 +39,8 @@ public class Obstacle implements Entity {
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         shape = new PolygonShape();
         positionX += random.nextInt(100);
-        float typeRand = random.nextFloat();
-        if (typeRand <= 0.95f && typeRand > 0.45f) {
-            if (random.nextFloat() <= 0.75f) type = Type.QUETZALCOATLUS.ordinal();
-            else type = Type.ARGENTAVIS.ordinal();
-        } else if (typeRand >= 0.95f) type = Type.BRACHIOSAURUS.ordinal();
-        else if (typeRand > 0.04f) type = Type.SMALL_EGG.ordinal();
-        else type = Type.TOUCAN.ordinal();
-        if (type == Type.SMALL_EGG.ordinal()) {
-            bodyDef.position.set(positionX, 1.8f);
-            shape.setAsBox(smallEggSize / 2, smallEggSize - 0.1f);
-        } else if (type == Type.BRACHIOSAURUS.ordinal()) {
-            bodyDef.position.set(positionX, 4f);
-            shape.setAsBox(brachioSizeX / 3, brachioSizeY - 0.5f);
-        } else if (type == Type.QUETZALCOATLUS.ordinal()) {
-            bodyDef.position.set(positionX, Math.max(5,
-                    world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
-            shape.setAsBox(quetzaSizeX / 2 + 0.3f, quetzaSizeY / 2 - 0.6f);
-        } else if (type == Type.ARGENTAVIS.ordinal()) {
-            bodyDef.position.set(positionX, Math.max(5,
-                    world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
-            shape.setAsBox(quetzaSizeX / 2 + 0.5f, quetzaSizeY / 2 - 0.5f);
-        } else if (type == Type.TOUCAN.ordinal()) {
-            bodyDef.position.set(positionX, Math.max(5,
-                    world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
-            shape.setAsBox(smallEggSize, smallEggSize);
-        }
+        setType(random);
+        setPosition(positionX, random, world);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
@@ -101,9 +78,9 @@ public class Obstacle implements Entity {
         body = world.box2dWorld.createBody(bodyDef);
         if (type == Type.SMALL_EGG.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.smallEggTexture));
-            sprite.setSize(smallEggSize * 2, smallEggSize * 2);
-            realSizeX = smallEggSize;
-            realSizeY = smallEggSize;
+            sprite.setSize(smallEggSizeX * 2, smallEggSizeY * 2);
+            realSizeX = smallEggSizeX;
+            realSizeY = smallEggSizeY;
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.brachioTexture));
             sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
@@ -121,9 +98,14 @@ public class Obstacle implements Entity {
             realSizeY = quetzaSizeY + 0.5f;
         } else if (type == Type.TOUCAN.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.toucanTexture));
-            sprite.setSize(smallEggSize * 2, smallEggSize * 2);
-            realSizeX = smallEggSize;
-            realSizeY = smallEggSize;
+            sprite.setSize(smallEggSizeX * 2, smallEggSizeX * 2);
+            realSizeX = smallEggSizeX;
+            realSizeY = smallEggSizeX;
+        } else if (type == Type.SABRETOOTH.ordinal()) {
+            sprite = new Sprite(new TextureRegion(Assets.sabertoothIdle.getKeyFrame(stateTime)));
+            sprite.setSize(sabretoothSize * 2, sabretoothSize * 2);
+            realSizeX = sabretoothSize;
+            realSizeY = sabretoothSize;
         }
         textureSizeX = sprite.getRegionWidth();
         textureSizeY = sprite.getRegionHeight();
@@ -156,6 +138,9 @@ public class Obstacle implements Entity {
         } else if (type == Type.TOUCAN.ordinal()) {
             if (!hit) sprite.setRegion(Assets.toucanTexture);
             else sprite.setRegion(Assets.toucanHit);
+        } else if (type == Type.SABRETOOTH.ordinal()) {
+            if (!hit) sprite.setRegion(Assets.sabertoothIdle.getKeyFrame(stateTime));
+            else sprite.setRegion(Assets.sabertoothHit.getKeyFrame(stateTime));
         }
         {/**Sprite realSizeX*/
             float sizeX = sprite.getRegionWidth() * (realSizeX * 2) / textureSizeX;
@@ -177,6 +162,9 @@ public class Obstacle implements Entity {
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 5);
             else if (type == Type.TOUCAN.ordinal())
+                sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                        body.getPosition().y - sprite.getHeight() / 2);
+            else if (type == Type.SABRETOOTH.ordinal())
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
         }
@@ -214,5 +202,41 @@ public class Obstacle implements Entity {
     public void hit(Body body) {
         this.tempBody = body;
         hit = true;
+    }
+
+    private void setType(Random random) {
+        float typeRand = random.nextFloat();
+        if (typeRand <= 0.96f && typeRand > 0.5f) {
+            if (random.nextFloat() <= 0.75f) type = Type.QUETZALCOATLUS.ordinal();
+            else type = Type.ARGENTAVIS.ordinal();
+        } else if (typeRand >= 0.96f) type = Type.BRACHIOSAURUS.ordinal();
+        else if (typeRand <= 0.5f && typeRand > 0.25f) type = Type.SABRETOOTH.ordinal();
+        else if (typeRand <= 0.25f && typeRand > 0.04f) type = Type.SMALL_EGG.ordinal();
+        else type = Type.TOUCAN.ordinal();
+    }
+
+    private void setPosition(float positionX, Random random, World world) {
+        if (type == Type.SMALL_EGG.ordinal()) {
+            bodyDef.position.set(positionX, 1.65f);
+            shape.setAsBox(smallEggSizeX / 2, smallEggSizeY - 0.1f);
+        } else if (type == Type.BRACHIOSAURUS.ordinal()) {
+            bodyDef.position.set(positionX, 4f);
+            shape.setAsBox(brachioSizeX / 3, brachioSizeY - 0.5f);
+        } else if (type == Type.QUETZALCOATLUS.ordinal()) {
+            bodyDef.position.set(positionX, Math.max(5,
+                    world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
+            shape.setAsBox(quetzaSizeX / 2 + 0.3f, quetzaSizeY / 2 - 0.6f);
+        } else if (type == Type.ARGENTAVIS.ordinal()) {
+            bodyDef.position.set(positionX, Math.max(5,
+                    world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
+            shape.setAsBox(quetzaSizeX / 2 + 0.5f, quetzaSizeY / 2 - 0.5f);
+        } else if (type == Type.TOUCAN.ordinal()) {
+            bodyDef.position.set(positionX, Math.max(5,
+                    world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
+            shape.setAsBox(smallEggSizeX, smallEggSizeX);
+        } else if (type == Type.SABRETOOTH.ordinal()) {
+            bodyDef.position.set(positionX, 1.5f);
+            shape.setAsBox(sabretoothSize, sabretoothSize);
+        }
     }
 }

@@ -47,7 +47,7 @@ public class Assets {
             plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3, coinText, oneCoin, twoCoin, threeCoin,
             fourCoin, grabCoins, grabPowerups, glow, beer;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly, cavemanDrag, cavemanWingsDrag,
-            quetzaHit, quetzaTexture;
+            quetzaHit, quetzaTexture, sabertoothIdle, sabertoothHit;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3,
@@ -313,6 +313,20 @@ public class Assets {
                 items.findRegion("ptero-flapping hit2-7"), items.findRegion("ptero-flapping hit2-8"),
                 items.findRegion("ptero-flapping hit2-9"), items.findRegion("ptero-flapping hit2-10"));
         quetzaHit.setPlayMode(Animation.PlayMode.LOOP);
+        sabertoothIdle = new Animation(0.1f, items.findRegion("cat-idle-0"), items.findRegion("cat-idle-1"),
+                items.findRegion("cat-idle-2"), items.findRegion("cat-idle-3"), items.findRegion("cat-idle-4"),
+                items.findRegion("cat-idle-5"), items.findRegion("cat-idle-6"), items.findRegion("cat-idle-7"),
+                items.findRegion("cat-idle-8"), items.findRegion("cat-idle-9"), items.findRegion("cat-idle-10"),
+                items.findRegion("cat-idle-11"), items.findRegion("cat-idle-12"), items.findRegion("cat-idle-13"),
+                items.findRegion("cat-idle-14"), items.findRegion("cat-idle-15"));
+        sabertoothIdle.setPlayMode(Animation.PlayMode.LOOP);
+        sabertoothHit = new Animation(0.1f, items.findRegion("cat-hit-0"), items.findRegion("cat-hit-1"),
+                items.findRegion("cat-hit-2"), items.findRegion("cat-hit-3"), items.findRegion("cat-hit-4"),
+                items.findRegion("cat-hit-5"), items.findRegion("cat-hit-6"), items.findRegion("cat-hit-7"),
+                items.findRegion("cat-hit-8"), items.findRegion("cat-hit-9"), items.findRegion("cat-hit-10"),
+                items.findRegion("cat-hit-11"), items.findRegion("cat-hit-12"), items.findRegion("cat-hit-13"),
+                items.findRegion("cat-hit-14"), items.findRegion("cat-hit-15"));
+        sabertoothHit.setPlayMode(Animation.PlayMode.LOOP);
 
         dessert_layer_1 = items.findRegion("desert_layer", 1);
         dessert_layer_2 = items.findRegion("desert_layer", 2);

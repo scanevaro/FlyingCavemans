@@ -3,7 +3,6 @@ package com.deeep.flycaveman.entities;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.world.Area;
 import com.deeep.flycaveman.world.World;
 
 import java.util.Random;
@@ -38,8 +37,11 @@ public class ObstacleSpawner {
     }
 
     public void spawnRandomRandom(CaveMan caveMan) {
-        float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + random.nextFloat() * 5;
-        spawn(x);
+        //TODO TEST THIS
+        if (random.nextFloat() > 0.8f) {
+            float x = caveMan.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + random.nextFloat() * 5;
+            spawn(x);
+        }
     }
 
     public void spawn(float x) {
