@@ -84,12 +84,13 @@ public class GameContactListener implements ContactListener {
             } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {
                 if (!GameInputProcessor.catapulting) {
                     GameInputProcessor.touchingGround = true;
+                    world.caveman.stateTime = 0;
                     GameInputProcessor.flying = false;
                     force = -1;
                     if ((world.caveman.fixture.getRestitution() / 2) <= 0.1f)
                         world.caveman.fixture.setRestitution(0.1f);
                     else world.caveman.fixture.setRestitution(world.caveman.fixture.getRestitution() / 2);
-                    System.out.println("Restitution " + world.caveman.fixture.getRestitution() / (1 / 3));
+//                    if (Settings.soundEnabled) Assets.drag.play();
                 }
             } else if (fixtureA.getUserData() instanceof PowerUp || fixtureB.getUserData() instanceof PowerUp) {
                 PowerUp powerUp = null;
@@ -141,6 +142,7 @@ public class GameContactListener implements ContactListener {
 
     @Override
     public void endContact(Contact contact) {
+//        Assets.drag.stop();
         GameInputProcessor.touchingGround = false;
         GameInputProcessor.flying = true;
         final Fixture fixtureA = contact.getFixtureA();

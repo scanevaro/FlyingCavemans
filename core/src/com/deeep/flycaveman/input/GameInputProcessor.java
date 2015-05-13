@@ -84,7 +84,7 @@ public class GameInputProcessor implements InputProcessor {
         double angle = Math.atan2(deltaY, deltaX) + Math.PI;
         length = Math.min(length, maxLength);
         deltaX = Math.cos(-angle) * length;
-        deltaY = Math.sin(angle ) * length;
+        deltaY = Math.sin(angle) * length;
         deltaX += vector1.x;
         deltaY += vector1.y;
         return new Vector2((float) deltaX, (float) deltaY);

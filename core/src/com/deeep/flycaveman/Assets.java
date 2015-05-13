@@ -46,7 +46,8 @@ public class Assets {
             tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit, staminaText,
             plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3, coinText, oneCoin, twoCoin, threeCoin,
             fourCoin, grabCoins, grabPowerups, glow, beer;
-    public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly, quetzaHit, quetzaTexture;
+    public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly, cavemanDrag, cavemanWingsDrag,
+            quetzaHit, quetzaTexture;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3,
@@ -125,6 +126,7 @@ public class Assets {
         assetManager.load("data/sounds/coin3.mp3", Sound.class);
         assetManager.load("data/sounds/coin4.mp3", Sound.class);
         assetManager.load("data/sounds/buy.mp3", Sound.class);
+//        assetManager.load("data/sounds/drag.mp3", Sound.class);
 
         assetManager.load("data/sounds/button_confirm.mp3", Sound.class);
     }
@@ -290,6 +292,13 @@ public class Assets {
                 , items.findRegion("skeleton-fly-10"), items.findRegion("skeleton-fly-11")
                 , items.findRegion("skeleton-fly-12"));
         cavemanFly.setPlayMode(Animation.PlayMode.LOOP);
+        cavemanDrag = new Animation(0.25f, items.findRegion("skeleton-crash-0"), items.findRegion("skeleton-crash-1")
+                , items.findRegion("skeleton-crash-2"), items.findRegion("skeleton-crash-3")
+                , items.findRegion("skeleton-crash-4"), items.findRegion("skeleton-crash-5"));
+        cavemanWingsDrag = new Animation(0.25f, items.findRegion("skeleton-wings-crash-0"),
+                items.findRegion("skeleton-wings-crash-1"), items.findRegion("skeleton-wings-crash-2"),
+                items.findRegion("skeleton-wings-crash-3"), items.findRegion("skeleton-wings-crash-4"),
+                items.findRegion("skeleton-wings-crash-5"));
         quetzaTexture = new Animation(0.1f, items.findRegion("ptero-flapping-0"), items.findRegion("ptero-flapping-1"),
                 items.findRegion("ptero-flapping-2"), items.findRegion("ptero-flapping-3"),
                 items.findRegion("ptero-flapping-4"), items.findRegion("ptero-flapping-5"),
@@ -374,6 +383,7 @@ public class Assets {
         coin4_sound = assetManager.get("data/sounds/coin4.mp3");
         buttonConfirm = assetManager.get("data/sounds/button_confirm.mp3");
         buy = assetManager.get("data/sounds/buy.mp3");
+//        drag = assetManager.get("data/sounds/drag.mp3");
     }
 
     public static void dispose() {

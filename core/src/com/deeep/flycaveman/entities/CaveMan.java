@@ -46,7 +46,7 @@ public class CaveMan implements Entity {
     public static int springsJumps, staminaSize, steroids, springs, magnet, clench;
     public float stateTimeSprings;
     private float flapStateTime = 0;
-    private float stateTime = 0;
+    public float stateTime = 0;
     private int state;
     private com.deeep.flycaveman.world.World world;
     public static int coins;
@@ -110,6 +110,9 @@ public class CaveMan implements Entity {
 
     public void draw(Batch batch) {
         if (stateTimeSprings > 0) sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
+        else if (GameInputProcessor.touchingGround && wings > 0)
+            sprite.setRegion(Assets.cavemanWingsDrag.getKeyFrame(stateTime));
+        else if (GameInputProcessor.touchingGround) sprite.setRegion(Assets.cavemanDrag.getKeyFrame(stateTime));
         else if (wings > 0) sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
         else if (flapStateTime < 0.5f) sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
         else if (GameInputProcessor.flying) sprite.setRegion(Assets.cavemanFly.getKeyFrame(stateTime));
