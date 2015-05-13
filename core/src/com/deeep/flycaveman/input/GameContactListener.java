@@ -47,8 +47,7 @@ public class GameContactListener implements ContactListener {
                                 smallEggForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                     case 1: /**BRACHIOSAURUS*/
-                        world.caveman.body.setLinearVelocity(
-                                brachioForce / 2 - 3.5f + world.caveman.body.getLinearVelocity().x,
+                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                     case 2: /**QUETZALCOATLUS*/
