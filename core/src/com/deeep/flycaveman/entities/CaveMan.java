@@ -75,7 +75,6 @@ public class CaveMan implements Entity {
         textureSizeY = Assets.cavemanTexture.getRegionHeight();
         sprite.setSize(size * 2, size * 2);
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
-        body.setUserData(sprite);
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
         shape.dispose();

@@ -38,8 +38,7 @@ public class GameContactListener implements ContactListener {
         if (!world.caveman.cheats) {
             if (fixtureA.getUserData() instanceof Obstacle || fixtureB.getUserData() instanceof Obstacle) {
                 Obstacle obstacle = null;
-                if (fixtureA.getUserData() != null)
-                    obstacle = (Obstacle) fixtureA.getUserData();
+                if (fixtureA.getUserData() != null) obstacle = (Obstacle) fixtureA.getUserData();
                 else obstacle = (Obstacle) fixtureB.getUserData();
                 switch (obstacle.type) {
                     case 0: /**SMALL_EGG*/
@@ -47,8 +46,19 @@ public class GameContactListener implements ContactListener {
                                 smallEggForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                     case 1: /**BRACHIOSAURUS*/
-                        world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                        String fix = "";
+                        if (fixtureA.getBody().getUserData() != null) fix = (String) fixtureA.getBody().getUserData();
+                        else if (fixtureB.getBody().getUserData() != null)
+                            fix = (String) fixtureB.getBody().getUserData();
+                        if (fix.equals("BodyHead"))
+                            world.caveman.body.setLinearVelocity(
+                                    brachioForce / 2 + world.caveman.body.getLinearVelocity().x,
+                                    brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                        else if (fix.equals("BodyTail")) world.caveman.body.setLinearVelocity(
+                                brachioForce / 2.5f + world.caveman.body.getLinearVelocity().x,
                                 brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
+                        else world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
+                                    brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                     case 2: /**QUETZALCOATLUS*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
@@ -63,9 +73,14 @@ public class GameContactListener implements ContactListener {
                                 toucanForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
                 }
-                obstacle.hit();
+                if (obstacle.type == Obstacle.Type.BRACHIOSAURUS.ordinal()) {
+                    if (fixtureA.getBody().getUserData() != null) obstacle.hit(fixtureA.getBody());
+                    else obstacle.hit(fixtureB.getBody());
+                } else {
+                    obstacle.hit();
+                    Assets.hitEntity1.play();
+                }
                 world.caveman.smacked++;
-                Assets.hitEntity1.play();
             } else if (fixtureA.getUserData() instanceof Ground || fixtureB.getUserData() instanceof Ground) {
                 if (!GameInputProcessor.catapulting) {
                     GameInputProcessor.touchingGround = true;

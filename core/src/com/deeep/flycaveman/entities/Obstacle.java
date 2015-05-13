@@ -31,6 +31,7 @@ public class Obstacle implements Entity {
     private Sprite sprite;
     private boolean hit;
     private float stateTime;
+    private Body tempBody;
 
     public Obstacle(World world, float positionX, Random random) {
         bodyDef = new BodyDef();
@@ -76,6 +77,7 @@ public class Obstacle implements Entity {
             fixtureDef2.shape = shape2;
             fixtureDef2.isSensor = true;
             Body body2 = world.box2dWorld.createBody(bodyDef2);
+            body2.setUserData("BodyHead");
             Fixture fixture2 = body2.createFixture(fixtureDef2);
             fixture2.setUserData(this);
             shape2.dispose();
@@ -90,6 +92,7 @@ public class Obstacle implements Entity {
             fixtureDef3.shape = shape3;
             fixtureDef3.isSensor = true;
             Body body3 = world.box2dWorld.createBody(bodyDef3);
+            body3.setUserData("BodyTail");
             Fixture fixture3 = body3.createFixture(fixtureDef3);
             fixture3.setUserData(this);
             shape3.dispose();
@@ -101,31 +104,26 @@ public class Obstacle implements Entity {
             sprite.setSize(smallEggSize * 2, smallEggSize * 2);
             realSizeX = smallEggSize;
             realSizeY = smallEggSize;
-            body.setUserData(sprite);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.brachioTexture));
             sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
             realSizeX = brachioSizeX;
             realSizeY = brachioSizeY;
-            body.setUserData(sprite);
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.quetzaTexture.getKeyFrame(0)));
             sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
             realSizeX = quetzaSizeX;
             realSizeY = quetzaSizeY;
-            body.setUserData(sprite);
         } else if (type == Type.ARGENTAVIS.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.argenTexture));
             sprite.setSize((quetzaSizeX + 0.5f) * 2, (quetzaSizeY + 0.5f) * 2);
             realSizeX = quetzaSizeX + 0.5f;
             realSizeY = quetzaSizeY + 0.5f;
-            body.setUserData(sprite);
         } else if (type == Type.TOUCAN.ordinal()) {
             sprite = new Sprite(new TextureRegion(Assets.toucanTexture));
             sprite.setSize(smallEggSize * 2, smallEggSize * 2);
             realSizeX = smallEggSize;
             realSizeY = smallEggSize;
-            body.setUserData(sprite);
         }
         textureSizeX = sprite.getRegionWidth();
         textureSizeY = sprite.getRegionHeight();
@@ -143,7 +141,12 @@ public class Obstacle implements Entity {
             else sprite.setRegion(Assets.smallEggBroken);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             if (!hit) sprite.setRegion(Assets.brachioTexture);
-            else sprite.setRegion(Assets.brachioMidPull);
+            else if (tempBody != null) {
+                String tempString = (String) tempBody.getUserData();
+                if (tempString != null && tempString.equals("BodyHead")) sprite.setRegion(Assets.brachioFrontPull);
+                else if (tempString != null && tempString.equals("BodyTail")) sprite.setRegion(Assets.brachioBackPull);
+                else sprite.setRegion(Assets.brachioMidPull);
+            }
         } else if (type == Type.QUETZALCOATLUS.ordinal()) {
             if (!hit) sprite.setRegion(Assets.quetzaTexture.getKeyFrame(stateTime));
             else sprite.setRegion(Assets.quetzaHit.getKeyFrame(stateTime));
@@ -193,6 +196,7 @@ public class Obstacle implements Entity {
                 || type == Type.TOUCAN.ordinal()) {
             body.setTransform(body.getPosition().x, body.getPosition().y - (delta * 10), body.getAngle());
         }
+        if (hit) body.setActive(false);
     }
 
     public void die() {
@@ -204,6 +208,11 @@ public class Obstacle implements Entity {
     }
 
     public void hit() {
+        hit = true;
+    }
+
+    public void hit(Body body) {
+        this.tempBody = body;
         hit = true;
     }
 }
