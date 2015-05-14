@@ -233,7 +233,7 @@ public class Obstacle implements Entity {
         } else if (type == Type.TOUCAN.ordinal()) {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
-            shape.setAsBox(smallEggSizeX, smallEggSizeX);
+            shape.setAsBox(smallEggSizeX - 0.2f, smallEggSizeX - 0.2f);
         } else if (type == Type.SABRETOOTH.ordinal()) {
             bodyDef.position.set(positionX, 1.5f);
             shape.setAsBox(sabretoothSize, sabretoothSize);
