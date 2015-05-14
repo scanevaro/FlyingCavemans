@@ -210,8 +210,8 @@ public class Obstacle implements Entity {
             if (random.nextFloat() <= 0.75f) type = Type.QUETZALCOATLUS.ordinal();
             else type = Type.ARGENTAVIS.ordinal();
         } else if (typeRand >= 0.96f) type = Type.BRACHIOSAURUS.ordinal();
-        else if (typeRand <= 0.5f && typeRand > 0.25f) type = Type.SABRETOOTH.ordinal();
-        else if (typeRand <= 0.25f && typeRand > 0.04f) type = Type.SMALL_EGG.ordinal();
+        else if (typeRand <= 0.5f && typeRand > 0.10f) type = Type.SMALL_EGG.ordinal();
+        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Type.SABRETOOTH.ordinal();
         else type = Type.TOUCAN.ordinal();
     }
 
