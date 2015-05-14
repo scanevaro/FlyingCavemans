@@ -26,7 +26,7 @@ public class Obstacle implements Entity {
     private Fixture fixture;
     private PolygonShape shape;
     public int type;
-    private final float smallEggSizeX = 0.5f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
+    private final float smallEggSizeX = 0.65f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
             brachioSizeY = 3, sabretoothSize = 0.5f;
     private float realSizeX, realSizeY, textureSizeX, textureSizeY;
     private Sprite sprite;
@@ -217,8 +217,8 @@ public class Obstacle implements Entity {
 
     private void setPosition(float positionX, Random random, World world) {
         if (type == Type.SMALL_EGG.ordinal()) {
-            bodyDef.position.set(positionX, 1.65f);
-            shape.setAsBox(smallEggSizeX / 2, smallEggSizeY - 0.1f);
+            bodyDef.position.set(positionX, 1.35f);
+            shape.setAsBox(smallEggSizeX / 2, smallEggSizeY - 0.15f);
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
             bodyDef.position.set(positionX, 4f);
             shape.setAsBox(brachioSizeX / 3, brachioSizeY - 0.5f);
