@@ -23,13 +23,13 @@ public class ShopWidget {
     private ImageButton buyWingsButton, buySteroidsButton, buyStaminaButton, buySpringsButton, buyMagnetButton, buyClenchButton;
     private boolean wingsOpen, steroidsOpen, staminaOpen, springsOpen, magnetOpen, clenchOpen;
     private Image starsWings[], starsSteroids[], starsStamina[], starsSprings[], starsMagnet[], starsClench[];
-    private final int wingsPrice = 1/*25*/,
-            springsPrice = 1/*35*/,
-            steroidsPrice = 1/*25*/,
-            staminaPrice = 1/*15*/,
-            magnetPrice = 1/*35*/,
-            clenchPrice = 1/*35*/;
-    private String wingsDesc = "Wings help cavemen flap like birds and flying lizards." +
+    private final int wingsPrice = 25,
+            springsPrice = 35,
+            steroidsPrice = 25,
+            staminaPrice = 15,
+            magnetPrice = 35,
+            clenchPrice = 35;
+    private final String wingsDesc = "Wings help cavemen flap like birds and flying lizards." +
             " Just no time until cavemen grow a pair like them....",
             steroidsDesc = "Steroids good for flying higher... Steroids taste funny",
             staminaPlusDesc = "More Stamina = More Flapping = Longer Flying = Evolve",
