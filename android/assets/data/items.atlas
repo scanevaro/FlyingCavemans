@@ -1024,14 +1024,14 @@ caveman
   orig: 340, 305
   offset: 0, 0
   index: -1
-skeleton-flap well-0
+skeleton-flap well-20
   rotate: false
   xy: 1168, 271
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
-skeleton-flap well-20
+skeleton-flap well-0
   rotate: false
   xy: 1168, 271
   size: 340, 305
