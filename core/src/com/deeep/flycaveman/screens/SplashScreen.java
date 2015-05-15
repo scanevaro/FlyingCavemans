@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -29,6 +30,7 @@ public class SplashScreen extends AbstractScreen {
     private Stage stage;
     private SpriteBatch batch;
     private SplashActor splashSprite;
+    private Label loading;
     private Timer.Task timer;
     private Image loadingFrame;
     private Image loadingBarHidden;
@@ -43,6 +45,7 @@ public class SplashScreen extends AbstractScreen {
 
     private void setActors() {
         splashSprite = new SplashActor();
+        loading = new Label("Loading...", Assets.skin);
     }
 
     private void configureActors() {
@@ -64,12 +67,14 @@ public class SplashScreen extends AbstractScreen {
 
     private void setLayout() {
         stage.addActor(splashSprite);
+        stage.addActor(loading);
     }
 
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0.1f, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        splashSprite.act(delta, Assets.assetManager.getProgress());
         stage.act();
         stage.draw();
         if (Assets.assetManager.update() && !Assets.loaded) {
@@ -81,14 +86,14 @@ public class SplashScreen extends AbstractScreen {
                 loadingBar.addAction(Actions.delay(3f - splashSprite.stateTime, Actions.fadeOut(0.5f)));
                 loadingBarHidden.addAction(Actions.delay(3f - splashSprite.stateTime, Actions.fadeOut(0.5f)));
                 loadingBg.addAction(Actions.delay(3f - splashSprite.stateTime, Actions.fadeOut(0.5f)));
+                loading.addAction(Actions.delay(3f - splashSprite.stateTime, Actions.fadeOut(0.5f)));
                 Timer.schedule(timer = new Timer.Task() {
                     @Override
                     public void run() {
                         MusicController.musicController = new MusicController();
-                        System.out.println("Jezus lord!");
                         game.setScreen(new IntroScreen(game));
                     }
-                }, 0.5f/*DURATION*/ - splashSprite.stateTime);
+                }, DURATION - splashSprite.stateTime);
             } else {
                 /**Fade out actors*/
 //            splashSprite.addAction(Actions.fadeOut(0.5f));
@@ -107,6 +112,7 @@ public class SplashScreen extends AbstractScreen {
             Assets.loaded = true;
         }
         percent = Interpolation.linear.apply(percent, Assets.assetManager.getProgress(), 0.1f);
+        loading.setText("Loading... " + Assets.assetManager.getProgress() * 100 + "%");
         loadingBarHidden.setX(startX + endX * percent);
         loadingBg.setSize(Core.VIRTUAL_WIDTH, 50);
         loadingBg.setX(loadingBarHidden.getX() + 30);

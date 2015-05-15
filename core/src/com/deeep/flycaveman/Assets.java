@@ -76,6 +76,23 @@ public class Assets {
     public Assets() {
         assetManager = new AssetManager();
         loaded = false;
+
+        skin = new Skin();
+
+        font32 = new BitmapFont(new FileHandle("data/fonts/font32.fnt"));
+        font26 = new BitmapFont(new FileHandle("data/fonts/font32.fnt"));
+        font24Bold = new BitmapFont(new FileHandle("data/fonts/font32.fnt"));
+
+        skin.add("default-font", font32, BitmapFont.class);
+        skin.add("small-font", font26, BitmapFont.class);
+        skin.add("bold20", font24Bold, BitmapFont.class);
+
+        FileHandle fileHandle = Gdx.files.internal("data/items.json");
+        FileHandle atlasFile = fileHandle.sibling("items.atlas");
+        if (atlasFile.exists()) {
+            skin.addRegions(new TextureAtlas(atlasFile));
+        }
+        skin.load(fileHandle);
     }
 
     public static void load() {
@@ -139,6 +156,7 @@ public class Assets {
     }
 
     private static void setSkin() {
+        skin = null;
         skin = new Skin();
 
         font32 = assetManager.get("data/fonts/font32.fnt");

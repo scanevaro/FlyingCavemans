@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
 
@@ -20,20 +19,14 @@ public class SplashActor extends Actor {
 
     public SplashActor() {
         Array<TextureAtlas.AtlasRegion> atlasRegions = new TextureAtlas(Gdx.files.internal("data/newLogo.pack")).getRegions();
-        animation = new Animation(0.08f, atlasRegions);
-        animation.setPlayMode(Animation.PlayMode.LOOP);
+        animation = new Animation(0.70f, atlasRegions);
         setActions();
         stateTime = 0;
-
         setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT);
     }
 
     private void setActions() {
-        SequenceAction secAction = new SequenceAction();
-        secAction.addAction(Actions.fadeIn(0.5f));
-//        secAction.addAction(Actions.delay(2.5f));
-//        secAction.addAction(Actions.fadeOut(0.5f));
-        addAction(secAction);
+        addAction(Actions.fadeIn(0.5f));
     }
 
     @Override
@@ -41,12 +34,11 @@ public class SplashActor extends Actor {
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
         Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
         Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        batch.draw(animation.getKeyFrame(stateTime), Core.VIRTUAL_WIDTH / 2 - 192 / 2, Core.VIRTUAL_HEIGHT / 2 - 192 / 2);
+        batch.draw(animation.getKeyFrame(stateTime * 10), Core.VIRTUAL_WIDTH / 2 - 192 / 2,
+                Core.VIRTUAL_HEIGHT / 2 - 192 / 2);
     }
 
-    @Override
-    public void act(float delta) {
-        super.act(delta);
-        stateTime += delta;
+    public void act(float delta, float stateTime) {
+        this.stateTime = stateTime;
     }
 }
