@@ -45,7 +45,7 @@ public class Assets {
             intro3, intro4, intro5, tutorial0, tutorial1, tutorial2, tutorial3, tutorial4, tutorial20, tutorial21,
             tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit, staminaText,
             plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3, coinText, oneCoin, twoCoin, threeCoin,
-            fourCoin, grabCoins, grabPowerups, glow, beer;
+            fourCoin, grabCoins, grabPowerups, glow, beer, carnivoreIdle, carnivoreEat;
     public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly, cavemanDrag, cavemanWingsDrag,
             quetzaHit, quetzaTexture, sabertoothIdle, sabertoothHit;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
@@ -257,6 +257,8 @@ public class Assets {
         grabPowerups = items.findRegion("grabPowerups");
         glow = items.findRegion("treeGlow");
         beer = items.findRegion("beer");
+        carnivoreIdle = items.findRegion("carnivore1");
+        carnivoreEat = items.findRegion("carnivore2");
 
         cavemanWings = new Animation(0.03f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"),
                 items.findRegion("cavemanWings3"), items.findRegion("cavemanWings4"),
