@@ -76,13 +76,31 @@ public class Obstacle implements Entity {
             body3.setAwake(false);
         }
         body = world.box2dWorld.createBody(bodyDef);
+        switch (type) {
+            case 0: /**SMALL_EGG*/
+                break;
+            case 1: /**BRACHIOSAURUS*/
+                break;
+            case 2: /**QUETZALCOATLUS*/
+                break;
+            case 3: /**ARGENTAVIS*/
+                break;
+            case 4: /**TOUCAN*/
+                break;
+            case 5: /**SABRETOOTH*/
+                break;
+            case 6: /**MOSQUITO*/
+                break;
+            case 7: /**CARNIVOUR PLANT*/
+                break;
+        }
         if (type == Type.SMALL_EGG.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.smallEggTexture));
+            sprite = new Sprite(new TextureRegion(Assets.smallEggTexture/*.getKeyFrame(stateTime)*/));
             sprite.setSize(smallEggSizeX * 2, smallEggSizeY * 2);
             realSizeX = smallEggSizeX;
             realSizeY = smallEggSizeY;
         } else if (type == Type.BRACHIOSAURUS.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.brachioTexture));
+            sprite = new Sprite(new TextureRegion(Assets.brachioTexture/*.getKeyFrame(stateTime)*/));
             sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
             realSizeX = brachioSizeX;
             realSizeY = brachioSizeY;
@@ -92,12 +110,12 @@ public class Obstacle implements Entity {
             realSizeX = quetzaSizeX;
             realSizeY = quetzaSizeY;
         } else if (type == Type.ARGENTAVIS.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.argenTexture));
+            sprite = new Sprite(new TextureRegion(Assets.argenTexture/*.getKeyFrame(stateTime)*/));
             sprite.setSize((quetzaSizeX + 0.5f) * 2, (quetzaSizeY + 0.5f) * 2);
             realSizeX = quetzaSizeX + 0.5f;
             realSizeY = quetzaSizeY + 0.5f;
         } else if (type == Type.TOUCAN.ordinal()) {
-            sprite = new Sprite(new TextureRegion(Assets.toucanTexture));
+            sprite = new Sprite(new TextureRegion(Assets.toucanTexture/*.getKeyFrame(stateTime)*/));
             sprite.setSize(smallEggSizeX * 2, smallEggSizeX * 2);
             realSizeX = smallEggSizeX;
             realSizeY = smallEggSizeX;
@@ -111,6 +129,11 @@ public class Obstacle implements Entity {
             sprite.setSize(mosquitoSize * 2, mosquitoSize * 2);
             realSizeX = mosquitoSize;
             realSizeY = mosquitoSize;
+        } else if (type == Type.CARNIVOUR.ordinal()) {
+            sprite = new Sprite(new TextureRegion(Assets.carnivourIdle/*.getKeyFrame(stateTime)*/));
+            sprite.setSize(carnivourSizeeX * 2, carnivourSizeY * 2);
+            realSizeX = carnivourSizeX;
+            realSizeY = carnivourSizeY;
         }
         textureSizeX = sprite.getRegionWidth();
         textureSizeY = sprite.getRegionHeight();
@@ -168,12 +191,32 @@ public class Obstacle implements Entity {
             else if (rand <= 0.35f) type = Type.MOSQUITO.ordinal();
             else type = Type.ARGENTAVIS.ordinal();
         } else if (typeRand >= 0.96f) type = Type.BRACHIOSAURUS.ordinal();
-        else if (typeRand <= 0.5f && typeRand > 0.10f) type = Type.SMALL_EGG.ordinal();
-        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Type.SABRETOOTH.ordinal();
+        else if (typeRand <= 0.5f && typeRand > 0.20f) type = Type.SMALL_EGG.ordinal();
+        else if (typeRand <= 0.20f && typeRand > 0.1f) type = Type.SABRETOOTH.ordinal();
+        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Type.CARNIVOUR.ordinal();
         else type = Type.TOUCAN.ordinal();
     }
 
     private void setPosition(float positionX, Random random, World world) {
+        switch (type) {
+            case 0: /**SMALL_EGG*/
+                break;
+            case 1: /**BRACHIOSAURUS*/
+                break;
+            case 2: /**QUETZALCOATLUS*/
+                break;
+            case 3: /**ARGENTAVIS*/
+                break;
+            case 4: /**TOUCAN*/
+                break;
+            case 5: /**SABRETOOTH*/
+                break;
+            case 6: /**MOSQUITO*/
+                break;
+            case 7: /**CARNIVOUR PLANT*/
+                break;
+        }
+
         if (type == Type.SMALL_EGG.ordinal()) {
             bodyDef.position.set(positionX, 1.35f);
             shape.setAsBox(smallEggSizeX / 2, smallEggSizeY - 0.15f);
@@ -199,6 +242,9 @@ public class Obstacle implements Entity {
             bodyDef.position.set(positionX, Math.max(5,
                     world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
             shape.setAsBox(mosquitoSize - 0.2f, mosquitoSize - 0.2f);
+        } else if (type == Type.CARNIVOUR.ordinal()) {
+            bodyDef.position.set(positionX, 1.35f);
+            shape.setAsBox(carnivourSizeX / 2, carnivourSizeY - 0.15f);
         }
     }
 
@@ -238,6 +284,10 @@ public class Obstacle implements Entity {
                 if (!hit) sprite.setRegion(Assets.mosquitoTexture/*.getKeyFrame(stateTime)*/);
                 else sprite.setRegion(Assets.mosquitoHit/*.getKeyFrame(stateTime)*/);
                 break;
+            case 7: /**CARNIVOUR PLANT*/
+                if (!hit) sprite.setRegion(Assets.carnivourIdle/*.getKeyFrame(stateTime)*/);
+                else sprite.setRegion(Assets.carnivourEat/*.getKeyFrame(stateTime)*/);
+                break;
         }
     }
 
@@ -267,6 +317,9 @@ public class Obstacle implements Entity {
             sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                     body.getPosition().y - sprite.getHeight() / 2);
         else if (type == Type.MOSQUITO.ordinal())
+            sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
+                    body.getPosition().y - sprite.getHeight() / 2);
+        else if (type == Type.CARNIVOUR.ordinal())
             sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                     body.getPosition().y - sprite.getHeight() / 2);
     }
