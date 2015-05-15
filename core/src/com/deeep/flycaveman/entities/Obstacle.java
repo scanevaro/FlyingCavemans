@@ -41,7 +41,7 @@ public class Obstacle implements Entity {
         shape = new PolygonShape();
         positionX += random.nextInt(100);
         setType(random);
-        setPosition(positionX, random, world);
+        setPositionAndShape(positionX, random, world);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
@@ -189,7 +189,7 @@ public class Obstacle implements Entity {
         else type = Type.TOUCAN.ordinal();
     }
 
-    private void setPosition(float positionX, Random random, World world) {
+    private void setPositionAndShape(float positionX, Random random, World world) {
         switch (type) {
             case 0: /**SMALL_EGG*/
                 bodyDef.position.set(positionX, 1.35f);
@@ -216,7 +216,7 @@ public class Obstacle implements Entity {
                 break;
             case 5: /**SABRETOOTH*/
                 bodyDef.position.set(positionX, 1.5f);
-                shape.setAsBox(sabretoothSize, sabretoothSize);
+                shape.setAsBox(sabretoothSize - 0.15f, sabretoothSize - 0.15f);
                 break;
             case 6: /**MOSQUITO*/
                 bodyDef.position.set(positionX, Math.max(5,
@@ -225,7 +225,7 @@ public class Obstacle implements Entity {
                 break;
             case 7: /**CARNIVORE PLANT*/
                 bodyDef.position.set(positionX, 1.95f);
-                shape.setAsBox(carnivoreSizeX / 2, carnivoreSizeY - 0.15f);
+                shape.setAsBox(carnivoreSizeX / 2, carnivoreSizeY - 0.9f);
                 break;
         }
     }

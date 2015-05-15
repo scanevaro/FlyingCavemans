@@ -55,6 +55,7 @@ public class CaveMan implements Entity {
     public float flapDistance;
     public int smacked, powerUpsPicked, coinsPicked;
     private Vector2 speedVec;
+    private boolean eaten;
 
     public CaveMan(com.deeep.flycaveman.world.World world) {
         this.world = world;
@@ -123,7 +124,7 @@ public class CaveMan implements Entity {
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-        sprite.draw(batch);
+        if (!eaten) sprite.draw(batch);
     }
 
     public void update(float delta) {
@@ -245,6 +246,7 @@ public class CaveMan implements Entity {
     }
 
     public void eaten() {
+        eaten = true;
         body.setLinearVelocity(0, 0);
     }
 }
