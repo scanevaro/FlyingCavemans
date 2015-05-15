@@ -109,6 +109,7 @@ public class CaveMan implements Entity {
     }
 
     public void draw(Batch batch) {
+        //TODO add spring jump with wings
         if (stateTimeSprings > 0) sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
         else if (GameInputProcessor.touchingGround && wings > 0)
             sprite.setRegion(Assets.cavemanWingsDrag.getKeyFrame(stateTime));
@@ -117,12 +118,9 @@ public class CaveMan implements Entity {
         else if (flapStateTime < 0.5f) sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
         else if (GameInputProcessor.flying) sprite.setRegion(Assets.cavemanFly.getKeyFrame(stateTime));
         else sprite.setRegion(Assets.cavemanTexture);
-        {/**Sprite size*/
-            float sizeX = sprite.getRegionWidth() * (size * 2) / textureSizeX;
-            float sizeY = sprite.getRegionHeight() * (size * 2) / textureSizeY;
-            sprite.setSize(sizeX, sizeY);
-            sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
-        }
+        sprite.setSize(sprite.getRegionWidth() * (size * 2) / textureSizeX,
+                sprite.getRegionHeight() * (size * 2) / textureSizeY);
+        sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
@@ -244,5 +242,9 @@ public class CaveMan implements Entity {
 
     public void grabSpinach() {
         spinachStateTime = spinachTime;
+    }
+
+    public void eaten() {
+        body.setLinearVelocity(0, 0);
     }
 }

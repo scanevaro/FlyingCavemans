@@ -81,6 +81,9 @@ public class GameContactListener implements ContactListener {
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 mosquitoForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
+                    case 7: /**CARNIVORE PLANT*/
+                        world.caveman.eaten();
+                        break;
                 }
                 if (obstacle.type == Obstacle.Type.BRACHIOSAURUS.ordinal()) {
                     if (fixtureA.getBody().getUserData() != null) obstacle.hit(fixtureA.getBody());
