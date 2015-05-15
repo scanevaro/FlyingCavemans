@@ -79,9 +79,9 @@ public class Assets {
 
         skin = new Skin();
 
-        font32 = new BitmapFont(new FileHandle("data/fonts/font32.fnt"));
-        font26 = new BitmapFont(new FileHandle("data/fonts/font32.fnt"));
-        font24Bold = new BitmapFont(new FileHandle("data/fonts/font32.fnt"));
+        font32 = new BitmapFont(Gdx.files.internal("data/fonts/font32.fnt"));
+        font26 = new BitmapFont(Gdx.files.internal("data/fonts/font32.fnt"));
+        font24Bold = new BitmapFont(Gdx.files.internal("data/fonts/font32.fnt"));
 
         skin.add("default-font", font32, BitmapFont.class);
         skin.add("small-font", font26, BitmapFont.class);
