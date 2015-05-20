@@ -36,6 +36,8 @@ public class GameScreen extends AbstractScreen {
     public static OrthographicCamera gameCamera;
     private GameInputProcessor gameInputProcessor;
     public Image darkness;
+    private final float minZoom = 0.7f, maxZoom = 56;
+    private final boolean debug = true;
     /**
      * Widgets
      */
@@ -137,13 +139,13 @@ public class GameScreen extends AbstractScreen {
     private void prepareWorld() {
         worldStage = new Stage(new FitViewport(Core.BOX2D_VIRTUAL_WIDTH, Core.BOX2D_VIRTUAL_HEIGHT));
         gameCamera = (OrthographicCamera) worldStage.getCamera();
-        world = new World(game, worldStage, stage, false);
+        world = new World(game, worldStage, stage, debug);
         stage.addActor(world);
     }
 
     private void getGameCamera() {
         gameCamera = (OrthographicCamera) worldStage.getCamera();
-        gameCamera.position.set(Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
+        gameCamera.position.set(Core.BOX2D_VIRTUAL_WIDTH / 2, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 3.55f, 0);
     }
 
     private void setLayout() {
@@ -267,24 +269,24 @@ public class GameScreen extends AbstractScreen {
 
     private void updateGameCam() {
         if (GameInputProcessor.flying) {
-            if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2) {
-                gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, world.caveman.body.getPosition().y + 0.5f, 0);
+            if (world.caveman.body.getPosition().y >= Core.BOX2D_VIRTUAL_HEIGHT / 2 - 3.55f) {
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5, world.caveman.body.getPosition().y + 0.5f, 0);
                 /**Update Start screen camera*/
-                world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (world.caveman.body.getPosition().y + 2.5f) * 35, 0);
+                world.updateStartCam((world.caveman.body.getPosition().x + 5) * 35, (world.caveman.body.getPosition().y + 2.5f) * 35, 0);
             } else {
-                gameCamera.position.set(world.caveman.body.getPosition().x + 5 + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 2, 0);
+                gameCamera.position.set(world.caveman.body.getPosition().x + 5, Core.BOX2D_VIRTUAL_HEIGHT / 2 - 3.55f, 0);
                 /**Update Start screen camera*/
-                world.updateStartCam((world.caveman.body.getPosition().x + 5 + 5) * 35, (Core.VIRTUAL_HEIGHT / 2), 0);
+                world.updateStartCam((world.caveman.body.getPosition().x + 5) * 35, (Core.VIRTUAL_HEIGHT / 2), 0);
             }
         }
 
         if (world.caveman.body.getPosition().y > (Core.BOX2D_VIRTUAL_HEIGHT / 2f)) {
             height = world.caveman.body.getPosition().y - 9;
-            gameCamera.zoom = 0.9f + (height * 2.5f) / 56;
-            world.updateStartZoom(0.9f + (height * 2.5f) / 56);
+            gameCamera.zoom = minZoom + (height * 2.5f) / maxZoom;
+            world.updateStartZoom(minZoom + (height * 2.5f) / maxZoom);
         } else {
-            gameCamera.zoom = 0.9f;
-            world.updateStartZoom(0.9f);
+            gameCamera.zoom = minZoom;
+            world.updateStartZoom(minZoom);
         }
         gameCamera.zoom = Math.min(gameCamera.zoom, 2f);
         gameCamera.update();
