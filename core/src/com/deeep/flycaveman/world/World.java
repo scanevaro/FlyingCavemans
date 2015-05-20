@@ -34,6 +34,7 @@ public class World extends Actor implements Disposable {
     private Core game;
     private Stage worldStage;
     private Stage stage;
+    private StartScreenWidget startScreen;
     private Viewport startViewport;
     private OrthographicCamera leaderCam;
     private ShapeRenderer shapeRenderer;
@@ -75,7 +76,6 @@ public class World extends Actor implements Disposable {
     private ObstacleSpawner obstacleSpawner;
     public PowerUpSpawner powerUpSpawner;
     public CoinSpawner coinSpawner;
-    private StartScreenWidget startScreen;
     private Tree tree;
 
     public static Rope rope;

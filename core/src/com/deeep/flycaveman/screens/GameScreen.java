@@ -37,7 +37,7 @@ public class GameScreen extends AbstractScreen {
     private GameInputProcessor gameInputProcessor;
     public Image darkness;
     private final float minZoom = 0.7f, maxZoom = 56;
-    private final boolean debug = true;
+    private final boolean debug = false;
     /**
      * Widgets
      */
@@ -282,8 +282,8 @@ public class GameScreen extends AbstractScreen {
 
         if (world.caveman.body.getPosition().y > (Core.BOX2D_VIRTUAL_HEIGHT / 2f)) {
             height = world.caveman.body.getPosition().y - 9;
-            gameCamera.zoom = minZoom + (height * 2.5f) / maxZoom;
-            world.updateStartZoom(minZoom + (height * 2.5f) / maxZoom);
+            gameCamera.zoom = minZoom + (height * 2.0f) / maxZoom;
+            world.updateStartZoom(minZoom + (height * 2.0f) / maxZoom);
         } else {
             gameCamera.zoom = minZoom;
             world.updateStartZoom(minZoom);

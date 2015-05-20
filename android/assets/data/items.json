@@ -28,7 +28,8 @@ com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
 },
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: { font: default-font, fontColor: white },
+    scoreDefault: { font: small-font, fontColor: white },
     ownScore: { font: bold20, fontColor: white },
-    defaultBackground: { font: default-font, fontColor: white, background:button }
+    defaultBackground: { font: small-font, fontColor: white, background: button2 }
 }
 }

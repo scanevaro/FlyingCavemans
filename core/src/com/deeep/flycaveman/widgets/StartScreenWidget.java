@@ -16,7 +16,7 @@ import com.deeep.flycaveman.Core;
  * Created by scanevaro on 06/03/2015.
  */
 public class StartScreenWidget {
-    public Image title, leaderboardsDialog;
+    private Image title, leaderboardsDialog;
     private Label leaderboardsLabel, leaderboardsItems[];
     private boolean getBest;
 
@@ -24,35 +24,35 @@ public class StartScreenWidget {
         getBest = true;
 
         title = new Image(Assets.title);
-        title.setSize(400, 200);
+        title.setSize(340, 190);
         title.setOrigin(title.getWidth() / 2, title.getHeight() / 2);
         title.setPosition(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT / 2);
         title.addAction(Actions.moveTo(Core.VIRTUAL_WIDTH / 2, Core.VIRTUAL_HEIGHT / 2, 0.35f, Interpolation.linear));
 
         leaderboardsDialog = new Image(Assets.dialog);
-        leaderboardsDialog.setSize(300, 350);
+        leaderboardsDialog.setSize(255, 265);
         leaderboardsDialog.setOrigin(leaderboardsDialog.getWidth() / 2, leaderboardsDialog.getHeight() / 2);
-        leaderboardsDialog.setPosition(-leaderboardsDialog.getWidth(), 120);
-        leaderboardsDialog.addAction(Actions.moveTo(50, 120, 0.4f, Interpolation.linear));
+        leaderboardsDialog.setPosition(-leaderboardsDialog.getWidth(), 170);
+        leaderboardsDialog.addAction(Actions.moveTo(145, 170, 0.4f, Interpolation.linear));
 
         leaderboardsLabel = new Label("Leaderboards", Assets.skin.get("defaultBackground", Label.LabelStyle.class));
         leaderboardsLabel.setAlignment(Align.center);
-        leaderboardsLabel.setSize(280, 80);
-        leaderboardsLabel.setPosition(-leaderboardsLabel.getWidth(), 390);
-        leaderboardsLabel.addAction(Actions.moveTo(62, 390, 0.4f, Interpolation.linear));
+        leaderboardsLabel.setSize(230, 60);
+        leaderboardsLabel.setPosition(-leaderboardsLabel.getWidth(), 395);
+        leaderboardsLabel.addAction(Actions.moveTo(150, 395, 0.4f, Interpolation.linear));
 
         leaderboardsItems = new Label[6];
-        int posY = 350;
+        int posY = 360;
         for (int i = 0; i < leaderboardsItems.length; i++) {
             if (i == leaderboardsItems.length - 1) {
                 leaderboardsItems[i] = new Label("Getting your Best", Assets.skin.get("ownScore", Label.LabelStyle.class));
                 posY -= 8;
                 leaderboardsItems[i].setPosition(-leaderboardsItems[i].getWidth(), posY);
-                leaderboardsItems[i].addAction(Actions.moveTo(72, posY, 0.4f, Interpolation.linear));
+                leaderboardsItems[i].addAction(Actions.moveTo(172, posY, 0.4f, Interpolation.linear));
             } else {
-                leaderboardsItems[i] = new Label("Getting info...", Assets.skin);
+                leaderboardsItems[i] = new Label("Getting info...", Assets.skin.get("scoreDefault", Label.LabelStyle.class));
                 leaderboardsItems[i].setPosition(-leaderboardsItems[i].getWidth(), posY);
-                leaderboardsItems[i].addAction(Actions.moveTo(70, posY, 0.4f, Interpolation.linear));
+                leaderboardsItems[i].addAction(Actions.moveTo(170, posY, 0.4f, Interpolation.linear));
                 posY -= 28;
             }
         }
