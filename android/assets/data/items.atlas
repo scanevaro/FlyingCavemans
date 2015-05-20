@@ -704,14 +704,14 @@ skeleton-wings-crash-1
   orig: 511, 481
   offset: 0, 0
   index: -1
-stamina_button_down
+staminahand
   rotate: false
   xy: 1555, 7
   size: 142, 112
   orig: 142, 112
   offset: 0, 0
   index: -1
-stamina_button_up
+staminaplus
   rotate: false
   xy: 1699, 7
   size: 142, 112
@@ -773,6 +773,22 @@ jungle_layer
   orig: 1920, 720
   offset: 0, 0
   index: 1
+shopButtonDown
+  rotate: false
+  xy: 2, 8
+  size: 140, 110
+  split: 0, 0, 0, 0
+  orig: 140, 110
+  offset: 0, 0
+  index: -1
+shopButtonUp
+  rotate: false
+  xy: 144, 8
+  size: 140, 110
+  split: 0, 0, 0, 0
+  orig: 140, 110
+  offset: 0, 0
+  index: -1
 skeleton-wings-crash-2
   rotate: false
   xy: 2, 120
@@ -792,20 +808,6 @@ skeleton-wings-crash-4
   xy: 1028, 120
   size: 511, 481
   orig: 511, 481
-  offset: 0, 0
-  index: -1
-staminahand
-  rotate: false
-  xy: 2, 6
-  size: 142, 112
-  orig: 142, 112
-  offset: 0, 0
-  index: -1
-staminaplus
-  rotate: false
-  xy: 146, 6
-  size: 142, 112
-  orig: 142, 112
   offset: 0, 0
   index: -1
 
@@ -918,14 +920,14 @@ caveman
   orig: 340, 305
   offset: 0, 0
   index: -1
-skeleton-flap well-0
+skeleton-flap well-20
   rotate: false
   xy: 1168, 271
   size: 340, 305
   orig: 340, 305
   offset: 0, 0
   index: -1
-skeleton-flap well-20
+skeleton-flap well-0
   rotate: false
   xy: 1168, 271
   size: 340, 305

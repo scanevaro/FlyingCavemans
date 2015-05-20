@@ -78,13 +78,13 @@ public class ShopWidget {
         retryButton.setPosition(0, 0);
         shopDialog.addActor(retryButton);
 
-        ImageButton.ImageButtonStyle wingsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        ImageButton.ImageButtonStyle wingsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get("shop", Button.ButtonStyle.class));
         wingsStyle.imageUp = new TextureRegionDrawable(Assets.wings);
-        wingsStyle.imageUp.setMinWidth(140);
-        wingsStyle.imageUp.setMinHeight(140);
+        wingsStyle.imageUp.setMinWidth(100);
+        wingsStyle.imageUp.setMinHeight(100);
         wingsStyle.imageDown = new TextureRegionDrawable(Assets.wings);
-        wingsStyle.imageDown.setMinWidth(140);
-        wingsStyle.imageDown.setMinHeight(140);
+        wingsStyle.imageDown.setMinWidth(100);
+        wingsStyle.imageDown.setMinHeight(100);
         ImageButton wingsButton = new ImageButton(wingsStyle);
         wingsButton.addListener(new ClickListener() {
             @Override
@@ -96,13 +96,13 @@ public class ShopWidget {
         wingsButton.setPosition(50, shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(wingsButton);
 
-        ImageButton.ImageButtonStyle steroidsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        ImageButton.ImageButtonStyle steroidsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get("shop", Button.ButtonStyle.class));
         steroidsStyle.imageUp = new TextureRegionDrawable(Assets.steroids);
-        steroidsStyle.imageUp.setMinWidth(140);
-        steroidsStyle.imageUp.setMinHeight(140);
+        steroidsStyle.imageUp.setMinWidth(100);
+        steroidsStyle.imageUp.setMinHeight(100);
         steroidsStyle.imageDown = new TextureRegionDrawable(Assets.steroids);
-        steroidsStyle.imageDown.setMinWidth(140);
-        steroidsStyle.imageDown.setMinHeight(140);
+        steroidsStyle.imageDown.setMinWidth(100);
+        steroidsStyle.imageDown.setMinHeight(100);
         ImageButton steroidsButton = new ImageButton(steroidsStyle);
         steroidsButton.addListener(new ClickListener() {
             @Override
@@ -114,13 +114,13 @@ public class ShopWidget {
         steroidsButton.setPosition(50 + 15 + 20 + wingsButton.getWidth() + 35, shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(steroidsButton);
 
-        ImageButton.ImageButtonStyle staminaplusStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        ImageButton.ImageButtonStyle staminaplusStyle = new ImageButton.ImageButtonStyle(Assets.skin.get("shop", Button.ButtonStyle.class));
         staminaplusStyle.imageUp = new TextureRegionDrawable(Assets.staminaplus);
-        staminaplusStyle.imageUp.setMinWidth(140);
-        staminaplusStyle.imageUp.setMinHeight(140);
+        staminaplusStyle.imageUp.setMinWidth(100);
+        staminaplusStyle.imageUp.setMinHeight(100);
         staminaplusStyle.imageDown = new TextureRegionDrawable(Assets.staminaplus);
-        staminaplusStyle.imageDown.setMinWidth(140);
-        staminaplusStyle.imageDown.setMinHeight(140);
+        staminaplusStyle.imageDown.setMinWidth(100);
+        staminaplusStyle.imageDown.setMinHeight(100);
         ImageButton staminaplusButton = new ImageButton(staminaplusStyle);
         staminaplusButton.addListener(new ClickListener() {
             @Override
@@ -132,13 +132,13 @@ public class ShopWidget {
         staminaplusButton.setPosition(50 + 15 + 45 + wingsButton.getWidth() + steroidsButton.getWidth() + 35 + 35, shopDialog.getHeight() / 2 + 38);
         shopDialog.addActor(staminaplusButton);
 
-        ImageButton.ImageButtonStyle springsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        ImageButton.ImageButtonStyle springsStyle = new ImageButton.ImageButtonStyle(Assets.skin.get("shop", Button.ButtonStyle.class));
         springsStyle.imageUp = new TextureRegionDrawable(Assets.springs);
-        springsStyle.imageUp.setMinWidth(140);
-        springsStyle.imageUp.setMinHeight(140);
+        springsStyle.imageUp.setMinWidth(100);
+        springsStyle.imageUp.setMinHeight(100);
         springsStyle.imageDown = new TextureRegionDrawable(Assets.springs);
-        springsStyle.imageDown.setMinWidth(140);
-        springsStyle.imageDown.setMinHeight(140);
+        springsStyle.imageDown.setMinWidth(100);
+        springsStyle.imageDown.setMinHeight(100);
         ImageButton springsButton = new ImageButton(springsStyle);
         springsButton.addListener(new ClickListener() {
             @Override
@@ -150,13 +150,13 @@ public class ShopWidget {
         springsButton.setPosition(50, shopDialog.getHeight() / 2 - springsButton.getHeight() + 25);
         shopDialog.addActor(springsButton);
 
-        ImageButton.ImageButtonStyle magnetStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        ImageButton.ImageButtonStyle magnetStyle = new ImageButton.ImageButtonStyle(Assets.skin.get("shop", Button.ButtonStyle.class));
         magnetStyle.imageUp = new TextureRegionDrawable(Assets.magnet);
-        magnetStyle.imageUp.setMinWidth(140);
-        magnetStyle.imageUp.setMinHeight(140);
+        magnetStyle.imageUp.setMinWidth(100);
+        magnetStyle.imageUp.setMinHeight(100);
         magnetStyle.imageDown = new TextureRegionDrawable(Assets.magnet);
-        magnetStyle.imageDown.setMinWidth(140);
-        magnetStyle.imageDown.setMinHeight(140);
+        magnetStyle.imageDown.setMinWidth(100);
+        magnetStyle.imageDown.setMinHeight(100);
         ImageButton magnetButton = new ImageButton(magnetStyle);
         magnetButton.addListener(new ClickListener() {
             @Override
@@ -168,13 +168,13 @@ public class ShopWidget {
         magnetButton.setPosition(225 + 35, shopDialog.getHeight() / 2 - magnetButton.getHeight() + 25);
         shopDialog.addActor(magnetButton);
 
-        ImageButton.ImageButtonStyle clenchStyle = new ImageButton.ImageButtonStyle(Assets.skin.get(Button.ButtonStyle.class));
+        ImageButton.ImageButtonStyle clenchStyle = new ImageButton.ImageButtonStyle(Assets.skin.get("shop", Button.ButtonStyle.class));
         clenchStyle.imageUp = new TextureRegionDrawable(Assets.clench);
-        clenchStyle.imageUp.setMinWidth(140);
-        clenchStyle.imageUp.setMinHeight(140);
+        clenchStyle.imageUp.setMinWidth(100);
+        clenchStyle.imageUp.setMinHeight(100);
         clenchStyle.imageDown = new TextureRegionDrawable(Assets.clench);
-        clenchStyle.imageDown.setMinWidth(140);
-        clenchStyle.imageDown.setMinHeight(140);
+        clenchStyle.imageDown.setMinWidth(100);
+        clenchStyle.imageDown.setMinHeight(100);
         ImageButton clenchButton = new ImageButton(clenchStyle);
         clenchButton.addListener(new ClickListener() {
             @Override
