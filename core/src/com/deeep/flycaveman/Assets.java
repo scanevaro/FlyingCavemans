@@ -46,8 +46,8 @@ public class Assets {
             tutorial22, tutorial23, tutorial24, touch2, toucanTexture, toucanHit, argenTexture, argenHit, staminaText,
             plus, minus, infinite, percentage, one, five, cloud1, cloud2, cloud3, coinText, oneCoin, twoCoin, threeCoin,
             fourCoin, grabCoins, grabPowerups, glow, beer, carnivoreIdle, carnivoreEat;
-    public static Animation cavemanWings, cavemanFlap, cavemanSprings, cavemanFly, cavemanDrag, cavemanWingsDrag,
-            quetzaHit, quetzaTexture, sabertoothIdle, sabertoothHit;
+    public static Animation cavemanWings, cavemanWingsJump, cavemanFlap, cavemanSprings, cavemanFly, cavemanDrag,
+            cavemanWingsDrag, quetzaHit, quetzaTexture, sabertoothIdle, sabertoothHit;
     public static TextureRegion dessert_layer_1, dessert_layer_2, dessert_layer_3,
             dessert_layer_4;  //todo put this in an enum or so
     public static TextureRegion jungle_layer_1, jungle_layer_2, jungle_layer_3,
@@ -278,23 +278,29 @@ public class Assets {
         carnivoreIdle = items.findRegion("carnivore1");
         carnivoreEat = items.findRegion("carnivore2");
 
-        cavemanWings = new Animation(0.03f, items.findRegion("cavemanWings1"), items.findRegion("cavemanWings2"),
-                items.findRegion("cavemanWings3"), items.findRegion("cavemanWings4"),
-                items.findRegion("cavemanWings5"), items.findRegion("cavemanWings6"),
-                items.findRegion("cavemanWings7"), items.findRegion("cavemanWings8"),
-                items.findRegion("cavemanWings9"), items.findRegion("cavemanWings10"));
+        cavemanWings = new Animation(0.03f, items.findRegion("cavemanWings0"), items.findRegion("cavemanWings1"),
+                items.findRegion("cavemanWings2"), items.findRegion("cavemanWings3"), items.findRegion("cavemanWings4"),
+                items.findRegion("cavemanWings5"), items.findRegion("cavemanWings6"), items.findRegion("cavemanWings7"),
+                items.findRegion("cavemanWings8"), items.findRegion("cavemanWings9"),
+                items.findRegion("cavemanWings10"));
         cavemanWings.setPlayMode(Animation.PlayMode.LOOP);
-        cavemanFlap = new Animation(0.015f, items.findRegion("skeleton-flap well-0"), items.findRegion("skeleton-flap well-1")
-                , items.findRegion("skeleton-flap well-2"), items.findRegion("skeleton-flap well-3")
-                , items.findRegion("skeleton-flap well-4"), items.findRegion("skeleton-flap well-5")
-                , items.findRegion("skeleton-flap well-6"), items.findRegion("skeleton-flap well-7")
-                , items.findRegion("skeleton-flap well-8"), items.findRegion("skeleton-flap well-9")
-                , items.findRegion("skeleton-flap well-10"), items.findRegion("skeleton-flap well-11")
-                , items.findRegion("skeleton-flap well-12"), items.findRegion("skeleton-flap well-13")
-                , items.findRegion("skeleton-flap well-14"), items.findRegion("skeleton-flap well-15")
-                , items.findRegion("skeleton-flap well-16"), items.findRegion("skeleton-flap well-17")
-                , items.findRegion("skeleton-flap well-18"), items.findRegion("skeleton-flap well-19")
-                , items.findRegion("skeleton-flap well-20"));
+        cavemanWingsJump = new Animation(0.1f, items.findRegion("cavemanWingsJump0"),
+                items.findRegion("cavemanWingsJump1"), items.findRegion("cavemanWingsJump2"),
+                items.findRegion("cavemanWingsJump3"), items.findRegion("cavemanWingsJump4"),
+                items.findRegion("cavemanWingsJump5"), items.findRegion("cavemanWingsJump6"),
+                items.findRegion("cavemanWingsJump7"), items.findRegion("cavemanWingsJump8"),
+                items.findRegion("cavemanWingsJump9"), items.findRegion("cavemanWingsJump10"));
+        cavemanFlap = new Animation(0.015f, items.findRegion("skeleton-flap well-0"),
+                items.findRegion("skeleton-flap well-1"), items.findRegion("skeleton-flap well-2"),
+                items.findRegion("skeleton-flap well-3"), items.findRegion("skeleton-flap well-4"),
+                items.findRegion("skeleton-flap well-5"), items.findRegion("skeleton-flap well-6"),
+                items.findRegion("skeleton-flap well-7"), items.findRegion("skeleton-flap well-8"),
+                items.findRegion("skeleton-flap well-9"), items.findRegion("skeleton-flap well-10"),
+                items.findRegion("skeleton-flap well-11"), items.findRegion("skeleton-flap well-12"),
+                items.findRegion("skeleton-flap well-13"), items.findRegion("skeleton-flap well-14"),
+                items.findRegion("skeleton-flap well-15"), items.findRegion("skeleton-flap well-16"),
+                items.findRegion("skeleton-flap well-17"), items.findRegion("skeleton-flap well-18"),
+                items.findRegion("skeleton-flap well-19"), items.findRegion("skeleton-flap well-20"));
         cavemanFlap.setPlayMode(Animation.PlayMode.LOOP);
         cavemanSprings = new Animation(0.1f, items.findRegion("skeleton-spring-0"), items.findRegion("skeleton-spring-1")
                 , items.findRegion("skeleton-spring-2"), items.findRegion("skeleton-spring-3")

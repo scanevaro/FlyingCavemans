@@ -41,7 +41,7 @@ public class CaveMan implements Entity {
     private final float maxStrength = 100;
     public int coinStreak = 0;
     public float coinTimer = 2F;
-    public final float COIN_PICKUP_INTERVAL = 2F;
+    public final float COIN_PICKUP_INTERVAL = 3f;
     public static int wings;
     public static int springsJumps, staminaSize, steroids, springs, magnet, clench;
     public float stateTimeSprings;
@@ -110,8 +110,9 @@ public class CaveMan implements Entity {
     }
 
     public void draw(Batch batch) {
-        //TODO add spring jump with wings
-        if (stateTimeSprings > 0) sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
+        if (wings > 0 && stateTimeSprings > 0)
+            sprite.setRegion(Assets.cavemanWingsJump.getKeyFrame(stateTimeSprings));
+        else if (stateTimeSprings > 0) sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
         else if (GameInputProcessor.touchingGround && wings > 0)
             sprite.setRegion(Assets.cavemanWingsDrag.getKeyFrame(stateTime));
         else if (GameInputProcessor.touchingGround) sprite.setRegion(Assets.cavemanDrag.getKeyFrame(stateTime));
