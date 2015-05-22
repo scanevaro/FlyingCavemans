@@ -150,12 +150,12 @@ public class GameScreen extends AbstractScreen {
 
     private void setLayout() {
         distanceLabel.setSize(255, 72);
-        distanceLabel.setPosition(Core.VIRTUAL_WIDTH - distanceLabel.getWidth() - 50, 1);
+        distanceLabel.setPosition(Core.VIRTUAL_WIDTH - distanceLabel.getWidth() - 50, Core.VIRTUAL_HEIGHT - distanceLabel.getHeight() - 1);
         heightLabel.setSize(222, 72);
-        heightLabel.setPosition(430, 1);
+        heightLabel.setPosition(430, Core.VIRTUAL_HEIGHT - heightLabel.getHeight() - 1);
         pauseButton.setSize(64, 64);
-        pauseButton.setPosition(0, Core.VIRTUAL_HEIGHT - pauseButton.getHeight());
-        coinsWidget.setPosition(300, 1);
+        pauseButton.setPosition(0, 1);
+        coinsWidget.setPosition(300, Core.VIRTUAL_HEIGHT - 70 - 1);
         tutorialWidget.setSize(Core.VIRTUAL_WIDTH, Core.VIRTUAL_HEIGHT * 2);
         tutorialWidget.setPosition(0, Core.VIRTUAL_HEIGHT);
 
