@@ -10,10 +10,10 @@ import com.deeep.flycaveman.widgets.SoundManager;
  * Created by Elmar on 8-2-2015.
  */
 public class Area {
-    public static final int BEGIN_SPACE = 60;   //fadeout music
-    public static final int HALF_SPACE = 80;    //fade in space music
-    public static final int FULL_SPACE = 120; //music and colouring
-    public static final int MAX_SPACE = 160; // for lowest gravity
+    public static final int BEGIN_SPACE = 120;   //fadeout music
+    public static final int HALF_SPACE = 160;    //fade in space music
+    public static final int FULL_SPACE = 240; //music and colouring
+    public static final int MAX_SPACE = 320; // for lowest gravity
     public enum AREA {
         DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "OceanTheme");//"OceanTheme");
 
