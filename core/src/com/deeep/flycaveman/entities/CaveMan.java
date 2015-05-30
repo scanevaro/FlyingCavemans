@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.input.GameInputProcessor;
 
 /**
@@ -178,6 +179,7 @@ public class CaveMan implements Entity {
     }
 
     public void flap() {
+        if (Core.dialogOpen) return;
         if (GameInputProcessor.touchingGround) return;
         if (body.getLinearVelocity().x != 0 || body.getLinearVelocity().y != 0) {
             if (spinachStateTime < 1 || stamina > 0) {
