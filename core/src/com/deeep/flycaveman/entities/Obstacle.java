@@ -27,8 +27,7 @@ public class Obstacle implements Entity {
     private PolygonShape shape;
     public int type;
     private final float smallEggSizeX = 0.65f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
-            brachioSizeY = 3, sabretoothSize = 0.5f, mosquitoSize = 0.65f, carnivoreSizeX = 1.2f,
-            carnivoreSizeY = 1.6f;
+            brachioSizeY = 3, sabretoothSize = 0.5f, mosquitoSize = 0.65f, carnivoreSizeX = 2.1f, carnivoreSizeY = 1.6f;
     private float realSizeX, realSizeY, textureSizeX, textureSizeY;
     private Sprite sprite;
     private boolean hit;
@@ -197,7 +196,7 @@ public class Obstacle implements Entity {
                 break;
             case 1: /**BRACHIOSAURUS*/
                 bodyDef.position.set(positionX, 4f);
-                shape.setAsBox(brachioSizeX / 3, brachioSizeY - 0.5f);
+                shape.setAsBox(brachioSizeX / 3, brachioSizeY - 1.5f);
                 break;
             case 2: /**QUETZALCOATLUS*/
                 bodyDef.position.set(positionX, Math.max(5,
