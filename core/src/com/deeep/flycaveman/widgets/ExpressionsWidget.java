@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.deeep.flycaveman.Assets;
-import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.entities.CaveMan;
 
 /**
@@ -22,7 +21,7 @@ public class ExpressionsWidget extends Actor {
     public ExpressionsWidget() {
         background = new Image(Assets.faceBackground);
         background.setSize(96, 96);
-        background.setPosition(0, Core.VIRTUAL_HEIGHT - background.getHeight());
+        background.setPosition(0, 0);
         happyFace = new TextureRegionDrawable(Assets.faceHappy);
         tiredFace = new TextureRegionDrawable(Assets.faceTired);
         okFace = new TextureRegionDrawable(Assets.faceKO);
@@ -30,7 +29,7 @@ public class ExpressionsWidget extends Actor {
         passionFace = new TextureRegionDrawable(Assets.facePassion);
         face = new Image();
         face.setSize(90, 90);
-        face.setPosition(3, Core.VIRTUAL_HEIGHT - face.getHeight() - 1);
+        face.setPosition(3, 3);
         face.setDrawable(new TextureRegionDrawable(Assets.faceHappy));
     }
 
