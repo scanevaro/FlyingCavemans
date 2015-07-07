@@ -27,7 +27,8 @@ public class Obstacle implements Entity {
     private PolygonShape shape;
     public int type;
     private final float smallEggSizeX = 0.65f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
-            brachioSizeY = 3, sabretoothSize = 0.5f, mosquitoSize = 0.65f, carnivoreSizeX = 2.1f, carnivoreSizeY = 1.6f;
+            brachioSizeY = 3, sabretoothSize = 0.65f, mosquitoSize = 0.65f, carnivoreSizeX = 1.8f,
+            carnivoreSizeY = 1.25f;
     private float realSizeX, realSizeY, textureSizeX, textureSizeY;
     private Sprite sprite;
     private boolean hit;
@@ -109,8 +110,8 @@ public class Obstacle implements Entity {
                 break;
             case 5: /**SABRETOOTH*/
                 sprite = new Sprite(new TextureRegion(Assets.sabertoothIdle.getKeyFrame(stateTime)));
-                sprite.setSize(sabretoothSize * 2, sabretoothSize * 2);
-                realSizeX = sabretoothSize;
+                sprite.setSize(sabretoothSize * 2.25f, sabretoothSize * 2);
+                realSizeX = sabretoothSize + 0.5f;
                 realSizeY = sabretoothSize;
                 break;
             case 6: /**MOSQUITO*/
@@ -214,8 +215,8 @@ public class Obstacle implements Entity {
                 shape.setAsBox(smallEggSizeX - 0.2f, smallEggSizeX - 0.2f);
                 break;
             case 5: /**SABRETOOTH*/
-                bodyDef.position.set(positionX, 1.5f);
-                shape.setAsBox(sabretoothSize - 0.15f, sabretoothSize - 0.15f);
+                bodyDef.position.set(positionX, 1.7f);
+                shape.setAsBox(sabretoothSize + 0.15f, sabretoothSize - 0.22f);
                 break;
             case 6: /**MOSQUITO*/
                 bodyDef.position.set(positionX, Math.max(5,
