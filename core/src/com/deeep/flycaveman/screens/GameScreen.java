@@ -37,7 +37,7 @@ public class GameScreen extends AbstractScreen {
     private GameInputProcessor gameInputProcessor;
     public Image darkness;
     private final float minZoom = 0.7f, maxZoom = 56;
-    private final boolean debug = true;
+    private final boolean debug = false;
     /**
      * Widgets
      */
