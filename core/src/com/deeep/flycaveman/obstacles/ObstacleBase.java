@@ -1,18 +1,18 @@
 package com.deeep.flycaveman.obstacles;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
-import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.entities.Entity;
 import com.deeep.flycaveman.world.World;
 
 /**
  * Created by Elmar on 6-6-2015.
  */
-public abstract class ObstacleBase implements Entity{
+public abstract class ObstacleBase implements Entity {
     protected Sprite sprite;
     private boolean dead = false;
     private BodyDef bodyDef;
@@ -22,10 +22,12 @@ public abstract class ObstacleBase implements Entity{
     private PolygonShape shape;
     private boolean hit;
     private float sizeX, sizeY;
+    private Animation animation;
 
-    public ObstacleBase(TextureRegion textureRegion, float spriteSizeX, float spriteSizeY, float sizeX, float sizeY, World world, Body body) {
+    public ObstacleBase(Animation animation, float spriteSizeX, float spriteSizeY, float sizeX, float sizeY, World world, Body body) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        this.animation = animation;
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         fixtureDef = new FixtureDef();
@@ -36,7 +38,7 @@ public abstract class ObstacleBase implements Entity{
         } else {
             //object pooling
         }
-        sprite = new Sprite(new TextureRegion(Assets.brachioTexture/*.getKeyFrame(stateTime)*/));
+        sprite = new Sprite(animation.getKeyFrame(0));
         sprite.setSize(spriteSizeX, spriteSizeY);
         sprite.setSize(sprite.getRegionWidth() * (sizeX * 2) / sprite.getRegionWidth(),
                 sprite.getRegionHeight() * (sizeY * 2) / sprite.getRegionWidth());
@@ -47,7 +49,7 @@ public abstract class ObstacleBase implements Entity{
         body.setAwake(false);
     }
 
-    protected Sprite setSprite(Sprite sprite){
+    protected Sprite setSprite(Sprite sprite) {
         sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
         return sprite;
     }
@@ -62,5 +64,10 @@ public abstract class ObstacleBase implements Entity{
     @Override
     public void update(float delta) {
 
+    }
+
+    public void setPosition(float x, float y) {
+        body.setTransform(x, y, 0);
+        sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2, body.getPosition().y - sprite.getHeight() / 2);
     }
 }
