@@ -20,21 +20,21 @@ Coin1
   index: -1
 Coin2
   rotate: false
-  xy: 1956, 1287
+  xy: 2014, 1913
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin3
   rotate: false
-  xy: 2014, 1882
+  xy: 1924, 1157
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 Coin4
   rotate: false
-  xy: 1924, 1157
+  xy: 1956, 1222
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
@@ -48,9 +48,16 @@ Coin5
   index: -1
 Coin6
   rotate: false
-  xy: 1956, 1255
+  xy: 2014, 1881
   size: 30, 30
   orig: 30, 30
+  offset: 0, 0
+  index: -1
+Mountain_Rear
+  rotate: false
+  xy: 2, 1322
+  size: 1920, 720
+  orig: 1920, 720
   offset: 0, 0
   index: -1
 button2
@@ -90,18 +97,11 @@ cursor
   index: -1
 desert_jungle
   rotate: false
-  xy: 2, 1322
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 1
-desert_jungle
-  rotate: false
   xy: 2, 600
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 expresionsCircle
   rotate: false
   xy: 1924, 1715
@@ -118,7 +118,7 @@ five
   index: -1
 fourCoin
   rotate: false
-  xy: 2014, 1979
+  xy: 1924, 1254
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
@@ -146,7 +146,7 @@ one
   index: -1
 oneCoin
   rotate: false
-  xy: 1924, 1254
+  xy: 2014, 1945
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
@@ -163,6 +163,13 @@ plus
   xy: 1924, 1319
   size: 64, 64
   orig: 64, 64
+  offset: 0, 0
+  index: -1
+rope
+  rotate: false
+  xy: 2014, 2010
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1
 selection
@@ -212,7 +219,7 @@ textfield
   index: -1
 threeCoin
   rotate: false
-  xy: 2014, 1914
+  xy: 1924, 1189
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
@@ -233,7 +240,7 @@ tree
   index: -1
 twoCoin
   rotate: false
-  xy: 1924, 1189
+  xy: 1956, 1254
   size: 30, 63
   orig: 30, 63
   offset: 0, 0
@@ -285,14 +292,14 @@ desert_jungle
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 desert_jungle
   rotate: false
   xy: 2, 594
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 dialog
   rotate: false
   xy: 1416, 2
@@ -338,20 +345,20 @@ cavemanWingsJump4
   orig: 705, 568
   offset: 0, 0
   index: -1
-desert_layer
+desert_jungle
   rotate: false
   xy: 2, 1314
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 1
+  index: 4
 desert_layer
   rotate: false
   xy: 2, 592
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 toucan1
   rotate: false
   xy: 1416, 2
@@ -399,14 +406,14 @@ desert_layer
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 desert_layer
   rotate: false
   xy: 2, 603
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 meat
   rotate: false
   xy: 1654, 30
@@ -469,20 +476,27 @@ cavemanWingsJump8
   orig: 705, 568
   offset: 0, 0
   index: -1
-desert_ocean
+desert_layer
   rotate: false
   xy: 2, 1294
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 1
+  index: 4
+ocean_layer
+  rotate: false
+  xy: 2, 1294
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 4
 desert_ocean
   rotate: false
   xy: 2, 572
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 
 items6.png
 size: 2048,2048
@@ -534,14 +548,14 @@ desert_ocean
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 desert_ocean
   rotate: false
   xy: 2, 572
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 
 items7.png
 size: 2048,2048
@@ -555,20 +569,20 @@ cavemanWingsJump11
   orig: 705, 568
   offset: 0, 0
   index: -1
-jungle_desert
+desert_ocean
   rotate: false
   xy: 2, 1319
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 1
+  index: 4
 jungle_desert
   rotate: false
   xy: 2, 597
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 scorpion1
   rotate: false
   xy: 709, 91
@@ -616,14 +630,14 @@ jungle_desert
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 jungle_desert
   rotate: false
   xy: 2, 604
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 mute1
   rotate: false
   xy: 1743, 302
@@ -744,21 +758,21 @@ happyface
   orig: 135, 124
   offset: 0, 0
   index: -1
-jungle_desert_1_bak
+jungle_desert
   rotate: false
   xy: 2, 1307
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 4
+jungle_desert_1_bak
+  rotate: false
+  xy: 2, 585
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
   index: -1
 jungle_ocean
-  rotate: false
-  xy: 2, 1307
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 1
-jungle_layer
   rotate: false
   xy: 2, 585
   size: 1920, 720
@@ -812,14 +826,14 @@ jungle_layer
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 jungle_layer
   rotate: false
   xy: 2, 585
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 koface
   rotate: false
   xy: 1541, 2
@@ -902,14 +916,14 @@ jungle_layer
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
-jungle_ocean
+  index: 3
+jungle_layer
   rotate: false
   xy: 2, 594
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 4
 ptero-flapping-0
   rotate: false
   xy: 1469, 2
@@ -985,14 +999,14 @@ jungle_ocean
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 jungle_ocean
   rotate: false
   xy: 2, 591
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 mosquito1
   rotate: false
   xy: 1347, 32
@@ -1062,6 +1076,13 @@ dialog1
   orig: 233, 300
   offset: 0, 0
   index: -1
+jungle_ocean
+  rotate: false
+  xy: 2, 1322
+  size: 1920, 720
+  orig: 1920, 720
+  offset: 0, 0
+  index: 4
 mosquito2
   rotate: false
   xy: 404, 282
@@ -1071,18 +1092,11 @@ mosquito2
   index: -1
 ocean_desert
   rotate: false
-  xy: 2, 1322
-  size: 1920, 720
-  orig: 1920, 720
-  offset: 0, 0
-  index: 1
-ocean_desert
-  rotate: false
   xy: 2, 600
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 poison
   rotate: false
   xy: 1860, 57
@@ -1172,14 +1186,14 @@ ocean_desert
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 ocean_desert
   rotate: false
   xy: 2, 595
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 ptero-flapping-2
   rotate: false
   xy: 1602, 2
@@ -1249,20 +1263,20 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-ocean_jungle
+ocean_desert
   rotate: false
   xy: 2, 1317
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 1
+  index: 4
 ocean_jungle
   rotate: false
   xy: 2, 595
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 ptero-flapping-3
   rotate: false
   xy: 1687, 2
@@ -1331,14 +1345,14 @@ ocean_jungle
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 ocean_jungle
   rotate: false
   xy: 2, 595
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 ptero-flapping hit2-2
   rotate: false
   xy: 1271, 73
@@ -1408,20 +1422,20 @@ size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-ocean_layer
+ocean_jungle
   rotate: false
   xy: 2, 1317
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 1
+  index: 4
 ocean_layer
   rotate: false
   xy: 2, 595
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 2
+  index: 1
 ptero-flapping hit2-3
   rotate: false
   xy: 2, 73
@@ -1539,14 +1553,14 @@ ocean_layer
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 3
+  index: 2
 ocean_layer
   rotate: false
   xy: 2, 595
   size: 1920, 720
   orig: 1920, 720
   offset: 0, 0
-  index: 4
+  index: 3
 ptero-flapping-7
   rotate: false
   xy: 2, 2
@@ -1769,14 +1783,14 @@ cat-hit-0
   orig: 1538, 852
   offset: 0, 0
   index: -1
-cat-hit-2
+cat-hit-1
   rotate: false
   xy: 2, 1164
   size: 1538, 852
   orig: 1538, 852
   offset: 0, 0
   index: -1
-cat-hit-1
+cat-hit-2
   rotate: false
   xy: 2, 1164
   size: 1538, 852
