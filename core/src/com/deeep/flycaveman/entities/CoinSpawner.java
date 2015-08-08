@@ -1,11 +1,11 @@
 package com.deeep.flycaveman.entities;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.input.GameInputProcessor;
 import com.deeep.flycaveman.world.World;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,12 +16,12 @@ public class CoinSpawner {
     public static final float COIN_SPAWN_INTERVAL = 2.5F;
     public static final int COIN_PATTERN_COUNT = 4;
 
-    private ArrayList<Coin> coins;
+    private Array<Coin> coins;
     private float coinSpawnTimer;
     private Random random;
 
     public CoinSpawner() {
-        coins = new ArrayList<Coin>();
+        coins = new Array<Coin>();
         random = new Random();
     }
 
@@ -61,16 +61,12 @@ public class CoinSpawner {
 
     //TODO: coins shouldn't draw outside screen
     public void render(Batch b) {
-        for (Coin c : coins) {
-            c.draw(b);
-        }
+        for (int i = 0; i < coins.size; i++) coins.get(i).draw(b);
     }
 
     public void update(float delta, CaveMan caveman, World world) {
         if (GameInputProcessor.flying) coinSpawnTimer += delta;
-        for (Coin c : coins) {
-            c.update(delta);
-        }
+        for (int i = 0; i < coins.size; i++) coins.get(i).update(delta);
         if (coinSpawnTimer > COIN_SPAWN_INTERVAL) {
             spawnRandomCoins(0, caveman, world);
             coinSpawnTimer = 0;
@@ -83,6 +79,6 @@ public class CoinSpawner {
     }
 
     public void remove(Coin coin) {
-        coins.remove(coin);
+        coins.removeValue(coin, false);
     }
 }

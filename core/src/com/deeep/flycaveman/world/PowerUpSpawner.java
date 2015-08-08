@@ -25,23 +25,13 @@ public class PowerUpSpawner {
     }
 
     public void update(float deltaT) {
-        if (powerUps.size < maxPowerUps) {
-            if (powerUps.size < 2) {
-                spawnRandomRandom(world.caveman);
-            }
-        }
+        if (powerUps.size < maxPowerUps && powerUps.size < 2) spawnRandomRandom(world.caveman);
         for (int i = 0; i < powerUps.size; i++) {
             powerUps.get(i).update(deltaT);
-            if (powerUps.get(i).body.getPosition().x + 10 < world.caveman.body.getPosition().x) {
-                powerUps.get(i).die();
-            }
-            if (powerUps.get(i).isDead()) {
-                removals.add(powerUps.get(i));
-            }
+            if (powerUps.get(i).body.getPosition().x + 10 < world.caveman.body.getPosition().x) powerUps.get(i).die();
+            if (powerUps.get(i).isDead()) removals.add(powerUps.get(i));
         }
-        for (PowerUp powerUp : removals) {
-            world.box2dWorld.destroyBody(powerUp.body);
-        }
+        for (int x = 0; x < removals.size; x++) world.box2dWorld.destroyBody(removals.get(x).body);
         powerUps.removeAll(removals, true);
         removals.clear();
     }
@@ -79,8 +69,6 @@ public class PowerUpSpawner {
     }
 
     public void draw(SpriteBatch spriteBatch) {
-        for (int i = 0; i < powerUps.size; i++) {
-            powerUps.get(i).draw(spriteBatch);
-        }
+        for (int i = 0; i < powerUps.size; i++) powerUps.get(i).draw(spriteBatch);
     }
 }

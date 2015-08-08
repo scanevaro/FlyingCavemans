@@ -24,14 +24,14 @@ public class ObstacleSpawner {
     }
 
     public void update(float delta) {
-        for (Obstacle obstacle : entities) obstacle.update(delta);
-        for (Obstacle obstacle : removals) obstacle.update(delta);
+        for (int y = 0; y < entities.size; y++) entities.get(y).update(delta);
+        for (int z = 0; z < removals.size; z++) entities.get(z).update(delta);
         if (entities.size < maxPowerUps) if (entities.size < 8) spawnRandomRandom(world.caveman);
         for (int i = 0; i < entities.size; i++) {
             if (entities.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) entities.get(i).die();
             if (entities.get(i).isDead()) removals.add(entities.get(i));
         }
-        for (Obstacle obstacle : removals) world.box2dWorld.destroyBody(obstacle.body);
+        for (int x = 0; x < removals.size; x++) world.box2dWorld.destroyBody(removals.get(x).body);
         entities.removeAll(removals, true);
         removals.clear();
     }

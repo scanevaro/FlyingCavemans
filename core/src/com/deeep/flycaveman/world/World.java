@@ -167,11 +167,13 @@ public class World extends Actor implements Disposable {
         area.draw((SpriteBatch) batch);
 
         batch.end();
-        batch.begin();
 
-        if (debug) debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
+        if (debug) {
+            batch.begin();
+            debugRenderer.render(box2dWorld, worldStage.getCamera().combined);
+            batch.end();
+        }
 
-        batch.end();
         batch.begin();
 
         space.draw((SpriteBatch) batch);
@@ -180,7 +182,7 @@ public class World extends Actor implements Disposable {
         startScreen.draw(batch);
 
         batch.setProjectionMatrix(worldStage.getCamera().combined);
-        for (Entity entity : entities) entity.draw(batch);
+        for (int i = 0; i < entities.size; i++) entities.get(i).draw(batch);
 
         obstacleSpawner.draw(batch);
         coinSpawner.render(batch);
@@ -198,7 +200,7 @@ public class World extends Actor implements Disposable {
         if (GameInputProcessor.flying) space.update(delta, worldStage.getCamera().position, caveman.body);
         updateGround();
         updateObstacles(delta);
-        for (Entity entity : entities) entity.update(delta);
+        for (int i = 0; i < entities.size; i++) entities.get(i).update(delta);
         caveman.update(delta);
         rope.update(caveman);
         powerUpSpawner.update(delta);
@@ -225,16 +227,17 @@ public class World extends Actor implements Disposable {
     }
 
     private void updateSky() {
-        if (GameInputProcessor.flying) {
-            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, caveman.body.getPosition().y - Core.BOX2D_VIRTUAL_HEIGHT / 3);
-        } else {
-            sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, 8);
-        }
+        if (GameInputProcessor.flying) sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 -
+                Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, caveman.body.getPosition().y -
+                Core.BOX2D_VIRTUAL_HEIGHT / 3);
+        else sky.set(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) -
+                Core.BOX2D_VIRTUAL_WIDTH / 2 - 2, 8);
     }
 
     private void updateGround() {
         if (flying && shootStateTime > 1)
-            ground.body.setTransform(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 - Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 1, 0);
+            ground.body.setTransform(caveman.body.getPosition().x + (Core.BOX2D_VIRTUAL_WIDTH / 2 -
+                    Core.BOX2D_VIRTUAL_WIDTH / 3) - Core.BOX2D_VIRTUAL_WIDTH / 2, 1, 0);
     }
 
     private void updateObstacles(float delta) {

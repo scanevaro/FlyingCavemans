@@ -70,7 +70,7 @@ public class StartScreenWidget {
         title.act(delta);
         leaderboardsDialog.act(delta);
         leaderboardsLabel.act(delta);
-        for (Label label : leaderboardsItems) label.act(delta);
+        for (int i = 0; i < leaderboardsItems.length; i++) leaderboardsItems[i].act(delta);
         getBest(name);
     }
 
