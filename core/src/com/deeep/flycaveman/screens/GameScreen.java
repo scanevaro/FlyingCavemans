@@ -1,6 +1,5 @@
 package com.deeep.flycaveman.screens;
 
-import aurelienribon.tweenengine.TweenManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
@@ -27,7 +26,6 @@ import com.deeep.flycaveman.world.World;
  */
 public class GameScreen extends AbstractScreen {
     private Core game;
-    private TweenManager tweenManager;
     /**
      * Screen
      */
@@ -69,8 +67,6 @@ public class GameScreen extends AbstractScreen {
 
     @Override
     public void show() {
-        if (tweenManager == null) tweenManager = new TweenManager();
-
         maxHeight = 0;
 
         prepareScreen();

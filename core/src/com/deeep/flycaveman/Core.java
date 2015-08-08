@@ -1,16 +1,13 @@
 package com.deeep.flycaveman;
 
-import aurelienribon.tweenengine.Tween;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
-import com.deeep.flycaveman.widgets.ActorAccessor;
 import com.deeep.flycaveman.widgets.Dialogs;
 import com.deeep.flycaveman.world.MusicController;
 import com.deeep.flycaveman.world.World;
@@ -21,7 +18,7 @@ public class Core implements ApplicationListener {
     public static final float BOX2D_VIRTUAL_WIDTH = VIRTUAL_WIDTH / /*30*/35;
     public static final float BOX2D_VIRTUAL_HEIGHT = VIRTUAL_HEIGHT / /*30*/35;
 
-    public static final int gameID = 55294;
+    //public static final int gameID = 55294;
 
     public static boolean dialogOpen;
 
@@ -54,16 +51,15 @@ public class Core implements ApplicationListener {
 
         spriteBatch = new SpriteBatch();
         setScreen(new SplashScreen(this));
-
-        Tween.registerAccessor(Actor.class, new ActorAccessor());
     }
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // This cryptic line clears the screen.
-        if(MusicController.musicController != null) MusicController.musicController.updateSoundManager(Gdx.graphics.getDeltaTime());
-        if(MusicController.musicController != null) MusicController.musicController.update(World.caveman);
+        if (MusicController.musicController != null)
+            MusicController.musicController.updateSoundManager(Gdx.graphics.getDeltaTime());
+        if (MusicController.musicController != null) MusicController.musicController.update(World.caveman);
         if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
     }
 
