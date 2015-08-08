@@ -46,9 +46,9 @@ public class SoundManager {
      * @param music identifier string
      * @return music object file
      */
-//    public FadeableMusic getMusic(String music) {
-//        return SoundLibrary.getInstance().getMusicFromString(music);
-//    }
+    public FadeableMusic getMusic(String music) {
+        return SoundLibrary.getInstance().getMusicFromString(music);
+    }
 
     /**
      * Stops a sound from playing

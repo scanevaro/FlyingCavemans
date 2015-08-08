@@ -18,7 +18,6 @@ import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.input.GameInputProcessor;
 import com.deeep.flycaveman.widgets.*;
-import com.deeep.flycaveman.world.MusicController;
 import com.deeep.flycaveman.world.World;
 
 /**
@@ -212,7 +211,6 @@ public class GameScreen extends AbstractScreen {
 
     @Override
     public void render(float delta) {
-        MusicController.musicController.update(world.caveman);
         if (GameInputProcessor.flying) {
             distanceLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
             heightLabel.addAction(Actions.delay(0.5f, Actions.fadeIn(1.0f)));
