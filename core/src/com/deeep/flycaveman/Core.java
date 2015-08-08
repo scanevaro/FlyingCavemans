@@ -2,6 +2,7 @@ package com.deeep.flycaveman;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -27,6 +28,7 @@ public class Core implements ApplicationListener {
     public Dialogs dialogs;
     //    public GJAPI gjapi;
     private Timer timer;
+    FPSLogger logger;
 
     @Override
     public void create() {
@@ -51,6 +53,7 @@ public class Core implements ApplicationListener {
 
         spriteBatch = new SpriteBatch();
         setScreen(new SplashScreen(this));
+        logger = new FPSLogger();
     }
 
     @Override
@@ -61,6 +64,7 @@ public class Core implements ApplicationListener {
             MusicController.musicController.updateSoundManager(Gdx.graphics.getDeltaTime());
         if (MusicController.musicController != null) MusicController.musicController.update(World.caveman);
         if (screen != null) screen.render(Gdx.graphics.getDeltaTime());
+        logger.log();
     }
 
     @Override

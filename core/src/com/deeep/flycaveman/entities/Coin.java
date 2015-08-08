@@ -69,7 +69,6 @@ public class Coin {
         isMagnetic = true;
         if (isMagnetic) {
             magVel += 1;
-            System.out.println(magVel);
             if (isAheadOfCaveman())
                 x -= magVel;
             else
