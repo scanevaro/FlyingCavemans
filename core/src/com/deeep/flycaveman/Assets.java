@@ -2,7 +2,6 @@ package com.deeep.flycaveman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -129,14 +128,14 @@ public class Assets {
         assetManager.load("data/sounds/burp3.mp3", Sound.class);
         assetManager.load("data/sounds/hitEntity1.mp3", Sound.class);
 
-        assetManager.load("data/sounds/music/JungleTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/Theme.ogg", Music.class);
-        assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/OceanTheme.ogg", Music.class);
-        assetManager.load("data/sounds/music/introTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/JungleTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/ShopTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/SpaceTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/DessertTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/Theme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/WindTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/OceanTheme.ogg", Music.class);
+//        assetManager.load("data/sounds/music/introTheme.ogg", Music.class);
 
         assetManager.load("data/sounds/coin1.mp3", Sound.class);
         assetManager.load("data/sounds/coin2.mp3", Sound.class);
@@ -430,9 +429,9 @@ public class Assets {
         else hurt3.play();
     }
 
-    public static Music loadMusicFile(String path) {
-        return assetManager.get("data/sounds/music/" + path + ".ogg");
-    }
+//    public static Music loadMusicFile(String path) {
+//        return assetManager.get("data/sounds/music/" + path + ".ogg");
+//    }
 
     public static TextureRegion getCloud(int cloudId) {
         switch (cloudId) {
