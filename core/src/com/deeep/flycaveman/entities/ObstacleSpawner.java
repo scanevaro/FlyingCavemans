@@ -25,7 +25,7 @@ public class ObstacleSpawner {
 
     public void update(float delta) {
         for (int y = 0; y < entities.size; y++) entities.get(y).update(delta);
-        for (int z = 0; z < removals.size; z++) entities.get(z).update(delta);
+        for (int z = 0; z < removals.size; z++) removals.get(z).update(delta);
         if (entities.size < maxPowerUps) if (entities.size < 8) spawnRandomRandom(world.caveman);
         for (int i = 0; i < entities.size; i++) {
             if (entities.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) entities.get(i).die();

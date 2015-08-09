@@ -15,7 +15,7 @@ import java.util.Random;
  */
 public class Obstacle implements Entity {
 
-    public static enum Type {
+    public enum Type {
         SMALL_EGG, BRACHIOSAURUS, QUETZALCOATLUS, ARGENTAVIS, TOUCAN, SABRETOOTH, MOSQUITO, CARNIVORE
     }
 
