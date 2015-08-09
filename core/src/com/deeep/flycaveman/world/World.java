@@ -197,14 +197,13 @@ public class World extends Actor implements Disposable {
         gameContactListener.update();
         startScreen.update(delta, name);
         updateSky();
-        if (GameInputProcessor.flying) space.update(delta, worldStage.getCamera().position, caveman.body);
+        if (GameInputProcessor.flying) space.update(worldStage.getCamera().position, caveman.body);
         updateGround();
         updateObstacles(delta);
         for (int i = 0; i < entities.size; i++) entities.get(i).update(delta);
         caveman.update(delta);
         rope.update(caveman);
         powerUpSpawner.update(delta);
-        /** updatePowerUps(); */
         updateWorld();
         if (flying) shootStateTime += delta;
         if (shootStateTime > 1 && remove) {
@@ -250,8 +249,7 @@ public class World extends Actor implements Disposable {
     }
 
     private void checkGameOver() {
-        if (caveman.body.getLinearVelocity().x <= 0 && GameInputProcessor.touchingGround)
-            gameOver = true;
+        if (caveman.body.getLinearVelocity().x <= 0 && GameInputProcessor.touchingGround) gameOver = true;
     }
 
     public boolean isGameOver() {
