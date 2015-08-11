@@ -26,7 +26,7 @@ public class Obstacle implements Entity {
     private FixtureDef fixtureDef, fixtureDef2, fixtureDef3;
     private Fixture fixture, fixture2, fixture3;
     private PolygonShape shape, shape2, shape3;
-    public int type;
+    public Type type;
     private final float smallEggSizeX = 0.65f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
             brachioSizeY = 3, sabretoothSize = 0.65f, mosquitoSize = 0.65f, carnivoreSizeX = 1.8f,
             carnivoreSizeY = 1.25f;
@@ -36,17 +36,18 @@ public class Obstacle implements Entity {
     private float stateTime;
     private Body tempBody;
 
-    public Obstacle(World world, float positionX, Random random) {
+    public Obstacle(Type type, World world, float positionX, Random random) {
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         shape = new PolygonShape();
         positionX += random.nextInt(100);
-        setType(random);
+        //setType(random);
+        this.type = type;
         setPositionAndShape(positionX, random, world);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
-        if (type == Type.BRACHIOSAURUS.ordinal()) {
+        if (type == Type.BRACHIOSAURUS) {
             bodyDef2 = new BodyDef();
             bodyDef2.type = BodyDef.BodyType.DynamicBody;
             shape2 = new PolygonShape();
@@ -77,49 +78,49 @@ public class Obstacle implements Entity {
         }
         body = world.box2dWorld.createBody(bodyDef);
         switch (type) {
-            case 0: /**SMALL_EGG*/
+            case SMALL_EGG: /**SMALL_EGG*/
                 sprite = new Sprite(new TextureRegion(Assets.smallEggTexture/*.getKeyFrame(stateTime)*/));
                 sprite.setSize(smallEggSizeX * 2, smallEggSizeY * 2);
                 realSizeX = smallEggSizeX;
                 realSizeY = smallEggSizeY;
                 break;
-            case 1: /**BRACHIOSAURUS*/
+            case BRACHIOSAURUS: /**BRACHIOSAURUS*/
                 sprite = new Sprite(new TextureRegion(Assets.brachioTexture/*.getKeyFrame(stateTime)*/));
                 sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
                 realSizeX = brachioSizeX;
                 realSizeY = brachioSizeY;
                 break;
-            case 2: /**QUETZALCOATLUS*/
+            case QUETZALCOATLUS: /**QUETZALCOATLUS*/
                 sprite = new Sprite(new TextureRegion(Assets.quetzaTexture.getKeyFrame(0)));
                 sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
                 realSizeX = quetzaSizeX;
                 realSizeY = quetzaSizeY;
                 break;
-            case 3: /**ARGENTAVIS*/
+            case ARGENTAVIS: /**ARGENTAVIS*/
                 sprite = new Sprite(new TextureRegion(Assets.argenTexture/*.getKeyFrame(stateTime)*/));
                 sprite.setSize((quetzaSizeX + 0.5f) * 2, (quetzaSizeY + 0.5f) * 2);
                 realSizeX = quetzaSizeX + 0.5f;
                 realSizeY = quetzaSizeY + 0.5f;
                 break;
-            case 4: /**TOUCAN*/
+            case TOUCAN: /**TOUCAN*/
                 sprite = new Sprite(new TextureRegion(Assets.toucanTexture/*.getKeyFrame(stateTime)*/));
                 sprite.setSize(smallEggSizeX * 2, smallEggSizeX * 2);
                 realSizeX = smallEggSizeX;
                 realSizeY = smallEggSizeX;
                 break;
-            case 5: /**SABRETOOTH*/
+            case SABRETOOTH: /**SABRETOOTH*/
                 sprite = new Sprite(new TextureRegion(Assets.sabertoothIdle.getKeyFrame(stateTime)));
                 sprite.setSize(sabretoothSize * 2.25f, sabretoothSize * 2);
                 realSizeX = sabretoothSize + 0.5f;
                 realSizeY = sabretoothSize;
                 break;
-            case 6: /**MOSQUITO*/
+            case MOSQUITO: /**MOSQUITO*/
                 sprite = new Sprite(new TextureRegion(Assets.mosquitoTexture/*.getKeyFrame(stateTime)*/));
                 sprite.setSize(mosquitoSize * 2, mosquitoSize * 2);
                 realSizeX = mosquitoSize;
                 realSizeY = mosquitoSize;
                 break;
-            case 7: /**CARNIVORE PLANT*/
+            case CARNIVORE: /**CARNIVORE PLANT*/
                 sprite = new Sprite(new TextureRegion(Assets.carnivoreIdle/*.getKeyFrame(stateTime)*/));
                 sprite.setSize(carnivoreSizeX * 2, carnivoreSizeY * 2);
                 realSizeX = carnivoreSizeX;
@@ -139,7 +140,7 @@ public class Obstacle implements Entity {
                 random.nextInt(100);
         setType(random);
         setPositionAndShape(positionX, random, world);
-        if (type == Type.BRACHIOSAURUS.ordinal()) {
+        if (type == Type.BRACHIOSAURUS) {
             if (bodyDef2 == null) {
                 bodyDef2 = new BodyDef();
                 bodyDef2.type = BodyDef.BodyType.DynamicBody;
@@ -186,49 +187,49 @@ public class Obstacle implements Entity {
             body3.setAwake(false);
         }
         switch (type) {
-            case 0: /**SMALL_EGG*/
+            case SMALL_EGG: /**SMALL_EGG*/
                 sprite.setRegion(Assets.smallEggTexture/*.getKeyFrame(stateTime)*/);
                 sprite.setSize(smallEggSizeX * 2, smallEggSizeY * 2);
                 realSizeX = smallEggSizeX;
                 realSizeY = smallEggSizeY;
                 break;
-            case 1: /**BRACHIOSAURUS*/
+            case BRACHIOSAURUS: /**BRACHIOSAURUS*/
                 sprite.setRegion(Assets.brachioTexture/*.getKeyFrame(stateTime)*/);
                 sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
                 realSizeX = brachioSizeX;
                 realSizeY = brachioSizeY;
                 break;
-            case 2: /**QUETZALCOATLUS*/
+            case QUETZALCOATLUS: /**QUETZALCOATLUS*/
                 sprite.setRegion(Assets.quetzaTexture.getKeyFrame(0));
                 sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
                 realSizeX = quetzaSizeX;
                 realSizeY = quetzaSizeY;
                 break;
-            case 3: /**ARGENTAVIS*/
+            case ARGENTAVIS: /**ARGENTAVIS*/
                 sprite.setRegion(Assets.argenTexture/*.getKeyFrame(stateTime)*/);
                 sprite.setSize((quetzaSizeX + 0.5f) * 2, (quetzaSizeY + 0.5f) * 2);
                 realSizeX = quetzaSizeX + 0.5f;
                 realSizeY = quetzaSizeY + 0.5f;
                 break;
-            case 4: /**TOUCAN*/
+            case TOUCAN: /**TOUCAN*/
                 sprite.setRegion(Assets.toucanTexture/*.getKeyFrame(stateTime)*/);
                 sprite.setSize(smallEggSizeX * 2, smallEggSizeX * 2);
                 realSizeX = smallEggSizeX;
                 realSizeY = smallEggSizeX;
                 break;
-            case 5: /**SABRETOOTH*/
+            case SABRETOOTH: /**SABRETOOTH*/
                 sprite.setRegion(Assets.sabertoothIdle.getKeyFrame(stateTime));
                 sprite.setSize(sabretoothSize * 2.25f, sabretoothSize * 2);
                 realSizeX = sabretoothSize + 0.5f;
                 realSizeY = sabretoothSize;
                 break;
-            case 6: /**MOSQUITO*/
+            case MOSQUITO: /**MOSQUITO*/
                 sprite.setRegion(Assets.mosquitoTexture/*.getKeyFrame(stateTime)*/);
                 sprite.setSize(mosquitoSize * 2, mosquitoSize * 2);
                 realSizeX = mosquitoSize;
                 realSizeY = mosquitoSize;
                 break;
-            case 7: /**CARNIVORE PLANT*/
+            case CARNIVORE: /**CARNIVORE PLANT*/
                 sprite.setRegion(new TextureRegion(Assets.carnivoreIdle/*.getKeyFrame(stateTime)*/));
                 sprite.setSize(carnivoreSizeX * 2, carnivoreSizeY * 2);
                 realSizeX = carnivoreSizeX;
@@ -254,11 +255,11 @@ public class Obstacle implements Entity {
     @Override
     public void update(float delta) {
         stateTime += delta;
-        if (!hit && type == Type.QUETZALCOATLUS.ordinal() || type == Type.ARGENTAVIS.ordinal()
-                || type == Type.TOUCAN.ordinal() || type == Type.MOSQUITO.ordinal()) {
+        if (!hit && type == Type.QUETZALCOATLUS || type == Type.ARGENTAVIS
+                || type == Type.TOUCAN || type == Type.MOSQUITO) {
             body.setTransform(body.getPosition().x - (delta * 6), body.getPosition().y, body.getAngle());
-        } else if (hit && type == Type.QUETZALCOATLUS.ordinal() || type == Type.ARGENTAVIS.ordinal()
-                || type == Type.TOUCAN.ordinal() || type == Type.MOSQUITO.ordinal()) {
+        } else if (hit && type == Type.QUETZALCOATLUS || type == Type.ARGENTAVIS
+                || type == Type.TOUCAN || type == Type.MOSQUITO) {
             body.setTransform(body.getPosition().x, body.getPosition().y - (delta * 10), body.getAngle());
         }
         if (hit) body.setActive(false);
@@ -285,51 +286,51 @@ public class Obstacle implements Entity {
         float typeRand = random.nextFloat();
         if (typeRand <= 0.96f && typeRand > 0.5f) {
             float rand = random.nextFloat();
-            if (rand <= 0.75f && rand > 0.35f) type = Type.QUETZALCOATLUS.ordinal();
-            else if (rand <= 0.35f) type = Type.MOSQUITO.ordinal();
-            else type = Type.ARGENTAVIS.ordinal();
-        } else if (typeRand >= 0.96f) type = Type.BRACHIOSAURUS.ordinal();
-        else if (typeRand <= 0.5f && typeRand > 0.20f) type = Type.SMALL_EGG.ordinal();
-        else if (typeRand <= 0.20f && typeRand > 0.1f) type = Type.SABRETOOTH.ordinal();
-        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Type.CARNIVORE.ordinal();
-        else type = Type.TOUCAN.ordinal();
+            if (rand <= 0.75f && rand > 0.35f) type = Type.QUETZALCOATLUS;
+            else if (rand <= 0.35f) type = Type.MOSQUITO;
+            else type = Type.ARGENTAVIS;
+        } else if (typeRand >= 0.96f) type = Type.BRACHIOSAURUS;
+        else if (typeRand <= 0.5f && typeRand > 0.20f) type = Type.SMALL_EGG;
+        else if (typeRand <= 0.20f && typeRand > 0.1f) type = Type.SABRETOOTH;
+        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Type.CARNIVORE;
+        else type = Type.TOUCAN;
     }
 
     private void setPositionAndShape(float positionX, Random random, World world) {
         switch (type) {
-            case 0: /**SMALL_EGG*/
+            case SMALL_EGG: /**SMALL_EGG*/
                 bodyDef.position.set(positionX, 1.35f);
                 shape.setAsBox(smallEggSizeX / 2, smallEggSizeY - 0.15f);
                 break;
-            case 1: /**BRACHIOSAURUS*/
+            case BRACHIOSAURUS: /**BRACHIOSAURUS*/
                 bodyDef.position.set(positionX, 4f);
                 shape.setAsBox(brachioSizeX / 3, brachioSizeY - 1.5f);
                 break;
-            case 2: /**QUETZALCOATLUS*/
+            case QUETZALCOATLUS: /**QUETZALCOATLUS*/
                 bodyDef.position.set(positionX, Math.max(5,
                         world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
                 shape.setAsBox(quetzaSizeX / 2 + 0.3f, quetzaSizeY / 2 - 0.6f);
                 break;
-            case 3: /**ARGENTAVIS*/
+            case ARGENTAVIS: /**ARGENTAVIS*/
                 bodyDef.position.set(positionX, Math.max(5,
                         world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
                 shape.setAsBox(quetzaSizeX / 2 + 0.5f, quetzaSizeY / 2 - 0.5f);
                 break;
-            case 4: /**TOUCAN*/
+            case TOUCAN: /**TOUCAN*/
                 bodyDef.position.set(positionX, Math.max(5,
                         world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
                 shape.setAsBox(smallEggSizeX - 0.2f, smallEggSizeX - 0.2f);
                 break;
-            case 5: /**SABRETOOTH*/
+            case SABRETOOTH: /**SABRETOOTH*/
                 bodyDef.position.set(positionX, 1.7f);
                 shape.setAsBox(sabretoothSize + 0.15f, sabretoothSize - 0.22f);
                 break;
-            case 6: /**MOSQUITO*/
+            case MOSQUITO: /**MOSQUITO*/
                 bodyDef.position.set(positionX, Math.max(5,
                         world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60));
                 shape.setAsBox(mosquitoSize - 0.2f, mosquitoSize - 0.2f);
                 break;
-            case 7: /**CARNIVORE PLANT*/
+            case CARNIVORE: /**CARNIVORE PLANT*/
                 bodyDef.position.set(positionX, 1.95f);
                 shape.setAsBox(carnivoreSizeX / 2, carnivoreSizeY - 0.9f);
                 break;
@@ -338,11 +339,11 @@ public class Obstacle implements Entity {
 
     private void getSpriteForType() {
         switch (type) {
-            case 0: /**SMALL_EGG*/
+            case SMALL_EGG: /**SMALL_EGG*/
                 if (!hit) sprite.setRegion(Assets.smallEggTexture);
                 else sprite.setRegion(Assets.smallEggBroken);
                 break;
-            case 1: /**BRACHIOSAURUS*/
+            case BRACHIOSAURUS: /**BRACHIOSAURUS*/
                 if (!hit) sprite.setRegion(Assets.brachioTexture);
                 else if (tempBody != null) {
                     String tempString = (String) tempBody.getUserData();
@@ -352,27 +353,27 @@ public class Obstacle implements Entity {
                     else sprite.setRegion(Assets.brachioMidPull);
                 }
                 break;
-            case 2: /**QUETZALCOATLUS*/
+            case QUETZALCOATLUS: /**QUETZALCOATLUS*/
                 if (!hit) sprite.setRegion(Assets.quetzaTexture.getKeyFrame(stateTime));
                 else sprite.setRegion(Assets.quetzaHit.getKeyFrame(stateTime));
                 break;
-            case 3: /**ARGENTAVIS*/
+            case ARGENTAVIS: /**ARGENTAVIS*/
                 if (!hit) sprite.setRegion(Assets.argenTexture);
                 else sprite.setRegion(Assets.argenHit);
                 break;
-            case 4: /**TOUCAN*/
+            case TOUCAN: /**TOUCAN*/
                 if (!hit) sprite.setRegion(Assets.toucanTexture);
                 else sprite.setRegion(Assets.toucanHit);
                 break;
-            case 5: /**SABRETOOTH*/
+            case SABRETOOTH: /**SABRETOOTH*/
                 if (!hit) sprite.setRegion(Assets.sabertoothIdle.getKeyFrame(stateTime));
                 else sprite.setRegion(Assets.sabertoothHit.getKeyFrame(stateTime));
                 break;
-            case 6: /**MOSQUITO*/
+            case MOSQUITO: /**MOSQUITO*/
                 if (!hit) sprite.setRegion(Assets.mosquitoTexture/*.getKeyFrame(stateTime)*/);
                 else sprite.setRegion(Assets.mosquitoHit/*.getKeyFrame(stateTime)*/);
                 break;
-            case 7: /**CARNIVORE PLANT*/
+            case CARNIVORE: /**CARNIVORE PLANT*/
                 if (!hit) sprite.setRegion(Assets.carnivoreIdle/*.getKeyFrame(stateTime)*/);
                 else sprite.setRegion(Assets.carnivoreEat/*.getKeyFrame(stateTime)*/);
                 break;
@@ -387,35 +388,35 @@ public class Obstacle implements Entity {
 
     private void setSpritePosition() {
         switch (type) {
-            case 0: /**SMALL_EGG*/
+            case SMALL_EGG: /**SMALL_EGG*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
                 break;
-            case 1: /**BRACHIOSAURUS*/
+            case BRACHIOSAURUS: /**BRACHIOSAURUS*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
                 break;
-            case 2: /**QUETZALCOATLUS*/
+            case QUETZALCOATLUS: /**QUETZALCOATLUS*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2 + 0.5f,
                         body.getPosition().y - sprite.getHeight() / 2.5f);
                 break;
-            case 3: /**ARGENTAVIS*/
+            case ARGENTAVIS: /**ARGENTAVIS*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 5);
                 break;
-            case 4: /**TOUCAN*/
+            case TOUCAN: /**TOUCAN*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
                 break;
-            case 5: /**SABRETOOTH*/
+            case SABRETOOTH: /**SABRETOOTH*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
                 break;
-            case 6: /**MOSQUITO*/
+            case MOSQUITO: /**MOSQUITO*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
                 break;
-            case 7: /**CARNIVORE PLANT*/
+            case CARNIVORE: /**CARNIVORE PLANT*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
                 break;

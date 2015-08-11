@@ -42,11 +42,11 @@ public class GameContactListener implements ContactListener {
                 if (fixtureA.getUserData() != null) obstacle = (Obstacle) fixtureA.getUserData();
                 else obstacle = (Obstacle) fixtureB.getUserData();
                 switch (obstacle.type) {
-                    case 0: /**SMALL_EGG*/
+                    case SMALL_EGG: /**SMALL_EGG*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 smallEggForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 1: /**BRACHIOSAURUS*/
+                    case BRACHIOSAURUS: /**BRACHIOSAURUS*/
                         String fix = "";
                         if (fixtureA.getBody().getUserData() != null) fix = (String) fixtureA.getBody().getUserData();
                         else if (fixtureB.getBody().getUserData() != null)
@@ -61,31 +61,31 @@ public class GameContactListener implements ContactListener {
                         else world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                     brachioForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 2: /**QUETZALCOATLUS*/
+                    case QUETZALCOATLUS: /**QUETZALCOATLUS*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 quetzaForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 3: /**ARGENTAVIS*/
+                    case ARGENTAVIS: /**ARGENTAVIS*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 argenForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 4: /**TOUCAN*/
+                    case TOUCAN: /**TOUCAN*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 toucanForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 5: /**SABRETOOTH*/
+                    case SABRETOOTH: /**SABRETOOTH*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 sabretoothForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 6: /**MOSQUITO*/
+                    case MOSQUITO: /**MOSQUITO*/
                         world.caveman.body.setLinearVelocity(world.caveman.body.getLinearVelocity().x,
                                 mosquitoForce + Math.abs(world.caveman.body.getLinearVelocity().y / 2));
                         break;
-                    case 7: /**CARNIVORE PLANT*/
+                    case CARNIVORE: /**CARNIVORE PLANT*/
                         world.caveman.eaten();
                         break;
                 }
-                if (obstacle.type == Obstacle.Type.BRACHIOSAURUS.ordinal()) {
+                if (obstacle.type == Obstacle.Type.BRACHIOSAURUS) {
                     if (fixtureA.getBody().getUserData() != null) obstacle.hit(fixtureA.getBody());
                     else obstacle.hit(fixtureB.getBody());
                 } else {

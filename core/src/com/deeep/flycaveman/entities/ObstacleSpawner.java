@@ -46,7 +46,19 @@ public class ObstacleSpawner {
     }
 
     public void spawn(float x) {
-        entities.add(new Obstacle(world, x, random));
+        Obstacle.Type type;
+        float typeRand = random.nextFloat();
+        if (typeRand <= 0.96f && typeRand > 0.5f) {
+            float rand = random.nextFloat();
+            if (rand <= 0.75f && rand > 0.35f) type = Obstacle.Type.QUETZALCOATLUS;
+            else if (rand <= 0.35f) type = Obstacle.Type.MOSQUITO;
+            else type = Obstacle.Type.ARGENTAVIS;
+        } else if (typeRand >= 0.96f) type = Obstacle.Type.BRACHIOSAURUS;
+        else if (typeRand <= 0.5f && typeRand > 0.20f) type = Obstacle.Type.SMALL_EGG;
+        else if (typeRand <= 0.20f && typeRand > 0.1f) type = Obstacle.Type.SABRETOOTH;
+        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Obstacle.Type.CARNIVORE;
+        else type = Obstacle.Type.TOUCAN;
+        entities.add(new Obstacle(type, world, x, random));
     }
 
     public void draw(Batch batch) {
