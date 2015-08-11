@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.*;
 import com.deeep.flycaveman.Assets;
+import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.world.World;
 
 import java.util.Random;
@@ -20,11 +21,11 @@ public class Obstacle implements Entity {
     }
 
     private boolean dead = false;
-    private BodyDef bodyDef;
-    public Body body;
-    private FixtureDef fixtureDef;
-    private Fixture fixture;
-    private PolygonShape shape;
+    private BodyDef bodyDef, bodyDef2, bodyDef3;
+    public Body body, body2, body3;
+    private FixtureDef fixtureDef, fixtureDef2, fixtureDef3;
+    private Fixture fixture, fixture2, fixture3;
+    private PolygonShape shape, shape2, shape3;
     public int type;
     private final float smallEggSizeX = 0.65f, smallEggSizeY = 0.5f, quetzaSizeX = 2, quetzaSizeY = 2, brachioSizeX = 4,
             brachioSizeY = 3, sabretoothSize = 0.65f, mosquitoSize = 0.65f, carnivoreSizeX = 1.8f,
@@ -46,34 +47,32 @@ public class Obstacle implements Entity {
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
         if (type == Type.BRACHIOSAURUS.ordinal()) {
-            BodyDef bodyDef2 = new BodyDef();
+            bodyDef2 = new BodyDef();
             bodyDef2.type = BodyDef.BodyType.DynamicBody;
-            PolygonShape shape2 = new PolygonShape();
+            shape2 = new PolygonShape();
             bodyDef2.position.set(positionX - 2.65f, 2.5f);
             shape2.setAsBox(brachioSizeX / 3, brachioSizeY / 2 + 1);
-            FixtureDef fixtureDef2 = new FixtureDef();
+            fixtureDef2 = new FixtureDef();
             fixtureDef2.shape = shape2;
             fixtureDef2.isSensor = true;
-            Body body2 = world.box2dWorld.createBody(bodyDef2);
+            body2 = world.box2dWorld.createBody(bodyDef2);
             body2.setUserData("BodyHead");
-            Fixture fixture2 = body2.createFixture(fixtureDef2);
+            fixture2 = body2.createFixture(fixtureDef2);
             fixture2.setUserData(this);
-            shape2.dispose();
             body2.setAwake(false);
 
-            BodyDef bodyDef3 = new BodyDef();
+            bodyDef3 = new BodyDef();
             bodyDef3.type = BodyDef.BodyType.DynamicBody;
-            PolygonShape shape3 = new PolygonShape();
+            shape3 = new PolygonShape();
             bodyDef3.position.set(positionX + 2.6f, 2.5f);
             shape3.setAsBox(brachioSizeX / 3, brachioSizeY / 2 + 1);
-            FixtureDef fixtureDef3 = new FixtureDef();
+            fixtureDef3 = new FixtureDef();
             fixtureDef3.shape = shape3;
             fixtureDef3.isSensor = true;
-            Body body3 = world.box2dWorld.createBody(bodyDef3);
+            body3 = world.box2dWorld.createBody(bodyDef3);
             body3.setUserData("BodyTail");
-            Fixture fixture3 = body3.createFixture(fixtureDef3);
+            fixture3 = body3.createFixture(fixtureDef3);
             fixture3.setUserData(this);
-            shape3.dispose();
             body3.setAwake(false);
         }
         body = world.box2dWorld.createBody(bodyDef);
@@ -132,8 +131,115 @@ public class Obstacle implements Entity {
         sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
         fixture = body.createFixture(fixtureDef);
         fixture.setUserData(this);
-        shape.dispose();
         body.setAwake(false);
+    }
+
+    public void instantiate(World world, Random random) {
+        float positionX = world.caveman.body.getPosition().x + Core.BOX2D_VIRTUAL_WIDTH + random.nextFloat() * 5 +
+                random.nextInt(100);
+        setType(random);
+        setPositionAndShape(positionX, random, world);
+        if (type == Type.BRACHIOSAURUS.ordinal()) {
+            if (bodyDef2 == null) {
+                bodyDef2 = new BodyDef();
+                bodyDef2.type = BodyDef.BodyType.DynamicBody;
+            }
+            if (shape2 == null) shape2 = new PolygonShape();
+            bodyDef2.position.set(positionX - 2.65f, 2.5f);
+            shape2.setAsBox(brachioSizeX / 3, brachioSizeY / 2 + 1);
+            if (fixtureDef2 == null) {
+                fixtureDef2 = new FixtureDef();
+                fixtureDef2.shape = shape2;
+                fixtureDef2.isSensor = true;
+            }
+            if (body2 == null) {
+                body2 = world.box2dWorld.createBody(bodyDef2);
+                body2.setUserData("BodyHead");
+            }
+            if (fixture2 == null) {
+                fixture2 = body2.createFixture(fixtureDef2);
+                fixture2.setUserData(this);
+            }
+            body2.setAwake(false);
+            if (bodyDef3 == null) {
+                bodyDef3 = new BodyDef();
+                bodyDef3.type = BodyDef.BodyType.DynamicBody;
+            }
+            if (shape3 == null) {
+                shape3 = new PolygonShape();
+                shape3.setAsBox(brachioSizeX / 3, brachioSizeY / 2 + 1);
+            }
+            bodyDef3.position.set(positionX + 2.6f, 2.5f);
+            if (fixtureDef3 == null) {
+                fixtureDef3 = new FixtureDef();
+                fixtureDef3.shape = shape3;
+                fixtureDef3.isSensor = true;
+            }
+            if (body3 == null) {
+                body3 = world.box2dWorld.createBody(bodyDef3);
+                body3.setUserData("BodyTail");
+            }
+            if (fixture3 == null) {
+                fixture3 = body3.createFixture(fixtureDef3);
+                fixture3.setUserData(this);
+            }
+            body3.setAwake(false);
+        }
+        switch (type) {
+            case 0: /**SMALL_EGG*/
+                sprite.setRegion(Assets.smallEggTexture/*.getKeyFrame(stateTime)*/);
+                sprite.setSize(smallEggSizeX * 2, smallEggSizeY * 2);
+                realSizeX = smallEggSizeX;
+                realSizeY = smallEggSizeY;
+                break;
+            case 1: /**BRACHIOSAURUS*/
+                sprite.setRegion(Assets.brachioTexture/*.getKeyFrame(stateTime)*/);
+                sprite.setSize(brachioSizeX * 2, brachioSizeY * 2);
+                realSizeX = brachioSizeX;
+                realSizeY = brachioSizeY;
+                break;
+            case 2: /**QUETZALCOATLUS*/
+                sprite.setRegion(Assets.quetzaTexture.getKeyFrame(0));
+                sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
+                realSizeX = quetzaSizeX;
+                realSizeY = quetzaSizeY;
+                break;
+            case 3: /**ARGENTAVIS*/
+                sprite.setRegion(Assets.argenTexture/*.getKeyFrame(stateTime)*/);
+                sprite.setSize((quetzaSizeX + 0.5f) * 2, (quetzaSizeY + 0.5f) * 2);
+                realSizeX = quetzaSizeX + 0.5f;
+                realSizeY = quetzaSizeY + 0.5f;
+                break;
+            case 4: /**TOUCAN*/
+                sprite.setRegion(Assets.toucanTexture/*.getKeyFrame(stateTime)*/);
+                sprite.setSize(smallEggSizeX * 2, smallEggSizeX * 2);
+                realSizeX = smallEggSizeX;
+                realSizeY = smallEggSizeX;
+                break;
+            case 5: /**SABRETOOTH*/
+                sprite.setRegion(Assets.sabertoothIdle.getKeyFrame(stateTime));
+                sprite.setSize(sabretoothSize * 2.25f, sabretoothSize * 2);
+                realSizeX = sabretoothSize + 0.5f;
+                realSizeY = sabretoothSize;
+                break;
+            case 6: /**MOSQUITO*/
+                sprite.setRegion(Assets.mosquitoTexture/*.getKeyFrame(stateTime)*/);
+                sprite.setSize(mosquitoSize * 2, mosquitoSize * 2);
+                realSizeX = mosquitoSize;
+                realSizeY = mosquitoSize;
+                break;
+            case 7: /**CARNIVORE PLANT*/
+                sprite.setRegion(new TextureRegion(Assets.carnivoreIdle/*.getKeyFrame(stateTime)*/));
+                sprite.setSize(carnivoreSizeX * 2, carnivoreSizeY * 2);
+                realSizeX = carnivoreSizeX;
+                realSizeY = carnivoreSizeY;
+                break;
+        }
+        textureSizeX = sprite.getRegionWidth();
+        textureSizeY = sprite.getRegionHeight();
+        sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+        body.setAwake(false);
+        body.setActive(true);
     }
 
     @Override

@@ -109,9 +109,9 @@ public class World extends Actor implements Disposable {
         coinSpawner = new CoinSpawner();
         /**entities.add(catapult = new Catapult(box2dWorld, ground));*/
 
-        obstacleSpawner = new ObstacleSpawner(this);
         powerUpSpawner = new PowerUpSpawner(this);
         caveman = new CaveMan(this);
+        obstacleSpawner = new ObstacleSpawner(this);
         startScreen = new StartScreenWidget();
         rope = new Rope(caveman.startPosX, caveman.startPosY);
         entities.add(tree = new Tree(11.1f, 0.5f));

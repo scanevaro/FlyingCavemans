@@ -20,19 +20,21 @@ public class ObstacleSpawner {
     public ObstacleSpawner(World world) {
         this.world = world;
         this.entities = new Array<Obstacle>();
+        for (int i = 0; i < 8; i++) spawn(0);
         this.removals = new Array<Obstacle>();
     }
 
     public void update(float delta) {
         for (int y = 0; y < entities.size; y++) entities.get(y).update(delta);
         for (int z = 0; z < removals.size; z++) removals.get(z).update(delta);
-        if (entities.size < maxPowerUps) if (entities.size < 8) spawnRandomRandom(world.caveman);
+        /**if (entities.size < maxPowerUps) if (entities.size < 8) spawnRandomRandom(world.caveman);*/
         for (int i = 0; i < entities.size; i++) {
             if (entities.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) entities.get(i).die();
             if (entities.get(i).isDead()) removals.add(entities.get(i));
         }
-        for (int x = 0; x < removals.size; x++) world.box2dWorld.destroyBody(removals.get(x).body);
-        entities.removeAll(removals, true);
+        for (int x = 0; x < removals.size; x++) /**world.box2dWorld.destroyBody(removals.get(x).body);*/
+            removals.get(x).instantiate(world, random);
+        /**entities.removeAll(removals, true);*/
         removals.clear();
     }
 
