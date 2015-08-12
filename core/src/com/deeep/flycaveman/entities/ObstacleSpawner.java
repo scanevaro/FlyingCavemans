@@ -13,14 +13,16 @@ import java.util.Random;
 public class ObstacleSpawner {
     private Array<Obstacle> entities;
     private Array<Obstacle> removals;
+    private Array<Obstacle> idleEntities;
     private World world;
     private int maxPowerUps = 40;
     private Random random = new Random();
 
     public ObstacleSpawner(World world) {
         this.world = world;
-        this.entities = new Array<Obstacle>();
-        this.removals = new Array<Obstacle>();
+        entities = new Array<Obstacle>();
+        removals = new Array<Obstacle>();
+        idleEntities = new Array<Obstacle>();
     }
 
     public void update(float delta) {
@@ -31,7 +33,7 @@ public class ObstacleSpawner {
             if (entities.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) entities.get(i).die();
             if (entities.get(i).isDead()) removals.add(entities.get(i));
         }
-        for (int x = 0; x < removals.size; x++) world.box2dWorld.destroyBody(removals.get(x).body);
+        for (int x = 0; x < removals.size; x++) idleEntities.add(removals.get(x));
         entities.removeAll(removals, true);
         removals.clear();
     }
@@ -56,7 +58,13 @@ public class ObstacleSpawner {
         else if (typeRand <= 0.20f && typeRand > 0.1f) type = Obstacle.Type.SABRETOOTH;
         else if (typeRand <= 0.10f && typeRand > 0.04f) type = Obstacle.Type.CARNIVORE;
         else type = Obstacle.Type.TOUCAN;
-        entities.add(new Obstacle(type, world, x, random));
+        int i;
+        for (i = 0; i < idleEntities.size; i++)
+            if (idleEntities.get(i).type == type && idleEntities.get(i).isDead()) {
+                entities.add(idleEntities.removeIndex(i).setAlive(x));
+                return;
+            }
+        if (i == idleEntities.size) entities.add(new Obstacle(type, world, x, random));
     }
 
     public void draw(Batch batch) {

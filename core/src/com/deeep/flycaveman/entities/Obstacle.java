@@ -21,7 +21,7 @@ public class Obstacle implements Entity {
 
     private boolean dead = false;
     private BodyDef bodyDef;
-    public Body body;
+    public Body body, body2, body3;
     private FixtureDef fixtureDef;
     private Fixture fixture;
     private PolygonShape shape;
@@ -35,14 +35,18 @@ public class Obstacle implements Entity {
     private float stateTime;
     private Body tempBody;
     private final float radiansToDegrees = MathUtils.radiansToDegrees;
+    private final Random random;
+    private final World world;
 
     public Obstacle(Type type, World world, float positionX, Random random) {
+        this.world = world;
+        this.random = random;
         bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         shape = new PolygonShape();
         positionX += random.nextInt(100);
         this.type = type;
-        setPositionAndShape(positionX, random, world);
+        setPositionAndShape(positionX);
         fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
         fixtureDef.isSensor = true;
@@ -55,7 +59,7 @@ public class Obstacle implements Entity {
             FixtureDef fixtureDef2 = new FixtureDef();
             fixtureDef2.shape = shape2;
             fixtureDef2.isSensor = true;
-            Body body2 = world.box2dWorld.createBody(bodyDef2);
+            body2 = world.box2dWorld.createBody(bodyDef2);
             body2.setUserData("BodyHead");
             Fixture fixture2 = body2.createFixture(fixtureDef2);
             fixture2.setUserData(this);
@@ -70,7 +74,7 @@ public class Obstacle implements Entity {
             FixtureDef fixtureDef3 = new FixtureDef();
             fixtureDef3.shape = shape3;
             fixtureDef3.isSensor = true;
-            Body body3 = world.box2dWorld.createBody(bodyDef3);
+            body3 = world.box2dWorld.createBody(bodyDef3);
             body3.setUserData("BodyTail");
             Fixture fixture3 = body3.createFixture(fixtureDef3);
             fixture3.setUserData(this);
@@ -175,21 +179,7 @@ public class Obstacle implements Entity {
         hit = true;
     }
 
-    private void setType(Random random) {
-        float typeRand = random.nextFloat();
-        if (typeRand <= 0.96f && typeRand > 0.5f) {
-            float rand = random.nextFloat();
-            if (rand <= 0.75f && rand > 0.35f) type = Type.QUETZALCOATLUS;
-            else if (rand <= 0.35f) type = Type.MOSQUITO;
-            else type = Type.ARGENTAVIS;
-        } else if (typeRand >= 0.96f) type = Type.BRACHIOSAURUS;
-        else if (typeRand <= 0.5f && typeRand > 0.20f) type = Type.SMALL_EGG;
-        else if (typeRand <= 0.20f && typeRand > 0.1f) type = Type.SABRETOOTH;
-        else if (typeRand <= 0.10f && typeRand > 0.04f) type = Type.CARNIVORE;
-        else type = Type.TOUCAN;
-    }
-
-    private void setPositionAndShape(float positionX, Random random, World world) {
+    private void setPositionAndShape(float positionX) {
         switch (type) {
             case SMALL_EGG: /**SMALL_EGG*/
                 bodyDef.position.set(positionX, 1.35f);
@@ -312,6 +302,48 @@ public class Obstacle implements Entity {
             case CARNIVORE: /**CARNIVORE PLANT*/
                 sprite.setPosition(body.getPosition().x - sprite.getWidth() / 2,
                         body.getPosition().y - sprite.getHeight() / 2);
+                break;
+        }
+    }
+
+    public Obstacle setAlive(float positionX) {
+        dead = false;
+        hit = false;
+        body.setActive(true);
+        if (type == Type.BRACHIOSAURUS) {
+            body2.setActive(true);
+            body3.setActive(true);
+        }
+        positionX += random.nextInt(100);
+        resetPosition(positionX);
+        return this;
+    }
+
+    private void resetPosition(float positionX) {
+        switch (type) {
+            case SMALL_EGG:
+                body.setTransform(positionX, 1.35f, body.getAngle());
+                break;
+            case BRACHIOSAURUS:
+                body.setTransform(positionX, 4f, body.getAngle());
+                break;
+            case QUETZALCOATLUS:
+                body.setTransform(positionX, Math.max(5, world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60), body.getAngle());
+                break;
+            case ARGENTAVIS:
+                body.setTransform(positionX, Math.max(5, world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60), body.getAngle());
+                break;
+            case TOUCAN:
+                body.setTransform(positionX, Math.max(5, world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60), body.getAngle());
+                break;
+            case SABRETOOTH: /**SABRETOOTH*/
+                body.setTransform(positionX, 1.7f, body.getAngle());
+                break;
+            case MOSQUITO: /**MOSQUITO*/
+                body.setTransform(positionX, Math.max(5, world.caveman.body.getPosition().y - 20 + random.nextFloat() * 60), body.getAngle());
+                break;
+            case CARNIVORE: /**CARNIVORE PLANT*/
+                body.setTransform(positionX, 1.95f, body.getAngle());
                 break;
         }
     }
