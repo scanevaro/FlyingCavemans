@@ -13,6 +13,7 @@ import java.util.Random;
  */
 public class PowerUpSpawner {
     private Array<PowerUp> powerUps;
+    private Array<PowerUp> idleEntities;
     private Array<PowerUp> removals;
     private World world;
     private int maxPowerUps = 3;
@@ -21,17 +22,19 @@ public class PowerUpSpawner {
     public PowerUpSpawner(World world) {
         this.world = world;
         this.powerUps = new Array<PowerUp>();
+        this.idleEntities = new Array<PowerUp>();
         this.removals = new Array<PowerUp>();
     }
 
-    public void update(float deltaT) {
-        if (powerUps.size < maxPowerUps && powerUps.size < 2) spawnRandomRandom(world.caveman);
+    public void update(float delta) {
+        for (int y = 0; y < powerUps.size; y++) powerUps.get(y).update(delta);
+        for (int z = 0; z < removals.size; z++) removals.get(z).update(delta);
+        if (powerUps.size < maxPowerUps) if (powerUps.size < 8) spawnRandomRandom(world.caveman);
         for (int i = 0; i < powerUps.size; i++) {
-            powerUps.get(i).update(deltaT);
-            if (powerUps.get(i).body.getPosition().x + 10 < world.caveman.body.getPosition().x) powerUps.get(i).die();
+            if (powerUps.get(i).body.getPosition().x + 30 < world.caveman.body.getPosition().x) powerUps.get(i).die();
             if (powerUps.get(i).isDead()) removals.add(powerUps.get(i));
         }
-        for (int x = 0; x < removals.size; x++) world.box2dWorld.destroyBody(removals.get(x).body);
+        for (int x = 0; x < removals.size; x++) idleEntities.add(removals.get(x));
         powerUps.removeAll(removals, true);
         removals.clear();
     }
@@ -65,7 +68,13 @@ public class PowerUpSpawner {
     }
 
     public void spawn(float x, float y, PowerUp.Type type) {
-        powerUps.add(new PowerUp(type, world, x, y));
+        int i;
+        for (i = 0; i < idleEntities.size; i++)
+            if (idleEntities.get(i).type == type && idleEntities.get(i).isDead()) {
+                powerUps.add(idleEntities.removeIndex(i).setAlive(x, y));
+                return;
+            }
+        if (i == idleEntities.size) powerUps.add(new PowerUp(type, world, x, y));
     }
 
     public void draw(SpriteBatch spriteBatch) {

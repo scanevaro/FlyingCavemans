@@ -12,7 +12,7 @@ import com.deeep.flycaveman.world.World;
  */
 public class PowerUp implements Entity {
 
-    public static enum Type {
+    public enum Type {
         MEAT(100),
         SPINACH(100),
         VODKA(-50),
@@ -165,5 +165,12 @@ public class PowerUp implements Entity {
         }
         sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
         sprite.draw(batch);
+    }
+
+    public PowerUp setAlive(float positionX, float positionY) {
+        dead = false;
+        body.setActive(true);
+        body.setTransform(positionX, positionY, 0);
+        return this;
     }
 }
