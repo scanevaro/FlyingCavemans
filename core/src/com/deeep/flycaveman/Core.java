@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Timer;
 import com.deeep.flycaveman.screens.AbstractScreen;
 import com.deeep.flycaveman.screens.SplashScreen;
 import com.deeep.flycaveman.widgets.Dialogs;
@@ -27,7 +26,13 @@ public class Core implements ApplicationListener {
     public AbstractScreen screen;
     public Dialogs dialogs;
     //    public GJAPI gjapi;
-    private Timer timer;
+    //    private Timer timer;
+    public static float pixelsToUnit1100 = 1100 / 35;
+    public static float pixelsToUnit1300 = 1300 / 35;
+    public static float pixelsToUnit1500 = 1500 / 35;
+    public static float pixelsToUnit50 = 50 / 35;
+    public static float pixelsToUnit100 = 100 / 35;
+    public static float pixelsToUnit150 = 150 / 35;
     FPSLogger logger;
 
     @Override
@@ -104,18 +109,13 @@ public class Core implements ApplicationListener {
         return spriteBatch;
     }
 
-    public static float pixelsToBoxUnit(float pixels) {
-        return pixels / 35;
-    }
-
     public static Vector2 pixelsToBoxUnit(Vector2 pixels) {
-        pixels.x = pixelsToBoxUnit(pixels.x);
-        pixels.y = pixelsToBoxUnit(pixels.y);
+        pixels.x = pixels.x / 35;
+        pixels.y = pixels.y / 35;
         return pixels;
     }
 
     public static float boxUnitToPixels(float units) {
         return units * 35f;
     }
-
 }
