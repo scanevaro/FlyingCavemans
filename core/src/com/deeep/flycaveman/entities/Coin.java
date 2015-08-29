@@ -107,7 +107,7 @@ public class Coin {
 
     public Coin setAlive(float x, float y) {
         alive = true;
-        body.setTransform(x, y, 0);
+        body.setTransform(x, y, body.getAngle());
         return this;
     }
 

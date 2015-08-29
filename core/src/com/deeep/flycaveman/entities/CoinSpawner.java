@@ -20,6 +20,7 @@ public class CoinSpawner {
 
     public CoinSpawner() {
         coins = new Array<Coin>();
+        new CoinFactory();
         random = new Random();
     }
 
@@ -30,7 +31,13 @@ public class CoinSpawner {
 
     public void update(float delta, CaveMan caveman, World world) {
         if (GameInputProcessor.flying) coinSpawnTimer += delta;
-        for (int x = 0; x < coins.size; x++) if (!coins.get(x).isAlive()) CoinFactory.add(coins.removeIndex(x));
+        for (int x = 0; x < coins.size; x++) {
+            if (coins.get(x).body.getPosition().x + 30 < caveman.body.getPosition().x) coins.get(x).die();
+            if (!coins.get(x).isAlive()) {
+                CoinFactory.add(coins.removeIndex(x));
+                x--;
+            }
+        }
         for (int i = 0; i < coins.size; i++) coins.get(i).update(delta);
         if (coinSpawnTimer > COIN_SPAWN_INTERVAL) {
             spawnRandomCoins(caveman, world);
@@ -74,9 +81,5 @@ public class CoinSpawner {
                 coins.add(CoinFactory.poolCoin(caveman.body.getPosition().x + 6 + Core.pixelsToUnit1500, caveman.body.getPosition().y + Core.pixelsToUnit100, world));
                 break;
         }
-    }
-
-    public void remove(Coin coin) {
-        coins.removeValue(coin, false);
     }
 }
