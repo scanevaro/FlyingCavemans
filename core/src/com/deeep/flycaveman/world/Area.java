@@ -1,19 +1,17 @@
 package com.deeep.flycaveman.world;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.deeep.flycaveman.widgets.FadeableMusic;
-import com.deeep.flycaveman.widgets.SoundManager;
 
 /**
  * Created by Elmar on 8-2-2015.
  */
 public class Area {
-    public static final int BEGIN_SPACE = 120;   //fadeout music
-    public static final int HALF_SPACE = 160;    //fade in space music
-    public static final int FULL_SPACE = 240; //music and colouring
-    public static final int MAX_SPACE = 320; // for lowest gravity
+    public static final int BEGIN_SPACE = 220;   //fadeout music
+    public static final int HALF_SPACE = 360;    //fade in space music
+    public static final int FULL_SPACE = 440; //music and colouring
+    public static final int MAX_SPACE = 520; // for lowest gravity
+
     public enum AREA {
         DESSERT(Biomes.DESSERT, "DessertTheme"), JUNGLE(Biomes.DESSERT, "JungleTheme"), OCEAN(Biomes.OCEAN, "OceanTheme");//"OceanTheme");
 
@@ -25,7 +23,7 @@ public class Area {
             this.music = music;
         }
 
-        public String getMusic(){
+        public String getMusic() {
             return music;
         }
 
@@ -68,7 +66,7 @@ public class Area {
     public static float biomesLength = 1000;
 
     private boolean themeSongPlaying = true;
-    public static boolean songPlaying =false;
+    public static boolean songPlaying = false;
 
     public Area() {
         biomes = new Biomes();
