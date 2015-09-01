@@ -7,9 +7,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.utils.Array;
 import com.deeep.flycaveman.Assets;
 import com.deeep.flycaveman.Core;
 import com.deeep.flycaveman.input.GameInputProcessor;
+
+import java.util.ArrayList;
 
 /**
  * Created by scanevaro on 11/10/2014.
@@ -57,6 +60,9 @@ public class CaveMan implements Entity {
     public int smacked, powerUpsPicked, coinsPicked;
     private Vector2 speedVec;
     private boolean eaten;
+
+    // COIN DISTANCE
+    private static float COIN_MAGNET_DISTANCE = 500F;
 
     public CaveMan(com.deeep.flycaveman.world.World world) {
         this.world = world;
@@ -149,6 +155,36 @@ public class CaveMan implements Entity {
         if (GameInputProcessor.touchingGround) state = STATE_PAIN;
         if (world.isGameOver()) state = STATE_KO;
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)) cheats = !cheats;
+
+        // Coin magnet procedure TODO: change this to actually work on upgrades
+        //if(magnet >= 0){
+
+            Array<Coin> coins = world.coinSpawner.coins;
+
+            System.out.println(coins.size);
+
+            for (Coin c : coins){
+                if(getDistance(c.x, c.y, body.getPosition().x, body.getPosition().y) <= COIN_MAGNET_DISTANCE){
+                    float theta = (float) Math.atan2((double)c.x - body.getPosition().x,(double)c.y - body.getPosition().y);
+
+                    // TODO: 20 is the coin speed should be in static constant at some point
+                    float dx = (float) Math.cos(theta) * 1;
+                    float dy = (float) Math.sin(theta) * 1;
+
+
+                    c.body.setTransform(c.body.getPosition().x + dx, body.getPosition().y + dy, 0);
+
+
+                    System.out.println("Moving coin " + dx + ", " + dy);
+                    System.out.println("It's now on " + c.body.getPosition().x + ", " + body.getPosition().y);
+                }
+            }
+
+       // }
+    }
+
+    private float getDistance(float x1, float y1, float x2, float y2){
+        return (float) Math.sqrt(Math.abs(x1-x2) * Math.abs(x1-x2) + Math.abs(y1-y2) * Math.abs(y1-y2));
     }
 
     public void updateFlapping(float delta) {

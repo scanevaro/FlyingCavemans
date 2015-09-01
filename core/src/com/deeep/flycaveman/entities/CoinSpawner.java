@@ -12,9 +12,10 @@ import java.util.Random;
  * Created by Andreas on 2/11/2015.
  */
 public class CoinSpawner {
+
     public static final float COIN_SPAWN_INTERVAL = 2.5F;
     public static final int COIN_PATTERN_COUNT = 4;
-    private Array<Coin> coins;
+    public Array<Coin> coins;
     private float coinSpawnTimer;
     private Random random;
 
