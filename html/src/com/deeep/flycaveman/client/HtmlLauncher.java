@@ -1,15 +1,31 @@
 package com.deeep.flycaveman.client;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
 import com.deeep.flycaveman.Core;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 
 public class HtmlLauncher extends GwtApplication {
 
     @Override
+    public void onModuleLoad() {
+        super.onModuleLoad();
+        com.google.gwt.user.client.Window.addResizeHandler(new ResizeHandler() {
+            public void onResize(ResizeEvent ev) {
+                Gdx.graphics.setDisplayMode(ev.getWidth() - 100, ev.getHeight() - 100, false);
+            }
+        });
+    }
+
+    @Override
     public GwtApplicationConfiguration getConfig() {
-        return new GwtApplicationConfiguration((int) Core.VIRTUAL_WIDTH, (int) Core.VIRTUAL_HEIGHT);
+        int height = com.google.gwt.user.client.Window.getClientHeight() - 100;
+        int width = com.google.gwt.user.client.Window.getClientWidth() - 100;
+        GwtApplicationConfiguration cfg = new GwtApplicationConfiguration(width, height);
+        return cfg;
     }
 
     @Override

@@ -1,83 +1,75 @@
 package com.deeep.flycaveman.input;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector2;
 import com.deeep.flycaveman.Core;
-import com.deeep.flycaveman.classes.World;
 import com.deeep.flycaveman.screens.GameScreen;
+import com.deeep.flycaveman.world.World;
 
 /**
  * Created by scanevaro on 11/10/2014.
  */
 public class GameInputProcessor implements InputProcessor {
+    public static double ropeLength = 0;
+    public static float limit = 2;
+    public static float strength = 5;
     private final int IDLE = 0;
     private final int CATAPULTSET = 1;
     private final int FLYING = 2;
-    private final int FLAPPING = 3;
+    //    private final int FLAPPING = 3;
     private final int DRAGGING = 4;
     private final int GAMEOVER = 5;
     private final int PAUSE = 6;
-    private int gameState;
+    public static int gameState;
 
     private Core game;
     private World world;
-    //    private MouseJoint mouseJoint = null;
-    //    private Body hitBody = null;
-    private boolean addForce;
+    //private boolean addForce;
     public static boolean flying;
     public static boolean touchingGround;
-    private float force;
-
-    private float strength;
-    private float flyTime;
+    public static boolean catapulting = false;
+    private Vector2 originalPos;
+    private float gravity;
+    //private float force;
 
     public GameInputProcessor(Core game, World world) {
         this.game = game;
         this.world = world;
 
-        flyTime = 0.5f;
-        strength = 50;
-
         flying = false;
         touchingGround = false;
-
+        originalPos = new Vector2(world.caveman.startPosX, world.caveman.startPosY);
         gameState = IDLE;
+        gravity = world.caveman.body.getGravityScale();
+        world.caveman.body.setGravityScale(0);
     }
 
     public void update(float delta) {
         if (touchingGround)
             gameState = DRAGGING;
-        if (flying && gameState != FLAPPING)
+        if (flying)
             gameState = FLYING;
 
         switch (gameState) {
             case IDLE:
+
                 //TODO
                 break;
             case CATAPULTSET:
-                if (force <= 0)
-                    addForce = true;
-                else if (force > 1.2f)
-                    addForce = false;
+                Vector2 mouseCords = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+                Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
+                localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
+                localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
+                localCords = Core.pixelsToBoxUnit(localCords);
+                localCords.y = Math.max(localCords.y, 1.25f);
+                localCords = limit(originalPos, localCords, limit);
+                world.caveman.body.setTransform(localCords, world.caveman.body.getAngle());
 
-                if (addForce)
-                    force += 0.02f;
-                else force -= 0.02f;
-
-                world.catapult.armJoint.setLimits(force, force);
-
-                System.out.println(force);
                 break;
             case FLYING:
-                world.caveman.body.setAngularVelocity(-3);
-                break;
-            case FLAPPING:
-                if (flyTime > 0) {
-                    flyTime -= delta;
-                    world.caveman.body.applyForce(strength, strength, world.caveman.body.getPosition().x, world.caveman.body.getPosition().y, true);
-
-                    System.out.print(flyTime);
-                }
+                world.caveman.body.setAngularVelocity(0/*-3*/);
                 break;
             case DRAGGING:
                 world.caveman.body.setAngularVelocity(0);
@@ -85,53 +77,25 @@ public class GameInputProcessor implements InputProcessor {
         }
     }
 
-//    Vector3 testPoint = new Vector3();
-//    QueryCallback callback = new QueryCallback() {
-//        @Override
-//        public boolean reportFixture(Fixture fixture) {
-//            // if the hit point is inside the fixture of the armBody
-//            // we report it
-//            if (fixture.testPoint(testPoint.x, testPoint.y)) {
-//                hitBody = fixture.getBody();
-//                return false;
-//            } else
-//                return true;
-//        }
-//    };
+    private Vector2 limit(Vector2 vector1, Vector2 vector2, float maxLength) {
+        double deltaX = vector1.x - vector2.x;
+        double deltaY = vector1.y - vector2.y;
+        double length = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
+        double angle = Math.atan2(deltaY, deltaX) + Math.PI;
+        length = Math.min(length, maxLength);
+        deltaX = Math.cos(-angle) * length;
+        deltaY = Math.sin(angle) * length;
+        deltaX += vector1.x;
+        deltaY += vector1.y;
+        return new Vector2((float) deltaX, (float) deltaY);
+    }
 
     @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
-//        camera.unproject(testPoint.set(x, y, 0));
-//        // ask the world which bodies are within the given
-//        // bounding box around the mouse pointer
-//        hitBody = null;
-//        world.box2dWorld.QueryAABB(callback, testPoint.x - 0.0001f, testPoint.y - 0.0001f, testPoint.x + 0.0001f, testPoint.y + 0.0001f);
-//
-//        if (hitBody == groundBody) hitBody = null;
-//
-//        // ignore kinematic bodies, they don't work with the mouse joint
-//        if (hitBody != null && hitBody.getType() == BodyDef.BodyType.KinematicBody) return false;
-//
-//        // if we hit something we create a new mouse joint
-//        // and attach it to the hit armBody.
-//        if (hitBody != null) {
-//            MouseJointDef def = new MouseJointDef();
-//            def.bodyA = groundBody;
-//            def.bodyB = hitBody;
-//            def.collideConnected = true;
-//            def.target.set(testPoint.x, testPoint.y);
-//            def.maxForce = 1000.0f * hitBody.getMass();
-//
-//            mouseJoint = (MouseJoint) world.box2dWorld.createJoint(def);
-//            hitBody.setAwake(true);
-//        }
-
         switch (gameState) {
             case IDLE:
                 gameState = CATAPULTSET;
-                break;
-            case FLYING:
-                gameState = FLAPPING;
+                catapulting = true;
                 break;
             case GAMEOVER:
                 //TODO
@@ -139,43 +103,39 @@ public class GameInputProcessor implements InputProcessor {
             case PAUSE:
                 //TODO
                 break;
+            case FLYING:
+                world.caveman.flap();
+                break;
         }
-
         return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-//        if (mouseJoint != null) {
-//            world.box2dWorld.destroyJoint(mouseJoint);
-//            mouseJoint = null;
-//        }
-
         switch (gameState) {
             case CATAPULTSET:
-                world.box2dWorld.destroyJoint(world.caveman.bulletJoint);
-                world.catapult.armJoint.setLimits((float) Math.toRadians(9), (float) Math.toRadians(75));
                 world.flying = true;
                 world.remove = true;
-
+                world.caveman.body.setGravityScale(gravity);
+                Vector2 mouseCords = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+                Vector2 localCords = world.screenToLocalCoordinates(mouseCords);
+                localCords.y -= Core.boxUnitToPixels(world.caveman.sprite.getHeight() + world.caveman.sprite.getHeight() / 2);
+                localCords.x += Core.boxUnitToPixels(world.caveman.sprite.getWidth() / 2);
+                localCords = Core.pixelsToBoxUnit(localCords);
+                localCords.y = Math.max(localCords.y, 1.25f);
+                localCords = limit(originalPos, localCords, limit);
+                Vector2 difference = localCords.sub(originalPos);
+                world.caveman.body.setLinearVelocity(difference.x * -2 * strength, difference.y * -4 * strength);
                 gameState = FLYING;
-                break;
-            case FLAPPING:
-                gameState = FLYING;
+                flying = true;
+                catapulting = false;
                 break;
         }
-
         return false;
     }
 
-//    Vector2 target = new Vector2();
-
     @Override
     public boolean touchDragged(int x, int y, int pointer) {
-//        if (mouseJoint != null) {
-//            camera.unproject(testPoint.set(x, y, 0));
-//            mouseJoint.setTarget(target.set(testPoint.x, testPoint.y));
-//        }
         return false;
     }
 
@@ -193,6 +153,15 @@ public class GameInputProcessor implements InputProcessor {
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.R) {
             game.setScreen(new GameScreen(game));
+            return true;
+        }
+        if (keycode == Input.Keys.NUM_2) {
+            world.caveman.body.setGravityScale(gravity / 2);
+        } else if (keycode == Input.Keys.NUM_4) {
+            world.caveman.body.setGravityScale(gravity / 8);
+        }
+        if (keycode == Input.Keys.BACK) {
+            game.dialogs.update(game);
             return true;
         }
         return false;
