@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -118,14 +119,14 @@ public class CaveMan implements Entity {
 
     public void draw(Batch batch) {
         if (wings > 0 && stateTimeSprings > 0)
-            sprite.setRegion(Assets.cavemanWingsJump.getKeyFrame(stateTimeSprings));
-        else if (stateTimeSprings > 0) sprite.setRegion(Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
+            sprite.setRegion((TextureRegion) Assets.cavemanWingsJump.getKeyFrame(stateTimeSprings));
+        else if (stateTimeSprings > 0) sprite.setRegion((TextureRegion) Assets.cavemanSprings.getKeyFrame(stateTimeSprings));
         else if (GameInputProcessor.touchingGround && wings > 0)
-            sprite.setRegion(Assets.cavemanWingsDrag.getKeyFrame(stateTime));
-        else if (GameInputProcessor.touchingGround) sprite.setRegion(Assets.cavemanDrag.getKeyFrame(stateTime));
-        else if (wings > 0) sprite.setRegion(Assets.cavemanWings.getKeyFrame(flapStateTime));
-        else if (flapStateTime < 0.5f) sprite.setRegion(Assets.cavemanFlap.getKeyFrame(flapStateTime));
-        else if (GameInputProcessor.flying) sprite.setRegion(Assets.cavemanFly.getKeyFrame(stateTime));
+            sprite.setRegion((TextureRegion) Assets.cavemanWingsDrag.getKeyFrame(stateTime));
+        else if (GameInputProcessor.touchingGround) sprite.setRegion((TextureRegion) Assets.cavemanDrag.getKeyFrame(stateTime));
+        else if (wings > 0) sprite.setRegion((TextureRegion) Assets.cavemanWings.getKeyFrame(flapStateTime));
+        else if (flapStateTime < 0.5f) sprite.setRegion((TextureRegion) Assets.cavemanFlap.getKeyFrame(flapStateTime));
+        else if (GameInputProcessor.flying) sprite.setRegion((TextureRegion) Assets.cavemanFly.getKeyFrame(stateTime));
         else sprite.setRegion(Assets.cavemanTexture);
         sprite.setSize(sprite.getRegionWidth() * (size * 2) / textureSizeX,
                 sprite.getRegionHeight() * (size * 2) / textureSizeY);

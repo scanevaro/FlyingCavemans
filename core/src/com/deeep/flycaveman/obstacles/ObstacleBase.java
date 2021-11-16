@@ -38,7 +38,7 @@ public abstract class ObstacleBase implements Entity {
         } else {
             //object pooling
         }
-        sprite = new Sprite(animation.getKeyFrame(0));
+        sprite = new Sprite((TextureRegion)animation.getKeyFrame(0));
         sprite.setSize(spriteSizeX, spriteSizeY);
         sprite.setSize(sprite.getRegionWidth() * (sizeX * 2) / sprite.getRegionWidth(),
                 sprite.getRegionHeight() * (sizeY * 2) / sprite.getRegionWidth());

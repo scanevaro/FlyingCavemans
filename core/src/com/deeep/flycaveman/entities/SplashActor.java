@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Array;
@@ -34,7 +35,7 @@ public class SplashActor extends Actor {
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
         Gdx.graphics.getGL20().glClearColor(0, 0, 0, 1);
         Gdx.graphics.getGL20().glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-        batch.draw(animation.getKeyFrame(stateTime * 10), Core.VIRTUAL_WIDTH / 2 - 192 / 2,
+        batch.draw((TextureRegion)animation.getKeyFrame(stateTime * 10), Core.VIRTUAL_WIDTH / 2 - 192 / 2,
                 Core.VIRTUAL_HEIGHT / 2 - 192 / 2);
     }
 

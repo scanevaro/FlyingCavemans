@@ -96,7 +96,7 @@ public class Obstacle implements Entity {
                 realSizeY = brachioSizeY;
                 break;
             case QUETZALCOATLUS: /**QUETZALCOATLUS*/
-                sprite = new Sprite(new TextureRegion(Assets.quetzaTexture.getKeyFrame(0)));
+                sprite = new Sprite(new TextureRegion((TextureRegion) Assets.quetzaTexture.getKeyFrame(0)));
                 sprite.setSize(quetzaSizeX * 2, quetzaSizeY * 2);
                 realSizeX = quetzaSizeX;
                 realSizeY = quetzaSizeY;
@@ -114,7 +114,7 @@ public class Obstacle implements Entity {
                 realSizeY = smallEggSizeX;
                 break;
             case SABRETOOTH: /**SABRETOOTH*/
-                sprite = new Sprite(new TextureRegion(Assets.sabertoothIdle.getKeyFrame(stateTime)));
+                sprite = new Sprite(new TextureRegion((TextureRegion) Assets.sabertoothIdle.getKeyFrame(stateTime)));
                 sprite.setSize(sabretoothSize * 2.25f, sabretoothSize * 2);
                 realSizeX = sabretoothSize + 0.5f;
                 realSizeY = sabretoothSize;
@@ -237,8 +237,8 @@ public class Obstacle implements Entity {
                 }
                 break;
             case QUETZALCOATLUS: /**QUETZALCOATLUS*/
-                if (!hit) sprite.setRegion(Assets.quetzaTexture.getKeyFrame(stateTime));
-                else sprite.setRegion(Assets.quetzaHit.getKeyFrame(stateTime));
+                if (!hit) sprite.setRegion((TextureRegion) Assets.quetzaTexture.getKeyFrame(stateTime));
+                else sprite.setRegion((TextureRegion) Assets.quetzaHit.getKeyFrame(stateTime));
                 break;
             case ARGENTAVIS: /**ARGENTAVIS*/
                 if (!hit) sprite.setRegion(Assets.argenTexture);
@@ -249,8 +249,8 @@ public class Obstacle implements Entity {
                 else sprite.setRegion(Assets.toucanHit);
                 break;
             case SABRETOOTH: /**SABRETOOTH*/
-                if (!hit) sprite.setRegion(Assets.sabertoothIdle.getKeyFrame(stateTime));
-                else sprite.setRegion(Assets.sabertoothHit.getKeyFrame(stateTime));
+                if (!hit) sprite.setRegion((TextureRegion) Assets.sabertoothIdle.getKeyFrame(stateTime));
+                else sprite.setRegion((TextureRegion) Assets.sabertoothHit.getKeyFrame(stateTime));
                 break;
             case MOSQUITO: /**MOSQUITO*/
                 if (!hit) sprite.setRegion(Assets.mosquitoTexture/*.getKeyFrame(stateTime)*/);

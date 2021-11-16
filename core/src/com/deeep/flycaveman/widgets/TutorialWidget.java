@@ -2,6 +2,7 @@ package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
@@ -101,11 +102,11 @@ public class TutorialWidget extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         background.draw(batch, parentAlpha);
         batch.setColor(getColor().r, getColor().g, getColor().b, getColor().a * parentAlpha);
-        batch.draw(animation1.getKeyFrame(stateTime), getX() + 50, getY() + 346 / 2, 306, 346);
-        batch.draw(animation2.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 + 306 / 2 - 100,
+        batch.draw((TextureRegion) animation1.getKeyFrame(stateTime), getX() + 50, getY() + 346 / 2, 306, 346);
+        batch.draw((TextureRegion)animation2.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 + 306 / 2 - 100,
                 getY() + 346 / 2, 306, 346);
-        batch.draw(animation3.getKeyFrame(stateTime), getX() + 50, (getY() + Core.VIRTUAL_HEIGHT) + 346 / 2, 306, 346);
-        batch.draw(animation4.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 + 306 / 2 - 100,
+        batch.draw((TextureRegion)animation3.getKeyFrame(stateTime), getX() + 50, (getY() + Core.VIRTUAL_HEIGHT) + 346 / 2, 306, 346);
+        batch.draw((TextureRegion)animation4.getKeyFrame(stateTime), getX() + Core.VIRTUAL_WIDTH / 2 + 306 / 2 - 100,
                 (getY() + Core.VIRTUAL_HEIGHT) + 346 / 2, 306, 346);
         text1.draw(batch, parentAlpha);
         text2.draw(batch, parentAlpha);

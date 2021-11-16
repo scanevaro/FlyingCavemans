@@ -2,6 +2,7 @@ package com.deeep.flycaveman.widgets;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.deeep.flycaveman.Assets;
 
@@ -29,6 +30,6 @@ public class CoinSprite extends Actor {
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(animation.getKeyFrame(stateTime), getX(), getY(), getWidth(), getHeight());
+        batch.draw((TextureRegion)animation.getKeyFrame(stateTime), getX(), getY(), getWidth(), getHeight());
     }
 }
